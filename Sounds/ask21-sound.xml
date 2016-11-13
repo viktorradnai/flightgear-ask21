@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!--from the bocian by AJ MacLeod--> 
+<PropertyList>
+
+ <fx>
+
+  <tyre-rumble>
+   <name>tyre-rumble</name>
+   <mode>looped</mode>
+   <path>Aircraft/ASK21/Sounds/ground_roll3.wav</path>
+   <condition>
+    <or>
+     <property>/gear/gear[0]/wow</property>
+     <property>/gear/gear[1]/wow</property>
+     <property>/gear/gear[2]/wow</property>
+    </or>
+   </condition>
+   <volume>
+    <property>velocities/groundspeed-kt</property>
+    <factor>0.05</factor>
+   </volume>
+  </tyre-rumble>
+
+  <wind>
+   <name>wind</name>
+   <mode>looped</mode>
+   <path>Sounds/wind.wav</path>
+   <property>velocities/airspeed-kt</property>
+   <volume>
+    <property>position/altitude-ft</property>
+    <factor>-0.000015</factor>
+    <offset>1.0</offset>
+    <min>0.1</min>
+    <max>1.0</max>
+   </volume>
+   <volume>
+     <property>velocities/airspeed-kt</property>
+     <factor>0.0015</factor>
+     <min>0.03</min>
+     <max>0.5</max>
+   </volume>
+   <pitch>
+    <property>velocities/airspeed-kt</property>
+    <factor>0.01</factor>
+    <offset>1.25</offset>
+   </pitch>
+  </wind>
+
+  <buffet>
+   <name>alpha-buffet</name>
+   <mode>looped</mode>
+   <condition>
+    <greater-than>
+     <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
+     <value>0.09</value>
+    </greater-than>
+   </condition>
+   <path>Sounds/rumble.wav</path>
+   <volume>
+    <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
+    <factor>15.0</factor>
+    <max>1.0</max>
+   </volume>
+   <pitch>
+    <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
+    <factor>0.1</factor>
+   </pitch>
+  </buffet>
+
+<variometer-up>
+   <name>variometer-up</name>
+   <mode>looped</mode>
+   <path>Aircraft/ASK21/Sounds/vario.wav</path>
+    <condition>
+     <greater-than>
+      <property>/instrumentation/variometer/te-reading-mps</property>
+      <value>0.01</value>
+     </greater-than>
+    </condition>
+    <pitch>
+     <property>/instrumentation/variometer/te-reading-mps</property>
+     <factor>0.075</factor>
+     <offset>1.0</offset>
+    </pitch>
+   <volume>
+    <property>/instrumentation/ilec-sc7/volume</property>
+    <factor>1</factor>
+    <max>1</max>
+   </volume>
+  </variometer-up>
+  
+<variometer-down>
+   <name>variometer-down</name>
+   <mode>looped</mode>
+   <path>Aircraft/ASK21/Sounds/vario2.wav</path>
+    <condition>
+     <greater-than>
+      <property>/instrumentation/variometer/te-reading-mps</property>
+      <value>-10.00</value>
+     </greater-than>
+     <and>
+      <less-than>
+       <property>/instrumentation/variometer/te-reading-mps</property>
+       <value>-0.01</value>
+      </less-than>
+     </and>
+    </condition>
+    <pitch>
+     <property>/instrumentation/variometer/te-reading-mps</property>
+     <factor>0.015</factor>
+   <offset>1</offset>
+   </pitch>
+   <volume>
+    <property>/instrumentation/ilec-sc7/volume</property>
+    <factor>1</factor>
+    <max>1</max>
+   </volume>
+  </variometer-down>
+
+  <winch_tow>
+   <name>winch_tow</name>
+   <mode>looped</mode>
+   <path>Aircraft/ASK21/Sounds/winch_tow.wav</path>
+   <condition>
+    <not>
+     <property>sim/hitches/winch/open</property>
+    </not>
+   </condition>
+   <volume>
+    <property>velocities/airspeed-kt</property>
+    <factor>0.01</factor>
+    <max>1</max>
+   </volume>
+  </winch_tow>
+
+
+
+  <whoosh-positive>
+   <name>whoosh-positive</name>
+   <mode>once</mode>
+   <path>Aircraft/ASK21/Sounds/whoosh.wav</path>
+   <condition>
+    <greater-than>
+     <property>orientation/pitch-rate-degps</property>
+     <value>15</value>
+    </greater-than>
+   </condition>
+   <volume>
+    <property>orientation/pitch-rate-degps</property>
+    <factor>0.01</factor>
+    <max>1</max>
+   </volume>
+  </whoosh-positive>
+
+  <whoosh-negative>
+   <name>whoosh-negative</name>
+   <mode>once</mode>
+   <path>Aircraft/ASK21/Sounds/whoosh.wav</path>
+   <condition>
+    <less-than>
+     <property>orientation/pitch-rate-degps</property>
+     <value>-15</value>
+    </less-than>
+   </condition>
+   <volume>
+    <property>orientation/pitch-rate-degps</property>
+    <factor>-0.01</factor>
+    <max>1</max>
+   </volume>
+  </whoosh-negative>
+
+  <nose_hook_cable_release>
+   <name>nose_hook_cable_release</name>
+   <mode>once</mode>
+   <path>Aircraft/ASK21/Sounds/winch_release.wav</path>
+   <condition>
+    <or>
+     <property>/sim/hitches/aerotow/open</property>
+     <property>/sim/hitches/aerotow/broken</property>
+    </or>
+   </condition>
+  </nose_hook_cable_release>
+
+  <belly_hook_cable_release>
+   <name>belly_hook_cable_release</name>
+   <mode>once</mode>
+   <path>Aircraft/ASK21/Sounds/winch_release.wav</path>
+   <condition>
+    <or>
+     <property>/sim/hitches/winch/open</property>
+     <property>/sim/hitches/winch/broken</property>
+    </or>
+   </condition>
+  </belly_hook_cable_release>
+
+</fx>
+ 
+</PropertyList>
