@@ -5,7 +5,6 @@ See AUTHORS.txt for credits
 -->
 <PropertyList>
     <sim>
-        
         <description>Schleicher ASK 21 Glider</description>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai and Benedikt Wolf</author>
         <status>beta</status>
@@ -16,20 +15,14 @@ See AUTHORS.txt for credits
             <model type="int">3</model>
         </rating>
         <aircraft-version>20161003</aircraft-version>
-        
-        
         <flight-model archive="y">yasim</flight-model>
         <aero archive="y">ask21</aero>
-        
         <startup>
             <splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
         </startup>
-        
-        
         <model>
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
         </model>
-        
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
         </sound>
@@ -51,7 +44,6 @@ See AUTHORS.txt for credits
             <max-lb>200</max-lb>
             <min-lb>0</min-lb>
         </weight>
-        
         <help>
             <title>ASK 21</title>
             <key>
@@ -102,13 +94,10 @@ See AUTHORS.txt for credits
                 7. Fly!
             </text>
         </help>
-        
         <!-- hide the 2D panel -->
         <panel>
             <visibility archive="y">false</visibility>
         </panel>
-        
-        
         <!-- Views -->
         <view n="0">
             <name>Pilot View</name>
@@ -135,7 +124,6 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
-        
         <view n="100">
             <name>Copilot/Instructor View</name>
             <type>lookfrom</type>
@@ -172,28 +160,24 @@ See AUTHORS.txt for credits
                 <target-z-offset-m archive="y" type="double">-1.0496</target-z-offset-m>
             </config>
         </view>
-        
         <view n="2">
             <config>
                 <target-y-offset-m archive="y" type="double">0.76533</target-y-offset-m>
                 <target-z-offset-m archive="y" type="double">-1.0496</target-z-offset-m>
             </config>
         </view>
-        
         <view n="3">
             <config>
                 <target-y-offset-m archive="y" type="double">0.76533</target-y-offset-m>
                 <target-z-offset-m archive="y" type="double">-1.0496</target-z-offset-m>
             </config>
         </view>
-        
         <view n="4">
             <config>
                 <target-y-offset-m archive="y" type="double">0.76533</target-y-offset-m>
                 <target-z-offset-m archive="y" type="double">-1.0496</target-z-offset-m>
             </config>
         </view>
-        
         <menubar>
             <default>
                 <menu n="10">
@@ -206,7 +190,6 @@ See AUTHORS.txt for credits
                             <script>ask21.aerotow_dialog.open()</script>
                         </binding>
                     </item>
-                    
                     <item>
                         <label>Winch Settings</label>
                         <binding>
@@ -214,7 +197,6 @@ See AUTHORS.txt for credits
                             <script>ask21.winch_dialog.open()</script>
                         </binding>
                     </item>
-                    
                     <item n="10">
                         <label>Pushback</label>
                         <name>pushback</name>
@@ -223,7 +205,6 @@ See AUTHORS.txt for credits
                             <dialog-name>pushback</dialog-name>
                         </binding>
                     </item>
-                    
                     <item>
                         <label>Enable/disable window shader</label>
                         <name>windowshader</name>
@@ -243,7 +224,6 @@ See AUTHORS.txt for credits
                 </menu>
             </default>
         </menubar>
-        
         <hitches>
             <!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
             <!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset
@@ -254,12 +234,12 @@ See AUTHORS.txt for credits
                     <elastic-constant type="float">10000</elastic-constant>
                     <weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
                     <dist type="float">1</dist>
-                    <connected-to-property-node type="bool"></connected-to-property-node>
+                    <connected-to-property-node type="bool"/>
                     <brake-force type="float">100000</brake-force>
-                    <connected-to-ai-or-mp-callsign type ="string">*</connected-to-ai-or-mp-callsign>
-                    <end-force-x type ="float">-3.50</end-force-x>
-                    <end-force-y type ="float">0</end-force-y>
-                    <end-force-z type ="float">0</end-force-z>
+                    <connected-to-ai-or-mp-callsign type="string">*</connected-to-ai-or-mp-callsign>
+                    <end-force-x type="float">-3.50</end-force-x>
+                    <end-force-y type="float">0</end-force-y>
+                    <end-force-z type="float">0</end-force-z>
                 </tow>
                 <speed-in-tow-direction type="float">0</speed-in-tow-direction>
                 <open type="bool">true</open>
@@ -269,7 +249,6 @@ See AUTHORS.txt for credits
                 <automatic-release-angle-deg type="float">70.0</automatic-release-angle-deg>
             </winch>
         </hitches>
-        
     </sim>
     <controls>
         <engines>
@@ -287,7 +266,6 @@ See AUTHORS.txt for credits
             <find-aircraft type="bool">false</find-aircraft>
         </aerotow>
     </controls>
-    
     <input>
         <keyboard>
             <key n="23">
@@ -367,8 +345,6 @@ See AUTHORS.txt for credits
             </key>
         </keyboard>
     </input>
-    
-    
     <nasal>
         <doors>
             <file>Aircraft/ASK21/Nasal/door.nas</file>
@@ -382,5 +358,4 @@ See AUTHORS.txt for credits
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
     </nasal>
-    
 </PropertyList>
