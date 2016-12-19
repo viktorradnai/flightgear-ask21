@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <airplane mass="720">
     <!-- Approach configuration -->
-    <approach speed="30" aoa="4" glide-angle="3.5">
-    </approach>
+    <approach speed="30" aoa="4" glide-angle="2.7">
+</approach>
     <!-- Cruise configuration -->
-    <cruise speed="50" alt="5000" glide-angle="4.5">
-    </cruise>
+    <cruise speed="50" alt="5000" glide-angle="2.7">
+</cruise>
     <!-- pilot's eyepoint -->
     <cockpit x="2.5396" y="0" z="0.94214"/>
     <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
@@ -40,8 +40,7 @@
         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="1" max="-1"/>
     </vstab>
     <!-- nose wheel -->
-    <gear x="3.25256" y="0" z="0.09253" compression="0.1" spring="1" damp="2" dfric="0.2" sfric="0.24">
-    </gear>
+    <gear x="3.25256" y="0" z="0.09253" compression="0.1" spring="1" damp="2" dfric="0.2" sfric="0.24"></gear>
     <!-- main wheel-->
     <!--As on the ASK13, brake is tied to airbrake-->
     <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="1" damp="1" dfric="0.14" sfric="0.16">
@@ -49,26 +48,27 @@
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     </gear>
     <!-- Tail wheel -->
-    <gear x="-3.60517" y="0" z="0.51004" compression="0.1" dfric="0.2" sfric="0.24" damp="2" skid="1">
-    </gear>
+    <gear x="-3.60517" y="0" z="0.51004" compression="0.1" dfric="0.2" sfric="0.24" damp="2" skid="1"></gear>
     <!--right wing skid-->
     <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
     <!--lef wing skid-->
     <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
     <!--
-<gear x="-3.05" y="8.371" z="0.871" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>-->
+    <gear x="-3.05" y="8.371" z="0.871" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+    -->
     <!-- pilots -->
     <!-- Front -->
-    <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb" solve-weight="1" idx="0"/>
+    <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>
     <!--Rear-->
-    <weight x="1.72727" y="0.0" z="0.75498" mass-prop="/sim/weight[1]/weight-lb" solve-weight="1" idx="0"/>
+    <weight x="1.72727" y="0.0" z="0.75498" mass-prop="/sim/weight[1]/weight-lb"/>
     <!--Tail ballast to enable spin with two pilots-->
-    <weight x="-3.5" y="0.0" z="0.8" mass-prop="/sim/weight[2]/weight-lb" solve-weight="1" idx="0"/>
+    <weight x="-3.5" y="0.0" z="0.8" mass-prop="/sim/weight[2]/weight-lb"/>
     <!--Distribute mass towards nose (cockpit weight etc.)-->
     <ballast x="2" y="0" z=".5" mass="350"/>
     <!--
-<ballast x="-1.571" y="0" z="0.011" mass="140"/>
-<ballast x="-2.4" y="0" z="0.099" mass="140"/>-->
+    <ballast x="-1.571" y="0" z="0.011" mass="140"/>
+    <ballast x="-2.4" y="0" z="0.099" mass="140"/>
+    -->
     <!-- Pushback -->
     <thruster x="0.99095" y="0" z="0.02933" vx="1" vy="0" vz="0" thrust="50">
         <control-input axis="/sim/model/pushback/target-speed-fps-2" control="THROTTLE" src0="-1" dst0="-1" src1="1" dst1="1"/>
@@ -86,7 +86,7 @@
         <winch max-tow-length="1000" min-tow-length="1" initial-tow-length="1000" max-winch-speed="40" power="150" max-force="6000"/>
         <control-input axis="/controls/winch/place" control="PLACEWINCH"/>
     </hitch>
-    <hitch name="aerotow" x="3.53" y="0" z="0.23" force-is-calculated-by-other="0">
+    <hitch name="aerotow" x="4.15724" y="0" z="0.42346" force-is-calculated-by-other="0">
         <tow length="60" weight-per-meter="0.035" elastic-constant="9000" break-force="10000" mp-auto-connect-period="0.0"/>
         <winch max-tow-length="1000" min-tow-length="60" initial-tow-length="60"/>
         <control-input axis="/controls/aerotow/find-aircraft" control="FINDAITOW"/>

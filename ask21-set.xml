@@ -74,7 +74,7 @@ See AUTHORS.txt for credits
                 === General Help ===
                 - "Throttle" axis (or throttle keys) are connected to the glider's airbrake.
                 - You can take off using a winch or use another aircraft as an aerotow.
-                
+
                 === Winch Takeoff Procedure ===
                 1. Retract speed brake (full "throttle")
                 2. Press Ctrl-w to place winch.
@@ -83,7 +83,7 @@ See AUTHORS.txt for credits
                 5. Keep aircraft level and take off.
                 6. When at appropriate alitude, press 'W' to disconnect winch.
                 7. Fly!
-                
+
                 === Aerotow Takeoff Procedure ===
                 1. Retract speed brake (full "throttle")
                 2. Place another aerotwo aircraft in front of your glider (multi-player).
@@ -214,7 +214,7 @@ See AUTHORS.txt for credits
                         </binding>
                     </item>
                     <item>
-                        <label>Enable/disable glass visibility</label>
+                        <label>En-/Disable glass visibility</label>
                         <name>windowshader</name>
                         <binding>
                             <command>property-toggle</command>
