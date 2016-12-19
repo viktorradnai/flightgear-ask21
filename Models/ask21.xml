@@ -2,21 +2,22 @@
 <!-- Schleicher ASK 21 Glider by Heiko Schulz -->
 <PropertyList>
     <path>ask21.ac</path>
-    <!-- <offsets>
-   <x-m>1.5</x-m>
-   <y-m>0</y-m>
-   <z-m>-0.35</z-m>
-   <pitch-deg>0.0</pitch-deg>
- </offsets>-->
+    <!--
+    <offsets>
+        <x-m>1.5</x-m>
+        <y-m>0</y-m>
+        <z-m>-0.35</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    -->
     <nasal>
         <load>
-            
             var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
             var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
-            
+
             var canopyF_door = self.getNode("sim/model/door-positions/canopyF/position-norm", 1);
             var canopyB_door = self.getNode("sim/model/door-positions/canopyB/position-norm", 1);
-            
+
             canopyF_door.alias(float_0);
             canopyB_door.alias(float_1);
         </load>
@@ -455,15 +456,17 @@
             <pitch-deg>-9</pitch-deg>
         </offsets>
     </model>
-    <!--<model>
-     <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
-     <offsets>
-                <x-m>-3.32</x-m>
-                <y-m>-0.08</y-m>
-                <z-m>0.65</z-m>
-                <pitch-deg>-2</pitch-deg>
-     </offsets>
- </model>-->
+    <!--
+    <model>
+        <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
+        <offsets>
+            <x-m>-3.32</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.65</z-m>
+            <pitch-deg>-2</pitch-deg>
+        </offsets>
+    </model>
+    -->
     <!--Compass-->
     <model>
         <name>compass2</name>
