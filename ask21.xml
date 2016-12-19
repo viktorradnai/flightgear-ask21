@@ -35,8 +35,7 @@
 			src0="0" src1="1.0"
 			dst0="1.0" dst1="0"/>
         <control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
-        <!--
-	<control-speed control="SPOILER" transition-time="1.5"/>-->
+	<control-speed control="SPOILER" transition-time="1.5"/>
     </wing>
     
     <hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" 
