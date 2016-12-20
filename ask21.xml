@@ -26,8 +26,8 @@
         <control-speed control="SPOILER" transition-time="1.5"/>
     </wing>
     <hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" length="2" chord="0.861" sweep="0" incidence="5.0" effectiveness="1.8">
-        <stall aoa="30" width="16" peak="1.5"/>
-        <flap0 start="0.0" end="0.89" lift="1.2" drag="1.15"/>
+        <stall aoa="40" width="16" peak="1.5"/>
+        <flap0 start="0.0" end="0.89" lift="1.4" drag="1.15"/>
         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
