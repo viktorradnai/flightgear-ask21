@@ -4,8 +4,8 @@
 
  <fx>
 
-  <tyre-rumble>
-   <name>tyre-rumble</name>
+  <wheel-rumble>
+   <name>wheel-rumble</name>
    <mode>looped</mode>
    <path>Aircraft/ASK21/Sounds/ground_roll3.wav</path>
    <condition>
@@ -19,7 +19,7 @@
     <property>velocities/groundspeed-kt</property>
     <factor>0.05</factor>
    </volume>
-  </tyre-rumble>
+  </wheel-rumble>
 
   <wind>
    <name>wind</name>
@@ -35,37 +35,17 @@
    </volume>
    <volume>
      <property>velocities/airspeed-kt</property>
-     <factor>0.0015</factor>
+     <factor>0.002</factor>
      <min>0.03</min>
      <max>0.5</max>
+     <offset>-0.02</offset>
    </volume>
    <pitch>
     <property>velocities/airspeed-kt</property>
     <factor>0.01</factor>
-    <offset>1.25</offset>
+    <offset>1</offset>
    </pitch>
   </wind>
-
-  <buffet>
-   <name>alpha-buffet</name>
-   <mode>looped</mode>
-   <condition>
-    <greater-than>
-     <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
-     <value>0.09</value>
-    </greater-than>
-   </condition>
-   <path>Sounds/rumble.wav</path>
-   <volume>
-    <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
-    <factor>15.0</factor>
-    <max>1.0</max>
-   </volume>
-   <pitch>
-    <property>/fdm/jsbsim/aero/alpha-rad[0]</property>
-    <factor>0.1</factor>
-   </pitch>
-  </buffet>
 
 <variometer-up>
    <name>variometer-up</name>
@@ -107,9 +87,9 @@
     </condition>
     <pitch>
      <property>/instrumentation/variometer/te-reading-mps</property>
-     <factor>0.015</factor>
-   <offset>1</offset>
-   </pitch>
+     <factor>0.075</factor>
+     <offset>1.0</offset>
+    </pitch>
    <volume>
     <property>/instrumentation/ilec-sc7/volume</property>
     <factor>1</factor>
@@ -133,6 +113,36 @@
    </volume>
   </winch_tow>
 
+  <whistle>
+   <name>whistle</name>
+   <mode>looped</mode>
+   <path>Aircraft/ASK21/Sounds/whoosh-loop.wav</path>
+   <condition>
+    <greater-than>
+     <property>orientation/pitch-deg</property>
+     <value>2.5</value>
+    </greater-than>
+    <and>
+     <greater-than>
+      <property>velocities/airspeed-kt</property>
+      <value>32</value>
+     </greater-than>
+    </and>
+   </condition>
+   <pitch>
+    <property>velocities/airspeed-kt</property>
+    <factor>0.05</factor>
+    <offset>0.3</offset>
+   </pitch>
+   <volume>
+    <property>orientation/pitch-deg</property>
+    <factor>0.01</factor>
+    <offset>-0.05</offset>
+    <max>0.5</max>
+   </volume>
+  </whistle>
+
+
   <whoosh-positive>
    <name>whoosh-positive</name>
    <mode>looped</mode>
@@ -142,10 +152,22 @@
      <property>orientation/pitch-rate-degps</property>
      <value>15</value>
     </greater-than>
+    <and>
+     <greater-than>
+      <property>velocities/airspeed-kt</property>
+      <value>35</value>
+     </greater-than>
+    </and>
    </condition>
+   <pitch>
+    <property>velocities/airspeed-kt</property>
+    <factor>0.075</factor>
+    <offset>1.0</offset>
+   </pitch>
    <volume>
     <property>orientation/pitch-rate-degps</property>
-    <factor>0.01</factor>
+    <factor>0.001</factor>
+    <offset>-0.15</offset>
     <max>1</max>
    </volume>
   </whoosh-positive>
@@ -162,7 +184,8 @@
    </condition>
    <volume>
     <property>orientation/pitch-rate-degps</property>
-    <factor>-0.01</factor>
+    <factor>-0.001</factor>
+    <offset>0.15</offset>
     <max>1</max>
    </volume>
   </whoosh-negative>
