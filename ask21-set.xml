@@ -214,7 +214,7 @@ See AUTHORS.txt for credits
                         </binding>
                     </item>
                     <item>
-                        <label>En-/Disable glass visibility</label>
+                        <label>Enable/disable glass visibility</label>
                         <name>windowshader</name>
                         <binding>
                             <command>property-toggle</command>
@@ -286,13 +286,10 @@ See AUTHORS.txt for credits
             </key>
             <key n="87">
                 <name>W</name>
-                <desc>Toggle winch hook</desc>
+                <desc>Decrease winch speed</desc>
                 <binding>
                     <command>nasal</command>
-                    <script>
-                        var p = "/sim/hitches/winch/open";
-                        setprop(p, !getprop(p));
-                    </script>
+                    <script>interpolate("/sim/hitches/winch/winch/rel-speed", 0.0, 2)</script>
                 </binding>
             </key>
             <key n="119">
@@ -327,11 +324,11 @@ See AUTHORS.txt for credits
             </key>
             <key n="111">
                 <name>o</name>
-                <desc>Lock aerotow hook</desc>
+                <desc>Open hook</desc>
                 <binding>
                     <command>property-assign</command>
                     <property>/sim/hitches/aerotow/open</property>
-                    <value type="bool">false</value>
+                    <value type="bool">true</value>
                 </binding>
             </key>
             <key n="79">
@@ -339,8 +336,40 @@ See AUTHORS.txt for credits
                 <desc>Open aerotow hook</desc>
                 <binding>
                     <command>property-assign</command>
-                    <property>/sim/hitches/aerotow/open</property>
+                    <property>/sim/hitches/winch/open</property>
                     <value type="bool">true</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/sim/hitches/aerotow/open</property>
+                        <value type="bool">false</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/sim/hitches/winch/open</property>
+                        <value type="bool">false</value>
+                    </binding>
+                </mod-up>
+            </key>
+            <key n="83">
+                <name>S</name>
+                <desc>Vario volume up</desc>
+                <binding>
+                    <command>property-adjust</command>
+                    <property>/instrumentation/ilec-sc7/volume</property>
+                    <step>0.1</step>
+                    <max>1</max>
+                </binding>
+            </key>
+            <key n="115">
+                <name>s</name>
+                <desc>Vario volume down</desc>
+                <binding>
+                    <command>property-adjust</command>
+                    <property>/instrumentation/ilec-sc7/volume</property>
+                    <step>-0.1</step>
+                    <min>0</min>
                 </binding>
             </key>
         </keyboard>
