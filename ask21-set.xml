@@ -3,7 +3,7 @@
 YASim Schleicher ASK 21 Glider
 See AUTHORS.txt for credits
 -->
-<PropertyList>
+<PropertyList include="Aircraft/ASK21/walker-include.xml">
     <sim>
         <description>Schleicher ASK 21 Glider</description>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai and Benedikt Wolf</author>
@@ -22,6 +22,8 @@ See AUTHORS.txt for credits
         </startup>
         <model>
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
+            <window type="bool">1</window> <!--Enable window visibility by default-->
+            <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
         </model>
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
@@ -74,6 +76,7 @@ See AUTHORS.txt for credits
                 === General Help ===
                 - "Throttle" axis (or throttle keys) are connected to the glider's airbrake.
                 - You can take off using a winch or use another aircraft as an aerotow.
+                - The Walker uses e (E) and d(D) for walking instead of w and s!!!!
 
                 === Winch Takeoff Procedure ===
                 1. Retract speed brake (full "throttle")
@@ -92,6 +95,9 @@ See AUTHORS.txt for credits
                 5. Keep aircraft level and follow the aircraft until after takeoff..
                 6. When at appropriate alitude, press 'O' to disconnect the hook.
                 7. Fly!
+                === Ground handling ===
+                This aircraft has some features to make ground handling easier/possible at all. When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axes as if someone was holding your wing ;) When pressing "Toggle ground handling", two features are enanled to pull the aircraft around on the ground: 1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns and 2.  all throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
+                When there is somebody with a followme around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport or even tow you into the air! (also check the Aerotow Settings therefor).
             </text>
         </help>
         <!-- hide the 2D panel -->
@@ -221,6 +227,20 @@ See AUTHORS.txt for credits
                             <property>/sim/model/window</property>
                         </binding>
                     </item>
+                    <item>
+                        <label>Toggle ground handling</label>
+                        <binding>
+                            <command>property-toggle</command>
+                        <property>/controls/ground-handling</property>
+                    </binding>
+                    </item>    
+                    <item>
+                    <label>Toggle assiting gears</label>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/gear/assist-1</property>
+                    </binding>
+                    </item> 
                 </menu>
             </default>
         </menubar>
@@ -268,6 +288,20 @@ See AUTHORS.txt for credits
     </controls>
     <input>
         <keyboard>
+            <key n="127">
+                <name>Delete</name>
+                <desc>Toggle Reversers</desc>
+                <binding>
+                    <condition>
+                        <equals>
+                            <property>controls/engines/engine[0]/throttle</property>
+                            <value>0</value>
+                        </equals>
+                    </condition>
+                    <command>property-toggle</command>
+                    <property>controls/engines/engine[0]/reverser</property>
+                </binding>
+            </key>
             <key n="23">
                 <name>Ctrl-w</name>
                 <desc>Place Winch 1000m in front of aircraft</desc>
@@ -286,10 +320,13 @@ See AUTHORS.txt for credits
             </key>
             <key n="87">
                 <name>W</name>
-                <desc>Decrease winch speed</desc>
+                <desc>Toggle winch hook</desc>
                 <binding>
                     <command>nasal</command>
-                    <script>interpolate("/sim/hitches/winch/winch/rel-speed", 0.0, 2)</script>
+                    <script>
+                        var p = "/sim/hitches/winch/open";
+                        setprop(p, !getprop(p));
+                    </script>
                 </binding>
             </key>
             <key n="119">
@@ -379,8 +416,8 @@ See AUTHORS.txt for credits
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
-            <file>Aircraft/ASK21/Nasal/system.nas</file>
             <file>Aircraft/ASK21/Nasal/dialogs.nas</file>
+            <file>Aircraft/ASK21/Nasal/groundhandling.nas</file><!--Ground handling system-->
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
     </nasal>
