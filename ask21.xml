@@ -2,15 +2,15 @@
 <airplane mass="720">
     <!-- Approach configuration -->
     <approach speed="30" aoa="4" glide-angle="2.7">
-</approach>
+    </approach>
     <!-- Cruise configuration -->
     <cruise speed="50" alt="5000" glide-angle="2.7">
-</cruise>
+    </cruise>
     <!-- pilot's eyepoint -->
     <cockpit x="2.5396" y="0" z="0.94214"/>
     <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
     <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="5.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="5">
-        <stall aoa="30" width="12" peak="1.5"/>
+        <stall aoa="26" width="12" peak="1.5"/>
         <flap0 start="0.43" end="0.97" lift="1.2" drag="1.15"/>
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
         <control-output control="FLAP0" side="left" prop="surface-positions/left-aileron-pos-norm"/>
@@ -23,11 +23,11 @@
         <control-speed control="FLAP0" transition-time="0.8"/>
         <control-input axis="/controls/engines/engine/throttle" control="SPOILER" src0="0" src1="1.0" dst0="1.0" dst1="0"/>
         <control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
-        <control-speed control="SPOILER" transition-time="1.5"/>
+        <control-speed control="SPOILER" transition-time="0.8"/>
     </wing>
-    <hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" length="2" chord="0.861" sweep="0" incidence="5.0" effectiveness="1.8">
-        <stall aoa="40" width="16" peak="1.5"/>
-        <flap0 start="0.0" end="0.89" lift="1.4" drag="1.15"/>
+    <hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" length="2" chord="0.861" sweep="0" incidence="5" effectiveness="1.8">
+        <stall aoa="30" width="16" peak="1.5"/>
+        <flap0 start="0.0" end="0.89" lift="1.3" drag="1.15"/>
         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
@@ -40,19 +40,19 @@
         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="1" max="-1"/>
     </vstab>
     <!-- nose wheel -->
-    <gear x="3.25256" y="0" z="0.09253" compression="0.1" spring="1" damp="2" dfric="0.2" sfric="0.24"></gear>
+    <gear x="3.25256" y="0" z="0.09253" compression="0.1" spring="1" damp="2" dfric="0.5" sfric="0.6"></gear>
     <!-- main wheel-->
     <!--As on the ASK13, brake is tied to airbrake-->
-    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="1" damp="1" dfric="0.14" sfric="0.16">
+    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="1" damp="1" dfric="0.3" sfric="0.4">
         <control-input axis="/controls/engines/engine/throttle" control="BRAKE" src0="0" src1="0.15" dst0="1" dst1="0"/>
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     </gear>
     <!-- Tail wheel -->
-    <gear x="-3.60517" y="0" z="0.51004" compression="0.1" dfric="0.2" sfric="0.24" damp="2" skid="1"></gear>
+    <gear x="-3.60517" y="0" z="0.51004" compression="0.1" damp="2" skid="1" dfric="0.6" sfric="0.7"></gear>
     <!--right wing skid-->
-    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="0.8" sfric="0.9"/>
     <!--lef wing skid-->
-    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="0.8" sfric="0.9"/>
     <!--
     <gear x="-3.05" y="8.371" z="0.871" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
     -->

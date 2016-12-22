@@ -314,11 +314,13 @@
     <!--ASI-->
     <model>
         <name>asi</name>
-        <path>instruments/winter-asi-6221/winter-asi-6221.xml</path>
+        <!--<path>instruments/winter-asi-6221/winter-asi-6221.xml</path>-->
+        <path>instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
         <offsets>
-            <x-m>-3.323</x-m>
+            <x-m>-3.328</x-m>
             <y-m>-0.08</y-m>
             <z-m>0.748</z-m>
+            <pitch-deg>-4</pitch-deg>
         </offsets>
     </model>
     <!--Altimeter-->
@@ -399,7 +401,7 @@
         <name>turnslip_screws</name>
         <path>Aircraft/ASK21/Models/instruments/57mm_turnslip/57mm_screws.xml</path>
         <offsets>
-            <x-m>-3.323</x-m>
+            <x-m>-3.321</x-m>
             <y-m>0</y-m>
             <z-m>0.748</z-m>
             <pitch-deg>-5</pitch-deg>
@@ -427,12 +429,13 @@
     <!--ASI-->
     <model>
         <name>asi2</name>
-        <path>instruments/winter-asi-6221/winter-asi-6221.xml</path>
+        <!--<path>instruments/winter-asi-6221/winter-asi-6221.xml</path>-->
+        <path>instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
         <offsets>
-            <x-m>-2.11</x-m>
+            <x-m>-2.110</x-m>
             <y-m>0.08</y-m>
             <z-m>0.87364</z-m>
-            <pitch-deg>-9</pitch-deg>
+            <pitch-deg>-12</pitch-deg>
         </offsets>
     </model>
     <!--Altimeter-->
@@ -450,7 +453,7 @@
         <name>vario3</name>
         <path>instruments/vario-5stv5/winter-vario-5stv5.xml</path>
         <offsets>
-            <x-m>-2.11</x-m>
+            <x-m>-2.109</x-m>
             <y-m>-0.08</y-m>
             <z-m>0.87364</z-m>
             <pitch-deg>-9</pitch-deg>

@@ -246,7 +246,7 @@ See AUTHORS.txt for credits
                 <is-slave type="bool">false</is-slave>
             </aerotow>
             <winch>
-                <automatic-release-angle-deg type="float">70.0</automatic-release-angle-deg>
+                <automatic-release-angle-deg type="float">80.0</automatic-release-angle-deg>
             </winch>
         </hitches>
     </sim>
@@ -327,13 +327,14 @@ See AUTHORS.txt for credits
                 <desc>Open hook</desc>
                 <binding>
                     <command>property-assign</command>
+                    <property>/sim/hitches/hook-open</property>
+                    <value type="bool">true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
                     <property>/sim/hitches/aerotow/open</property>
                     <value type="bool">true</value>
                 </binding>
-            </key>
-            <key n="79">
-                <name>O</name>
-                <desc>Open aerotow hook</desc>
                 <binding>
                     <command>property-assign</command>
                     <property>/sim/hitches/winch/open</property>
@@ -342,15 +343,11 @@ See AUTHORS.txt for credits
                 <mod-up>
                     <binding>
                         <command>property-assign</command>
-                        <property>/sim/hitches/aerotow/open</property>
-                        <value type="bool">false</value>
-                    </binding>
-                    <binding>
-                        <command>property-assign</command>
-                        <property>/sim/hitches/winch/open</property>
+                        <property>/sim/hitches/hook-open</property>
                         <value type="bool">false</value>
                     </binding>
                 </mod-up>
+
             </key>
             <key n="83">
                 <name>S</name>
