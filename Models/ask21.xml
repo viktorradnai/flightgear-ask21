@@ -505,6 +505,21 @@
             <z>0</z>
         </axis>
     </animation>
+    <!--Cockpit Shader-->
+    <effect>
+        <inherits-from>Effects/interior-shadow</inherits-from>
+        <object-name>interior</object-name>
+        <object-name>seatF</object-name>
+        <object-name>panel</object-name>
+        <object-name>panel.003</object-name>
+        <object-name>micF</object-name>
+    </effect>
+    <effect>
+        <inherits-from>Effects/interior-shadow-back</inherits-from><!--
+        <object-name>interior</object-name>-->
+        <object-name>seatR</object-name>
+        <object-name>micR</object-name>
+    </effect>
     <!--CANOPY-->
     <animation>
         <type>pick</type>
