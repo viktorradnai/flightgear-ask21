@@ -41,7 +41,7 @@
             </volume>
         </wheel-rumble>
 
-        <wheel-rumble>
+        <wheelbrake>
             <name>wheelbrake</name>
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/wheelbrake.wav</path>
@@ -58,7 +58,7 @@
                 <property>velocities/groundspeed-kt</property>
                 <factor>0.05</factor>
             </volume>
-        </wheel-rumble>
+        </wheelbrake>
 
         <wind>
             <name>wind</name>
@@ -199,7 +199,7 @@
             <reference-dist>0.5</reference-dist>
             <max-dist>2.0</max-dist>
         </variometer-down>
-        
+
         <winch_tow>
             <name>winch_tow</name>
             <mode>looped</mode>
