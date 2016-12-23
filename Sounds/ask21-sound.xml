@@ -290,7 +290,7 @@
         <whistle>
             <name>whistle</name>
             <mode>looped</mode>
-            <path>Aircraft/ASK21/Sounds/whoosh-loop.wav</path>
+            <path>Aircraft/ASK21/Sounds/whoosh-loop2.wav</path>
             <condition>
                 <and>
                     <greater-than>
@@ -309,8 +309,8 @@
             </condition>
             <pitch>
                 <property>velocities/airspeed-kt</property>
-                <factor>0.05</factor>
-                <offset>0.3</offset>
+                <factor>0.002</factor>
+                <offset>1</offset>
             </pitch>
             <volume>
                 <property>orientation/pitch-deg</property>
