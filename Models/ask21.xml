@@ -543,8 +543,8 @@
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.front2</object-name>
         <object-name>canopy.front.int</object-name>
-        <object-name>panel</object-name>
-        <object-name>panel.003</object-name>
+        <object-name>panelF1</object-name>
+        <object-name>panelF2</object-name>
         <!--Instruments-->
         <object-name>asi</object-name>
         <object-name>alt</object-name>
