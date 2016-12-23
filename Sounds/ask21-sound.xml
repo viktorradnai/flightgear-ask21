@@ -40,9 +40,9 @@
                 <factor>0.05</factor>
             </volume>
             <position>
-                    <x>-3.2</x>
-                    <y>0.0</y>
-                    <z>0.2</z>
+                <x>-3.2</x>
+                <y>0.0</y>
+                <z>0.2</z>
             </position>
             <reference-dist>5</reference-dist>
             <max-dist>30</max-dist>
@@ -62,9 +62,9 @@
                 <factor>0.05</factor>
             </volume>
             <position>
-                    <x>-1</x>
-                    <y>0.0</y>
-                    <z>0.2</z>
+                <x>-1</x>
+                <y>0.0</y>
+                <z>0.2</z>
             </position>
             <reference-dist>5</reference-dist>
             <max-dist>30</max-dist>
@@ -84,9 +84,9 @@
                 <factor>0.05</factor>
             </volume>
             <position>
-                    <x>3.6</x>
-                    <y>0.0</y>
-                    <z>0.5</z>
+                <x>3.6</x>
+                <y>0.0</y>
+                <z>0.5</z>
             </position>
             <reference-dist>5</reference-dist>
             <max-dist>30</max-dist>
@@ -174,12 +174,12 @@
                 </greater-than>
             </condition>
             <position>
-                    <x>-1.2</x>
-                    <y>0.0</y>
-                    <z>1</z>
+                <x>-1.2</x>
+                <y>0.0</y>
+                <z>1</z>
             </position>
-            <reference-dist>5</reference-dist>
-            <max-dist>30</max-dist>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
         </airbrake-open>
 
         <airbrake-close>
@@ -193,12 +193,12 @@
                 </less-than>
             </condition>
             <position>
-                    <x>-1.2</x>
-                    <y>0.0</y>
-                    <z>1</z>
+                <x>-1.2</x>
+                <y>0.0</y>
+                <z>1</z>
             </position>
-            <reference-dist>5</reference-dist>
-            <max-dist>30</max-dist>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
         </airbrake-close>
 
         <variometer-up>
@@ -222,9 +222,9 @@
                 <max>1</max>
             </volume>
             <position>
-                    <x>-3.35</x>
-                    <y>0</y>
-                    <z>0.7</z>
+                <x>-3.35</x>
+                <y>0</y>
+                <z>0.7</z>
             </position>
             <reference-dist>0.5</reference-dist>
             <max-dist>2.0</max-dist>
@@ -257,9 +257,9 @@
                 <max>1</max>
             </volume>
             <position>
-                    <x>-3.35</x>
-                    <y>0</y>
-                    <z>0.7</z>
+                <x>-3.35</x>
+                <y>0</y>
+                <z>0.7</z>
             </position>
             <reference-dist>0.5</reference-dist>
             <max-dist>2.0</max-dist>
@@ -385,6 +385,13 @@
             <condition>
                 <property>/sim/hitches/hook-open</property>
             </condition>
+            <position> <!--Position of nose hook-->
+                <x>-4.2</x>
+                <y>0.0</y>
+                <z>0.4</z>
+            </position>
+            <reference-dist>0.5</reference-dist>
+            <max-dist>5.0</max-dist>
         </hook_open>
 
         <nose_hook_cable_release>
@@ -398,10 +405,12 @@
                 </or>
             </condition>
             <position> <!--Position of nose hook-->
-                    <x>-4.2</x>
-                    <y>0.0</y>
-                    <z>0.4</z>
+                <x>-4.2</x>
+                <y>0.0</y>
+                <z>0.4</z>
             </position>
+            <reference-dist>5</reference-dist>
+            <max-dist>30.0</max-dist>
         </nose_hook_cable_release>
 
         <belly_hook_cable_release>
@@ -415,10 +424,12 @@
                 </or>
             </condition>
             <position> <!--Position of CG hook-->
-                    <x>-1.6</x>
-                    <y>-0.1</y>
-                    <z>0.23</z>
+                <x>-1.6</x>
+                <y>-0.1</y>
+                <z>0.23</z>
             </position>
+            <reference-dist>5</reference-dist>
+            <max-dist>30.0</max-dist>
         </belly_hook_cable_release>
     </fx>
 </PropertyList>
