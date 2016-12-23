@@ -508,17 +508,19 @@
     <!--Cockpit Shader-->
     <effect>
         <inherits-from>Effects/interior-shadow</inherits-from>
-        <object-name>interior</object-name>
+        <object-name>interiorF</object-name>
         <object-name>seatF</object-name>
-        <object-name>panel</object-name>
-        <object-name>panel.003</object-name>
+        <object-name>panelF1</object-name>
+        <object-name>panelF2</object-name>
         <object-name>micF</object-name>
     </effect>
     <effect>
-        <inherits-from>Effects/interior-shadow-back</inherits-from><!--
-        <object-name>interior</object-name>-->
+        <inherits-from>Effects/interior-shadow-back</inherits-from>
+        <object-name>interiorR</object-name>
         <object-name>seatR</object-name>
         <object-name>micR</object-name>
+        <object-name>panelR1</object-name>
+        <object-name>panelR2</object-name>
     </effect>
     <!--CANOPY-->
     <animation>
@@ -541,8 +543,8 @@
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.front2</object-name>
         <object-name>canopy.front.int</object-name>
-        <object-name>panel</object-name>
-        <object-name>panel.003</object-name>
+        <object-name>panelF1</object-name>
+        <object-name>panelF2</object-name>
         <!--Instruments-->
         <object-name>asi</object-name>
         <object-name>alt</object-name>
