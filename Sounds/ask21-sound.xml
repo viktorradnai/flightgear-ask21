@@ -41,6 +41,25 @@
             </volume>
         </wheel-rumble>
 
+        <wheel-rumble>
+            <name>wheelbrake</name>
+            <mode>looped</mode>
+            <path>Aircraft/ASK21/Sounds/wheelbrake.wav</path>
+            <condition>
+                <and>
+                    <property>/gear/gear[1]/wow</property>
+                    <greater-than>
+                        <property>/surface-positions/speedbrake-pos-norm</property>
+                        <value>0.85</value>
+                    </greater-than>
+                </and>
+            </condition>
+            <volume>
+                <property>velocities/groundspeed-kt</property>
+                <factor>0.05</factor>
+            </volume>
+        </wheel-rumble>
+
         <wind>
             <name>wind</name>
             <mode>looped</mode>
@@ -172,9 +191,15 @@
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/winch_tow.wav</path>
             <condition>
-                <not>
-                    <property>sim/hitches/winch/open</property>
-                </not>
+                <and>
+                    <not>
+                        <property>sim/hitches/winch/open</property>
+                    </not>
+                    <greater-than>
+                        <property>velocities/airspeed-kt</property>
+                        <value>2</value>
+                    </greater-than>
+                </and>
             </condition>
             <volume>
                 <property>velocities/airspeed-kt</property>
@@ -188,14 +213,18 @@
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/whoosh-loop.wav</path>
             <condition>
-                <greater-than>
-                    <property>orientation/pitch-deg</property>
-                    <value>2.5</value>
-                </greater-than>
                 <and>
                     <greater-than>
+                        <property>orientation/pitch-deg</property>
+                        <value>2.2</value>
+                    </greater-than>
+                    <less-than>
+                        <property>orientation/pitch-deg</property>
+                        <value>25</value>
+                    </less-than>
+                    <greater-than>
                         <property>velocities/airspeed-kt</property>
-                        <value>32</value>
+                        <value>35</value>
                     </greater-than>
                 </and>
             </condition>
@@ -207,8 +236,8 @@
             <volume>
                 <property>orientation/pitch-deg</property>
                 <factor>0.01</factor>
-                <offset>-0.05</offset>
-                <max>0.3</max>
+                <offset>-0.02</offset>
+                <max>0.1</max>
             </volume>
         </whistle>
 
@@ -250,6 +279,12 @@
                     <property>orientation/pitch-rate-degps</property>
                     <value>-15</value>
                 </less-than>
+                <and>
+                    <greater-than>
+                        <property>velocities/airspeed-kt</property>
+                        <value>35</value>
+                    </greater-than>
+                </and>
             </condition>
             <pitch>
                 <property>velocities/airspeed-kt</property>
