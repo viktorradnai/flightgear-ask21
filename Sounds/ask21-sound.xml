@@ -22,8 +22,8 @@
                 <factor>0.002</factor>
                 <offset>1</offset>
             </pitch>
-            <reference-dist>2</reference-dist>
-            <max-dist>10</max-dist>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </wheel-spin>
 
         <wheel-rumble>
@@ -44,8 +44,8 @@
                     <y>0.0</y>
                     <z>0.2</z>
             </position>
-            <reference-dist>2</reference-dist>
-            <max-dist>10</max-dist>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </wheel-rumble>
 
         <wheel-rumble>
@@ -66,8 +66,8 @@
                     <y>0.0</y>
                     <z>0.2</z>
             </position>
-            <reference-dist>2</reference-dist>
-            <max-dist>10</max-dist>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </wheel-rumble>
 
         <wheel-rumble>
@@ -88,8 +88,8 @@
                     <y>0.0</y>
                     <z>0.5</z>
             </position>
-            <reference-dist>2</reference-dist>
-            <max-dist>10</max-dist>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </wheel-rumble>
 
         <wind>
@@ -159,6 +159,8 @@
                     <y>0.0</y>
                     <z>1</z>
             </position>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </airbrake-open>
 
         <airbrake-close>
@@ -176,6 +178,8 @@
                     <y>0.0</y>
                     <z>1</z>
             </position>
+            <reference-dist>5</reference-dist>
+            <max-dist>30</max-dist>
         </airbrake-close>
 
         <variometer-up>
