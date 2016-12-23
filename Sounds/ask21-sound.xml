@@ -137,6 +137,13 @@
                 <factor>1</factor>
                 <max>1</max>
             </volume>
+            <position>
+                    <x>-3.35</x>
+                    <y>0</y>
+                    <z>0.7</z>
+            </position>
+            <reference-dist>0.5</reference-dist>
+            <max-dist>2.0</max-dist>
         </variometer-up>
 
         <variometer-down>
@@ -165,8 +172,15 @@
                 <factor>1</factor>
                 <max>1</max>
             </volume>
+            <position>
+                    <x>-3.35</x>
+                    <y>0</y>
+                    <z>0.7</z>
+            </position>
+            <reference-dist>0.5</reference-dist>
+            <max-dist>2.0</max-dist>
         </variometer-down>
-
+        
         <winch_tow>
             <name>winch_tow</name>
             <mode>looped</mode>
