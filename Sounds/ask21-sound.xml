@@ -22,16 +22,60 @@
                 <factor>0.002</factor>
                 <offset>1</offset>
             </pitch>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
         </wheel-spin>
 
         <wheel-rumble>
-            <name>wheel-rumble</name>
+            <name>wheel-rumble-front</name>
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/ground_roll3.wav</path>
             <condition>
                 <or>
                     <property>/gear/gear[0]/wow</property>
+                </or>
+            </condition>
+            <volume>
+                <property>velocities/groundspeed-kt</property>
+                <factor>0.05</factor>
+            </volume>
+            <position>
+                    <x>-3.2</x>
+                    <y>0.0</y>
+                    <z>0.2</z>
+            </position>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
+        </wheel-rumble>
+
+        <wheel-rumble>
+            <name>wheel-rumble-main</name>
+            <mode>looped</mode>
+            <path>Aircraft/ASK21/Sounds/ground_roll3.wav</path>
+            <condition>
+                <or>
                     <property>/gear/gear[1]/wow</property>
+                </or>
+            </condition>
+            <volume>
+                <property>velocities/groundspeed-kt</property>
+                <factor>0.05</factor>
+            </volume>
+            <position>
+                    <x>-1</x>
+                    <y>0.0</y>
+                    <z>0.2</z>
+            </position>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
+        </wheel-rumble>
+
+        <wheel-rumble>
+            <name>wheel-rumble-rear</name>
+            <mode>looped</mode>
+            <path>Aircraft/ASK21/Sounds/ground_roll3.wav</path>
+            <condition>
+                <or>
                     <property>/gear/gear[2]/wow</property>
                 </or>
             </condition>
@@ -39,6 +83,13 @@
                 <property>velocities/groundspeed-kt</property>
                 <factor>0.05</factor>
             </volume>
+            <position>
+                    <x>3.6</x>
+                    <y>0.0</y>
+                    <z>0.5</z>
+            </position>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
         </wheel-rumble>
 
         <wind>
@@ -103,6 +154,11 @@
                     <value>0.06</value>
                 </greater-than>
             </condition>
+            <position>
+                    <x>-1.2</x>
+                    <y>0.0</y>
+                    <z>1</z>
+            </position>
         </airbrake-open>
 
         <airbrake-close>
@@ -115,6 +171,11 @@
                     <value>0.04</value>
                 </less-than>
             </condition>
+            <position>
+                    <x>-1.2</x>
+                    <y>0.0</y>
+                    <z>1</z>
+            </position>
         </airbrake-close>
 
         <variometer-up>
@@ -297,6 +358,11 @@
                     <property>/sim/hitches/aerotow/broken</property>
                 </or>
             </condition>
+            <position> <!--Position of nose hook-->
+                    <x>-4.2</x>
+                    <y>0.0</y>
+                    <z>0.4</z>
+            </position>
         </nose_hook_cable_release>
 
         <belly_hook_cable_release>
@@ -309,6 +375,11 @@
                     <property>/sim/hitches/winch/broken</property>
                 </or>
             </condition>
+            <position> <!--Position of CG hook-->
+                    <x>-1.6</x>
+                    <y>-0.1</y>
+                    <z>0.23</z>
+            </position>
         </belly_hook_cable_release>
     </fx>
 </PropertyList>
