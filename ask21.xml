@@ -40,19 +40,19 @@
         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="1" max="-1"/>
     </vstab>
     <!-- nose wheel -->
-    <gear x="3.25256" y="0" z="0.09253" compression="0.05" spring="1" damp="0.05"></gear>
+    <gear x="3.25256" y="0" z="0.09253" compression="0.05" spring="1" damp="0.05" dfric="0.6" sfric="1"></gear>
     <!-- main wheel-->
     <!--As on the ASK13, brake is tied to airbrake-->
-    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="1" damp="1" dfric="0.3" sfric="0.4">
+    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.4" sfric="0.8">
         <control-input axis="/controls/engines/engine/throttle" control="BRAKE" src0="0" src1="0.15" dst0="1" dst1="0"/>
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     </gear>
     <!-- Tail wheel -->
-    <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.6" sfric="0.7"></gear>
+    <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="1"></gear>
     <!--right wing skid-->
-    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="0.8" sfric="0.9"/>
+    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="1.5" sfric="1.5"/>
     <!--lef wing skid-->
-    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="0.8" sfric="0.9"/>
+    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="1.5" sfric="1.5"/>
     <!-- pilots -->
     <!-- Front -->
     <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>
