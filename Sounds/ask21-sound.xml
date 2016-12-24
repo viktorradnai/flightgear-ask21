@@ -7,11 +7,11 @@
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/wheelspin-loop.wav</path>
             <volume>
-                <property>/gear/gear[1]/rollspeed-ms</property>
+                <property>/gear/gear[0]/rollspeed-ms</property>
                 <factor>0.02</factor>
             </volume>
             <pitch>
-                <property>/gear/gear[1]/rollspeed-ms</property>
+                <property>/gear/gear[0]/rollspeed-ms</property>
                 <factor>0.01</factor>
                 <offset>1</offset>
             </pitch>
