@@ -2,29 +2,49 @@
 <!--from the bocian by AJ MacLeod-->
 <PropertyList>
     <fx>
-        <wheel-spin>
+        <nose-wheel-spin>
             <name>wheel-spin</name>
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/wheelspin-loop.wav</path>
-            <condition>
-                <or>
-                    <property>/gear/gear[0]/wow</property>
-                    <property>/gear/gear[1]/wow</property>
-                    <property>/gear/gear[2]/wow</property>
-                </or>
-            </condition>
             <volume>
-                <property>velocities/groundspeed-kt</property>
-                <factor>0.01</factor>
+                <property>/gear/gear[1]/rollspeed-ms</property>
+                <factor>0.02</factor>
             </volume>
             <pitch>
-                <property>velocities/groundspeed-kt</property>
-                <factor>0.002</factor>
+                <property>/gear/gear[1]/rollspeed-ms</property>
+                <factor>0.01</factor>
                 <offset>1</offset>
             </pitch>
-            <reference-dist>5</reference-dist>
-            <max-dist>30</max-dist>
-        </wheel-spin>
+            <position>
+                <x>-3.2</x>
+                <y>0.0</y>
+                <z>0.2</z>
+            </position>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
+        </nose-wheel-spin>
+
+        <main-wheel-spin>
+            <name>wheel-spin</name>
+            <mode>looped</mode>
+            <path>Aircraft/ASK21/Sounds/wheelspin-loop.wav</path>
+            <volume>
+                <property>/gear/gear[1]/rollspeed-ms</property>
+                <factor>0.02</factor>
+            </volume>
+            <pitch>
+                <property>/gear/gear[1]/rollspeed-ms</property>
+                <factor>0.006</factor>
+                <offset>1</offset>
+            </pitch>
+            <position>
+                <x>-1</x>
+                <y>0.0</y>
+                <z>0.2</z>
+            </position>
+            <reference-dist>2</reference-dist>
+            <max-dist>10</max-dist>
+        </main-wheel-spin>
 
         <wheel-rumble>
             <name>wheel-rumble-front</name>
