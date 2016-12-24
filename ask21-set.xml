@@ -233,14 +233,14 @@ See AUTHORS.txt for credits
                             <command>property-toggle</command>
                         <property>/controls/ground-handling</property>
                     </binding>
-                    </item>    
+                    </item>
                     <item>
                     <label>Toggle assiting gears</label>
                     <binding>
                         <command>property-toggle</command>
                         <property>/controls/gear/assist-1</property>
                     </binding>
-                    </item> 
+                    </item>
                 </menu>
             </default>
         </menubar>
@@ -417,7 +417,8 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
             <file>Aircraft/ASK21/Nasal/dialogs.nas</file>
-            <file>Aircraft/ASK21/Nasal/groundhandling.nas</file><!--Ground handling system-->
+            <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
+            <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
     </nasal>
