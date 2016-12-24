@@ -314,17 +314,21 @@
             <condition>
                 <and>
                     <greater-than>
-                        <property>orientation/pitch-deg</property>
-                        <value>2.2</value>
+                        <property>orientation/alpha-deg</property>
+                        <value>0.8</value>
                     </greater-than>
                     <less-than>
-                        <property>orientation/pitch-deg</property>
-                        <value>25</value>
+                        <property>orientation/alpha-deg</property>
+                        <value>4</value>
                     </less-than>
                     <greater-than>
                         <property>velocities/airspeed-kt</property>
                         <value>35</value>
                     </greater-than>
+                    <less-than>
+                        <property>velocities/airspeed-kt</property>
+                        <value>55</value>
+                    </less-than>
                 </and>
             </condition>
             <pitch>
@@ -333,8 +337,8 @@
                 <offset>1</offset>
             </pitch>
             <volume>
-                <property>orientation/pitch-deg</property>
-                <factor>0.01</factor>
+                <property>orientation/alpha-deg</property>
+                <factor>0.03</factor>
                 <offset>-0.02</offset>
                 <max>0.1</max>
             </volume>
