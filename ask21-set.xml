@@ -50,7 +50,7 @@ See AUTHORS.txt for credits
             <title>ASK 21</title>
             <key>
                 <name>Ctrl-w</name>
-                <desc>Place winch 1000m in front of aircraft</desc>
+                <desc>Place winch in front of aircraft</desc>
             </key>
             <key>
                 <name>W</name>
@@ -82,9 +82,9 @@ See AUTHORS.txt for credits
                 1. Retract speed brake (full "throttle")
                 2. Press Ctrl-w to place winch.
                 3. Press 'w' to start winching.
-                4. Keep 'w' pressed until at appropriate speed.
-                5. Keep aircraft level and take off.
-                6. When at appropriate alitude, press 'W' to disconnect winch.
+                4. Keep 'w' pressed until at appropriate speed. Holding 'w' makes the winch run faster, releasing it makes it run slower.
+                5. Keep wings level and take off.
+                6. When at appropriate alitude, press 'o' to release the cable.
                 7. Fly!
 
                 === Aerotow Takeoff Procedure ===
@@ -92,12 +92,19 @@ See AUTHORS.txt for credits
                 2. Place another aerotwo aircraft in front of your glider (multi-player).
                 3. Press 'o' to hook to the aerotow.
                 4. Ask the other aircraft to take off :).
-                5. Keep aircraft level and follow the aircraft until after takeoff..
-                6. When at appropriate alitude, press 'O' to disconnect the hook.
+                5. Keep wings level and follow the aircraft until after takeoff..
+                6. When at appropriate alitude, press 'o' to release the cable.
                 7. Fly!
+
                 === Ground handling ===
-                This aircraft has some features to make ground handling easier/possible at all. When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axes as if someone was holding your wing ;) When pressing "Toggle ground handling", two features are enanled to pull the aircraft around on the ground: 1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns and 2.  all throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
-                When there is somebody with a followme around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport or even tow you into the air! (also check the Aerotow Settings therefor).
+                This aircraft has some features to help with ground handling:
+
+                - When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axes as if someone was holding your wing.
+                - When pressing "Toggle ground handling", two features are enanled to pull the aircraft around on the ground:
+                  1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
+                  2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
+                When there is somebody with a followme around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport
+                or even tow you into the air! (also check the Aerotow Settings therefore).
             </text>
         </help>
         <!-- hide the 2D panel -->
