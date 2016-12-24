@@ -304,19 +304,11 @@ See AUTHORS.txt for credits
             </key>
             <key n="23">
                 <name>Ctrl-w</name>
-                <desc>Place Winch 1000m in front of aircraft</desc>
+                <desc>Place winch in front of aircraft</desc>
                 <binding>
-                    <command>property-assign</command>
-                    <property>/controls/winch/place</property>
-                    <value type="bool">true</value>
+                    <command>nasal</command>
+                    <script>towing.setWinchPositionAuto()</script>
                 </binding>
-                <mod-up>
-                    <binding>
-                        <command>property-assign</command>
-                        <property>/controls/winch/place</property>
-                        <value type="bool">false</value>
-                    </binding>
-                </mod-up>
             </key>
             <key n="87">
                 <name>W</name>
