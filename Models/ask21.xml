@@ -311,7 +311,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>sim/model/door-positions/frontwin/position-norm</property>
-                <factor>0.05</factor>
+                <factor>-0.05</factor>
                 <min>0</min>
                 <max>1</max>
             </binding>
@@ -321,14 +321,49 @@
         <type>translate</type>
         <object-name>sliding_window.front</object-name>
         <property>sim/model/door-positions/frontwin/position-norm</property>
-        <factor>0.18</factor>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.01</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.01</dep>
+            </entry>
+        </interpolation>
         <axis>
-            <x1-m>-2.65662</x1-m>
-            <y1-m>-0.30449</y1-m>
-            <z1-m>0.85504</z1-m>
-            <x2-m>-2.96926</x2-m>
-            <y2-m>-0.28822</y2-m>
-            <z2-m>0.80157</z2-m>
+            <y>1</y>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.front</object-name>
+        <property>sim/model/door-positions/frontwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.18</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-2.94858</x1-m>
+            <y1-m>-0.31449</y1-m>
+            <z1-m>0.70963</z1-m>
+            <x2-m>-2.63997</x2-m>
+            <y2-m>-0.32957</y2-m>
+            <z2-m>0.76366</z2-m>
         </axis>
     </animation>
     <animation>
@@ -341,7 +376,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>sim/model/door-positions/rearwin/position-norm</property>
-                <factor>-0.05</factor>
+                <factor>0.05</factor>
                 <min>0</min>
                 <max>1</max>
             </binding>
@@ -351,14 +386,49 @@
         <type>translate</type>
         <object-name>sliding_window.back</object-name>
         <property>sim/model/door-positions/rearwin/position-norm</property>
-        <factor>0.12</factor>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.01</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.01</dep>
+            </entry>
+        </interpolation>
         <axis>
-            <x1-m>-2.05547</x1-m>
-            <y1-m>-0.32291</y1-m>
-            <z1-m>0.90251</z1-m>
-            <x2-m>-1.80667</x2-m>
-            <y2-m>-0.3222</y2-m>
-            <z2-m>0.9227</z2-m>
+            <y>1</y>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.back</object-name>
+        <property>sim/model/door-positions/rearwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.12</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-1.80509</x1-m>
+            <y1-m>-0.31714</y1-m>
+            <z1-m>0.92524</z1-m>
+            <x2-m>-2.0615</x2-m>
+            <y2-m>-0.31714</y2-m>
+            <z2-m>0.90689</z2-m>
         </axis>
     </animation>
     <!--airbrake grip-->
