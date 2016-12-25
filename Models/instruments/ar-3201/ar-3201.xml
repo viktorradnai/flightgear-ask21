@@ -1,31 +1,32 @@
 <?xml version="1.0"?>
-
 <PropertyList>
-
- <name>ar-3201</name>
- <path>AR-3201.ac</path>
-
- <animation>
-  <type>material</type>
-  <object-name>lcd-back</object-name>
-  <object-name>init-digits</object-name>
-  <emission>
-	  <red>0.028</red>
-	  <green>0.014</green>
-	  <blue>0.007</blue>
-	  <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    <name>ar-3201</name>
+    <path>AR-3201.ac</path>
+    <animation>
+        <type>material</type>
+        <object-name>lcd-back</object-name>
+        <object-name>init-digits</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
         </emission>
- </animation>
-    
-<!--   volume    -->
-    
+    </animation>
+    <!--   volume    -->
     <animation>
         <type>rotate</type>
         <object-name>vol-knob</object-name>
         <property>instrumentation/comm/volume</property>
         <interpolation>
-            <entry><ind>0</ind><dep>0</dep></entry>
-            <entry><ind>1.0</ind><dep>260</dep></entry>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind>
+                <dep>260</dep>
+            </entry>
         </interpolation>
         <center>
             <x-m>0.009</x-m>
@@ -38,81 +39,71 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>vol-knob</object-name>
         <action>
             <button>3</button>
-	    <button>0</button>
+            <button>0</button>
             <binding>
-
                 <command>property-adjust</command>
                 <property>instrumentation/comm/volume</property>
                 <step>0.05</step>
-				<min>0</min>
-				<max>1</max>
-				<wrap>0</wrap>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
             </binding>
-           
         </action>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>vol-knob</object-name>
         <action>
             <button>4</button>
-	    <button>1</button>
+            <button>1</button>
             <binding>
-
                 <command>property-adjust</command>
                 <property>instrumentation/comm/volume</property>
                 <step>-0.05</step>
-				<min>0</min>
-				<max>1</max>
-				<wrap>0</wrap>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
             </binding>
-           
         </action>
     </animation>
-            
-<!--   frequency    -->
-
+    <!--   frequency    -->
     <animation>
         <type>pick</type>
         <object-name>ch-knob</object-name>
         <action>
- 	    <button>0</button>
-	    <button>3</button>
-            <binding>	    
-	    	  <command>property-adjust</command>
-			<property>instrumentation/AR-3201/chan</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>4</max>
-			<wrap>false</wrap>		
-            </binding>           
+            <button>0</button>
+            <button>3</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/AR-3201/chan</property>
+                <step>-1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>false</wrap>
+            </binding>
         </action>
     </animation>
-    
-        <animation>
+    <animation>
         <type>pick</type>
         <object-name>ch-knob</object-name>
         <action>
- 	    <button>1</button>
-	    <button>4</button>
-            <binding>	    
-	    	  <command>property-adjust</command>
-			<property>instrumentation/AR-3201/chan</property>
-			<step>1</step>
-			<min>0</min>
-			<max>4</max>
-			<wrap>false</wrap>		
-            </binding>           
+            <button>1</button>
+            <button>4</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/AR-3201/chan</property>
+                <step>1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>false</wrap>
+            </binding>
         </action>
     </animation>
-    
     <animation>
         <type>rotate</type>
         <object-name>ch-knob</object-name>
@@ -129,14 +120,19 @@
             <z>0</z>
         </axis>
     </animation>
-
     <animation>
         <type>rotate</type>
         <object-name>mhz-knob</object-name>
         <property>instrumentation/AR-3201/dummy</property>
-	<interpolation>
-            <entry><ind>118</ind><dep>0</dep></entry>
-            <entry><ind>136</ind><dep>300</dep></entry>
+        <interpolation>
+            <entry>
+                <ind>118</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>136</ind>
+                <dep>300</dep>
+            </entry>
         </interpolation>
         <center>
             <x-m>0.010</x-m>
@@ -149,14 +145,19 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>rotate</type>
         <object-name>khz-knob</object-name>
         <property>instrumentation/AR-3201/dummy</property>
-	<interpolation>
-            <entry><ind>118</ind><dep>0</dep></entry>
-            <entry><ind>136</ind><dep>3600</dep></entry>
+        <interpolation>
+            <entry>
+                <ind>118</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>136</ind>
+                <dep>3600</dep>
+            </entry>
         </interpolation>
         <center>
             <x-m>0.010</x-m>
@@ -169,7 +170,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>textranslate</type>
         <object-name>mhz10</object-name>
@@ -183,8 +183,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
-        <animation>
+    <animation>
         <type>textranslate</type>
         <object-name>mhz1</object-name>
         <property>instrumentation/comm/frequencies/selected-mhz</property>
@@ -197,7 +196,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>textranslate</type>
         <object-name>khz10</object-name>
@@ -211,7 +209,6 @@
             <z>0</z>
         </axis>
     </animation>
- 
     <animation>
         <type>textranslate</type>
         <object-name>khz1</object-name>
@@ -225,15 +222,14 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>mhz-knob</object-name>
         <action>
             <button>0</button>
-	    <button>3</button>
+            <button>3</button>
             <repeatable>true</repeatable>
-			<interval-sec>0.1</interval-sec>
+            <interval-sec>0.1</interval-sec>
             <binding>
                 <command>property-adjust</command>
                 <property>instrumentation/AR-3201/dummy</property>
@@ -244,7 +240,7 @@
                 <resolution>1</resolution>
                 <wrap>true</wrap>
             </binding>
-	    <binding>
+            <binding>
                 <command>property-adjust</command>
                 <condition>
                     <equals>
@@ -262,15 +258,14 @@
             </binding>
         </action>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>mhz-knob</object-name>
         <action>
             <button>1</button>
-	    <button>4</button>
+            <button>4</button>
             <repeatable>true</repeatable>
-			<interval-sec>0.1</interval-sec>
+            <interval-sec>0.1</interval-sec>
             <binding>
                 <command>property-adjust</command>
                 <property>instrumentation/AR-3201/dummy</property>
@@ -281,7 +276,7 @@
                 <resolution>1</resolution>
                 <wrap>true</wrap>
             </binding>
-	    <binding>
+            <binding>
                 <command>property-adjust</command>
                 <condition>
                     <equals>
@@ -299,15 +294,14 @@
             </binding>
         </action>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>khz-knob</object-name>
         <action>
             <button>0</button>
-	    <button>3</button>
+            <button>3</button>
             <repeatable>true</repeatable>
-			<interval-sec>0.1</interval-sec>
+            <interval-sec>0.1</interval-sec>
             <binding>
                 <command>property-adjust</command>
                 <property>instrumentation/AR-3201/dummy</property>
@@ -318,7 +312,7 @@
                 <resolution>0.025</resolution>
                 <wrap>true</wrap>
             </binding>
-	    	<binding>
+            <binding>
                 <command>property-adjust</command>
                 <condition>
                     <equals>
@@ -336,15 +330,14 @@
             </binding>
         </action>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>khz-knob</object-name>
         <action>
             <button>1</button>
-	    <button>4</button>
+            <button>4</button>
             <repeatable>true</repeatable>
-			<interval-sec>0.1</interval-sec>
+            <interval-sec>0.1</interval-sec>
             <binding>
                 <command>property-adjust</command>
                 <property>instrumentation/AR-3201/dummy</property>
@@ -355,7 +348,7 @@
                 <resolution>0.025</resolution>
                 <wrap>true</wrap>
             </binding>
-	    	    	<binding>
+            <binding>
                 <command>property-adjust</command>
                 <condition>
                     <equals>
@@ -372,18 +365,25 @@
                 <wrap>true</wrap>
             </binding>
         </action>
-    </animation>    
-        
-<!--   power    -->
-
+    </animation>
+    <!--   power    -->
     <animation>
         <type>rotate</type>
         <object-name>power-switch</object-name>
         <property>instrumentation/AR-3201/power</property>
         <interpolation>
-            <entry><ind>0</ind><dep>-30</dep></entry>
-            <entry><ind>1.0</ind><dep>0</dep></entry>
-	    <entry><ind>2.0</ind><dep>30</dep></entry>
+            <entry>
+                <ind>0</ind>
+                <dep>-30</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>2.0</ind>
+                <dep>30</dep>
+            </entry>
         </interpolation>
         <center>
             <x-m>0.0</x-m>
@@ -396,7 +396,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>translate</type>
         <object-name>init-digits</object-name>
@@ -408,7 +407,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>translate</type>
         <object-name>lcd-back</object-name>
@@ -420,57 +418,50 @@
             <z>0</z>
         </axis>
     </animation>
-    
     <animation>
         <type>pick</type>
         <object-name>pwr-on</object-name>
         <action>
- 	    <button>0</button>
-            <binding>	    
-	    	  <command>property-adjust</command>
-			<property>instrumentation/AR-3201/power</property>
-			<step>1</step>
-			<min>0</min>
-			<max>2</max>
-			<wrap>false</wrap>		
-            </binding>           
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/AR-3201/power</property>
+                <step>1</step>
+                <min>0</min>
+                <max>2</max>
+                <wrap>false</wrap>
+            </binding>
         </action>
-    </animation> 
-    
-        <animation>
+    </animation>
+    <animation>
         <type>pick</type>
         <object-name>pwr-off</object-name>
         <action>
- 	    <button>0</button>
-            <binding>	    
-	    	  <command>property-adjust</command>
-			<property>instrumentation/AR-3201/power</property>
-			<step>-1</step>
-			<min>0</min>
-			<max>2</max>
-			<wrap>false</wrap>		
-            </binding>           
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/AR-3201/power</property>
+                <step>-1</step>
+                <min>0</min>
+                <max>2</max>
+                <wrap>false</wrap>
+            </binding>
         </action>
-    </animation> 
-    
-<!-- store -->
-
+    </animation>
+    <!-- store -->
     <animation>
         <type>pick</type>
         <object-name>store-button</object-name>
         <action>
- 	    <button>0</button>
-            <binding>	    
-	    	  <command>property-toggle</command>
-			<property>instrumentation/AR-3201/store</property>
-			<step>1</step>
-			<min>0</min>
-			<max>1</max>
-			<wrap>true</wrap>		
-            </binding>           
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>instrumentation/AR-3201/store</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
         </action>
     </animation>
-  
 </PropertyList>
-
-

@@ -85,23 +85,28 @@
         <object-name>wheelF</object-name>
         <property>gear/gear/compression-norm</property>
         <factor>0.05</factor>
-        <axis><z>1</z></axis>
+        <axis>
+            <z>1</z>
+        </axis>
     </animation>
     <animation>
         <type>translate</type>
         <object-name>wheelM</object-name>
         <property>gear/gear[1]/compression-norm</property>
         <factor>0.05</factor>
-        <axis><z>1</z></axis>
+        <axis>
+            <z>1</z>
+        </axis>
     </animation>
     <animation>
         <type>translate</type>
         <object-name>wheelR</object-name>
         <property>gear/gear[2]/compression-norm</property>
         <factor>0.05</factor>
-        <axis><z>1</z></axis>
+        <axis>
+            <z>1</z>
+        </axis>
     </animation>
-    
     <!--COCKPIT-->
     <!-- Yaw string -->
     <model>
