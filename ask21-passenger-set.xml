@@ -7,7 +7,6 @@ See AUTHORS.txt for credits
 -->
 <PropertyList>
     <sim>
-        
         <description>ASK 21 Passenger/Instructor View</description>
         <author>Patrice Poly; D-ECHO</author>
         <status>early-production</status>
@@ -19,27 +18,21 @@ See AUTHORS.txt for credits
         </rating>
         <aircraft-version>20161003</aircraft-version>
         <variant-of>ask21</variant-of>
-        
         <flight-model>null</flight-model>
-        
         <startup>
             <splash-texture>Aircraft/ASK21/ask21-passenger-splash.png</splash-texture>
         </startup>
-        
         <presets>
             <onground type="bool">false</onground>
             <altitude-agl-ft type="double">30.0</altitude-agl-ft>
         </presets>
-        
         <!-- 3d model -->
         <model>
             <path>Aircraft/ASK21/Models/ask21-passenger.xml</path>
         </model>
-        
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
         </sound>
-      
         <!-- Views -->
         <view n="101">
             <name>Pilot View</name>
@@ -53,7 +46,6 @@ See AUTHORS.txt for credits
                 <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
                 <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
                 <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
-                
                 <!-- x/y/z == right/up/back -->
                 <x-offset-m type="double">0.0</x-offset-m>
                 <y-offset-m type="double">0.92727</y-offset-m>
@@ -75,8 +67,6 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
-        
-
         <view n="0">
             <name>Copilot/Instructor View</name>
             <type>lookfrom</type>
@@ -90,7 +80,6 @@ See AUTHORS.txt for credits
                 <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
                 <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
                 <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
-                
                 <!-- x/y/z == right/up/back -->
                 <x-offset-m archive="y" type="double">0.0</x-offset-m>
                 <y-offset-m archive="y" type="double">1.0692</y-offset-m>
@@ -113,7 +102,6 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
-
         <view n="1">
             <config>
                 <at-model type="bool">true</at-model>
@@ -154,17 +142,14 @@ See AUTHORS.txt for credits
                 <at-model type="bool">false</at-model>
             </config>
         </view>
-        
-        <chase-distance-m type="double">-18.0</chase-distance-m>        
-        
+        <chase-distance-m type="double">-18.0</chase-distance-m>
         <!-- Aircraft specific help. -->
         <!-- help include="help.xml"/ -->
-            
         <menubar>
             <default>
                 <menu n="100">
                     <label>ASK21</label>
-                    <enabled type="bool">true</enabled>     
+                    <enabled type="bool">true</enabled>
                     <item>
                         <label>Select MP-pilot</label>
                         <binding>
@@ -177,9 +162,8 @@ See AUTHORS.txt for credits
                     </item>
                 </menu>
             </default>
-        </menubar>        
+        </menubar>
     </sim>
-    
     <nasal>
         <dual_control_tools>
             <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
@@ -191,5 +175,4 @@ See AUTHORS.txt for credits
             <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
         </dual_control>
     </nasal>
-    
 </PropertyList>

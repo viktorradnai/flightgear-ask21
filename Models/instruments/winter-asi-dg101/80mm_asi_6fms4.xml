@@ -1,100 +1,261 @@
 <?xml version="1.0"?>
-
 <!-- Airspeed indicator -->
-
 <PropertyList>
-
-  <path>80mm_asi_6fms4.ac</path>
-  <texture-path>Textures</texture-path>
-
- <animation>
-  <type>material</type>
-  <object-name>backplane</object-name>
-  <object-name>needle</object-name>
-  <emission>
-	  <red>0.028</red>
-	  <green>0.014</green>
-	  <blue>0.007</blue>
-	  <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    <path>80mm_asi_6fms4.ac</path>
+    <texture-path>Textures</texture-path>
+    <animation>
+        <type>material</type>
+        <object-name>backplane</object-name>
+        <object-name>needle</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
         </emission>
- </animation>  
-  
-  
-  <animation>
-    <type>rotate</type>
-    <object-name>needle</object-name>
-    <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
-    <!-- factor 1.852 for 1 knot to 1 km/h -->
-    <!-- 0 - 27 knot = 0 - 50 km/h -->
-    <!-- 27 - 162 knot = 50 - 300 km/h -->
-    <interpolation>
-      <entry><ind>  0.0</ind><dep>  0  </dep></entry>
-      <entry><ind> 16.2</ind><dep>  1.0</dep></entry>
-      <entry><ind> 18.9</ind><dep> 15.4</dep></entry>
-      <entry><ind> 21.6</ind><dep> 30.4</dep></entry>
-      <entry><ind> 24.3</ind><dep> 45.2</dep></entry>
-      <entry><ind> 27.0</ind><dep> 59.6</dep></entry>
-      <entry><ind> 29.7</ind><dep> 73.8</dep></entry>
-      <entry><ind> 32.4</ind><dep> 87.7</dep></entry>
-      <entry><ind> 35.1</ind><dep>101.3</dep></entry>
-      <entry><ind> 37.8</ind><dep>114.6</dep></entry>
-      <entry><ind> 40.5</ind><dep>127.7</dep></entry>
-      <entry><ind> 43.2</ind><dep>140.5</dep></entry>
-      <entry><ind> 45.9</ind><dep>153.0</dep></entry>
-      <entry><ind> 48.6</ind><dep>165.3</dep></entry>
-      <entry><ind> 51.3</ind><dep>177.4</dep></entry>
-      <entry><ind> 54.0</ind><dep>189.2</dep></entry>
-      <entry><ind> 56.7</ind><dep>200.8</dep></entry>
-      <entry><ind> 59.4</ind><dep>212.1</dep></entry>
-      <entry><ind> 62.1</ind><dep>223.2</dep></entry>
-      <entry><ind> 64.8</ind><dep>234.1</dep></entry>
-      <entry><ind> 67.5</ind><dep>244.8</dep></entry>
-      <entry><ind> 70.2</ind><dep>255.3</dep></entry>
-      <entry><ind> 72.9</ind><dep>265.5</dep></entry>
-      <entry><ind> 75.6</ind><dep>275.6</dep></entry>
-      <entry><ind> 78.3</ind><dep>285.4</dep></entry>
-      <entry><ind> 81.0</ind><dep>295.1</dep></entry>
-      <entry><ind> 83.7</ind><dep>304.5</dep></entry>
-      <entry><ind> 86.4</ind><dep>313.8</dep></entry>
-      <entry><ind> 89.1</ind><dep>322.9</dep></entry>
-      <entry><ind> 91.8</ind><dep>331.8</dep></entry>
-      <entry><ind> 94.5</ind><dep>340.5</dep></entry>
-      <entry><ind> 97.2</ind><dep>349.0</dep></entry>
-      <entry><ind> 99.9</ind><dep>357.4</dep></entry>
-      <entry><ind>102.6</ind><dep>365.6</dep></entry>
-      <entry><ind>105.3</ind><dep>373.7</dep></entry>
-      <entry><ind>108.0</ind><dep>381.6</dep></entry>
-      <entry><ind>110.7</ind><dep>389.3</dep></entry>
-      <entry><ind>113.4</ind><dep>396.9</dep></entry>
-      <entry><ind>116.1</ind><dep>404.3</dep></entry>
-      <entry><ind>118.8</ind><dep>411.6</dep></entry>
-      <entry><ind>121.5</ind><dep>418.7</dep></entry>
-      <entry><ind>124.2</ind><dep>425.7</dep></entry>
-      <entry><ind>126.9</ind><dep>432.5</dep></entry>
-      <entry><ind>129.6</ind><dep>439.2</dep></entry>
-      <entry><ind>132.3</ind><dep>445.8</dep></entry>
-      <entry><ind>135.0</ind><dep>452.2</dep></entry>
-      <entry><ind>137.7</ind><dep>458.6</dep></entry>
-      <entry><ind>140.4</ind><dep>464.8</dep></entry>
-      <entry><ind>143.1</ind><dep>470.8</dep></entry>
-      <entry><ind>145.8</ind><dep>476.8</dep></entry>
-      <entry><ind>148.5</ind><dep>482.6</dep></entry>
-      <entry><ind>151.2</ind><dep>488.3</dep></entry>
-      <entry><ind>153.9</ind><dep>493.9</dep></entry>
-      <entry><ind>156.6</ind><dep>499.4</dep></entry>
-      <entry><ind>159.3</ind><dep>504.7</dep></entry>
-      <entry><ind>162.0</ind><dep>510.0</dep></entry>
-    </interpolation>
-    <center>
-      <x-m>0</x-m>
-      <y-m>0</y-m>
-      <z-m>0</z-m>
-    </center>
-    <axis>
-      <x>-1</x>
-      <y>0</y>
-      <z>0</z>
-    </axis>
-  </animation>
-
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>needle</object-name>
+        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <!-- factor 1.852 for 1 knot to 1 km/h -->
+        <!-- 0 - 27 knot = 0 - 50 km/h -->
+        <!-- 27 - 162 knot = 50 - 300 km/h -->
+        <interpolation>
+            <entry>
+                <ind>  0.0</ind>
+                <dep>  0  </dep>
+            </entry>
+            <entry>
+                <ind> 16.2</ind>
+                <dep>  1.0</dep>
+            </entry>
+            <entry>
+                <ind> 18.9</ind>
+                <dep> 15.4</dep>
+            </entry>
+            <entry>
+                <ind> 21.6</ind>
+                <dep> 30.4</dep>
+            </entry>
+            <entry>
+                <ind> 24.3</ind>
+                <dep> 45.2</dep>
+            </entry>
+            <entry>
+                <ind> 27.0</ind>
+                <dep> 59.6</dep>
+            </entry>
+            <entry>
+                <ind> 29.7</ind>
+                <dep> 73.8</dep>
+            </entry>
+            <entry>
+                <ind> 32.4</ind>
+                <dep> 87.7</dep>
+            </entry>
+            <entry>
+                <ind> 35.1</ind>
+                <dep>101.3</dep>
+            </entry>
+            <entry>
+                <ind> 37.8</ind>
+                <dep>114.6</dep>
+            </entry>
+            <entry>
+                <ind> 40.5</ind>
+                <dep>127.7</dep>
+            </entry>
+            <entry>
+                <ind> 43.2</ind>
+                <dep>140.5</dep>
+            </entry>
+            <entry>
+                <ind> 45.9</ind>
+                <dep>153.0</dep>
+            </entry>
+            <entry>
+                <ind> 48.6</ind>
+                <dep>165.3</dep>
+            </entry>
+            <entry>
+                <ind> 51.3</ind>
+                <dep>177.4</dep>
+            </entry>
+            <entry>
+                <ind> 54.0</ind>
+                <dep>189.2</dep>
+            </entry>
+            <entry>
+                <ind> 56.7</ind>
+                <dep>200.8</dep>
+            </entry>
+            <entry>
+                <ind> 59.4</ind>
+                <dep>212.1</dep>
+            </entry>
+            <entry>
+                <ind> 62.1</ind>
+                <dep>223.2</dep>
+            </entry>
+            <entry>
+                <ind> 64.8</ind>
+                <dep>234.1</dep>
+            </entry>
+            <entry>
+                <ind> 67.5</ind>
+                <dep>244.8</dep>
+            </entry>
+            <entry>
+                <ind> 70.2</ind>
+                <dep>255.3</dep>
+            </entry>
+            <entry>
+                <ind> 72.9</ind>
+                <dep>265.5</dep>
+            </entry>
+            <entry>
+                <ind> 75.6</ind>
+                <dep>275.6</dep>
+            </entry>
+            <entry>
+                <ind> 78.3</ind>
+                <dep>285.4</dep>
+            </entry>
+            <entry>
+                <ind> 81.0</ind>
+                <dep>295.1</dep>
+            </entry>
+            <entry>
+                <ind> 83.7</ind>
+                <dep>304.5</dep>
+            </entry>
+            <entry>
+                <ind> 86.4</ind>
+                <dep>313.8</dep>
+            </entry>
+            <entry>
+                <ind> 89.1</ind>
+                <dep>322.9</dep>
+            </entry>
+            <entry>
+                <ind> 91.8</ind>
+                <dep>331.8</dep>
+            </entry>
+            <entry>
+                <ind> 94.5</ind>
+                <dep>340.5</dep>
+            </entry>
+            <entry>
+                <ind> 97.2</ind>
+                <dep>349.0</dep>
+            </entry>
+            <entry>
+                <ind> 99.9</ind>
+                <dep>357.4</dep>
+            </entry>
+            <entry>
+                <ind>102.6</ind>
+                <dep>365.6</dep>
+            </entry>
+            <entry>
+                <ind>105.3</ind>
+                <dep>373.7</dep>
+            </entry>
+            <entry>
+                <ind>108.0</ind>
+                <dep>381.6</dep>
+            </entry>
+            <entry>
+                <ind>110.7</ind>
+                <dep>389.3</dep>
+            </entry>
+            <entry>
+                <ind>113.4</ind>
+                <dep>396.9</dep>
+            </entry>
+            <entry>
+                <ind>116.1</ind>
+                <dep>404.3</dep>
+            </entry>
+            <entry>
+                <ind>118.8</ind>
+                <dep>411.6</dep>
+            </entry>
+            <entry>
+                <ind>121.5</ind>
+                <dep>418.7</dep>
+            </entry>
+            <entry>
+                <ind>124.2</ind>
+                <dep>425.7</dep>
+            </entry>
+            <entry>
+                <ind>126.9</ind>
+                <dep>432.5</dep>
+            </entry>
+            <entry>
+                <ind>129.6</ind>
+                <dep>439.2</dep>
+            </entry>
+            <entry>
+                <ind>132.3</ind>
+                <dep>445.8</dep>
+            </entry>
+            <entry>
+                <ind>135.0</ind>
+                <dep>452.2</dep>
+            </entry>
+            <entry>
+                <ind>137.7</ind>
+                <dep>458.6</dep>
+            </entry>
+            <entry>
+                <ind>140.4</ind>
+                <dep>464.8</dep>
+            </entry>
+            <entry>
+                <ind>143.1</ind>
+                <dep>470.8</dep>
+            </entry>
+            <entry>
+                <ind>145.8</ind>
+                <dep>476.8</dep>
+            </entry>
+            <entry>
+                <ind>148.5</ind>
+                <dep>482.6</dep>
+            </entry>
+            <entry>
+                <ind>151.2</ind>
+                <dep>488.3</dep>
+            </entry>
+            <entry>
+                <ind>153.9</ind>
+                <dep>493.9</dep>
+            </entry>
+            <entry>
+                <ind>156.6</ind>
+                <dep>499.4</dep>
+            </entry>
+            <entry>
+                <ind>159.3</ind>
+                <dep>504.7</dep>
+            </entry>
+            <entry>
+                <ind>162.0</ind>
+                <dep>510.0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
 </PropertyList>
