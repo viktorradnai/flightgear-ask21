@@ -1,58 +1,59 @@
 <?xml version="1.0"?>
-<PropertyList> 
-
-  <path>57mm_turnslip.ac</path>
-  <texture-path>Textures</texture-path>
-
- <animation>
-  <type>material</type>
-  <object-name>scala</object-name>
-  <object-name>needle</object-name>  
-  <emission>
-	  <red>0.028</red>
-	  <green>0.014</green>
-	  <blue>0.007</blue>
-	  <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
-  </emission>
- </animation>  
-  
-  <animation> 
-    <type>rotate</type>
-    <object-name>needle</object-name>
-    <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
-    <interpolation>
-      <entry>  <ind>-2.5</ind>  <dep>-20</dep>  </entry>
-      <entry>  <ind>2.5</ind>  <dep>20</dep>  </entry>
-    </interpolation>
-    <axis> 
-      <x>-1</x>
-      <y>0</y>
-      <z>0</z>
-    </axis>
-    <center>
-      <x-m> 0.000</x-m>
-      <y-m> 0.000</y-m>
-      <z-m>-0.008</z-m>
-    </center>
-  </animation>
-
-  <animation> 
-    <type>rotate</type>
-    <object-name>ball</object-name>
-    <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
-    <factor>5.729</factor>
-    <min-deg>-10</min-deg>
-    <max-deg> 10</max-deg>
-    <axis> 
-      <x>-1</x>
-      <y>0</y>
-      <z>0</z>
-    </axis>
-    <center>
-      <x-m>0.000</x-m>
-      <y-m>0.000</y-m>
-      <z-m>0.082</z-m>
-    </center>
-  </animation>
-
+<PropertyList>
+    <path>57mm_turnslip.ac</path>
+    <texture-path>Textures</texture-path>
+    <animation>
+        <type>material</type>
+        <object-name>scala</object-name>
+        <object-name>needle</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>needle</object-name>
+        <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
+        <interpolation>
+            <entry>
+                <ind>-2.5</ind>
+                <dep>-20</dep>
+            </entry>
+            <entry>
+                <ind>2.5</ind>
+                <dep>20</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m> 0.000</x-m>
+            <y-m> 0.000</y-m>
+            <z-m>-0.008</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>ball</object-name>
+        <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+        <factor>5.729</factor>
+        <min-deg>-10</min-deg>
+        <max-deg> 10</max-deg>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.000</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.082</z-m>
+        </center>
+    </animation>
 </PropertyList>

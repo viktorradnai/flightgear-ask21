@@ -1,34 +1,30 @@
 <?xml version="1.0"?>
-<PropertyList> 
-
-  <path>57mm_compass.ac</path>
-  <texture-path>Textures</texture-path>
-
- <animation>
-  <type>material</type>
-  <object-name>scala</object-name>
-  <emission>
-	  <red>0.028</red>
-	  <green>0.014</green>
-	  <blue>0.007</blue>
-	  <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
-   </emission>
- </animation>  
-  
-  <animation> 
-    <type>rotate</type>
-    <object-name>scala</object-name>
-    <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
-    <axis> 
-      <x>0</x>
-      <y>0</y>
-      <z>1</z>
-    </axis>
-    <center>
-      <x-m>-0.025</x-m>
-      <y-m>0.0</y-m>
-      <z-m>0.0</z-m>
-    </center>
-  </animation>
-
+<PropertyList>
+    <path>57mm_compass.ac</path>
+    <texture-path>Textures</texture-path>
+    <animation>
+        <type>material</type>
+        <object-name>scala</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>scala</object-name>
+        <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+        <center>
+            <x-m>-0.025</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
 </PropertyList>
