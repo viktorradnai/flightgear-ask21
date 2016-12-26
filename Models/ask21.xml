@@ -18,18 +18,185 @@
             canopyB_door.unalias();
         </unload>
     </nasal>
+    <!--WING BENDING--> 
+    <animation>
+  <type>rotate</type>
+  <object-name>wing.L1</object-name>
+  <object-name>wing.L2</object-name>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <object-name>speedbrakeL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>-0.29524</y-m>
+   <z-m>0.76528</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L2</object-name>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <object-name>speedbrakeL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>-2.33212</y-m>
+   <z-m>0.90744</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>-4.32656</y-m>
+   <z-m> 1.03302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L4</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>-7.93317</y-m>
+   <z-m>1.29763</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+    
+    <animation>
+  <type>rotate</type>
+  <object-name>wing.R1</object-name>
+  <object-name>wing.R2</object-name>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <object-name>speedbrakeR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>0.29524</y-m>
+   <z-m>0.76528</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R2</object-name>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <object-name>speedbrakeR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>2.33212</y-m>
+   <z-m>0.90744</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>4.32656</y-m>
+   <z-m> 1.03302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R4</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>7.93317</y-m>
+   <z-m>1.29763</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+    <!--FLIGHT CONTROL SURFACES-->
     <animation>
         <type>rotate</type>
         <object-name>aileronL</object-name>
         <property>controls/flight/aileron</property>
         <factor>-24</factor>
         <axis>
-            <x1-m>-0.87208</x1-m>
-            <y1-m>-5.1648</y1-m>
-            <z1-m>1.06231</z1-m>
-            <x2-m>-1.19589</x2-m>
-            <y2-m>-7.94231</y2-m>
-            <z2-m>1.28094</z2-m>
+            <x1-m>-0.87861</x1-m>
+            <y1-m>-5.16752</y1-m>
+            <z1-m>1.06723</z1-m>
+            <x2-m>-1.20843</x2-m>
+            <y2-m>-7.93491</y2-m>
+            <z2-m>1.28806</z2-m>
         </axis>
     </animation>
     <animation>
@@ -38,12 +205,25 @@
         <property>controls/flight/aileron</property>
         <factor>-24</factor>
         <axis>
-            <x1-m>-0.87208</x1-m>
-            <y1-m>5.1648</y1-m>
-            <z1-m>1.06231</z1-m>
-            <x2-m>-1.19589</x2-m>
-            <y2-m>7.94231</y2-m>
-            <z2-m>1.28094</z2-m>
+            <x1-m>-0.87861</x1-m>
+            <y1-m>5.16752</y1-m>
+            <z1-m>1.06723</z1-m>
+            <x2-m>-1.20804</x2-m>
+            <y2-m>7.93491</y2-m>
+            <z2-m>1.285</z2-m>
+        </axis>
+    </animation>
+    <!--airbrakes-->
+    <animation>
+        <type>translate</type>
+        <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeR</object-name>
+        <property>/surface-positions/speedbrake-pos-norm</property>
+        <factor>0.07</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
         </axis>
     </animation>
     <animation>
@@ -78,6 +258,10 @@
             <z>0</z>
         </axis>
     </animation>
+    <!--COCKPIT-->
+    <model>
+        <path>Aircraft/ASK21/Models/Interior/interior.xml</path>
+    </model>
     <!--GEAR-->
     <!--Compression-->
     <animation>
@@ -107,496 +291,6 @@
             <z>1</z>
         </axis>
     </animation>
-    <!--COCKPIT-->
-    <!-- Yaw string -->
-    <model>
-        <name>yawstring</name>
-        <path>Aircraft/ASK21/Models/instruments/wool-thread/wool-thread.xml</path>
-        <offsets>
-            <x-m>-3.50</x-m>
-            <y-m> 0</y-m>
-            <z-m>0.90</z-m>
-            <pitch-deg>0</pitch-deg>
-        </offsets>
-    </model>
-    <!--FRONT INSTRUMENTS-->
-    <!--ASI-->
-    <model>
-        <name>asi</name>
-        <!--<path>instruments/winter-asi-6221/winter-asi-6221.xml</path>-->
-        <path>instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
-        <offsets>
-            <x-m>-3.328</x-m>
-            <y-m>-0.08</y-m>
-            <z-m>0.748</z-m>
-            <pitch-deg>-4</pitch-deg>
-        </offsets>
-    </model>
-    <!--Altimeter-->
-    <model>
-        <name>alt</name>
-        <path>instruments/alti-4110/winter-4110.xml</path>
-        <offsets>
-            <x-m>-3.323</x-m>
-            <y-m>0.08</y-m>
-            <z-m>0.748</z-m>
-        </offsets>
-    </model>
-    <!--Variometer-->
-    <model>
-        <name>vario</name>
-        <path>instruments/vario-5stv5/winter-vario-5stv5.xml</path>
-        <offsets>
-            <x-m>-3.321</x-m>
-            <y-m>0.08</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-2</pitch-deg>
-        </offsets>
-    </model>
-    <model>
-        <name>vario2</name>
-        <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
-        <offsets>
-            <x-m>-3.32</x-m>
-            <y-m>-0.08</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-2</pitch-deg>
-        </offsets>
-    </model>
-    <!--COM-->
-    <model>
-        <name>com</name>
-        <path>instruments/ar-3201/ar-3201.xml</path>
-        <offsets>
-            <x-m>-3.32</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.6</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
-    <!--Compass-->
-    <model>
-        <name>compass</name>
-        <path>instruments/57mm_compass/57mm_compass.xml</path>
-        <offsets>
-            <x-m>-3.319</x-m>
-            <y-m>0.17</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
-    <model>
-        <name>compass_screws</name>
-        <path>instruments/57mm_compass/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-3.316</x-m>
-            <y-m>0.17</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
-    <!--57mm turnslip-->
-    <model>
-        <name>turnslip</name>
-        <path>Aircraft/ASK21/Models/instruments/57mm_turnslip/57mm_turnslip.xml</path>
-        <offsets>
-            <x-m>-3.323</x-m>
-            <y-m>0</y-m>
-            <z-m>0.748</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
-    <model>
-        <name>turnslip_screws</name>
-        <path>Aircraft/ASK21/Models/instruments/57mm_turnslip/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-3.321</x-m>
-            <y-m>0</y-m>
-            <z-m>0.748</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
-    <!--REAR INSTRUMENTS-->
-    <model>
-        <path>Aircraft/ASK21/Models/instruments/57mm_turnslip/57mm_turnslip.xml</path>
-        <offsets>
-            <x-m>-2.115</x-m>
-            <y-m>0</y-m>
-            <z-m>0.888</z-m>
-            <pitch-deg>-10</pitch-deg>
-        </offsets>
-    </model>
-    <model>
-        <path>Aircraft/ASK21/Models/instruments/57mm_turnslip/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-2.115</x-m>
-            <y-m>0</y-m>
-            <z-m>0.888</z-m>
-            <pitch-deg>-10</pitch-deg>
-        </offsets>
-    </model>
-    <!--ASI-->
-    <model>
-        <name>asi2</name>
-        <!--<path>instruments/winter-asi-6221/winter-asi-6221.xml</path>-->
-        <path>instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
-        <offsets>
-            <x-m>-2.110</x-m>
-            <y-m>0.08</y-m>
-            <z-m>0.87364</z-m>
-            <pitch-deg>-12</pitch-deg>
-        </offsets>
-    </model>
-    <!--Altimeter-->
-    <!--<model>
-            <path>instruments/alti-4110/winter-4110.xml</path>
-            <offsets>
-                <x-m>-3.321</x-m>
-                <y-m>0.08</y-m>
-                <z-m>0.65</z-m>
-                <pitch-deg>-2</pitch-deg>
-            </offsets>
-        </model>-->
-    <!--Variometer-->
-    <model>
-        <name>vario3</name>
-        <path>instruments/vario-5stv5/winter-vario-5stv5.xml</path>
-        <offsets>
-            <x-m>-2.109</x-m>
-            <y-m>-0.08</y-m>
-            <z-m>0.87364</z-m>
-            <pitch-deg>-9</pitch-deg>
-        </offsets>
-    </model>
-    <!--
-    <model>
-        <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
-        <offsets>
-            <x-m>-3.32</x-m>
-            <y-m>-0.08</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-2</pitch-deg>
-        </offsets>
-    </model>
-    -->
-    <!--Compass-->
-    <model>
-        <name>compass2</name>
-        <path>instruments/57mm_compass/57mm_compass.xml</path>
-        <offsets>
-            <x-m>-2.10</x-m>
-            <y-m>0.18</y-m>
-            <z-m>0.84</z-m>
-            <pitch-deg>-9</pitch-deg>
-        </offsets>
-    </model>
-    <model>
-        <name>compass2</name>
-        <path>instruments/57mm_compass/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-2.107</x-m>
-            <y-m>0.18</y-m>
-            <z-m>0.84</z-m>
-            <pitch-deg>-9</pitch-deg>
-        </offsets>
-    </model>
-    <!--Small windows-->
-    <animation>
-        <type>slider</type>
-        <object-name>sliding_window.front</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
-                <factor>-0.05</factor>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.01</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.01</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <y>1</y>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.0</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.18</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x1-m>-2.94858</x1-m>
-            <y1-m>-0.31449</y1-m>
-            <z1-m>0.70963</z1-m>
-            <x2-m>-2.63997</x2-m>
-            <y2-m>-0.32957</y2-m>
-            <z2-m>0.76366</z2-m>
-        </axis>
-    </animation>
-    <animation>
-        <type>slider</type>
-        <object-name>sliding_window.back</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
-                <factor>0.05</factor>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </action>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.back</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.01</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.01</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <y>1</y>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.back</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.0</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.12</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x1-m>-1.80509</x1-m>
-            <y1-m>-0.31714</y1-m>
-            <z1-m>0.92524</z1-m>
-            <x2-m>-2.0615</x2-m>
-            <y2-m>-0.31714</y2-m>
-            <z2-m>0.90689</z2-m>
-        </axis>
-    </animation>
-    <!--airbrake grip-->
-    <animation>
-        <type>translate</type>
-        <object-name>Cylinder.002</object-name>
-        <object-name>grip.airbrake</object-name>
-        <property>/controls/engines/engine/throttle</property>
-        <factor>1</factor>
-        <interpolation>
-            <entry>
-                <ind>1</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0</ind>
-                <dep>.25</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>Cylinder.002</object-name>
-        <object-name>grip.airbrake</object-name>
-        <property>/controls/engines/engine/throttle</property>
-        <factor>-1</factor>
-        <interpolation>
-            <entry>
-                <ind>1</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0</ind>
-                <dep>-0.025</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>Cylinder.002</object-name>
-        <object-name>grip.airbrake</object-name>
-        <property>/controls/engines/engine/throttle</property>
-        <factor>1</factor>
-        <interpolation>
-            <entry>
-                <ind>1</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0</ind>
-                <dep>.045</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
-        </axis>
-    </animation>
-    <!--airbrakes-->
-    <animation>
-        <type>translate</type>
-        <object-name>speedbrake</object-name>
-        <property>/surface-positions/speedbrake-pos-norm</property>
-        <factor>0.07</factor>
-        <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
-        </axis>
-    </animation>
-    <!--stick front-->
-    <animation>
-        <type>rotate</type>
-        <object-name>stick-front</object-name>
-        <property>/controls/flight/elevator</property>
-        <factor>10</factor>
-        <offset-deg>0</offset-deg>
-        <center>
-            <x-m>-3.17203</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.32481</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>-1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>rotate</type>
-        <object-name>stick-front</object-name>
-        <property>/controls/flight/aileron</property>
-        <factor>10</factor>
-        <offset>0</offset>
-        <center>
-            <x-m>-3.17203</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.32481</z-m>
-        </center>
-        <axis>
-            <x>-1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <!--stick rear-->
-    <animation>
-        <type>rotate</type>
-        <object-name>stick-rear</object-name>
-        <property>/controls/flight/elevator</property>
-        <factor>10</factor>
-        <offset-deg>0</offset-deg>
-        <center>
-            <x-m>-1.99529</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.38177</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>-1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>rotate</type>
-        <object-name>stick-rear</object-name>
-        <property>/controls/flight/aileron</property>
-        <factor>10</factor>
-        <offset>0</offset>
-        <center>
-            <x-m>-1.99529</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.38177</z-m>
-        </center>
-        <axis>
-            <x>-1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <!--Cockpit Shader-->
-    <effect>
-        <inherits-from>Effects/interior-shadow</inherits-from>
-        <object-name>interiorF</object-name>
-        <object-name>seatF</object-name>
-        <object-name>panelF1</object-name>
-        <object-name>panelF2</object-name>
-        <object-name>micF</object-name>
-    </effect>
-    <effect>
-        <inherits-from>Effects/interior-shadow-back</inherits-from>
-        <object-name>interiorR</object-name>
-        <object-name>seatR</object-name>
-        <object-name>micR</object-name>
-        <object-name>panelR1</object-name>
-        <object-name>panelR2</object-name>
-    </effect>
     <!--CANOPY-->
     <animation>
         <type>pick</type>
@@ -613,25 +307,8 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>canopy.front.left</object-name>
-        <object-name>canopy.front.right</object-name>
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.front2</object-name>
-        <object-name>canopy.front.int</object-name>
-        <object-name>panelF1</object-name>
-        <object-name>panelF2</object-name>
-        <!--Instruments-->
-        <object-name>asi</object-name>
-        <object-name>alt</object-name>
-        <object-name>vario</object-name>
-        <object-name>vario2</object-name>
-        <object-name>com</object-name>
-        <object-name>turnslip</object-name>
-        <object-name>turnslip_screws</object-name>
-        <object-name>compass</object-name>
-        <object-name>compass_screws</object-name>
-        <object-name>sliding_window.front</object-name>
-        <object-name>yawstring</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
@@ -656,60 +333,6 @@
         </center>
     </animation>
     <animation>
-        <type>rotate</type>
-        <object-name>canopy.front.left</object-name>
-        <property>sim/model/door-positions/canopyF/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0.0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.2</ind>
-                <dep>-60</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>-60</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <z>1</z>
-        </axis>
-        <center>
-            <x-m>-3.04127</x-m>
-            <y-m>-0.2964</y-m>
-            <z-m>0.65308</z-m>
-        </center>
-    </animation>
-    <animation>
-        <type>rotate</type>
-        <object-name>canopy.front.right</object-name>
-        <property>sim/model/door-positions/canopyF/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0.0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.2</ind>
-                <dep>60</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>60</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <z>1</z>
-        </axis>
-        <center>
-            <x-m>-3.04127</x-m>
-            <y-m>0.2964</y-m>
-            <z-m>0.65308</z-m>
-        </center>
-    </animation>
-    <animation>
         <type>pick</type>
         <object-name>canopy.backframe</object-name>
         <visible>true</visible>
@@ -724,12 +347,8 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>canopy.back.left</object-name>
-        <object-name>canopy.back.right</object-name>
         <object-name>canopy.backframe</object-name>
         <object-name>canopy.back2</object-name>
-        <object-name>canopy.back.int</object-name>
-        <object-name>sliding_window.back</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -753,87 +372,12 @@
             <z-m>1.11</z-m>
         </center>
     </animation>
-    <animation>
-        <type>rotate</type>
-        <object-name>canopy.back.left</object-name>
-        <property>sim/model/door-positions/canopyB/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0.0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.2</ind>
-                <dep>-60</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>-60</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <z>1</z>
-        </axis>
-        <center>
-            <x-m>-1.94174</x-m>
-            <y-m>-0.33063</y-m>
-            <z-m>0.77602</z-m>
-        </center>
-    </animation>
-    <animation>
-        <type>rotate</type>
-        <object-name>canopy.back.right</object-name>
-        <property>sim/model/door-positions/canopyB/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0.0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.2</ind>
-                <dep>60</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>60</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <z>1</z>
-        </axis>
-        <center>
-            <x-m>-1.94174</x-m>
-            <y-m>0.33063</y-m>
-            <z-m>0.77602</z-m>
-        </center>
-    </animation>
     <!--SHADERS/EFFECTS-->
-    <!--Enable/disable windows for better visibility-->
-    <animation>
-        <type>select</type>
-        <condition>
-            <property>/sim/model/window</property>
-        </condition>
-        <object-name>canopy.front.int</object-name>
-        <object-name>canopy.back.int</object-name>
-        <object-name>sliding_window.front</object-name>
-        <object-name>sliding_window.back</object-name>
-    </animation>
     <!--Glass shader-->
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>canopy.front2</object-name>
         <object-name>canopy.back2</object-name>
-    </effect>
-    <effect>
-        <inherits-from>Models/Effects/interior-glass-front</inherits-from>
-        <object-name>canopy.front.int</object-name>
-        <object-name>sliding_window.front</object-name>
-    </effect>
-    <effect>
-        <inherits-from>Models/Effects/interior-glass-back</inherits-from>
-        <object-name>canopy.back.int</object-name>
-        <object-name>sliding_window.back</object-name>
     </effect>
     <!--Fuselage shader-->
     <effect>
@@ -841,10 +385,18 @@
         <object-name>fuselage</object-name>
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.backframe</object-name>
-        <object-name>wings</object-name>
+        <object-name>wing.L1</object-name>
+        <object-name>wing.L2</object-name>
+        <object-name>wing.L3</object-name>
+        <object-name>wing.L4</object-name>
+        <object-name>wing.R1</object-name>
+        <object-name>wing.R2</object-name>
+        <object-name>wing.R3</object-name>
+        <object-name>wing.R4</object-name>
         <object-name>aileronL</object-name>
         <object-name>aileronR</object-name>
-        <object-name>speedbrake</object-name>
+        <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeR</object-name>
         <object-name>hstabilizer</object-name>
         <object-name>elevator</object-name>
         <object-name>vstabilizer</object-name>
