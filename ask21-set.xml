@@ -174,6 +174,54 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
+        <view n="101">
+            <name>Left Below-Wing-Camera View</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+                <heading-offset-deg type="double">300</heading-offset-deg>
+                <x-offset-m archive="y" type="double">-2.58654</x-offset-m>
+                <y-offset-m archive="y" type="double">0.7</y-offset-m>
+                <z-offset-m archive="y" type="double">-1.53362</z-offset-m>
+                <default-heading-offset-deg>300</default-heading-offset-deg>
+                <pitch-offset-deg>-17.1</pitch-offset-deg>
+                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+            </config>
+        </view>
+        <view n="102">
+            <name>Right Wingtip Camera View</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+                <heading-offset-deg type="double">90</heading-offset-deg>
+                <x-offset-m archive="y" type="double">8.34341</x-offset-m>
+                <y-offset-m archive="y" type="double">1.5</y-offset-m>
+                <z-offset-m archive="y" type="double">-1.35395</z-offset-m>
+                <default-heading-offset-deg>90</default-heading-offset-deg>
+                <pitch-offset-deg>00</pitch-offset-deg>
+                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+            </config>
+        </view>
+        <view n="103">
+            <name>Tail Camera View</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+                <heading-offset-deg type="double">0</heading-offset-deg>
+                <x-offset-m archive="y" type="double">0.0</x-offset-m>
+                <y-offset-m archive="y" type="double">2.15879</y-offset-m>
+                <z-offset-m archive="y" type="double">3.36041</z-offset-m>
+                <default-heading-offset-deg>0</default-heading-offset-deg>
+                <pitch-offset-deg>-10</pitch-offset-deg>
+                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+            </config>
+        </view>
         <!--Set the view center to be between the wing roots-->
         <view n="1">
             <config>
