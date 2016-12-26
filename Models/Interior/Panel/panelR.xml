@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>panelR.ac</path> 
+
+    <!--COCKPIT-->
+    <!--REAR INSTRUMENTS-->
+    <model>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_turnslip.xml</path>
+        <offsets>
+            <x-m>-2.115</x-m>
+            <y-m>0</y-m>
+            <z-m>0.888</z-m>
+            <pitch-deg>-10</pitch-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_screws.xml</path>
+        <offsets>
+            <x-m>-2.115</x-m>
+            <y-m>0</y-m>
+            <z-m>0.888</z-m>
+            <pitch-deg>-10</pitch-deg>
+        </offsets>
+    </model>
+    <!--ASI-->
+    <model>
+        <name>asi2</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
+        <offsets>
+            <x-m>-2.110</x-m>
+            <y-m>0.08</y-m>
+            <z-m>0.87364</z-m>
+            <pitch-deg>-12</pitch-deg>
+        </offsets>
+    </model>
+    <!--Variometer-->
+    <model>
+        <name>vario3</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
+        <offsets>
+            <x-m>-2.109</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.87364</z-m>
+            <pitch-deg>-9</pitch-deg>
+        </offsets>
+    </model>
+    <!--Compass-->
+    <model>
+        <name>compass2</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_compass/57mm_compass.xml</path>
+        <offsets>
+            <x-m>-2.10</x-m>
+            <y-m>0.18</y-m>
+            <z-m>0.84</z-m>
+            <pitch-deg>-9</pitch-deg>
+        </offsets>
+    </model>
+    <model>
+        <name>compass2screws</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_compass/57mm_screws.xml</path>
+        <offsets>
+            <x-m>-2.107</x-m>
+            <y-m>0.18</y-m>
+            <z-m>0.84</z-m>
+            <pitch-deg>-9</pitch-deg>
+        </offsets>
+    </model>
+    <!--Cockpit Shader-->
+    <effect>
+        <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow-back</inherits-from>
+        <object-name>panelR1</object-name>
+        <object-name>panelR2</object-name>
+        <object-name>asi2</object-name>
+        <object-name>vario3</object-name>
+        <object-name>compass2</object-name>
+        <object-name>compass2screws</object-name>
+    </effect>
+</PropertyList>
