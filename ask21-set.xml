@@ -24,6 +24,14 @@ See AUTHORS.txt for credits
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
+            <door-positions>
+                <frontwin>
+                    <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
+                </frontwin>
+                <reartwin>
+                    <position-norm>1</position-norm> <!--see above-->
+                </reartwin>
+            </door-positions>
         </model>
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
