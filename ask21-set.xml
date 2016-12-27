@@ -145,7 +145,7 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
-        <view n="100">
+        <view n="104">
             <name>Copilot/Instructor View</name>
             <type>lookfrom</type>
             <internal type="bool">true</internal>
