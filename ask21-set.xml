@@ -145,7 +145,7 @@ See AUTHORS.txt for credits
                 </limits>
             </config>
         </view>
-        <view n="100">
+        <view n="104">
             <name>Copilot/Instructor View</name>
             <type>lookfrom</type>
             <internal type="bool">true</internal>
@@ -320,16 +320,22 @@ See AUTHORS.txt for credits
                     <connected-to-property-node type="bool"/>
                     <brake-force type="float">100000</brake-force>
                     <connected-to-ai-or-mp-callsign type="string">*</connected-to-ai-or-mp-callsign>
-                    <end-force-x type="float">-3.50</end-force-x>
+                    <end-force-x type="float">3.53</end-force-x>
                     <end-force-y type="float">0</end-force-y>
-                    <end-force-z type="float">0</end-force-z>
+                    <end-force-z type="float">0.23</end-force-z>
                 </tow>
                 <speed-in-tow-direction type="float">0</speed-in-tow-direction>
                 <open type="bool">true</open>
                 <is-slave type="bool">false</is-slave>
+                <force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
             </aerotow>
             <winch>
                 <automatic-release-angle-deg type="float">80.0</automatic-release-angle-deg>
+                <tow>
+                    <end-force-x type="float">1.62299</end-force-x>
+                    <end-force-y type="float">0.09</end-force-y>
+                    <end-force-z type="float">0.2048</end-force-z>
+                </tow>
             </winch>
         </hitches>
     </sim>
@@ -473,6 +479,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
             <file>Aircraft/ASK21/Nasal/dialogs.nas</file>
             <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
+            <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
