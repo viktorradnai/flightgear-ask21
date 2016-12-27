@@ -381,10 +381,7 @@
     </effect>
     <!--Fuselage shader-->
     <effect>
-        <inherits-from>Models/Effects/ask21_model</inherits-from>
-        <object-name>fuselage</object-name>
-        <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.backframe</object-name>
+        <inherits-from>Models/Effects/ask21_wing</inherits-from>
         <object-name>wing.L1</object-name>
         <object-name>wing.L2</object-name>
         <object-name>wing.L3</object-name>
@@ -397,10 +394,16 @@
         <object-name>aileronR</object-name>
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeR</object-name>
-        <object-name>hstabilizer</object-name>
-        <object-name>elevator</object-name>
         <object-name>vstabilizer</object-name>
+        <object-name>elevator</object-name>
+        <object-name>hstabilizer</object-name>
         <object-name>rudder</object-name>
+    </effect>
+    <effect>
+        <inherits-from>Models/Effects/ask21_model</inherits-from>
+        <object-name>fuselage</object-name>
+        <object-name>canopy.frontframe</object-name>
+        <object-name>canopy.backframe</object-name>
         <object-name>gearfairing1</object-name>
         <object-name>gearfairing2</object-name>
         <object-name>gearfairing3</object-name>

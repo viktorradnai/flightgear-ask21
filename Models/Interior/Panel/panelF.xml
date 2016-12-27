@@ -84,7 +84,7 @@
     <!--57mm turnslip-->
     <model>
         <name>turnslip</name>
-        <path>Aircraft/ASK21/Models/Instruments/57mm_turnslip/57mm_turnslip.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_turnslip.xml</path>
         <offsets>
             <x-m>-3.323</x-m>
             <y-m>0</y-m>
@@ -94,7 +94,7 @@
     </model>
     <model>
         <name>turnslip_screws</name>
-        <path>Aircraft/ASK21/Models/Instruments/57mm_turnslip/57mm_screws.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_screws.xml</path>
         <offsets>
             <x-m>-3.321</x-m>
             <y-m>0</y-m>
