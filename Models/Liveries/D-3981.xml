@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">D-3981 (fictional FG livery)</name>
+        <texture>Liveries/D-3981.png</texture>
+        <texture-wing>Liveries/D-3981-wings.png</texture-wing>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>

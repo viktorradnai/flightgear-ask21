@@ -1,0 +1,3 @@
+D-3981 is a fictional flightgear livery, originally done by HHS(Heiko Schulz), refurbished by D-ECHO(Benedikt Wolf)
+D-5721 is an ASK21 operated by the LFV Mainz based on this picture: http://lfv-mainz.com/entwicklung/upload/segelflug/flugzeuge/ASK21.JPG done by D-ECHO (Benedikt Wolf)
+D-7504 is an ASK21 based on this picture https://de.wikipedia.org/wiki/Schleicher_ASK_21#/media/File:SCHLEICHER_ASK_21_vr.jpg done by D-ECHO (Benedikt Wolf)
