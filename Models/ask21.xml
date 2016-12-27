@@ -18,6 +18,172 @@
             canopyB_door.unalias();
         </unload>
     </nasal>
+    <!--WING BENDING--> 
+    <animation>
+  <type>rotate</type>
+  <object-name>wing.L1</object-name>
+  <object-name>wing.L2</object-name>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <object-name>speedbrakeL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>-0.29524</y-m>
+   <z-m>0.76528</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L2</object-name>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <object-name>speedbrakeL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>-2.33212</y-m>
+   <z-m>0.90744</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L3</object-name>
+  <object-name>wing.L4</object-name>
+  <object-name>aileronL</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>-4.32656</y-m>
+   <z-m> 1.03302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.L4</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>-0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>-7.93317</y-m>
+   <z-m>1.29763</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+    
+    <animation>
+  <type>rotate</type>
+  <object-name>wing.R1</object-name>
+  <object-name>wing.R2</object-name>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <object-name>speedbrakeR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>0.29524</y-m>
+   <z-m>0.76528</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R2</object-name>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <object-name>speedbrakeR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m> 0.00</x-m>
+   <y-m>2.33212</y-m>
+   <z-m>0.90744</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R3</object-name>
+  <object-name>wing.R4</object-name>
+  <object-name>aileronR</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>4.32656</y-m>
+   <z-m> 1.03302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>wing.R4</object-name>
+  <property>accelerations/pilot-g[0]</property>
+  <factor>0.5</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>  0.00</x-m>
+   <y-m>7.93317</y-m>
+   <z-m>1.29763</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
     <!--FLIGHT CONTROL SURFACES-->
     <animation>
         <type>rotate</type>
@@ -50,7 +216,8 @@
     <!--airbrakes-->
     <animation>
         <type>translate</type>
-        <object-name>speedbrake</object-name>
+        <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeR</object-name>
         <property>/surface-positions/speedbrake-pos-norm</property>
         <factor>0.07</factor>
         <axis>
@@ -218,10 +385,18 @@
         <object-name>fuselage</object-name>
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.backframe</object-name>
-        <object-name>wings</object-name>
+        <object-name>wing.L1</object-name>
+        <object-name>wing.L2</object-name>
+        <object-name>wing.L3</object-name>
+        <object-name>wing.L4</object-name>
+        <object-name>wing.R1</object-name>
+        <object-name>wing.R2</object-name>
+        <object-name>wing.R3</object-name>
+        <object-name>wing.R4</object-name>
         <object-name>aileronL</object-name>
         <object-name>aileronR</object-name>
-        <object-name>speedbrake</object-name>
+        <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeR</object-name>
         <object-name>hstabilizer</object-name>
         <object-name>elevator</object-name>
         <object-name>vstabilizer</object-name>
