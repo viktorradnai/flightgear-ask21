@@ -4,6 +4,8 @@
     <path>ask21.ac</path>
     <nasal>
         <load>
+            var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries", 10);
+      
             var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
             var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
 
@@ -14,6 +16,7 @@
             canopyB_door.alias(float_1);
         </load>
         <unload>
+            livery_update.stop(); 
             canopyF_door.unalias();
             canopyB_door.unalias();
         </unload>
@@ -408,4 +411,39 @@
         <object-name>gearfairing2</object-name>
         <object-name>gearfairing3</object-name>
     </effect>
+    <!--LIVERY-->
+  <animation>
+    <type>material</type>
+        <object-name>fuselage</object-name>
+        <object-name>gearfairing1</object-name>
+        <object-name>gearfairing2</object-name>
+        <object-name>gearfairing3</object-name>
+        <object-name>vstabilizer</object-name>
+        <object-name>elevator</object-name>
+        <object-name>hstabilizer</object-name>
+        <object-name>rudder</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+</animation>
+  <animation>
+    <type>material</type>
+        <object-name>wing.L1</object-name>
+        <object-name>wing.L2</object-name>
+        <object-name>wing.L3</object-name>
+        <object-name>wing.L4</object-name>
+        <object-name>wing.R1</object-name>
+        <object-name>wing.R2</object-name>
+        <object-name>wing.R3</object-name>
+        <object-name>wing.R4</object-name>
+        <object-name>aileronL</object-name>
+        <object-name>aileronR</object-name>
+        <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeR</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture-wing</texture-prop>
+    <texture>texture.png</texture>
+</animation>
 </PropertyList>

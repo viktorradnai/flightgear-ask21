@@ -32,6 +32,9 @@ See AUTHORS.txt for credits
                     <position-norm>1</position-norm> <!--see above-->
                 </reartwin>
             </door-positions>
+            <livery>
+                <file type="string"></file>
+            </livery>
         </model>
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
@@ -303,6 +306,13 @@ See AUTHORS.txt for credits
                         <command>property-toggle</command>
                         <property>/controls/gear/assist-1</property>
                     </binding>
+                    </item> 
+                    <item>
+                    <label>Select Livery</label>
+                    <binding>
+                        <command>nasal</command>
+                        <script>aircraft.livery.dialog.open()</script>
+                    </binding>
                     </item>
                 </menu>
             </default>
@@ -475,6 +485,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
+            <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
     </nasal>
