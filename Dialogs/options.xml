@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- Version: 2016-12-27 -->
+<PropertyList>
+    <name>options_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>5</default-padding>
+    <modal>false</modal>
+    <width>200</width>
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <text>
+            <label>Options</label>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    <hrule/>
+    <layout>hbox</layout>
+    <empty>
+        <stretch>true</stretch>
+    </empty>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Glass visibility</label>
+        <property>/sim/model/window</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/sim/model/window</property>
+        </binding>
+    </checkbox>
+    <hrule/>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Glass shader</label>
+        <property>/sim/model/window-shader</property>
+        <live>true</live>
+        <enable>
+            <condition>
+                <property>/sim/model/window</property>
+            </condition>
+        </enable>
+        <binding>
+            <command>property-toggle</command>
+            <property>/sim/model/window-shader</property>
+        </binding>
+    </checkbox>
+</PropertyList>
