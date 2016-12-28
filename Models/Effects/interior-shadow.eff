@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <PropertyList>
     <name>interior-shadow</name>
     <inherits-from>Effects/model-interior</inherits-from>
@@ -7,12 +6,18 @@
         <texture n="4">
             <type>cubemap</type>
             <images>
-		  <positive-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0004.png</positive-x>      <!-- px (tail) rotate 90 deg from N or S to W -->
-          <negative-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0002.png</negative-x>      <!-- nx (nose) rotate 90 deg from N or S to E -->
-          <positive-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0001.png</positive-y>      <!-- py (starboard/right) from N do not rotate -->
-          <negative-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0003.png</negative-y>      <!-- ny (port/left) from N rotate 180 deg to S -->
-          <positive-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0006.png</positive-z>      <!-- pz (top) rotate 90 deg from N or S to W -->
-          <negative-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0005.png</negative-z>      <!-- nz (bottom) rotate 90 deg from N or S to W -->
+                <positive-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0004.png</positive-x>
+                <!-- px (tail) rotate 90 deg from N or S to W -->
+                <negative-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0002.png</negative-x>
+                <!-- nx (nose) rotate 90 deg from N or S to E -->
+                <positive-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0001.png</positive-y>
+                <!-- py (starboard/right) from N do not rotate -->
+                <negative-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0003.png</negative-y>
+                <!-- ny (port/left) from N rotate 180 deg to S -->
+                <positive-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0006.png</positive-z>
+                <!-- pz (top) rotate 90 deg from N or S to W -->
+                <negative-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0005.png</negative-z>
+                <!-- nz (bottom) rotate 90 deg from N or S to W -->
             </images>
         </texture>
         <opacity-cube-center type="vec3d" n="0"> -2.74819 0.0 0.91773 </opacity-cube-center>
