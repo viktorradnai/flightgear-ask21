@@ -269,44 +269,20 @@ See AUTHORS.txt for credits
                             <script>ask21.winch_dialog.open()</script>
                         </binding>
                     </item>
-                    <item n="10">
-                        <label>Pushback</label>
-                        <name>pushback</name>
+                    <item>
+                        <label>Simulation Options</label>
                         <binding>
-                            <command>dialog-show</command>
-                            <dialog-name>pushback</dialog-name>
+                            <command>nasal</command>
+                            <script>ask21.options_dialog.open()</script>
                         </binding>
                     </item>
                     <item>
-                        <label>Enable/disable window shader</label>
-                        <name>windowshader</name>
+                        <label>Ground services</label>
                         <binding>
-                            <command>property-toggle</command>
-                            <property>/sim/model/window-shader</property>
+                            <command>nasal</command>
+                            <script>ask21.groundservice_dialog.open()</script>
                         </binding>
                     </item>
-                    <item>
-                        <label>Enable/disable glass visibility</label>
-                        <name>windowshader</name>
-                        <binding>
-                            <command>property-toggle</command>
-                            <property>/sim/model/window</property>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Toggle ground handling</label>
-                        <binding>
-                            <command>property-toggle</command>
-                        <property>/controls/ground-handling</property>
-                    </binding>
-                    </item>
-                    <item>
-                    <label>Toggle assiting gears</label>
-                    <binding>
-                        <command>property-toggle</command>
-                        <property>/controls/gear/assist-1</property>
-                    </binding>
-                    </item> 
                     <item>
                     <label>Select Livery</label>
                     <binding>
@@ -352,6 +328,9 @@ See AUTHORS.txt for credits
         <flight>
             <rudder2 type="double">0</rudder2>
         </flight>
+        <gear>
+            <assist-1 type="bool">false</assist-1>
+        </gear>
         <winch>
             <place type="bool">false</place>
         </winch>
