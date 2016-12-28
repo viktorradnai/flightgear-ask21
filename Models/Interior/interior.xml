@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
-
 <PropertyList>
-
- <path>interior.ac</path> 
-
+    <path>interior.ac</path>
     <!--COCKPIT-->
     <!-- Yaw string -->
     <model>
@@ -473,7 +470,6 @@
             <z-m>0.77602</z-m>
         </center>
     </animation>
-    
     <!--SHADERS/EFFECTS-->
     <!--Enable/disable windows for better visibility-->
     <animation>
