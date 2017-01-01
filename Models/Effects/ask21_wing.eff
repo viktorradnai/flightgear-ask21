@@ -1,8 +1,12 @@
+<?xml version="1.0"?>
 <PropertyList>
-  <name>ask21_wing</name>
-  <inherits-from>Effects/model-combined-deferred</inherits-from>
-
-  <parameters>
-    <ambient-correction type="float">0.0</ambient-correction>
-  </parameters>
+    <name>ask21_wing</name>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <parameters>
+        <ambient-correction type="float">0</ambient-correction>
+        <reflection-correction type="float">-1</reflection-correction>
+        <reflection-fresnel type="float">0.5</reflection-fresnel>
+        <reflection-noise type="float">0.05</reflection-noise>
+        <reflection-dynamic type="int">1</reflection-dynamic>
+    </parameters>
 </PropertyList>

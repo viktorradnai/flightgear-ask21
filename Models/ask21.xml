@@ -5,7 +5,7 @@
     <nasal>
         <load>
             var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries", 10);
-      
+
             var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
             var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
 
@@ -16,7 +16,7 @@
             canopyB_door.alias(float_1);
         </load>
         <unload>
-            livery_update.stop(); 
+            livery_update.stop();
             canopyF_door.unalias();
             canopyB_door.unalias();
         </unload>
