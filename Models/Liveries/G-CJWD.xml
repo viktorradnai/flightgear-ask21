@@ -6,7 +6,7 @@
       <livery>
         <name type="string">G-CJWD (London Gliding Club)</name>
         <texture>Liveries/G-CJWD.png</texture>
-        <texture-wing>Liveries/blank-wings.png</texture-wing>
+        <texture-wing>Liveries/G-CJWD-wings.png</texture-wing>
       </livery>
     </model>
   </sim>
