@@ -326,6 +326,7 @@
         <object-name>canopy.front.int</object-name>
         <object-name>panelF</object-name>
         <object-name>yawstring</object-name>
+        <object-name>sliding_window.front</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
