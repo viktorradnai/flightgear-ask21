@@ -3,7 +3,7 @@
 YASim Schleicher ASK 21 Glider
 See AUTHORS.txt for credits
 -->
-<PropertyList include="Aircraft/ASK21/walker-include.xml">
+<PropertyList include="walker-include.xml">
     <sim>
         <description>Schleicher ASK 21 Glider</description>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai and Benedikt Wolf</author>
