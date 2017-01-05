@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
+<!--<airplane mass="720" version="YASIM_VERSION_CURRENT">-->
 <airplane mass="720">
     <!-- Approach configuration -->
-    <approach speed="30" aoa="4" glide-angle="2.7">
+    <approach speed="35" aoa="4" glide-angle="8.2">
     </approach>
     <!-- Cruise configuration -->
-    <cruise speed="50" alt="5000" glide-angle="2.7">
+    <cruise speed="50" alt="5000" glide-angle="6.5">
     </cruise>
     <!-- pilot's eyepoint -->
     <cockpit x="2.5396" y="0" z="0.94214"/>
-    <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
+    <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="2"/>
     <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="4.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="5">
         <stall aoa="24" width="12" peak="1.5"/>
         <flap0 start="0.43" end="0.97" lift="1.2" drag="1.15"/>
