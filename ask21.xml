@@ -17,7 +17,7 @@
         <control-output control="FLAP0" side="left" prop="surface-positions/left-aileron-pos-norm"/>
         <control-output control="FLAP0" side="right" prop="surface-positions/right-aileron-pos-norm"/>
         <control-speed control="FLAP0" transition-time="0.5"/>
-        <spoiler start="0.34" end="0.44" lift="-4" drag="25.5"/>
+        <spoiler start="0.34" end="0.44" lift="-2" drag="35.5"/>
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
         <control-output control="FLAP0" side="left" prop="surface-positions/left-aileron-pos-norm"/>
         <control-output control="FLAP0" side="right" prop="surface-positions/right-aileron-pos-norm"/>
