@@ -9,8 +9,7 @@
     <!--ASI-->
     <model>
         <name>asi</name>
-        <!--<path>Aircraft/ASK21/Models/Interior/Panel/Instruments/winter-asi-6221/winter-asi-6221.xml</path>-->
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
+        <path>Instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
             <y-m>-0.08</y-m>
@@ -18,20 +17,99 @@
             <pitch-deg>-4</pitch-deg>
         </offsets>
     </model>
+    <model>
+        <name>asi-1</name>
+        <path>Instruments/winter-asi-6221/winter-asi-6221.xml</path>
+        <offsets>
+            <x-m>-3.328</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.748</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
+    <model>
+        <name>asi-2</name>
+        <path>Aircraft/Instruments-3d/asi/asi.xml</path>
+        <offsets>
+            <x-m>-3.328</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.748</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
+    <animation>
+        <type>select</type>
+        <object-name>asi</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/asi</property>
+            <value>0</value>
+        </equals>
+    </condition>
+</animation>
+    <animation>
+        <type>select</type>
+        <object-name>asi-1</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/asi</property>
+            <value>1</value>
+        </equals>
+    </condition>
+</animation>
+    <animation>
+        <type>select</type>
+        <object-name>asi-2</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/asi</property>
+            <value>2</value>
+        </equals>
+    </condition>
+</animation>
     <!--Altimeter-->
     <model>
         <name>alt</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/alti-4110/winter-4110.xml</path>
+        <path>Instruments/alti-4110/winter-4110.xml</path>
         <offsets>
             <x-m>-3.323</x-m>
             <y-m>0.08</y-m>
             <z-m>0.748</z-m>
         </offsets>
     </model>
+    <model>
+        <name>alt-1</name>
+        <path>Aircraft/Instruments-3d/alt/alt.xml</path>
+        <offsets>
+            <x-m>-3.323</x-m>
+            <y-m>0.08</y-m>
+            <z-m>0.748</z-m>
+        </offsets>
+    </model>
+    <animation>
+        <type>select</type>
+        <object-name>alt</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/alt</property>
+            <value>0</value>
+        </equals>
+    </condition>
+</animation>
+    <animation>
+        <type>select</type>
+        <object-name>alt-1</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/alt</property>
+            <value>1</value>
+        </equals>
+    </condition>
+</animation>
     <!--Variometer-->
     <model>
         <name>vario</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
+        <path>Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
         <offsets>
             <x-m>-3.321</x-m>
             <y-m>0.08</y-m>
@@ -39,6 +117,36 @@
             <pitch-deg>-2</pitch-deg>
         </offsets>
     </model>
+    <model>
+        <name>vario-1</name>
+        <path>Instruments/vario-knots/winter-vario-5stv5.xml</path>
+        <offsets>
+            <x-m>-3.321</x-m>
+            <y-m>0.08</y-m>
+            <z-m>0.65</z-m>
+            <pitch-deg>-2</pitch-deg>
+        </offsets>
+    </model>
+    <animation>
+        <type>select</type>
+    <object-name>vario</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/vsi</property>
+            <value>0</value>
+        </equals>
+    </condition>
+</animation>
+    <animation>
+        <type>select</type>
+        <object-name>vario-1</object-name>
+        <condition>
+            <equals>
+            <property>/sim/model/livery/instruments/vsi</property>
+            <value>1</value>
+        </equals>
+    </condition>
+</animation>
     <model>
         <name>vario2</name>
         <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
