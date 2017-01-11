@@ -144,6 +144,8 @@
             </equals>
         </condition>
     </animation>
+
+    <!-- Electric Variometer -->
     <model>
         <name>vario2</name>
         <path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.xml</path>
@@ -154,7 +156,20 @@
             <pitch-deg>-2</pitch-deg>
         </offsets>
     </model>
-    <!--COM-->
+
+    <!-- Accelerometer -->
+
+    <model>
+        <name>G</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/GMeter/GMeter.xml</path>
+        <offsets>
+            <x-m>-3.316</x-m>
+            <y-m>-0.17</y-m>
+            <z-m> 0.65</z-m>
+        </offsets>
+    </model>
+
+    <!-- COM Radio -->
     <model>
         <name>com</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-3201/ar-3201.xml</path>
@@ -165,7 +180,7 @@
             <pitch-deg>-5</pitch-deg>
         </offsets>
     </model>
-    <!--Compass-->
+    <!-- Compass -->
     <model>
         <name>compass</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_compass/57mm_compass.xml</path>

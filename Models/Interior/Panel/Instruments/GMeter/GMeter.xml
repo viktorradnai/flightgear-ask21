@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+ <path>GMeter.ac</path>
+
+  <animation>
+    <object-name>Bezel</object-name>
+    <object-name>Reset</object-name>
+    <object-name>Face</object-name>
+    <object-name>MinCtr</object-name>
+    <object-name>MaxCtr</object-name>
+    <object-name>gCtr</object-name>
+
+    <object-name>vitre</object-name>
+  </animation>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Grob-G115/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitre</object-name>
+  </effect>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>MinCtr</object-name>
+    <object-name>MaxCtr</object-name>
+    <object-name>gCtr</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.2 </green>
+      <blue>  0.0 </blue>
+      <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>gCtr</object-name>
+    <property>/accelerations/pilot-g</property>
+    <factor>22.5</factor>
+    <center>
+     <x-m> 0 </x-m>
+     <y-m> 0 </y-m>
+     <z-m> 0 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>MinCtr</object-name>
+    <property>/accelerations/pilot-gmin</property>
+    <factor>22.5</factor>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>MaxCtr</object-name>
+    <property>/accelerations/pilot-gmax</property>
+    <factor>22.5</factor>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <visible>true</visible>
+    <object-name>Reset</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>accelerations/pilot-gmax</property>
+        <property>accelerations/pilot-g</property>
+      </binding>          
+      <binding>
+        <command>property-assign</command>
+        <property>accelerations/pilot-gmin</property>
+        <property>accelerations/pilot-g</property>
+      </binding>          
+    </action>
+  </animation>
+                               
+</PropertyList>
