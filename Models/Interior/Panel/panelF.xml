@@ -76,10 +76,10 @@
     </model>
     <model>
         <name>alt-1</name>
-        <path>Aircraft/Instruments-3d/alt/alt.xml</path>
+        <path>Instruments/alt/Altimeter.xml</path>
         <offsets>
             <x-m>-3.323</x-m>
-            <y-m>0.08</y-m>
+            <y-m>0.10</y-m>
             <z-m>0.748</z-m>
         </offsets>
     </model>
@@ -160,15 +160,25 @@
     <!-- Accelerometer -->
 
     <model>
-        <name>G</name>
+        <name>gmeter</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/GMeter/GMeter.xml</path>
         <offsets>
-            <x-m>-3.316</x-m>
+            <x-m>-3.315</x-m>
             <y-m>-0.17</y-m>
             <z-m> 0.65</z-m>
+            <pitch-deg>-5</pitch-deg>
         </offsets>
     </model>
-
+    <model>
+        <name>gmeter_screws</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/GMeter/57mm_screws.xml</path>
+        <offsets>
+            <x-m>-3.315</x-m>
+            <y-m>-0.170</y-m>
+            <z-m> 0.65</z-m>
+            <pitch-deg>-5</pitch-deg>
+        </offsets>
+    </model>
     <!-- COM Radio -->
     <model>
         <name>com</name>
