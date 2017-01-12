@@ -2,7 +2,7 @@
 
 <PropertyList>
 
- <path>panelR.ac</path> 
+ <path>panelR.ac</path>
 
     <!--COCKPIT-->
     <!--REAR INSTRUMENTS-->
@@ -24,6 +24,47 @@
             <pitch-deg>-10</pitch-deg>
         </offsets>
     </model>
+    <!--Altimeter-->
+    <model>
+        <name>alt</name>
+        <path>Instruments/alti-4110/winter-4110.xml</path>
+        <offsets>
+            <x-m>-2.105</x-m>
+            <y-m>-0.17</y-m>
+            <z-m>0.83</z-m>
+            <pitch-deg>-9</pitch-deg>
+        </offsets>
+    </model>
+    <model>
+        <name>alt-1</name>
+        <path>Instruments/alt/Altimeter.xml</path>
+        <offsets>
+            <x-m>-2.103</x-m>
+            <y-m>-0.17</y-m>
+            <z-m>0.83</z-m>
+            <pitch-deg>-10</pitch-deg>
+        </offsets>
+    </model>
+    <animation>
+        <type>select</type>
+        <object-name>alt</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/livery/instruments/alt</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </animation>
+    <animation>
+        <type>select</type>
+        <object-name>alt-1</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/livery/instruments/alt</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
     <!--ASI-->
     <model>
         <name>asi2</name>
@@ -37,8 +78,8 @@
     </model>
     <!--Variometer-->
     <model>
-        <name>vario3</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
+        <name>vario</name>
+        <path>Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
         <offsets>
             <x-m>-2.109</x-m>
             <y-m>-0.08</y-m>
@@ -46,6 +87,36 @@
             <pitch-deg>-9</pitch-deg>
         </offsets>
     </model>
+    <model>
+        <name>vario-1</name>
+        <path>Instruments/vario-knots/winter-vario-5stv5.xml</path>
+        <offsets>
+            <x-m>-2.109</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.87364</z-m>
+            <pitch-deg>-9</pitch-deg>
+        </offsets>
+    </model>
+    <animation>
+        <type>select</type>
+        <object-name>vario</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/livery/instruments/vsi</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </animation>
+    <animation>
+        <type>select</type>
+        <object-name>vario-1</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/livery/instruments/vsi</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
     <!--Compass-->
     <model>
         <name>compass2</name>

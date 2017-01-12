@@ -65,11 +65,11 @@ See AUTHORS.txt for credits
             </key>
             <key>
                 <name>W</name>
-                <desc>Toggle winch hook</desc>
+                <desc>Increase winch speed</desc>
             </key>
             <key>
                 <name>w</name>
-                <desc>Increase winch speed</desc>
+                <desc>Decrease winch speed</desc>
             </key>
             <key>
                 <name>Ctrl-o</name>
@@ -77,11 +77,15 @@ See AUTHORS.txt for credits
             </key>
             <key>
                 <name>o</name>
-                <desc>Lock aerotow hook</desc>
+                <desc>Open aerotow and winch hooks. This releases the cable if one is attached.</desc>
             </key>
             <key>
-                <name>O</name>
-                <desc>Open aerotow hook</desc>
+                <name>W</name>
+                <desc>Increase variometer volume</desc>
+            </key>
+            <key>
+                <name>w</name>
+                <desc>Decrease variometer volume</desc>
             </key>
             <text>
                 === General Help ===
@@ -92,15 +96,15 @@ See AUTHORS.txt for credits
                 === Winch Takeoff Procedure ===
                 1. Retract speed brake (full "throttle")
                 2. Press Ctrl-w to place winch.
-                3. Press 'w' to start winching.
-                4. Keep 'w' pressed until at appropriate speed. Holding 'w' makes the winch run faster, releasing it makes it run slower.
-                5. Keep wings level and take off.
+                3. Press Shift-w to start winching.
+                4. Control the winch speed throughout the entire launch. Shift-w makes the winch run faster, w makes it run slower.
+                5. Keep wings level and gently lift the nose to take off once above the stall speed.
                 6. When at appropriate alitude, press 'o' to release the cable.
                 7. Fly!
 
                 === Aerotow Takeoff Procedure ===
                 1. Retract speed brake (full "throttle")
-                2. Place another aerotwo aircraft in front of your glider (multi-player).
+                2. Place another aerotow aircraft in front of your glider (multi-player).
                 3. Press 'o' to hook to the aerotow.
                 4. Ask the other aircraft to take off :).
                 5. Keep wings level and follow the aircraft until after takeoff..
@@ -114,7 +118,7 @@ See AUTHORS.txt for credits
                 - When pressing "Toggle ground handling", two features are enanled to pull the aircraft around on the ground:
                   1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
                   2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
-                When there is somebody with a followme around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport
+                When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport
                 or even tow you into the air! (also check the Aerotow Settings therefore).
             </text>
         </help>
@@ -364,28 +368,29 @@ See AUTHORS.txt for credits
             </key>
             <key n="87">
                 <name>W</name>
-                <desc>Toggle winch hook</desc>
+                <desc>Increase winch speed</desc>
                 <binding>
                     <command>nasal</command>
                     <script>
-                        var p = "/sim/hitches/winch/open";
-                        setprop(p, !getprop(p));
+                        p = "/sim/hitches/winch/winch/rel-speed";
+                        v = getprop(p) + 0.05;
+                        if (v > 1) v = 1;
+                        setprop(p,  v);
                     </script>
                 </binding>
             </key>
             <key n="119">
                 <name>w</name>
-                <desc>Increase winch speed</desc>
+                <desc>Decrease winch speed</desc>
                 <binding>
                     <command>nasal</command>
-                    <script>interpolate("/sim/hitches/winch/winch/rel-speed", 1.0, 2)</script>
+                    <script>
+                        p = "/sim/hitches/winch/winch/rel-speed";
+                        v = getprop(p) - 0.05;
+                        if (0 > v) v = 0;
+                        setprop(p,  v);
+                    </script>
                 </binding>
-                <mod-up>
-                    <binding>
-                        <command>nasal</command>
-                        <script>interpolate("/sim/hitches/winch/winch/rel-speed", 0.0, 2)</script>
-                    </binding>
-                </mod-up>
             </key>
             <key n="15">
                 <name>Ctrl-o</name>
@@ -460,6 +465,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
+            <file>Aircraft/ASK21/Nasal/GMeter.nas</file>
             <file>Aircraft/ASK21/Nasal/dialogs.nas</file>
             <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
