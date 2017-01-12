@@ -17,7 +17,7 @@
 
   <!-- working for Rembrandt -->
   <effect>
-    <inherits-from>Aircraft/Grob-G115/Models/Effects/Glass/glass</inherits-from>
+    <inherits-from>../../../../Effects/instrument-glass</inherits-from>
     <object-name>vitre</object-name>
   </effect>
   
