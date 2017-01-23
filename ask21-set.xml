@@ -376,6 +376,7 @@ See AUTHORS.txt for credits
                         v = getprop(p) + 0.05;
                         if (v > 1) v = 1;
                         setprop(p,  v);
+                        gui.popupTip(sprintf("Relative winch speed %0.2f", v, 1));
                     </script>
                 </binding>
             </key>
@@ -389,6 +390,7 @@ See AUTHORS.txt for credits
                         v = getprop(p) - 0.05;
                         if (0 > v) v = 0;
                         setprop(p,  v);
+                        gui.popupTip(sprintf("Relative winch speed %0.2f", v, 1));
                     </script>
                 </binding>
             </key>
