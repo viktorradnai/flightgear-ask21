@@ -372,10 +372,12 @@ See AUTHORS.txt for credits
                 <binding>
                     <command>nasal</command>
                     <script>
-                        p = "/sim/hitches/winch/winch/rel-speed";
-                        v = getprop(p) + 0.05;
-                        if (v > 1) v = 1;
-                        setprop(p,  v);
+                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
+                        if (throttle > 1) throttle = 1;
+                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+                        force = getprop("/sim/hitches/winch/force");
+                        gui.popupTip(sprintf("Winch throttle %0.2f, speed %0.2f m/s, force %0.2f", throttle, speed, force));
                     </script>
                 </binding>
             </key>
@@ -385,10 +387,12 @@ See AUTHORS.txt for credits
                 <binding>
                     <command>nasal</command>
                     <script>
-                        p = "/sim/hitches/winch/winch/rel-speed";
-                        v = getprop(p) - 0.05;
-                        if (0 > v) v = 0;
-                        setprop(p,  v);
+                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
+                        if (0 > throttle) throttle = 0;
+                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+                        force = getprop("/sim/hitches/winch/force");
+                        gui.popupTip(sprintf("Winch throttle %0.2f, speed %0.2f m/s, force %0.2f", throttle, speed, force));
                     </script>
                 </binding>
             </key>
