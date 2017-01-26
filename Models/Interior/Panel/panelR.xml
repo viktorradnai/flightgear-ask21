@@ -68,7 +68,7 @@
     <!--ASI-->
     <model>
         <name>asi2</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/winter-asi-ask21-kph/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-2.110</x-m>
             <y-m>0.08</y-m>
