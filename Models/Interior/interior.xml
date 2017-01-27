@@ -320,13 +320,18 @@
     </effect>
     <!--CANOPY-->
     <animation>
-        <type>rotate</type>
+        <name>canopy.int.full</name>
         <object-name>canopy.front.left</object-name>
         <object-name>canopy.front.right</object-name>
         <object-name>canopy.front.int</object-name>
         <object-name>panelF</object-name>
         <object-name>yawstring</object-name>
         <object-name>sliding_window.front</object-name>
+    </animation>
+        
+    <animation>
+        <type>rotate</type>
+        <object-name>canopy.int.full</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
@@ -404,6 +409,84 @@
             <z-m>0.65308</z-m>
         </center>
     </animation>
+    <!--Canopy Front Jettison-->
+  <animation>
+    <type>pick</type>
+    <object-name>canopy.front.int</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+          <condition><and>
+                <greater-than>
+                <property>controls/canopy/lock-jettison</property>
+                <value>0.8</value>
+            </greater-than>
+        </and>
+                    
+                </condition>
+        <command>nasal</command>
+        <script>doors.canopyFJ.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+  
+  
+    <animation>
+        <type>translate</type>
+        <object-name>canopy.int.full</object-name>
+    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.5 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.5 </dep></entry>
+    </interpolation>
+        <axis>
+            <z>1</z>
+        </axis>
+    </animation>
+  
+    <animation>
+        <type>translate</type>
+        <object-name>canopy.int.full</object-name>
+    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.4 </ind><dep> 0.7 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.7 </dep></entry>
+    </interpolation>
+        <axis>
+            <y>1</y>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>canopy.int.full</object-name>
+    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> -50 </dep></entry>
+    </interpolation>
+        <axis>
+            <z>1</z>
+        </axis>
+    </animation>
+  <animation>
+      <type>select</type>
+        <object-name>canopy.int.full</object-name>
+    <condition>
+                    <less-than>
+                    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+                    <value>0.99</value>
+                </less-than>
+            </condition>
+  </animation>
+  
+  <!--Back Canopy-->
     <animation>
         <type>rotate</type>
         <object-name>canopy.back.left</object-name>
