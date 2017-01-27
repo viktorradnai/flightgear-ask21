@@ -6,7 +6,7 @@
     <!--ASI-->
     <model>
         <name>asi</name>
-        <path>Instruments/winter-asi-dg101/80mm_asi_6fms4.xml</path>
+        <path>Instruments/winter-asi-ask21-kph/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
             <y-m>-0.08</y-m>

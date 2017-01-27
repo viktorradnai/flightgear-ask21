@@ -319,7 +319,7 @@ See AUTHORS.txt for credits
                 <is-slave type="bool">false</is-slave>
             </aerotow>
             <winch>
-                <automatic-release-angle-deg type="float">80.0</automatic-release-angle-deg>
+                <automatic-release-angle-deg type="float">90.0</automatic-release-angle-deg>
             </winch>
         </hitches>
     </sim>
@@ -372,12 +372,12 @@ See AUTHORS.txt for credits
                 <binding>
                     <command>nasal</command>
                     <script>
-                        p = "/sim/hitches/winch/winch/rel-speed";
-                        v = getprop(p) + 0.05;
-                        if (v > 1) v = 1;
-                        setprop(p,  v);
-                        speed = v * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-                        gui.popupTip(sprintf("Winch speed %0.0f m/s", speed, 1));
+                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
+                        if (throttle > 1) throttle = 1;
+                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+                        force = getprop("/sim/hitches/winch/force");
+                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
                 </binding>
             </key>
@@ -387,12 +387,12 @@ See AUTHORS.txt for credits
                 <binding>
                     <command>nasal</command>
                     <script>
-                        p = "/sim/hitches/winch/winch/rel-speed";
-                        v = getprop(p) - 0.05;
-                        if (0 > v) v = 0;
-                        setprop(p,  v);
-                        speed = v * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-                        gui.popupTip(sprintf("Winch speed %0.0f m/s", speed, 1));
+                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
+                        if (0 > throttle) throttle = 0;
+                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+                        force = getprop("/sim/hitches/winch/force");
+                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
                 </binding>
             </key>
