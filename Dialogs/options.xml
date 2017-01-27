@@ -78,4 +78,22 @@
         </binding>
     </checkbox>
     <hrule/>
+    <button>
+            <pref-width>140</pref-width>
+            <pref-height>50</pref-height>
+            <legend>Regain canopy - front</legend>
+            <default>1</default>
+            <border>2</border>
+            <binding>
+                <command>property-assign</command>
+                <property>/sim/model/door-positions/canopyFJ/position-norm</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>controls/canopy/lock-jettison</property>
+                <value>0</value>
+            </binding>
+    </button>
+    <hrule/>
 </PropertyList>

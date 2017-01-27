@@ -475,6 +475,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
+            <file>Aircraft/ASK21/Nasal/rain.nas</file>
             <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
         </ask21>
     </nasal>
