@@ -319,7 +319,7 @@ See AUTHORS.txt for credits
                 <is-slave type="bool">false</is-slave>
             </aerotow>
             <winch>
-                <automatic-release-angle-deg type="float">80.0</automatic-release-angle-deg>
+                <automatic-release-angle-deg type="float">90.0</automatic-release-angle-deg>
             </winch>
         </hitches>
     </sim>
@@ -377,7 +377,7 @@ See AUTHORS.txt for credits
                         setprop("/sim/hitches/winch/winch/rel-speed", throttle);
                         speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
                         force = getprop("/sim/hitches/winch/force");
-                        gui.popupTip(sprintf("Winch throttle %0.2f, speed %0.2f m/s, force %0.2f", throttle, speed, force));
+                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
                 </binding>
             </key>
@@ -392,7 +392,7 @@ See AUTHORS.txt for credits
                         setprop("/sim/hitches/winch/winch/rel-speed", throttle);
                         speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
                         force = getprop("/sim/hitches/winch/force");
-                        gui.popupTip(sprintf("Winch throttle %0.2f, speed %0.2f m/s, force %0.2f", throttle, speed, force));
+                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
                 </binding>
             </key>
