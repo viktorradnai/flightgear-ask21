@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!--This models the Winter 6 FMS 4   300 Km/h Art. 6421 see https://www.winter-instruments.de/fahrtmesser---airspeed-indicator -->
 <!-- Airspeed indicator -->
 <PropertyList>
     <path>80mm_asi_6fms4.ac</path>
