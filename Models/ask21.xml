@@ -258,6 +258,10 @@
     <model>
         <path>Aircraft/ASK21/Models/Interior/interior.xml</path>
     </model>
+    <!--IMMAT-->
+    <model>
+        <path>Immat/immat.xml</path>
+    </model>
     <!--GEAR-->
     <!--Compression-->
     <animation>

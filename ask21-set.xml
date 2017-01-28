@@ -24,6 +24,7 @@ See AUTHORS.txt for credits
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
+            <pilots-enabled type="bool">0</pilots-enabled><!--Enable pilot models by default-->
             <door-positions>
                 <frontwin>
                     <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
@@ -34,8 +35,44 @@ See AUTHORS.txt for credits
             </door-positions>
             <livery>
                 <file type="string">D-3981</file>
+            <show-immat type="bool">false</show-immat>
             </livery>
         </model>
+        <multiplay>
+            <chat_display>1</chat_display>
+            <generic> 
+                <int   n="0"  type="int">  0 </int>                                         <!--  0 immat -->
+                <int   n="1"  type="int">  0 </int>                                         <!--  1 immat -->
+                <int   n="2"  type="int">  0 </int>                                         <!--  2 immat -->
+                <int   n="3"  type="int">  0 </int>                                         <!--  3 immat -->
+                <int   n="4"  type="int">  0 </int>                                         <!--  4 immat -->
+                <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
+                <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>                   <!--  6 Show immat -->
+                <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+                <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
+                <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
+                <float n="3"  alias="/systems/electrical/outputs/nav-lights"/>
+                <float n="4"  alias="/systems/electrical/outputs/landing-lights"/>
+                <float n="5"  alias="/systems/electrical/outputs/taxi-lights"/>
+                <float n="6"  alias="/systems/electrical/outputs/strobe-lights"/>
+                <float n="7"  alias="/systems/electrical/volts"/>
+                <float n="10" alias="/gear/gear[0]/wow/"/>
+                <float n="11" alias="/gear/gear[1]/wow/"/>
+                <float n="12" alias="/gear/gear[2]/wow/"/>
+                <float n="13" alias="/gear/gear[0]/rollspeed-ms"/>
+                <float n="14" alias="/gear/gear[1]/rollspeed-ms"/>
+                <float n="15" alias="/gear/gear[2]/rollspeed-ms"/>
+                <!-- For Bombable -->
+                <int   n="10" type="int"/>
+                <string n="9" type="string"/>
+            </generic>
+        </multiplay>
+        <!-- Save some properties when the simulator is shut down -->
+        <aircraft-data>
+            <path>/sim/model/window</path>
+            <path>/sim/model/window-shader</path>
+            <path>/sim/model/pilots-enabled</path>
+        </aircraft-data>
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
         </sound>
@@ -294,6 +331,13 @@ See AUTHORS.txt for credits
                         <script>aircraft.livery.dialog.open()</script>
                     </binding>
                     </item>
+                    <item>
+                    <label>Select Immatriculation</label>
+                    <binding>
+                        <command>nasal</command>
+                        <script>ask21.immat_dialog.open()</script>
+                    </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>
@@ -476,7 +520,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
-            <!-- <file>Aircraft/ASK21/Nasal/immat.nas</file> -->
+             <file>Aircraft/ASK21/Nasal/immat.nas</file> 
         </ask21>
     </nasal>
 </PropertyList>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Custom Callsign 1</name>
+        <texture>blank.png</texture>
+        <texture-wing>blank-wings.png</texture-wing>
+        <instruments>
+            <asi>0</asi>
+            <alt>0</alt>
+            <vsi>0</vsi>
+        </instruments>
+        <show-immat type="bool">true</show-immat>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>
