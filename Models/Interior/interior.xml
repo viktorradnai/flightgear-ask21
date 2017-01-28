@@ -7,9 +7,9 @@
         <name>yawstring</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/wool-thread/wool-thread.xml</path>
         <offsets>
-            <x-m>-3.50</x-m>
+            <x-m>-3.43276</x-m>
             <y-m> 0</y-m>
-            <z-m>0.90</z-m>
+            <z-m>0.87607</z-m>
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
