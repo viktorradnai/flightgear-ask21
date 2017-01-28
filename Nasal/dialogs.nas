@@ -6,4 +6,6 @@ var groundservice_dialog = gui.Dialog.new("sim/gui/dialogs/ASK21/groundservice/d
                                     "Aircraft/ASK21/Dialogs/groundservice.xml");
 var options_dialog = gui.Dialog.new("sim/gui/dialogs/ASK21/options/dialog", 
                                     "Aircraft/ASK21/Dialogs/options.xml");
+var immat_dialog = gui.Dialog.new("sim/gui/dialogs/ASK21/immat/dialog", 
+                                    "Aircraft/ASK21/Dialogs/immat.xml");
 
