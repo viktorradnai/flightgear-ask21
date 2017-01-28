@@ -234,7 +234,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR1"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -272,7 +272,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR2"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -310,7 +310,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR3"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -348,7 +348,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR4"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -386,7 +386,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR5"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -424,7 +424,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatFuselageR6"
-loc -0.0000000 0.7597003 0.0350622
+loc 0.0000000 0.7597003 0.0350622
 crease 30.0
 texture "immat.png"
 texrep 1 1
@@ -462,7 +462,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel1"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
@@ -482,7 +482,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel2"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
@@ -502,7 +502,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel3"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
@@ -522,7 +522,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel4"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
@@ -542,7 +542,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel5"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
@@ -562,7 +562,7 @@ refs 4
 kids 0
 OBJECT poly
 name "ImatPanel6"
-loc -1.6108068 0.5005437 0.0357762
+loc -1.6108068 0.5005437 -0.0633310
 crease 30.0
 texture "immat-white.png"
 texrep 1 1
