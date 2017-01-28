@@ -21,230 +21,119 @@
         <!-- factor 1.852 for 1 knot to 1 km/h -->
         <!-- 0 - 27 knot = 0 - 50 km/h -->
         <!-- 27 - 162 knot = 50 - 300 km/h -->
+        <!--Calibrated for new texture-->
         <interpolation>
             <entry>
                 <ind>  0.0</ind>
                 <dep>  0  </dep>
             </entry>
             <entry>
-                <ind> 16.2</ind>
-                <dep>  1.0</dep>
+                <ind> 21.6</ind> <!--40 km/h-->
+                <dep> 30.15</dep>
             </entry>
             <entry>
-                <ind> 18.9</ind>
-                <dep> 15.4</dep>
+                <ind> 27</ind> <!--50 km/h-->
+                <dep> 59.3</dep>
             </entry>
             <entry>
-                <ind> 21.6</ind>
-                <dep> 30.4</dep>
+                <ind> 32.39</ind> <!--60 km/h-->
+                <dep> 83.4</dep>
             </entry>
             <entry>
-                <ind> 24.3</ind>
-                <dep> 45.2</dep>
+                <ind> 37.8</ind> <!--70 km/h-->
+                <dep> 114.5</dep>
             </entry>
             <entry>
-                <ind> 27.0</ind>
-                <dep> 59.6</dep>
+                <ind> 43.2</ind> <!--80 km/h-->
+                <dep> 140.7</dep>
             </entry>
             <entry>
-                <ind> 29.7</ind>
-                <dep> 73.8</dep>
+                <ind> 48.6</ind> <!--90 km/h-->
+                <dep> 165.8</dep>
             </entry>
             <entry>
-                <ind> 32.4</ind>
-                <dep> 87.7</dep>
+                <ind> 54</ind> <!--100 km/h-->
+                <dep> 189.6</dep>
             </entry>
             <entry>
-                <ind> 35.1</ind>
-                <dep>101.3</dep>
+                <ind> 59.4</ind> <!--110 km/h-->
+                <dep>210</dep>
             </entry>
             <entry>
-                <ind> 37.8</ind>
-                <dep>114.6</dep>
+                <ind> 64.8</ind> <!--120 km/h-->
+                <dep>228</dep>
             </entry>
             <entry>
-                <ind> 40.5</ind>
-                <dep>127.7</dep>
+                <ind> 70.2</ind> <!--130 km/h-->
+                <dep>244</dep>
             </entry>
             <entry>
-                <ind> 43.2</ind>
-                <dep>140.5</dep>
+                <ind> 75.6</ind> <!--140 km/h-->
+                <dep>261</dep>
             </entry>
             <entry>
-                <ind> 45.9</ind>
-                <dep>153.0</dep>
+                <ind> 81</ind> <!--150 km/h-->
+                <dep>280</dep>
             </entry>
             <entry>
-                <ind> 48.6</ind>
-                <dep>165.3</dep>
+                <ind> 86.4</ind> <!--160 km/h-->
+                <dep>294</dep>
             </entry>
             <entry>
-                <ind> 51.3</ind>
-                <dep>177.4</dep>
+                <ind> 91.8</ind> <!--170 km/h-->
+                <dep>314</dep>
             </entry>
             <entry>
-                <ind> 54.0</ind>
-                <dep>189.2</dep>
+                <ind> 97.2</ind> <!--180 km/h-->
+                <dep>331</dep>
             </entry>
             <entry>
-                <ind> 56.7</ind>
-                <dep>200.8</dep>
+                <ind> 102.6</ind> <!--190 km/h-->
+                <dep>347</dep>
             </entry>
             <entry>
-                <ind> 59.4</ind>
-                <dep>212.1</dep>
+                <ind> 108</ind> <!--200 km/h-->
+                <dep>363</dep>
             </entry>
             <entry>
-                <ind> 62.1</ind>
-                <dep>223.2</dep>
+                <ind> 113.4</ind> <!--210 km/h-->
+                <dep>378</dep>
             </entry>
             <entry>
-                <ind> 64.8</ind>
-                <dep>234.1</dep>
+                <ind> 118.8</ind> <!--220 km/h-->
+                <dep>392</dep>
             </entry>
             <entry>
-                <ind> 67.5</ind>
-                <dep>244.8</dep>
+                <ind> 124.2</ind> <!--230 km/h-->
+                <dep>410</dep>
             </entry>
             <entry>
-                <ind> 70.2</ind>
-                <dep>255.3</dep>
+                <ind> 129.6</ind> <!--240 km/h-->
+                <dep>425</dep>
             </entry>
             <entry>
-                <ind> 72.9</ind>
-                <dep>265.5</dep>
+                <ind> 135</ind> <!--250 km/h-->
+                <dep>441</dep>
             </entry>
             <entry>
-                <ind> 75.6</ind>
-                <dep>275.6</dep>
+                <ind> 140.4</ind> <!--260 km/h-->
+                <dep>460</dep>
             </entry>
             <entry>
-                <ind> 78.3</ind>
-                <dep>285.4</dep>
+                <ind> 145.8</ind> <!--270 km/h-->
+                <dep>475</dep>
             </entry>
             <entry>
-                <ind> 81.0</ind>
-                <dep>295.1</dep>
+                <ind> 151.2</ind> <!--280 km/h-->
+                <dep>488</dep>
             </entry>
             <entry>
-                <ind> 83.7</ind>
-                <dep>304.5</dep>
+                <ind> 156.6</ind> <!--290 km/h-->
+                <dep>500</dep>
             </entry>
             <entry>
-                <ind> 86.4</ind>
-                <dep>313.8</dep>
-            </entry>
-            <entry>
-                <ind> 89.1</ind>
-                <dep>322.9</dep>
-            </entry>
-            <entry>
-                <ind> 91.8</ind>
-                <dep>331.8</dep>
-            </entry>
-            <entry>
-                <ind> 94.5</ind>
-                <dep>340.5</dep>
-            </entry>
-            <entry>
-                <ind> 97.2</ind>
-                <dep>349.0</dep>
-            </entry>
-            <entry>
-                <ind> 99.9</ind>
-                <dep>357.4</dep>
-            </entry>
-            <entry>
-                <ind>102.6</ind>
-                <dep>365.6</dep>
-            </entry>
-            <entry>
-                <ind>105.3</ind>
-                <dep>373.7</dep>
-            </entry>
-            <entry>
-                <ind>108.0</ind>
-                <dep>381.6</dep>
-            </entry>
-            <entry>
-                <ind>110.7</ind>
-                <dep>389.3</dep>
-            </entry>
-            <entry>
-                <ind>113.4</ind>
-                <dep>396.9</dep>
-            </entry>
-            <entry>
-                <ind>116.1</ind>
-                <dep>404.3</dep>
-            </entry>
-            <entry>
-                <ind>118.8</ind>
-                <dep>411.6</dep>
-            </entry>
-            <entry>
-                <ind>121.5</ind>
-                <dep>418.7</dep>
-            </entry>
-            <entry>
-                <ind>124.2</ind>
-                <dep>425.7</dep>
-            </entry>
-            <entry>
-                <ind>126.9</ind>
-                <dep>432.5</dep>
-            </entry>
-            <entry>
-                <ind>129.6</ind>
-                <dep>439.2</dep>
-            </entry>
-            <entry>
-                <ind>132.3</ind>
-                <dep>445.8</dep>
-            </entry>
-            <entry>
-                <ind>135.0</ind>
-                <dep>452.2</dep>
-            </entry>
-            <entry>
-                <ind>137.7</ind>
-                <dep>458.6</dep>
-            </entry>
-            <entry>
-                <ind>140.4</ind>
-                <dep>464.8</dep>
-            </entry>
-            <entry>
-                <ind>143.1</ind>
-                <dep>470.8</dep>
-            </entry>
-            <entry>
-                <ind>145.8</ind>
-                <dep>476.8</dep>
-            </entry>
-            <entry>
-                <ind>148.5</ind>
-                <dep>482.6</dep>
-            </entry>
-            <entry>
-                <ind>151.2</ind>
-                <dep>488.3</dep>
-            </entry>
-            <entry>
-                <ind>153.9</ind>
-                <dep>493.9</dep>
-            </entry>
-            <entry>
-                <ind>156.6</ind>
-                <dep>499.4</dep>
-            </entry>
-            <entry>
-                <ind>159.3</ind>
-                <dep>504.7</dep>
-            </entry>
-            <entry>
-                <ind>162.0</ind>
-                <dep>510.0</dep>
+                <ind> 162</ind> <!--300 km/h-->
+                <dep>510</dep>
             </entry>
         </interpolation>
         <center>
