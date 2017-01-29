@@ -237,17 +237,163 @@
             <z>1</z>
         </axis>
     </animation>
+    <!--Trim Handle Front-->
+    <animation>
+        <type>slider</type>
+        <object-name>trim-front</object-name>
+        <visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                        <property>controls/flight/elevator-trim</property>
+            <factor>0.025</factor>
+            <min>-1</min>
+            <max>1</max>
+            </binding>
+        </action>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>trim-front</object-name>
+        <property>/controls/flight/elevator-trim</property>
+        <factor>10</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-3.13763</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.37503</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <!--Trim Handle Rear-->
+    <animation>
+        <type>slider</type>
+        <object-name>trim-rear</object-name>
+        <visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                        <property>controls/flight/elevator-trim</property>
+            <factor>0.025</factor>
+            <min>-1</min>
+            <max>1</max>
+            </binding>
+        </action>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>trim-rear</object-name>
+        <property>/controls/flight/elevator-trim</property>
+        <factor>10</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-2.00266</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.40279</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <!--PushToTalk Front--> 
+    <animation>
+        <type>pick</type>
+        <object-name>ptt-front</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/instrumentation/comm[0]/ptt</property>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/instrumentation/comm[0]/ptt</property>
+                </binding>
+            </mod-up>
+        </action>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>ptt-front</object-name>
+        <property>/instrumentation/comm[0]/ptt</property>
+        <factor>-0.003</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <!--Release Cable - Front-->
+    <animation>
+        <type>pick</type>
+        <object-name>releasecable-front</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+                <binding>
+                    <command>property-assign</command>
+                    <property>/sim/hitches/hook-open</property>
+                    <value type="bool">true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>/sim/hitches/aerotow/open</property>
+                    <value type="bool">true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>/sim/hitches/winch/open</property>
+                    <value type="bool">true</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/sim/hitches/hook-open</property>
+                        <value type="bool">false</value>
+                    </binding>
+                </mod-up>
+        </action>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>releasecable-front</object-name>
+        <property>/sim/hitches/hook-open</property>
+        <factor>0.02</factor>
+        <axis>
+            <x>1</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
     <!--stick front-->
     <animation>
         <type>rotate</type>
         <object-name>stick-front</object-name>
+        <object-name>trim-front</object-name>
+        <object-name>ptt-front</object-name>
         <property>/controls/flight/elevator</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>
-            <x-m>-3.17203</x-m>
+            <x-m>-3.137</x-m>
             <y-m>0.0</y-m>
-            <z-m>0.32481</z-m>
+            <z-m>0.34858</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -258,13 +404,15 @@
     <animation>
         <type>rotate</type>
         <object-name>stick-front</object-name>
+        <object-name>trim-front</object-name>
+        <object-name>ptt-front</object-name>
         <property>/controls/flight/aileron</property>
         <factor>10</factor>
         <offset>0</offset>
         <center>
-            <x-m>-3.17203</x-m>
+            <x-m>-3.137</x-m>
             <y-m>0.0</y-m>
-            <z-m>0.32481</z-m>
+            <z-m>0.34858</z-m>
         </center>
         <axis>
             <x>-1</x>
@@ -275,6 +423,7 @@
     <!--stick rear-->
     <animation>
         <type>rotate</type>
+        <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
         <property>/controls/flight/elevator</property>
         <factor>10</factor>
@@ -292,6 +441,7 @@
     </animation>
     <animation>
         <type>rotate</type>
+        <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
         <property>/controls/flight/aileron</property>
         <factor>10</factor>
@@ -312,11 +462,20 @@
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow</inherits-from>
         <object-name>interiorF</object-name>
         <object-name>seatF</object-name>
+        <object-name>canopy.front.left</object-name>
+        <object-name>canopy.front.right</object-name>
+        <object-name>stick-front</object-name>
+        <object-name>trim-front</object-name>
+        <object-name>releasecable-front</object-name>
     </effect>
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow-back</inherits-from>
         <object-name>interiorR</object-name>
         <object-name>seatR</object-name>
+        <object-name>canopy.back.left</object-name>
+        <object-name>canopy.back.right</object-name>
+        <object-name>stick-rear</object-name>
+        <object-name>trim-rear</object-name>
     </effect>
     <!--CANOPY-->
     <animation>
