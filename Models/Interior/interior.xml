@@ -237,6 +237,40 @@
             <z>1</z>
         </axis>
     </animation>
+    <!--Air Vent Front-->
+    <animation>
+        <type>slider</type>
+        <object-name>airventF</object-name>
+        <visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/cabin/airvent</property>
+            <factor>0.033</factor>
+            <min>0</min>
+            <max>1</max>
+            </binding>
+        </action>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>airventF</object-name>
+        <property>controls/cabin/airvent</property>
+        <factor>-90</factor>
+        <center>
+            <x-m>-3.04436</x-m>
+            <y-m>0.25812</y-m>
+            <z-m>0.61025</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
     <!--Trim Handle Front-->
     <animation>
         <type>slider</type>
