@@ -30,14 +30,11 @@
         <condition>
             <and>
             <property>/sim/model/pilots-enabled</property>
+            <property>/sim/model/copilot-present</property>
             <not-equals>
                 <property>/sim/current-view/view-number</property>
                 <value>11</value>
             </not-equals>
-            <greater-than-equals>
-                <property>/sim/weight[1]/weight-lb</property>
-                <value>80</value>
-            </greater-than-equals>
             </and>
         </condition>
         <object-name>copilot</object-name>
