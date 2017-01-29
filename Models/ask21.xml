@@ -308,7 +308,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front2</object-name>
+        <object-name>canopy.front</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
@@ -339,7 +339,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front2</object-name>
+        <object-name>canopy.front</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -354,7 +354,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front2</object-name>
+        <object-name>canopy.front</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -369,7 +369,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front2</object-name>
+        <object-name>canopy.front</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -384,7 +384,7 @@
   <animation>
         <type>select</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front2</object-name>
+        <object-name>canopy.front</object-name>
         <condition>
             <less-than>
                 <property>sim/model/door-positions/canopyFJ/position-norm</property>
@@ -409,7 +409,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.backframe</object-name>
-        <object-name>canopy.back2</object-name>
+        <object-name>canopy.back</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -437,8 +437,8 @@
     <!--Glass shader-->
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>canopy.front2</object-name>
-        <object-name>canopy.back2</object-name>
+        <object-name>canopy.front</object-name>
+        <object-name>canopy.back</object-name>
     </effect>
     <!--Fuselage shader-->
     <effect>
