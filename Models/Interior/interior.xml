@@ -157,10 +157,11 @@
             <z2-m>0.90689</z2-m>
         </axis>
     </animation>
-    <!--airbrake grip-->
+    <!--Airbrake Handle-->
     <animation>
         <type>slider</type>
-        <object-name>grip.airbrake</object-name>
+        <object-name>airbrake-front</object-name>
+        <object-name>airbrake-rear</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -176,7 +177,7 @@
     </animation>
     <animation>
         <type>translate</type>
-        <object-name>grip.airbrake</object-name>
+        <object-name>airbrake-front</object-name>
         <property>/controls/engines/engine/throttle</property>
         <factor>1</factor>
         <interpolation>
@@ -197,7 +198,7 @@
     </animation>
     <animation>
         <type>translate</type>
-        <object-name>grip.airbrake</object-name>
+        <object-name>airbrake-front</object-name>
         <property>/controls/engines/engine/throttle</property>
         <factor>-1</factor>
         <interpolation>
@@ -218,7 +219,7 @@
     </animation>
     <animation>
         <type>translate</type>
-        <object-name>grip.airbrake</object-name>
+        <object-name>airbrake-front</object-name>
         <property>/controls/engines/engine/throttle</property>
         <factor>1</factor>
         <interpolation>
@@ -235,6 +236,29 @@
             <x>0</x>
             <y>0</y>
             <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>airbrake-rear</object-name>
+        <property>/controls/engines/engine/throttle</property>
+        <interpolation>
+            <entry>
+                <ind>1</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0</ind>
+                <dep>.26</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-2.18095</x1-m>
+            <y1-m>-0.27942</y1-m>
+            <z1-m>0.56584</z1-m>
+            <x2-m>-1.88049</x2-m>
+            <y2-m>-0.27933</y2-m>
+            <z2-m>0.58584</z2-m>
         </axis>
     </animation>
     <!--Air Vent Front-->
@@ -372,10 +396,11 @@
             <z>1</z>
         </axis>
     </animation>
-    <!--Release Cable - Front-->
+    <!--Release Cable-->
     <animation>
         <type>pick</type>
         <object-name>releasecable-front</object-name>
+        <object-name>releasecable-rear</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -407,6 +432,7 @@
     <animation>
         <type>translate</type>
         <object-name>releasecable-front</object-name>
+        <object-name>releasecable-rear</object-name>
         <property>/sim/hitches/hook-open</property>
         <factor>0.02</factor>
         <axis>
@@ -494,17 +520,62 @@
     <!--Rudder pedals-->
     <animation>
         <type>rotate</type>
-        <object-name>rudderpedals</object-name>
+        <object-name>pedalFL</object-name>
         <property>/controls/flight/rudder</property>
-        <factor>15</factor>
+        <factor>30</factor>
         <center>
-            <x-m>-3.70139</x-m>
-            <y-m>0.0</y-m>
+            <x-m>-3.70132</x-m>
+            <z-m>0.37895</z-m>
         </center>
         <axis>
             <x>0</x>
-            <y>0</y>
-            <z>1</z>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>pedalFR</object-name>
+        <property>/controls/flight/rudder</property>
+        <factor>-30</factor>
+        <center>
+            <x-m>-3.70132</x-m>
+            <z-m>0.37895</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>pedalRL</object-name>
+        <property>/controls/flight/rudder</property>
+        <factor>-30</factor>
+        <center>
+            <x-m>-2.48642</x-m>
+            <z-m>0.22835</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>pedalRR</object-name>
+        <property>/controls/flight/rudder</property>
+        <factor>30</factor>
+        <center>
+            <x-m>-2.48642</x-m>
+            <z-m>0.22835</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
         </axis>
     </animation>
     
