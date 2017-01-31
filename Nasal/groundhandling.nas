@@ -6,6 +6,16 @@ setlistener("/sim/signals/fdm-initialized", func {
 });
 
 var update_systems = func {
+    #A short part for the copilot :)
+    if(getprop("/sim/weight[1]/weight-lb")>=80){
+        setprop("/sim/model/copilot-present", 1);
+    }else{
+        setprop("/sim/model/copilot-present", 0);
+    }
+
+
+
+
     # Conditions: glider must be on ground and people can only run up to 15kts (about)
     var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 15;
 
