@@ -26,7 +26,7 @@
     </model>
     <model>
         <name>asi-2</name>
-        <path>Aircraft/Instruments-3d/asi/asi.xml</path>
+        <path>Instruments/winter-asi-ask21-knots/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
             <y-m>-0.08</y-m>
