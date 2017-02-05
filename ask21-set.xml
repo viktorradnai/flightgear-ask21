@@ -7,14 +7,14 @@ See AUTHORS.txt for credits
     <sim>
         <description>Schleicher ASK 21 Glider</description>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai and Benedikt Wolf</author>
-        <status>beta</status>
+        <status>production</status>
         <rating>
-            <FDM type="int">2</FDM>
-            <systems type="int">2</systems>
-            <cockpit type="int">2</cockpit>
-            <model type="int">3</model>
+            <FDM type="int">4</FDM>
+            <systems type="int">4</systems>
+            <cockpit type="int">4</cockpit>
+            <model type="int">4</model>
         </rating>
-        <aircraft-version>20161003</aircraft-version>
+        <aircraft-version>201702</aircraft-version>
         <flight-model archive="y">yasim</flight-model>
         <aero archive="y">ask21</aero>
         <startup>
