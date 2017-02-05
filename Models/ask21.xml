@@ -214,7 +214,7 @@
         <type>translate</type>
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeR</object-name>
-        <property>/surface-positions/speedbrake-pos-norm</property>
+        <property>surface-positions/speedbrake-pos-norm</property>
         <factor>0.07</factor>
         <axis>
             <x>0</x>
@@ -262,6 +262,24 @@
     <model>
         <path>Immat/immat.xml</path>
     </model>
+    <!--SMOKE for aerobatics-->
+    <model>
+        <path>Effects/Smoke/smoke-blue.xml</path>
+        <offsets>
+            <x-m>-1.44544</x-m>
+            <y-m>8.45121</y-m>
+            <z-m>1.37327</z-m>
+        </offsets>
+    </model>
+    <model>
+        <path>Effects/Smoke/smoke-white.xml</path>
+        <offsets>
+            <x-m>-1.44544</x-m>
+            <y-m>-8.45121</y-m>
+            <z-m>1.37327</z-m>
+        </offsets>
+    </model>
+    
     <!--GEAR-->
     <!--Compression-->
     <animation>
