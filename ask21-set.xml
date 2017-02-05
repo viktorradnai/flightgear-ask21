@@ -47,7 +47,8 @@ See AUTHORS.txt for credits
                 <int   n="3"  type="int">  0 </int>                                         <!--  3 immat -->
                 <int   n="4"  type="int">  0 </int>                                         <!--  4 immat -->
                 <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
-                <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>                   <!--  6 Show immat -->
+                <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>            <!--  6 Show immat -->
+                <int   n="7"  type="int"  alias="/controls/smoke"/>                         <!--  7 Smoke -->
                 <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
                 <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
                 <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
@@ -72,6 +73,8 @@ See AUTHORS.txt for credits
             <path>/sim/model/window</path>
             <path>/sim/model/window-shader</path>
             <path>/sim/model/pilots-enabled</path>
+            <path>/sim/weight[0]/weight-lb</path>
+            <path>/sim/weight[1]/weight-lb</path>
         </aircraft-data>
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
@@ -79,13 +82,13 @@ See AUTHORS.txt for credits
         <weight n="0">
             <name type="string">Pilot</name>
             <weight-lb>140</weight-lb>
-            <max-lb>200</max-lb>
+            <max-lb>230</max-lb>
             <min-lb>100</min-lb>
         </weight>
         <weight n="1">
             <name type="string">Passenger/Instructor</name>
             <weight-lb>140</weight-lb>
-            <max-lb>200</max-lb>
+            <max-lb>230</max-lb>
             <min-lb>0</min-lb>
         </weight>
         <weight n="2">
@@ -368,6 +371,22 @@ See AUTHORS.txt for credits
             </winch>
         </hitches>
     </sim>
+    <limits>
+        <max-spoiler-extension-speed>135</max-spoiler-extension-speed>
+        
+        <vne>151.2</vne>
+        
+        <vmo>97.2</vmo>
+        
+        <max-positive-g-vmo>6.5</max-positive-g-vmo>
+        <max-negative-g-vmo>-4.0</max-negative-g-vmo>
+        
+        <max-positive-g-vne>5.3</max-positive-g-vne>
+        <max-negative-g-vne>-3.0</max-negative-g-vne>
+        
+        <mtow-lbs>1322.77</mtow-lbs>
+    
+    </limits>
     <controls>
         <engines>
             <engine>
@@ -386,6 +405,7 @@ See AUTHORS.txt for credits
         <aerotow>
             <find-aircraft type="bool">false</find-aircraft>
         </aerotow>
+        <smoke type="bool">false</smoke>
     </controls>
     <input>
         <keyboard>
@@ -504,6 +524,14 @@ See AUTHORS.txt for credits
                     <min>0</min>
                 </binding>
             </key>
+            <key n="83">
+                <name>S</name>
+                <desc>Start/stop smoke</desc>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>controls/smoke</property>
+                </binding>
+            </key>
         </keyboard>
     </input>
     <nasal>
@@ -511,6 +539,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/door.nas</file>
         </doors>
         <ask21>
+            <file>Aircraft/ASK21/Nasal/limits.nas</file>
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
