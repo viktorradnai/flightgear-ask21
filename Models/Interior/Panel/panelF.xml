@@ -257,7 +257,8 @@
             <binding>
                 <command>set-tooltip</command>
                 <tooltip-id>canopyjettison</tooltip-id>
-                <label>Canopy JETTISON: %2.0f</label>
+                <label>Canopy JETTISON LOCK: %s</label>
+                <mapping>open-close</mapping>
                 <property>controls/canopy/lock-jettison</property>
             </binding>
         </hovered>
