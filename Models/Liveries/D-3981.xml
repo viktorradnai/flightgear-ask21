@@ -12,6 +12,7 @@
             <alt>0</alt>
             <vsi>0</vsi>
         </instruments>
+        <show-immat type="bool">false</show-immat>
       </livery>
     </model>
   </sim>
