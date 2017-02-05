@@ -24,18 +24,18 @@ See AUTHORS.txt for credits
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
-            <pilots-enabled type="bool">0</pilots-enabled><!--Enable pilot models by default-->
+            <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
             <door-positions>
                 <frontwin>
                     <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
                 </frontwin>
-                <reartwin>
+                <rearwin>
                     <position-norm>1</position-norm> <!--see above-->
-                </reartwin>
+                </rearwin>
             </door-positions>
             <livery>
                 <file type="string">D-3981</file>
-            <show-immat type="bool">false</show-immat>
+                <show-immat type="bool">false</show-immat>
             </livery>
         </model>
         <multiplay>
@@ -49,20 +49,18 @@ See AUTHORS.txt for credits
                 <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
                 <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>            <!--  6 Show immat -->
                 <int   n="7"  type="int"  alias="/controls/smoke"/>                         <!--  7 Smoke -->
-                <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
-                <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
-                <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
-                <float n="3"  alias="/systems/electrical/outputs/nav-lights"/>
-                <float n="4"  alias="/systems/electrical/outputs/landing-lights"/>
-                <float n="5"  alias="/systems/electrical/outputs/taxi-lights"/>
-                <float n="6"  alias="/systems/electrical/outputs/strobe-lights"/>
-                <float n="7"  alias="/systems/electrical/volts"/>
-                <float n="10" alias="/gear/gear[0]/wow/"/>
-                <float n="11" alias="/gear/gear[1]/wow/"/>
-                <float n="12" alias="/gear/gear[2]/wow/"/>
-                <float n="13" alias="/gear/gear[0]/rollspeed-ms"/>
-                <float n="14" alias="/gear/gear[1]/rollspeed-ms"/>
-                <float n="15" alias="/gear/gear[2]/rollspeed-ms"/>
+                <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>  
+                <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>  
+                <int   n="11" type="int"  alias="/gear/gear[2]/wow/"/>                      <!-- 10 seems to be reserved for bombable, so we use 11 here -->
+                <float n="0"  alias="/sim/model/door-positions/canopyF/position-norm"/>     <!-- 0 Canopy Front-->
+                <float n="1"  alias="/sim/model/door-positions/canopyFJ/position-norm"/>    <!-- 1 Canopy Front JETTISON-->
+                <float n="2"  alias="/sim/model/door-positions/canopyB/position-norm"/>     <!-- 2 Canopy Rear-->
+                <float n="3"  alias="/sim/model/door-positions/frontwin/position-norm"/>    <!-- 3 Window Front-->
+                <float n="4"  alias="/sim/model/door-positions/rearwin/position-norm"/>     <!-- 4 Window Rear-->
+                <float n="5"  alias="/gear/gear[0]/rollspeed-ms"/>
+                <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
+                <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
+                <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
                 <!-- For Bombable -->
                 <int   n="10" type="int"/>
                 <string n="9" type="string"/>
@@ -372,7 +370,7 @@ See AUTHORS.txt for credits
         </hitches>
     </sim>
     <limits>
-        <max-spoiler-extension-speed>135</max-spoiler-extension-speed>
+        <max-spoiler-extension-speed>151.2</max-spoiler-extension-speed>
         
         <vne>151.2</vne>
         
@@ -524,8 +522,8 @@ See AUTHORS.txt for credits
                     <min>0</min>
                 </binding>
             </key>
-            <key n="83">
-                <name>S</name>
+            <key n="19">
+                <name>Ctrl-s</name>
                 <desc>Start/stop smoke</desc>
                 <binding>
                     <command>property-toggle</command>
