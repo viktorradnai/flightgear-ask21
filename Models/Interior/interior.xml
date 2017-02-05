@@ -552,10 +552,10 @@
         <type>rotate</type>
         <object-name>pedalRL</object-name>
         <property>/controls/flight/rudder</property>
-        <factor>-30</factor>
+        <factor>30</factor>
         <center>
-            <x-m>-2.48642</x-m>
-            <z-m>0.22835</z-m>
+            <x-m>-2.45888</x-m>
+            <z-m>0.24153</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -567,10 +567,10 @@
         <type>rotate</type>
         <object-name>pedalRR</object-name>
         <property>/controls/flight/rudder</property>
-        <factor>30</factor>
+        <factor>-30</factor>
         <center>
-            <x-m>-2.48642</x-m>
-            <z-m>0.22835</z-m>
+            <x-m>-2.45888</x-m>
+            <z-m>0.24153</z-m>
         </center>
         <axis>
             <x>0</x>
