@@ -42,6 +42,15 @@
                 <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>windowF</tooltip-id>
+                <label>Front Window: %3d%% open</label>
+                <mapping>percent</mapping>
+                <property>sim/model/door-positions/frontwin/position-norm</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>translate</type>
@@ -107,6 +116,15 @@
                 <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>windowR</tooltip-id>
+                <label>Rear Window: %3d%% open</label>
+                <mapping>percent</mapping>
+                <property>sim/model/door-positions/rearwin/position-norm</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>translate</type>
@@ -174,6 +192,18 @@
                 <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airbrake</tooltip-id>
+                <label>%s</label>
+                <mapping>nasal</mapping>
+                <property>/controls/engines/engine/throttle</property>
+                <script>
+                    return sprintf("Speedbrake %d%% out", 100-arg[0]*100);
+                </script>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>translate</type>
@@ -278,6 +308,16 @@
             <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Airvent: %3d%% open</label>
+                <measure-text>Airvent: 100% open</measure-text>
+                <tooltip-id>airventF</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/cabin/airvent</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>rotate</type>
@@ -312,6 +352,16 @@
             <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Elevator Trim: %3d%%</label>
+                <measure-text>Elevator Trim: 100%</measure-text>
+                <tooltip-id>trim-front</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/flight/elevator-trim</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>rotate</type>
@@ -347,6 +397,16 @@
             <max>1</max>
             </binding>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Elevator Trim: %3d%%</label>
+                <measure-text>Elevator Trim: 100%</measure-text>
+                <tooltip-id>trim-rear</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/flight/elevator-trim</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>rotate</type>
@@ -384,6 +444,15 @@
                 </binding>
             </mod-up>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ptt-front</tooltip-id>
+                <label>Push to talk: %s</label>
+                <mapping>on-off</mapping>
+                <property>/instrumentation/comm[0]/ptt</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>translate</type>
@@ -428,6 +497,15 @@
                     </binding>
                 </mod-up>
         </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>hooks</tooltip-id>
+                <label>Hooks: %s</label>
+                <mapping>open-close</mapping>
+                <property>/sim/hitches/hook-open</property>
+            </binding>
+        </hovered>
     </animation>
     <animation>
         <type>translate</type>
@@ -605,14 +683,28 @@
         <object-name>canopy.front.left</object-name>
         <object-name>canopy.front.right</object-name>
         <object-name>canopy.front.int</object-name>
-        <object-name>panelF</object-name>
         <object-name>yawstring</object-name>
         <object-name>sliding_window.front</object-name>
     </animation>
-        
+    
+    <animation>
+        <type>pick</type>
+        <object-name>canopy.front.left</object-name>
+        <object-name>canopy.front.right</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>doors.canopyF.toggle();</script>
+            </binding>
+        </action>
+    </animation>    
     <animation>
         <type>rotate</type>
         <object-name>canopy.int.full</object-name>
+        <object-name>panelF</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
@@ -699,14 +791,12 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
-          <condition><and>
-                <greater-than>
+        <condition>
+            <greater-than>
                 <property>controls/canopy/lock-jettison</property>
                 <value>0.8</value>
             </greater-than>
-        </and>
-                    
-                </condition>
+        </condition>
         <command>nasal</command>
         <script>doors.canopyFJ.toggle();</script>
       </binding>
@@ -768,6 +858,20 @@
   </animation>
   
   <!--Back Canopy-->
+    <animation>
+        <type>pick</type>
+        <object-name>canopy.back.left</object-name>
+        <object-name>canopy.back.right</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>doors.canopyB.toggle();</script>
+            </binding>
+        </action>
+    </animation> 
     <animation>
         <type>rotate</type>
         <object-name>canopy.back.left</object-name>
