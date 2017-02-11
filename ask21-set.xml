@@ -36,6 +36,11 @@ See AUTHORS.txt for credits
             <livery>
                 <file type="string">D-3981</file>
                 <show-immat type="bool">false</show-immat>
+                <instruments>
+                    <asi>0</asi>
+                    <alt>0</alt>
+                    <vsi>0</vsi>
+                </instruments>
             </livery>
         </model>
         <multiplay>
