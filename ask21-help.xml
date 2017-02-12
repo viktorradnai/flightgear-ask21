@@ -1,0 +1,84 @@
+<PropertyList>
+    <title>ASK 21</title>
+    <key>
+        <name>Ctrl-w</name>
+        <desc>Place winch in front of aircraft</desc>
+    </key>
+    <key>
+        <name>W</name>
+        <desc>Increase winch speed</desc>
+    </key>
+    <key>
+        <name>w</name>
+        <desc>Decrease winch speed</desc>
+    </key>
+    <key>
+        <name>Ctrl-o</name>
+        <desc>Find aircraft for aerotow</desc>
+    </key>
+    <key>
+        <name>o</name>
+        <desc>Open aerotow and winch hooks. This releases the cable if one is attached.</desc>
+    </key>
+    <key>
+        <name>S</name>
+        <desc>Increase variometer volume</desc>
+    </key>
+    <key>
+        <name>s</name>
+        <desc>Decrease variometer volume</desc>
+    </key>
+    <text>
+    === General Help ===
+
+     - "Throttle" axis (or throttle keys) are connected to the glider's airbrake.
+     - The wheel brake is activated progressively by applying more than 85% airbrake.
+     - You can take off using a winch or use another aircraft as an aerotow.
+     - The winch / aerotow cable can be released with the "o" key or using button 1 of the (first) joystick.
+     - NOTE: The Walker uses e (E) and d(D) for walking instead of w and s.
+
+    === Winch Takeoff Procedure ===
+
+     - Retract speed brake (full throttle).
+     - Set trim just forward of the middle position.
+     - Press 'Ctrl-w' to place winch.
+     - Press 'Shift-w' to start winch and take up cable slack.
+     - When the glider starts moving, press 'Shift-w' several times to accelerate the winch
+       (up to full speed).
+     - Keep the wings level with the aileron and the glider going in a straight line with the rudder.
+       Keep elevator centered, the glider will lift off and rotate by automatically as long as the trim is set
+       correctly.
+       Once the established in the climb, you can pull back on the stick slightly to increase climb rate.
+     - Control the winch speed throughout the entire launch. 'Shift-w' makes the winch run faster,
+       'w' makes it run slower.
+       Try to maintain constant force on the cable, you will need to gradually slow down the winch
+       as glider climbs.
+     - When the glider reaches the top of the launch, close winch throttle to 5% and press 'o'
+       to release the cable.
+
+    === Aerotow Takeoff Procedure ===
+
+      - Retract speed brake (full throttle)
+      - Place another aerotow aircraft in front of your glider (multi-player).
+      - Press 'Ctrl-o' to hook to the aerotow.
+      - Ask the other aircraft to take off :).
+      - Keep wings level and follow the aircraft until after takeoff.
+      - The glider should lift off before the tug, stay close to the ground until the tug starts climbing.
+      - When at appropriate alitude, press 'o' to release the cable.
+
+    === Ground handling ===
+
+    This aircraft has some features to help with ground handling:
+
+      - When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axis as if
+        someone was holding your wing.
+      - When pressing "Toggle ground handling", two features are enanled to pull the aircraft around
+        on the ground:
+        1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
+        2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
+
+    When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o
+    (release: Ctrl+shift+o) so he can carry you around the airport
+    or even tow you into the air! (also check the Aerotow Settings therefore).
+    </text>
+</PropertyList>
