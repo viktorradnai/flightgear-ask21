@@ -5,7 +5,7 @@
     <approach speed="35" aoa="4" glide-angle="8.2">
     </approach>
     <!-- Cruise configuration -->
-    <cruise speed="50" alt="5000" glide-angle="6.5">
+    <cruise speed="50" alt="5000" glide-angle="6.0">
     </cruise>
     <!-- pilot's eyepoint -->
     <cockpit x="2.5396" y="0" z="0.94214"/>
