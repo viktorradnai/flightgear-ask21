@@ -130,7 +130,7 @@
                 <factor>0.05</factor>
             </volume>
         </wheelbrake>
-
+        <!--Wind outside-->
         <wind>
             <name>wind</name>
             <mode>looped</mode>
@@ -145,16 +145,124 @@
             </volume>
             <volume>
                 <property>velocities/airspeed-kt</property>
-                <factor>0.002</factor>
-                <min>0.03</min>
-                <max>0.5</max>
-                <offset>-0.02</offset>
+                <factor>0.005</factor>
+                <min>0.0</min>
+                <max>1</max>
+                <offset>-0.2</offset>
             </volume>
             <pitch>
                 <property>velocities/airspeed-kt</property>
                 <factor>0.01</factor>
                 <offset>1</offset>
             </pitch>
+        </wind>
+        <!--Wind in cockpit - front-->
+        <wind>
+            <name>wind front</name>
+            <mode>looped</mode>
+            <path>Sounds/wind.wav</path>
+            <property>velocities/airspeed-kt</property>
+            <volume>
+                <property>position/altitude-ft</property>
+                <factor>-0.000015</factor>
+                <offset>1.0</offset>
+                <min>0.1</min>
+                <max>1.0</max>
+            </volume>
+            <volume>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.01</factor>
+                <min>0.0</min>
+                <max>5</max>
+                <offset>-0.2</offset>
+            </volume>
+            <volume>
+                <property>sim/model/door-positions/frontwin/position-norm</property>
+                <interpolation>
+                    <entry>
+                            <ind>0.0</ind>
+                            <dep>0.25</dep>
+                    </entry>
+                    <entry>
+                            <ind>0.1</ind>
+                            <dep>0.65</dep>
+                    </entry>
+                    <entry>
+                            <ind>1</ind>
+                            <dep>0.75</dep>
+                    </entry>
+                </interpolation><!--
+                <factor>0.95</factor>
+                <min>0.05</min>
+                <max>1</max>
+                <offset>0.05</offset>-->
+            </volume>
+            <pitch>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.01</factor>
+                <offset>1.1</offset>
+            </pitch>
+            <position>
+                <x>-2.8</x>
+                <y>0.0</y>
+                <z>0.8</z>
+            </position>
+            <reference-dist>0.5</reference-dist>
+            <max-dist>2</max-dist>
+        </wind>
+        <!--Wind in cockpit - rear-->
+        <wind>
+            <name>wind rear</name>
+            <mode>looped</mode>
+            <path>Sounds/wind.wav</path>
+            <property>velocities/airspeed-kt</property>
+            <volume>
+                <property>position/altitude-ft</property>
+                <factor>-0.000015</factor>
+                <offset>1.0</offset>
+                <min>0.1</min>
+                <max>1.0</max>
+            </volume>
+            <volume>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.01</factor>
+                <min>0.03</min>
+                <max>5</max>
+                <offset>-0.2</offset>
+            </volume>
+            <volume>
+                <property>sim/model/door-positions/rearwin/position-norm</property>
+                <interpolation>
+                    <entry>
+                            <ind>0.0</ind>
+                            <dep>0.25</dep>
+                    </entry>
+                    <entry>
+                            <ind>0.1</ind>
+                            <dep>0.65</dep>
+                    </entry>
+                    <entry>
+                            <ind>1</ind>
+                            <dep>0.75</dep>
+                    </entry>
+                </interpolation><!--
+                <factor>0.95</factor>
+                <min>0.05</min>
+                <max>1</max>
+                <offset>0.05</offset>-->
+            </volume>
+            <pitch>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.01</factor>
+                <offset>1.05</offset>
+            </pitch>
+            <position>
+                <x>-2</x>
+                <y>0.0</y>
+                <z>0.9</z>
+            </position>
+            <reference-dist>0.5</reference-dist>
+            <max-dist>2</max-dist>
         </wind>
 
         <airbrakes>
@@ -308,9 +416,9 @@
         </winch_tow>
 
         <whistle>
-            <name>whistle</name>
+            <name>low-speed-howl</name>
             <mode>looped</mode>
-            <path>Aircraft/ASK21/Sounds/whoosh-loop2.wav</path>
+            <path>Aircraft/ASK21/Sounds/howl.wav</path>
             <condition>
                 <and>
                     <greater-than>
@@ -338,7 +446,7 @@
             </pitch>
             <volume>
                 <property>orientation/alpha-deg</property>
-                <factor>0.03</factor>
+                <factor>0.02</factor>
                 <offset>-0.02</offset>
                 <max>0.1</max>
             </volume>
