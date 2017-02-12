@@ -45,7 +45,7 @@ See AUTHORS.txt for credits
         </model>
         <multiplay>
             <chat_display>1</chat_display>
-            <generic> 
+            <generic>
                 <int   n="0"  type="int">  0 </int>                                         <!--  0 immat -->
                 <int   n="1"  type="int">  0 </int>                                         <!--  1 immat -->
                 <int   n="2"  type="int">  0 </int>                                         <!--  2 immat -->
@@ -100,71 +100,7 @@ See AUTHORS.txt for credits
             <max-lb>200</max-lb>
             <min-lb>0</min-lb>
         </weight>
-        <help>
-            <title>ASK 21</title>
-            <key>
-                <name>Ctrl-w</name>
-                <desc>Place winch in front of aircraft</desc>
-            </key>
-            <key>
-                <name>W</name>
-                <desc>Increase winch speed</desc>
-            </key>
-            <key>
-                <name>w</name>
-                <desc>Decrease winch speed</desc>
-            </key>
-            <key>
-                <name>Ctrl-o</name>
-                <desc>Find aircraft for aerotow</desc>
-            </key>
-            <key>
-                <name>o</name>
-                <desc>Open aerotow and winch hooks. This releases the cable if one is attached.</desc>
-            </key>
-            <key>
-                <name>W</name>
-                <desc>Increase variometer volume</desc>
-            </key>
-            <key>
-                <name>w</name>
-                <desc>Decrease variometer volume</desc>
-            </key>
-            <text>
-                === General Help ===
-                - "Throttle" axis (or throttle keys) are connected to the glider's airbrake.
-                - You can take off using a winch or use another aircraft as an aerotow.
-                - The Walker uses e (E) and d(D) for walking instead of w and s!!!!
-
-                === Winch Takeoff Procedure ===
-                1. Retract speed brake (full "throttle")
-                2. Press Ctrl-w to place winch.
-                3. Press Shift-w to start winching.
-                4. Control the winch speed throughout the entire launch. Shift-w makes the winch run faster, w makes it run slower.
-                5. Keep wings level and gently lift the nose to take off once above the stall speed.
-                6. When at appropriate alitude, press 'o' to release the cable.
-                7. Fly!
-
-                === Aerotow Takeoff Procedure ===
-                1. Retract speed brake (full "throttle")
-                2. Place another aerotow aircraft in front of your glider (multi-player).
-                3. Press 'o' to hook to the aerotow.
-                4. Ask the other aircraft to take off :).
-                5. Keep wings level and follow the aircraft until after takeoff..
-                6. When at appropriate alitude, press 'o' to release the cable.
-                7. Fly!
-
-                === Ground handling ===
-                This aircraft has some features to help with ground handling:
-
-                - When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axes as if someone was holding your wing.
-                - When pressing "Toggle ground handling", two features are enanled to pull the aircraft around on the ground:
-                  1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
-                  2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
-                When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o (release: Ctrl+shift+o) so he can carry you around the airport
-                or even tow you into the air! (also check the Aerotow Settings therefore).
-            </text>
-        </help>
+        <help include="ask21-help.xml"/>
         <!-- hide the 2D panel -->
         <panel>
             <visibility archive="y">false</visibility>
@@ -553,7 +489,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
-             <file>Aircraft/ASK21/Nasal/immat.nas</file> 
+             <file>Aircraft/ASK21/Nasal/immat.nas</file>
         </ask21>
     </nasal>
 </PropertyList>
