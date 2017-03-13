@@ -575,6 +575,7 @@
         <type>rotate</type>
         <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
+        <object-name>ptt-rear</object-name>
         <property>/controls/flight/elevator</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
@@ -593,6 +594,7 @@
         <type>rotate</type>
         <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
+        <object-name>ptt-rear</object-name>
         <property>/controls/flight/aileron</property>
         <factor>10</factor>
         <offset>0</offset>
