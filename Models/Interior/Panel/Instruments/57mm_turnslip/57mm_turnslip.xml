@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <PropertyList>
     <path>57mm_turnslip.ac</path>
-    <texture-path>Textures</texture-path>
     <animation>
         <type>material</type>
         <object-name>scala</object-name>

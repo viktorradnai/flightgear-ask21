@@ -201,16 +201,6 @@
             <pitch-deg>-5</pitch-deg>
         </offsets>
     </model>
-    <model>
-        <name>compass_screws</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_compass/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-3.316</x-m>
-            <y-m>0.17</y-m>
-            <z-m>0.65</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>
     <!--57mm turnslip-->
     <model>
         <name>turnslip</name>
