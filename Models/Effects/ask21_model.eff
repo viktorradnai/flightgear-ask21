@@ -3,10 +3,12 @@
     <name>ask21_model</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
     <parameters>
-        <ambient-correction type="float">0</ambient-correction>
-        <reflection-correction type="float">-1</reflection-correction>
+        <ambient-correction type="float">0.25</ambient-correction>
+        <reflection-correction type="float">0.5</reflection-correction>
         <reflection-fresnel type="float">0.5</reflection-fresnel>
-        <reflection-noise type="float">0.05</reflection-noise>
+        <reflection-fresnel-factor type="float">1</reflection-fresnel-factor>
+        <reflection-type type="int">2</reflection-type>
+        <reflection-noise type="float">0.2</reflection-noise>
         <reflection-dynamic type="int">1</reflection-dynamic>
     </parameters>
 </PropertyList>
