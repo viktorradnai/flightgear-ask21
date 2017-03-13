@@ -6,7 +6,7 @@
       <livery>
         <name type="string">D-5721 (LFV Mainz)</name>
         <texture>Liveries/D-5721.png</texture>
-        <texture-wing>blank-wings.png</texture-wing>
+        <texture-wing>Liveries/D-5721-wings.png</texture-wing>
         <instruments>
             <asi>0</asi>
             <alt>0</alt>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">D-5394</name>
+        <texture>Liveries/D-5394.png</texture>
+        <texture-wing>Liveries/D-5394-wings.png</texture-wing>
+        <instruments>
+            <asi>0</asi>
+            <alt>0</alt>
+            <vsi>0</vsi>
+        </instruments>
+        <show-immat type="bool">false</show-immat>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>
