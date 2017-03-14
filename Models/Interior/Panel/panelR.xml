@@ -15,15 +15,6 @@
             <pitch-deg>-10</pitch-deg>
         </offsets>
     </model>
-    <model>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-2.115</x-m>
-            <y-m>0</y-m>
-            <z-m>0.888</z-m>
-            <pitch-deg>-10</pitch-deg>
-        </offsets>
-    </model>
     <!--Altimeter-->
     <model>
         <name>alt</name>
@@ -128,16 +119,6 @@
             <pitch-deg>-9</pitch-deg>
         </offsets>
     </model>
-    <model>
-        <name>compass2screws</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_compass/57mm_screws.xml</path>
-        <offsets>
-            <x-m>-2.107</x-m>
-            <y-m>0.18</y-m>
-            <z-m>0.84</z-m>
-            <pitch-deg>-9</pitch-deg>
-        </offsets>
-    </model>
     <!--Cockpit Shader-->
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow-back</inherits-from>
@@ -146,6 +127,5 @@
         <object-name>asi2</object-name>
         <object-name>vario3</object-name>
         <object-name>compass2</object-name>
-        <object-name>compass2screws</object-name>
     </effect>
 </PropertyList>
