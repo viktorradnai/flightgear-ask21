@@ -254,6 +254,10 @@
             <z>0</z>
         </axis>
     </animation>
+    <!--SHADOW-->
+    <model>
+        <path>Aircraft/ASK21/Models/Effects/shadow.xml</path>
+    </model>
     <!--COCKPIT-->
     <model>
         <path>Aircraft/ASK21/Models/Interior/interior.xml</path>
