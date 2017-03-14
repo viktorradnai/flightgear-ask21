@@ -45,6 +45,17 @@ See AUTHORS.txt for credits
                     <vsi>0</vsi>
                 </instruments>
             </livery>
+            <rendering>
+                <reflection-enabled type="int">1</reflection-enabled>
+                <reflection-type type="int">2</reflection-type>
+                <reflection-dynamic type="int">1</reflection-dynamic>
+                <reflection-correction type="float">0.3</reflection-correction>
+                <reflection-fresnel type="float">0.5</reflection-fresnel>
+                <reflection-fresnel-factor type="float">1.0</reflection-fresnel-factor>
+                <reflection-rainbow type="float">0.1</reflection-rainbow>
+                <reflection-noise type="float">0.05</reflection-noise>
+                <ambient-correction type="float">0.1</ambient-correction>
+            </rendering>
         </model>
         <multiplay>
             <chat_display>1</chat_display>
@@ -57,8 +68,8 @@ See AUTHORS.txt for credits
                 <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
                 <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>            <!--  6 Show immat -->
                 <int   n="7"  type="int"  alias="/controls/smoke"/>                         <!--  7 Smoke -->
-                <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>  
-                <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>  
+                <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>
+                <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>
                 <int   n="11" type="int"  alias="/gear/gear[2]/wow/"/>                      <!-- 10 seems to be reserved for bombable, so we use 11 here -->
                 <float n="0"  alias="/sim/model/door-positions/canopyF/position-norm"/>     <!-- 0 Canopy Front-->
                 <float n="1"  alias="/sim/model/door-positions/canopyFJ/position-norm"/>    <!-- 1 Canopy Front JETTISON-->
@@ -315,19 +326,19 @@ See AUTHORS.txt for credits
     </sim>
     <limits>
         <max-spoiler-extension-speed>151.2</max-spoiler-extension-speed>
-        
+
         <vne>151.2</vne>
-        
+
         <vmo>97.2</vmo>
-        
+
         <max-positive-g-vmo>6.5</max-positive-g-vmo>
         <max-negative-g-vmo>-4.0</max-negative-g-vmo>
-        
+
         <max-positive-g-vne>5.3</max-positive-g-vne>
         <max-negative-g-vne>-3.0</max-negative-g-vne>
-        
+
         <mtow-lbs>1322.77</mtow-lbs>
-    
+
     </limits>
     <controls>
         <engines>
