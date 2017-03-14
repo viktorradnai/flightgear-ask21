@@ -38,9 +38,23 @@
         <inherits-from>Effects/shadow-vol</inherits-from>
         <object-name>shadow</object-name>
     </effect>
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>shadow</object-name>
+    </effect>
     <animation>
         <type>noshadow</type>
         <object-name>shadow</object-name>
+    </animation>
+    
+    
+    <animation>
+        <type>material</type>
+        <object-name>shadow</object-name>
+        <transparency>
+            <factor>1</factor>
+            <offset>-0.4</offset>
+        </transparency>
     </animation>
 
     <!-- Pitch -->
