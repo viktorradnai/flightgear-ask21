@@ -3,6 +3,21 @@
 
   <path>Altimeter.ac</path>
 
+    <animation>
+        <type>material</type>
+        <object-name>Face</object-name>
+        <object-name>subscale</object-name>
+    <object-name>Needle100</object-name>
+    <object-name>Needle1000</object-name>
+    <object-name>Needle10000</object-name>
+        <emission>
+            <red>0.28</red>
+            <green>0.14</green>
+            <blue>0.07</blue>
+            <factor-prop>sim/model/instruments-light</factor-prop>
+        </emission>
+    </animation>
+    
   <animation>
     <type>noshadow</type>
   </animation>
