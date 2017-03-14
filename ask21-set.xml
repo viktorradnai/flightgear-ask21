@@ -28,6 +28,7 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
+            <instruments-light type="int">1</instruments-light><!--Enable fake instrument lights by default-->
             <door-positions>
                 <frontwin>
                     <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
@@ -90,6 +91,7 @@ See AUTHORS.txt for credits
             <path>/sim/model/window</path>
             <path>/sim/model/window-shader</path>
             <path>/sim/model/pilots-enabled</path>
+            <path>/sim/model/instruments-light</path>
             <path>/sim/weight[0]/weight-lb</path>
             <path>/sim/weight[1]/weight-lb</path>
         </aircraft-data>
