@@ -78,6 +78,34 @@
         </binding>
     </checkbox>
     <hrule/>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Enable shadow</label>
+            <property>/sim/model/shadow</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/sim/model/shadow</property>
+        </binding>
+    </checkbox>
+    <hrule/>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Enable fake instrument light</label>
+        <property>/sim/model/instruments-light</property>
+        <live>true</live>
+        <binding>
+            <command>property-cycle</command>
+            <property>/sim/model/instruments-light</property>
+            <value type="int">0</value>
+            <value type="int">1</value>
+        </binding>
+    </checkbox>
+    <hrule/>
     <button>
             <pref-width>140</pref-width>
             <pref-height>50</pref-height>

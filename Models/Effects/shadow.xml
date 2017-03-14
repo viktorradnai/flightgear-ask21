@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- (c) 2015, wlbragg. http://forum.flightgear.org/viewtopic.php?f=4&t=25157&start=75#p232085
+    Under the GPL.
+
+    Copied from the Boeing 737-100
+    http://helijah.free.fr/flightgear/hangar.htm
+    embaranger@free.fr
+    Fix required:
+    when the aircraft is flying at a high/low pitch or is rolling over far,
+    the shadow seems to disappear into the ground.
+-->
+
+<PropertyList>
+
+    <path>shadow.ac</path>
+    <nopreview/>
+
+    <offsets>
+        <pitch-deg>3.5</pitch-deg>
+        <z-m>-0.02</z-m>
+    </offsets>
+
+    <animation>
+        <object-name>shadow</object-name>
+        <type>select</type>
+        <condition>
+            <and>
+                <not>
+                    <property>/sim/rendering/rembrandt/enabled</property>
+                </not>
+                <property>/sim/rendering/shaders/skydome</property>
+                <property>sim/model/shadow</property>
+            </and>
+        </condition>
+    </animation>
+    <effect>
+        <inherits-from>Effects/shadow-vol</inherits-from>
+        <object-name>shadow</object-name>
+    </effect>
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>shadow</object-name>
+    </effect>
+    <animation>
+        <type>noshadow</type>
+        <object-name>shadow</object-name>
+    </animation>
+    
+    
+    <animation>
+        <type>material</type>
+        <object-name>shadow</object-name>
+        <transparency>
+            <factor>1</factor>
+            <offset>-0.4</offset>
+        </transparency>
+    </animation>
+
+    <!-- Pitch -->
+    <animation>
+        <type>rotate</type>
+        <object-name>shadow</object-name>
+        <property>/orientation/pitch-deg</property>
+        <factor>-1.0</factor>
+        <offset-deg>-2.5</offset-deg>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <!-- Roll -->
+    <animation>
+        <type>rotate</type>
+        <object-name>shadow</object-name>
+        <property>/orientation/roll-deg</property>
+        <factor>1.0</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+     <animation>
+  <type>translate</type>
+  <offset-m>-1.6</offset-m>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+</PropertyList>

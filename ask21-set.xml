@@ -17,6 +17,12 @@ See AUTHORS.txt for credits
             <cockpit type="int">4</cockpit>
             <model type="int">4</model>
         </rating>
+        <systems>
+            <property-rule n="101">
+                <name>gear_agl-m</name>
+                <path>Aircraft/ASK21/shadow-system.xml</path>
+            </property-rule>
+        </systems>
         <aircraft-version>201702</aircraft-version>
         <flight-model archive="y">yasim</flight-model>
         <aero archive="y">ask21</aero>
@@ -28,6 +34,8 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
+            <instruments-light type="int">0</instruments-light><!--Enable fake instrument lights by default-->
+            <shadow type="bool">1</shadow>
             <door-positions>
                 <frontwin>
                     <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
@@ -45,6 +53,17 @@ See AUTHORS.txt for credits
                     <vsi>0</vsi>
                 </instruments>
             </livery>
+            <rendering>
+                <reflection-enabled type="int">1</reflection-enabled>
+                <reflection-type type="int">2</reflection-type>
+                <reflection-dynamic type="int">1</reflection-dynamic>
+                <reflection-correction type="float">0.3</reflection-correction>
+                <reflection-fresnel type="float">0.5</reflection-fresnel>
+                <reflection-fresnel-factor type="float">1.0</reflection-fresnel-factor>
+                <reflection-rainbow type="float">0.1</reflection-rainbow>
+                <reflection-noise type="float">0.05</reflection-noise>
+                <ambient-correction type="float">0.15</ambient-correction>
+            </rendering>
         </model>
         <multiplay>
             <chat_display>1</chat_display>
@@ -57,8 +76,8 @@ See AUTHORS.txt for credits
                 <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
                 <int   n="6"  type="int"  alias="/sim/model/livery/show-immat"/>            <!--  6 Show immat -->
                 <int   n="7"  type="int"  alias="/controls/smoke"/>                         <!--  7 Smoke -->
-                <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>  
-                <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>  
+                <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>
+                <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>
                 <int   n="11" type="int"  alias="/gear/gear[2]/wow/"/>                      <!-- 10 seems to be reserved for bombable, so we use 11 here -->
                 <float n="0"  alias="/sim/model/door-positions/canopyF/position-norm"/>     <!-- 0 Canopy Front-->
                 <float n="1"  alias="/sim/model/door-positions/canopyFJ/position-norm"/>    <!-- 1 Canopy Front JETTISON-->
@@ -79,6 +98,7 @@ See AUTHORS.txt for credits
             <path>/sim/model/window</path>
             <path>/sim/model/window-shader</path>
             <path>/sim/model/pilots-enabled</path>
+            <path>/sim/model/instruments-light</path>
             <path>/sim/weight[0]/weight-lb</path>
             <path>/sim/weight[1]/weight-lb</path>
         </aircraft-data>
@@ -315,19 +335,19 @@ See AUTHORS.txt for credits
     </sim>
     <limits>
         <max-spoiler-extension-speed>151.2</max-spoiler-extension-speed>
-        
+
         <vne>151.2</vne>
-        
+
         <vmo>97.2</vmo>
-        
+
         <max-positive-g-vmo>6.5</max-positive-g-vmo>
         <max-negative-g-vmo>-4.0</max-negative-g-vmo>
-        
+
         <max-positive-g-vne>5.3</max-positive-g-vne>
         <max-negative-g-vne>-3.0</max-negative-g-vne>
-        
+
         <mtow-lbs>1322.77</mtow-lbs>
-    
+
     </limits>
     <controls>
         <engines>

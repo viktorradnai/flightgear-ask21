@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 <PropertyList>
     <path>57mm_compass.ac</path>
-    <texture-path>Textures</texture-path>
     <animation>
         <type>material</type>
         <object-name>scala</object-name>
         <emission>
-            <red>0.028</red>
-            <green>0.014</green>
-            <blue>0.007</blue>
-            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+            <red>0.28</red>
+            <green>0.14</green>
+            <blue>0.07</blue>
+            <factor-prop>sim/model/instruments-light</factor-prop>
         </emission>
     </animation>
     <animation>

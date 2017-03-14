@@ -1,9 +1,9 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1.0000 1.0000 1.0000  amb 0.2000 0.2000 0.2000  emis 0.0000 0.0000 0.0000  spec 0.5000 0.5000 0.5000  shi 10 trans 0.0000
-MATERIAL "background" rgb 0.9500 0.9500 0.8000  amb 0.9000 0.9000 0.9000  emis 0.0000 0.0000 0.0000  spec 0.9500 0.9500 0.8000  shi 32 trans 0.0000
-MATERIAL "turnslip.ball" rgb 0.9900 0.9900 0.9900  amb 0.9900 0.9900 0.9900  emis 0.0000 0.0000 0.0000  spec 0.9900 0.9900 0.9900  shi 32 trans 0.0000
-MATERIAL "center" rgb 0.2500 0.2500 0.2500  amb 0.2500 0.2500 0.2500  emis 0.0000 0.0000 0.0000  spec 0.2500 0.2500 0.2500  shi 32 trans 0.0000
-MATERIAL "turnslip.case" rgb 0.8000 0.8000 0.8000  amb 1.0000 1.0000 1.0000  emis 1.0000 1.0000 1.0000  spec 0.5000 0.5000 0.5000  shi 12 trans 0.0000
+MATERIAL "background.001" rgb 0.9500 0.9500 0.8000  amb 0.9000 0.9000 0.9000  emis 0.0000 0.0000 0.0000  spec 0.9500 0.9500 0.8000  shi 32 trans 0.0000
+MATERIAL "turnslip.ball.001" rgb 0.9900 0.9900 0.9900  amb 0.9900 0.9900 0.9900  emis 0.0000 0.0000 0.0000  spec 0.9900 0.9900 0.9900  shi 32 trans 0.0000
+MATERIAL "center.001" rgb 0.2500 0.2500 0.2500  amb 0.2500 0.2500 0.2500  emis 0.0000 0.0000 0.0000  spec 0.2500 0.2500 0.2500  shi 32 trans 0.0000
+MATERIAL "turnslip.case.001" rgb 0.8000 0.8000 0.8000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 0.5000 0.5000 0.5000  shi 12 trans 0.0000
 OBJECT world
 name "Blender_export__57mm_turnslip.ac"
 kids 6
@@ -4632,7 +4632,7 @@ refs 4
 10 0.053625 0.931140
 kids 0
 OBJECT poly
-name "scala.001"
+name "tc.scala"
 crease 30.0
 texture "57mm_turnslip.png"
 texrep 1 1

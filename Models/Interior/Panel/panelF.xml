@@ -148,7 +148,7 @@
     <!-- Electric Variometer -->
     <model>
         <name>vario2</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/vario/ilec-sc7/ilec-sc7.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/ilec-sc7/ilec-sc7.xml</path>
         <offsets>
             <x-m>-3.32</x-m>
             <y-m>-0.08</y-m>
