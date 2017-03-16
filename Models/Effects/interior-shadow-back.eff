@@ -6,17 +6,17 @@
         <texture n="4">
             <type>cubemap</type>
             <images>
-                <positive-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0004.png</positive-x>
+                <positive-x>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0004.png</positive-x>
                 <!-- px (tail) rotate 90 deg from N or S to W -->
-                <negative-x>Aircraft/ASK21/Models/Effects/cubemap_front_black/0002.png</negative-x>
+                <negative-x>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0002.png</negative-x>
                 <!-- nx (nose) rotate 90 deg from N or S to E -->
-                <positive-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0001.png</positive-y>
+                <positive-y>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0001.png</positive-y>
                 <!-- py (starboard/right) from N do not rotate -->
-                <negative-y>Aircraft/ASK21/Models/Effects/cubemap_front_black/0003.png</negative-y>
+                <negative-y>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0003.png</negative-y>
                 <!-- ny (port/left) from N rotate 180 deg to S -->
-                <positive-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0006.png</positive-z>
+                <positive-z>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0006.png</positive-z>
                 <!-- pz (top) rotate 90 deg from N or S to W -->
-                <negative-z>Aircraft/ASK21/Models/Effects/cubemap_front_black/0005.png</negative-z>
+                <negative-z>Aircraft/ASK21/Models/Effects/cubemap_rear_black/0005.png</negative-z>
                 <!-- nz (bottom) rotate 90 deg from N or S to W -->
             </images>
         </texture>

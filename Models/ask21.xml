@@ -30,6 +30,8 @@
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
         <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeLac1</object-name>
+        <object-name>speedbrakeLac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -51,6 +53,8 @@
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
         <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeLac1</object-name>
+        <object-name>speedbrakeLac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -109,6 +113,8 @@
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
         <object-name>speedbrakeR</object-name>
+        <object-name>speedbrakeRac1</object-name>
+        <object-name>speedbrakeRac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -130,6 +136,8 @@
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
         <object-name>speedbrakeR</object-name>
+        <object-name>speedbrakeRac1</object-name>
+        <object-name>speedbrakeRac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -211,15 +219,101 @@
     </animation>
     <!--airbrakes-->
     <animation>
-        <type>translate</type>
+        <type>rotate</type>
         <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeLac1</object-name>
+        <property>surface-positions/speedbrake-pos-norm</property>
+        <factor>90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>-3.3164</y-m>
+            <z-m>0.92774</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>speedbrakeLac2</object-name>
+        <property>surface-positions/speedbrake-pos-norm</property>
+        <factor>90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>-4.0165</y-m>
+            <z-m>0.97319</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>speedbrakeL</object-name>
+        <property>surface-positions/speedbrake-pos-norm</property>
+        <factor>-90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>-3.07511</y-m>
+            <z-m>0.96871</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>speedbrakeR</object-name>
+        <object-name>speedbrakeRac1</object-name>
+        <property>surface-positions/speedbrake-pos-norm</property>
+        <factor>-90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>3.3164</y-m>
+            <z-m>0.92774</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>speedbrakeRac2</object-name>
+        <property>surface-positions/speedbrake-pos-norm</property>
+        <factor>-90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>4.0165</y-m>
+            <z-m>0.97319</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
         <object-name>speedbrakeR</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>0.07</factor>
+        <factor>90</factor>
+        <center>
+            <x-m>-1.17459</x-m>
+            <y-m>3.07511</y-m>
+            <z-m>0.96871</z-m>
+        </center>
         <axis>
-            <x>0</x>
+            <x>1</x>
             <y>0</y>
-            <z>1</z>
+            <z>0</z>
         </axis>
     </animation>
     <animation>
@@ -227,15 +321,13 @@
         <object-name>rudder</object-name>
         <property>controls/flight/rudder</property>
         <factor>24</factor>
-        <center>
-            <x-m>3.858</x-m>
-            <y-m>0.0</y-m>
-            <z-m>2.039</z-m>
-        </center>
         <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
+            <x1-m>3.77673</x1-m>
+            <y1-m>0.0</y1-m>
+            <z1-m>0.68329</z1-m>
+            <x2-m>3.82623</x2-m>
+            <y2-m>0.0</y2-m>
+            <z2-m>1.98118</z2-m>
         </axis>
     </animation>
     <animation>
