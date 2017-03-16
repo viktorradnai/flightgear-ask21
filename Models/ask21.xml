@@ -30,6 +30,8 @@
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
         <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeLac1</object-name>
+        <object-name>speedbrakeLac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -51,6 +53,8 @@
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
         <object-name>speedbrakeL</object-name>
+        <object-name>speedbrakeLac1</object-name>
+        <object-name>speedbrakeLac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -109,6 +113,8 @@
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
         <object-name>speedbrakeR</object-name>
+        <object-name>speedbrakeRac1</object-name>
+        <object-name>speedbrakeRac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -130,6 +136,8 @@
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
         <object-name>speedbrakeR</object-name>
+        <object-name>speedbrakeRac1</object-name>
+        <object-name>speedbrakeRac2</object-name>
         <property>accelerations/pilot-g[0]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
