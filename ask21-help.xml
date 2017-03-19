@@ -76,6 +76,7 @@
         on the ground:
         1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
         2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
+      - When exceeding a given speed of 15 kts assisting gears will be reset to off (e.g. on takeoff), ground handling will become inactive at 20kts.
 
     When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o
     (release: Ctrl+shift+o) so he can carry you around the airport
