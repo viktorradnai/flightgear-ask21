@@ -28,6 +28,10 @@
         <name>s</name>
         <desc>Decrease variometer volume</desc>
     </key>
+    <key>
+        <name>d</name>
+        <desc>Toggle windows</desc>
+    </key>
     <text>
     === General Help ===
 

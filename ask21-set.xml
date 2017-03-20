@@ -385,6 +385,34 @@ See AUTHORS.txt for credits
                     <property>controls/engines/engine[0]/reverser</property>
                 </binding>
             </key>
+            <key n="100">
+                <name>d</name>
+                <desc>Toggle Both Windows</desc>
+                <binding>
+                    <condition>
+                        <less-than>
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
+                            <value>0.5</value>
+                        </less-than>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/frontwin/position-norm</property>
+                    <value type="double">1</value>
+                    <rate>0.5</rate>
+                </binding>
+                <binding>
+                    <condition>
+                        <greater-than-equals>
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
+                            <value>0.5</value>
+                        </greater-than-equals>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/frontwin/position-norm</property>
+                    <value type="double">0</value>
+                    <rate>0.5</rate>
+                </binding>
+            </key>
             <key n="23">
                 <name>Ctrl-w</name>
                 <desc>Place winch in front of aircraft</desc>
