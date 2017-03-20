@@ -70,12 +70,13 @@
 
     This aircraft has some features to help with ground handling:
 
-      - When pressing "Toggle assiting gears" the aircraft gets levelled around the x-axis as if
+      - Enable wing holder: the aircraft gets levelled around the x-axis as if
         someone was holding your wing.
-      - When pressing "Toggle ground handling", two features are enanled to pull the aircraft around
+      - Enable ground handling: controls are modified to help move the glider around
         on the ground:
-        1. All rudder inputs are copied to a thruster, as if someone was pulling your wing so the aircraft turns.
-        2. All throttle inputs cause your aircraft to taxi, as if someone (or a car) was pulling/pushing it.
+        1. All rudder inputs will make the glider turn, as if someone was pulling on the wingtip.
+        2. All throttle inputs cause the glider to taxi, as if someone (or a car) was pulling or pushing it.
+      - When exceeding a given speed of 15 kts assisting gears will be reset to off (e.g. on takeoff), ground handling will become inactive at 20kts.
 
     When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o
     (release: Ctrl+shift+o) so he can carry you around the airport
