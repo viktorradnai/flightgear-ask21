@@ -34,14 +34,14 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
-            <instruments-light type="int">0</instruments-light><!--Enable fake instrument lights by default-->
+            <instruments-light type="int">0</instruments-light><!--Disable fake instrument lights by default-->
             <shadow type="bool">1</shadow>
             <door-positions>
                 <frontwin>
-                    <position-norm>1</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
+                    <position-norm type="double">1.0</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
                 </frontwin>
                 <rearwin>
-                    <position-norm>1</position-norm> <!--see above-->
+                    <position-norm type="double">1.0</position-norm> <!--see above-->
                 </rearwin>
             </door-positions>
             <livery>
@@ -383,6 +383,59 @@ See AUTHORS.txt for credits
                     </condition>
                     <command>property-toggle</command>
                     <property>controls/engines/engine[0]/reverser</property>
+                </binding>
+            </key>
+            <key n="68">
+                <name>D</name>
+                <desc>Toggle Both Windows</desc>
+                <binding>
+                    <condition>
+                        <less-than>
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
+                            <value>0.5</value>
+                        </less-than>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/frontwin/position-norm</property>
+                    <value type="double">1.0</value>
+                    <rate>0.5</rate>
+                </binding>
+                <binding>
+                    <condition>
+                        <greater-than-equals>
+                            <property>sim/model/door-positions/frontwin/position-norm</property> 
+                            <value>0.5</value>
+                        </greater-than-equals>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/frontwin/position-norm</property>
+                    <value type="double">0.0</value>
+                    <rate>0.5</rate>
+                </binding>
+                <binding>
+                    <!-- using frontwin in the conditional for readwin in order to synchronize both windows positions -->
+                    <condition>
+                        <less-than>
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
+                            <value>0.5</value>
+                        </less-than>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/rearwin/position-norm</property>
+                    <value type="double">1.0</value>
+                    <rate>0.5</rate>
+                </binding>
+                <binding>
+                    <condition>
+                        <greater-than-equals>
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
+                            <value>0.5</value>
+                        </greater-than-equals>
+                    </condition>
+                    <command>property-interpolate</command>
+                    <property>sim/model/door-positions/rearwin/position-norm</property>
+                    <value type="double">0.0</value>
+                    <rate>0.5</rate>
                 </binding>
             </key>
             <key n="23">
