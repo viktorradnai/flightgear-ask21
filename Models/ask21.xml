@@ -661,8 +661,6 @@
         <object-name>wing.R4</object-name>
         <object-name>aileronL</object-name>
         <object-name>aileronR</object-name>
-        <object-name>speedbrakeL</object-name>
-        <object-name>speedbrakeR</object-name>
         <property-base>sim/model/livery</property-base>
         <texture-prop>texture-wing</texture-prop>
         <texture>texture.png</texture>
