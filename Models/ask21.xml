@@ -319,8 +319,8 @@
     <animation>
         <type>rotate</type>
         <object-name>rudder</object-name>
-        <property>controls/flight/rudder</property>
-        <factor>24</factor>
+        <property>surface-positions/rudder-pos-norm</property>
+        <factor>6</factor>
         <axis>
             <x1-m>3.77673</x1-m>
             <y1-m>0.0</y1-m>
@@ -328,6 +328,56 @@
             <x2-m>3.82623</x2-m>
             <y2-m>0.0</y2-m>
             <z2-m>1.98118</z2-m>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>tail.ac</object-name>
+        <object-name>tail.ropeleft</object-name>
+        <object-name>tail.roperight</object-name>
+        <property>surface-positions/rudder-pos-norm</property>
+        <factor>6</factor>
+        <center>
+            <x-m>3.77582</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.80296</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>tail.ropeleft</object-name>
+        <property>surface-positions/rudder-pos-norm</property>
+        <factor>-4.5</factor>
+        <center>
+            <x-m>3.77576</x-m>
+            <y-m>-0.07385</y-m>
+            <z-m>0.80296</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>tail.roperight</object-name>
+        <property>surface-positions/rudder-pos-norm</property>
+        <factor>-4.5</factor>
+        <center>
+            <x-m>3.77576</x-m>
+            <y-m>0.07385</y-m>
+            <z-m>0.80296</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
         </axis>
     </animation>
     <animation>
@@ -577,6 +627,7 @@
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/ask21_model</inherits-from>
         <object-name>fuselage</object-name>
+        <object-name>tail.ac.fairing</object-name>
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.backframe</object-name>
         <object-name>gearfairing1</object-name>
