@@ -63,7 +63,7 @@
         <object-name>shadow</object-name>
         <property>/orientation/pitch-deg</property>
         <factor>-1.0</factor>
-        <offset-deg>-2.5</offset-deg>
+        <offset-deg>-4</offset-deg>
         <center>
             <x-m>0</x-m>
             <y-m>0</y-m>
@@ -96,7 +96,7 @@
     
      <animation>
   <type>translate</type>
-  <offset-m>-1.6</offset-m>
+  <offset-m>-1.65</offset-m>
   <axis>
    <x>0</x>
    <y>0</y>
