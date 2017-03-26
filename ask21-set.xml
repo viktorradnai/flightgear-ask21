@@ -8,7 +8,7 @@ See AUTHORS.txt for credits
         <description>Schleicher ASK 21 Glider</description>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf and Gilberto Agostinho</author>
         <long-description>
-            The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For aerobatic use, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
+            The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
         </long-description>
         <status>production</status>
         <rating>
@@ -57,7 +57,7 @@ See AUTHORS.txt for credits
                 <reflection-enabled type="int">1</reflection-enabled>
                 <reflection-type type="int">2</reflection-type>
                 <reflection-dynamic type="int">1</reflection-dynamic>
-                <reflection-correction type="float">0.3</reflection-correction>
+                <reflection-correction type="float">0.1</reflection-correction>
                 <reflection-fresnel type="float">0.5</reflection-fresnel>
                 <reflection-fresnel-factor type="float">1.0</reflection-fresnel-factor>
                 <reflection-rainbow type="float">0.1</reflection-rainbow>
