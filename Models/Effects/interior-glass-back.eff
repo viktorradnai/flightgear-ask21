@@ -10,9 +10,9 @@
                 <!-- px (tail) rotate 90 deg from N or S to W -->
                 <negative-x>Models/Effects/cubemap_rear_color/0002.png</negative-x>
                 <!-- nx (nose) rotate 90 deg from N or S to E -->
-                <positive-y>Models/Effects/cubemap_rear_color/0001.png</positive-y>
+                <positive-y>Models/Effects/cubemap_rear_color/0003.png</positive-y>
                 <!-- py (starboard/right) from N do not rotate -->
-                <negative-y>Models/Effects/cubemap_rear_color/0003.png</negative-y>
+                <negative-y>Models/Effects/cubemap_rear_color/0001.png</negative-y>
                 <!-- ny (port/left) from N rotate 180 deg to S -->
                 <positive-z>Models/Effects/cubemap_rear_color/0006.png</positive-z>
                 <!-- pz (top) rotate 90 deg from N or S to W -->
