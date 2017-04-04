@@ -334,10 +334,13 @@
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/vario.wav</path>
             <condition>
+                <and>
                 <greater-than>
                     <property>/instrumentation/variometer/te-reading-mps</property>
                     <value>0.01</value>
                 </greater-than>
+                <property>/controls/electric/battery-switch</property>
+                </and>
             </condition>
             <pitch>
                 <property>/instrumentation/variometer/te-reading-mps</property>
@@ -363,6 +366,7 @@
             <mode>looped</mode>
             <path>Aircraft/ASK21/Sounds/vario2.wav</path>
             <condition>
+                <and>
                 <greater-than>
                     <property>/instrumentation/variometer/te-reading-mps</property>
                     <value>-10.00</value>
@@ -372,6 +376,8 @@
                         <property>/instrumentation/variometer/te-reading-mps</property>
                         <value>-0.01</value>
                     </less-than>
+                </and>
+                <property>/controls/electric/battery-switch</property>
                 </and>
             </condition>
             <pitch>

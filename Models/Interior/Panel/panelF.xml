@@ -226,7 +226,7 @@
         <name>masterswitch</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/switches/masterswitch.xml</path>
         <offsets>
-            <x-m>-3.314</x-m>
+            <x-m>-3.318</x-m>
             <y-m>-0.092</y-m>
             <z-m>0.63</z-m>
             <pitch-deg>-5</pitch-deg>
@@ -234,9 +234,9 @@
     </model>
     <model>
         <name>turnslip_switch</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/switches/masterswitch.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/switches/turnslipswitch.xml</path>
         <offsets>
-            <x-m>-3.314</x-m>
+            <x-m>-3.318</x-m>
             <y-m>-0.068</y-m>
             <z-m>0.63</z-m>
             <pitch-deg>-5</pitch-deg>

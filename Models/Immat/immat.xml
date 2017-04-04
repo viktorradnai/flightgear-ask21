@@ -30,6 +30,12 @@
     <object-name>ImatPanel4</object-name>
     <object-name>ImatPanel5</object-name>
     <object-name>ImatPanel6</object-name>
+    <object-name>ImatPanelR1</object-name>
+    <object-name>ImatPanelR2</object-name>
+    <object-name>ImatPanelR3</object-name>
+    <object-name>ImatPanelR4</object-name>
+    <object-name>ImatPanelR5</object-name>
+    <object-name>ImatPanelR6</object-name>
   </animation>
 
   <animation>
@@ -58,6 +64,12 @@
     <object-name>ImatPanel4</object-name>
     <object-name>ImatPanel5</object-name>
     <object-name>ImatPanel6</object-name>
+    <object-name>ImatPanelR1</object-name>
+    <object-name>ImatPanelR2</object-name>
+    <object-name>ImatPanelR3</object-name>
+    <object-name>ImatPanelR4</object-name>
+    <object-name>ImatPanelR5</object-name>
+    <object-name>ImatPanelR6</object-name>
   </animation>
 
   <animation>
@@ -311,7 +323,7 @@
     </axis> 
   </animation>
 
-  <!-- Tableau de bord -->
+  <!-- Panel Front -->
   <animation> 
     <type>textranslate</type> 
     <object-name>ImatPanel1</object-name> 
@@ -415,5 +427,78 @@
             <z-m>0.82</z-m>
         </center>
     </animation>
+
+  <!-- Rear panel -->
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR1</object-name> 
+    <property>sim/multiplay/generic/int[0]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
+
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR2</object-name> 
+    <property>sim/multiplay/generic/int[1]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
+
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR3</object-name> 
+    <property>sim/multiplay/generic/int[2]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
+
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR4</object-name> 
+    <property>sim/multiplay/generic/int[3]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
+
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR5</object-name> 
+    <property>sim/multiplay/generic/int[4]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
+
+  <animation> 
+    <type>textranslate</type> 
+    <object-name>ImatPanelR6</object-name> 
+    <property>sim/multiplay/generic/int[5]</property>
+    <factor> 0.0244140625 </factor>
+    <axis> 
+      <x> 1 </x> 
+      <y> 0 </y> 
+      <z> 0 </z> 
+    </axis> 
+  </animation>
 </PropertyList>
 

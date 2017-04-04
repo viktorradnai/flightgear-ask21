@@ -20,7 +20,7 @@ setprop("instrumentation/comm/frequencies/selected-mhz", ch[0]);
 
 setlistener("instrumentation/AR-3201/power", func { 
 
-         if ( getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0  )
+         if ( getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 and getprop("/controls/electric/battery-switch") )
 	      {
 		setprop("instrumentation/AR-3201/starting", 1);
                 settimer(func { 
@@ -40,6 +40,28 @@ setlistener("instrumentation/AR-3201/power", func {
 
  });
 
+setlistener("/controls/electric/battery-switch", func { 
+
+         if ( getprop("/controls/electric/battery-switch")==1 and getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 )
+	      {
+		setprop("instrumentation/AR-3201/starting", 1);
+                settimer(func { 
+				if (getprop("instrumentation/AR-3201/power") > 0) 
+				{
+				  setprop("instrumentation/AR-3201/starting", 0);
+				  setprop("instrumentation/comm/serviceable" ,1)
+				}
+			      }, 2);			      
+	      }
+
+         if (getprop("/controls/electric/battery-switch") == 0)
+	      {
+                setprop("instrumentation/AR-3201/starting", 0);
+		setprop("instrumentation/comm/serviceable" ,0 );
+	      }
+
+ });
+ 
 setlistener("instrumentation/AR-3201/dummy", func { 
 
     settimer(func {
@@ -70,6 +92,7 @@ setlistener("instrumentation/AR-3201/store", func {
  });
 
 }
+    
 
 # Start the transciever ASAP
 ar3201();

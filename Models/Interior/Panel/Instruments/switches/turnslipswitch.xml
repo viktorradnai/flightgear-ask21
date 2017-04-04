@@ -4,8 +4,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>lever</object-name>
-		<property>/controls/electric/battery-switch-pos</property>
-                <factor>-30</factor>
+		<property>/controls/electric/turn-slip-switch-pos</property>
+		<factor>-30</factor>
 		<axis>
 			<x>0</x>
 			<y>1</y>
@@ -19,7 +19,7 @@
 			<button>0</button>
 			<binding>
 				<command>property-toggle</command>
-                                <property>/controls/electric/battery-switch</property>
+                                <property>/controls/electric/turn-slip-switch</property>
 			</binding>
 			<binding>
 				<command>property-toggle</command>
