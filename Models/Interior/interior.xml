@@ -9,18 +9,18 @@
         <offsets>
             <x-m>-3.43276</x-m>
             <y-m> 0</y-m>
-            <z-m>0.87607</z-m>
-            <pitch-deg>0</pitch-deg>
+            <z-m>0.88</z-m>
+            <pitch-deg>22</pitch-deg>
         </offsets>
     </model>
     <model>
         <name>yawstring2</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/wool-thread/wool-thread.xml</path>
         <offsets>
-            <x-m>-2.31472</x-m>
+            <x-m>-2.22</x-m>
             <y-m> 0</y-m>
-            <z-m>1.16854</z-m>
-            <pitch-deg>0</pitch-deg>
+            <z-m>1.18</z-m>
+            <pitch-deg>40</pitch-deg>
         </offsets>
     </model>
     <model>
