@@ -360,6 +360,9 @@ See AUTHORS.txt for credits
         <comm>
             <serviceable-int type="int">0</serviceable-int>
         </comm>
+        <transponder>
+                <knob-mode type="int">0</knob-mode> <!--The ASK21 is not equipped with a transponder-->
+        </transponder>
     </instrumentation>
     <controls>
         <breakage>
