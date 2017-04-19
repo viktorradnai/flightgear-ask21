@@ -190,9 +190,9 @@
         <property>controls/cabin/airventR</property>
         <factor>-90</factor>
         <center>
-            <x-m>-2.06565</x-m>
-            <y-m>0.24237</y-m>
-            <z-m>0.76007</z-m>
+            <x-m>-2.06556</x-m>
+            <y-m>0.27639</y-m>
+            <z-m>0.7548</z-m>
         </center>
         <axis>
             <x>1</x>

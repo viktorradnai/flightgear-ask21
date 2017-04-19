@@ -2316,7 +2316,7 @@ refs 4
 kids 0
 OBJECT poly
 name "airventR"
-loc 0.9766617 0.1379803 0.0158620
+loc 0.9766617 0.1329856 -0.0180229
 crease 30.0
 texture "parts.png"
 texrep 1 1
@@ -40216,7 +40216,7 @@ refs 3
 kids 0
 OBJECT poly
 name "interiorF.002"
-loc 0.9766617 0.1487016 0.0151961
+loc 0.9766617 0.1437069 -0.0186888
 crease 30.0
 texture "parts.png"
 texrep 1 1
