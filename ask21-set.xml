@@ -365,6 +365,9 @@ See AUTHORS.txt for credits
         </transponder>
     </instrumentation>
     <controls>
+        <cabin>
+            <armrests type="bool">0</armrests><!--Black armrests off by default-->
+        </cabin>
         <breakage>
             <enabled type="bool">0</enabled><!--Rope Breakage by default disabled-->
             <altitude-m type="double">50</altitude-m>
