@@ -14,6 +14,9 @@ var update_systems = func {
     }
 
 
+    if(getprop("/ai/models/multiplayer[0]/controls/flight/aileron")!=nil) {
+        setprop("/controls/flight/aileron2", getprop("/ai/models/multiplayer[0]/controls/flight/aileron"));
+    }
 
 
     # Conditions: glider must be on ground and people can only run up to 15kts (about), towing can be done up to 20

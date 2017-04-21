@@ -33,6 +33,12 @@ See AUTHORS.txt for credits
         <sound>
             <path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
         </sound>
+        <multiplay>
+            <chat_display>1</chat_display>
+            <generic>
+                <float n="0"  alias="/controls/flight/aileron"/>     <!-- 0 Aileron-->
+            </generic>
+        </multiplay>
         <!-- Views -->
         <view n="101">
             <name>Pilot View</name>
