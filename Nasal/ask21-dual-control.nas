@@ -137,8 +137,8 @@ var set_copilot_wrappers = func (pilot) {
 #    props.globals.getNode(p).alias(pilot.getNode(p));
 #    p = "/gear/gear[2]/wow";
 #    props.globals.getNode(p).alias(pilot.getNode(p));
-    p = "sim/model/door-positions/canopyB/position-norm";
-    props.globals.getNode(p).alias(pilot.getNode(p));
+#    p = "sim/model/door-positions/canopyB/position-norm";
+#    props.globals.getNode(p).alias(pilot.getNode(p));
     p = "sim/model/door-positions/canopyF/position-norm";
     props.globals.getNode(p).alias(pilot.getNode(p));
     p = "/surface-positions/speedbrake-pos-norm";

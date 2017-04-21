@@ -14,8 +14,8 @@ var update_systems = func {
     }
 
 
-    if(getprop("/ai/models/multiplayer[0]/controls/flight/aileron")!=nil) {
-        setprop("/controls/flight/aileron2", getprop("/ai/models/multiplayer[0]/controls/flight/aileron"));
+    if(getprop("/ai/models/multiplayer[0]/sim/multiplay/generic/float[0]")!=nil) {
+        setprop("/controls/flight/aileron2", getprop("/ai/models/multiplayer[0]/sim/multiplay/generic/float[0]"));
     }
 
 
