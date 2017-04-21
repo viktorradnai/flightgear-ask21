@@ -23,12 +23,5 @@
         <opacity-cube-center type="vec3d" n="0"> -2.74819 0.0 0.91773 </opacity-cube-center>
         <opacity-cube-scale type="vec3d" n="0"> 1.5 0.5 0.7</opacity-cube-scale>
         <opacity-cube-angle type="float">0.0</opacity-cube-angle>
-        <light-filter-one type="vec3d">0.5 0.5 0.5</light-filter-one>
-        <light-filter-two type="vec3d">0.9 0.2 0.2</light-filter-two>
-        <light-radius type="float">13</light-radius>
-        <irradiance-map-type type="int">2</irradiance-map-type>
-        <irradiance-map-strength type="float">.2</irradiance-map-strength>
-        <ra-irradiance-map-type type="int">0</ra-irradiance-map-type>
-        <ra-irradiance-map-strength type="float">1</ra-irradiance-map-strength>
     </parameters>
 </PropertyList>

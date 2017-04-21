@@ -46,6 +46,14 @@ var update_systems = func {
         setprop("/controls/throttle-2", 0);
         setprop("/controls/throttle-reverse", 0);
     }
+    
+    
+    #Breakage code
+    if(getprop("/controls/breakage/enabled") and getprop("/controls/breakage/altitude-m")!=nil and getprop("/sim/hitches/winch/open")==0 ){
+        if(getprop("/position/gear-agl-m")>=getprop("/controls/breakage/altitude-m") ) {
+            setprop("/sim/hitches/winch/open", 1);
+        }
+    }
 
     settimer(update_systems,0);
 }

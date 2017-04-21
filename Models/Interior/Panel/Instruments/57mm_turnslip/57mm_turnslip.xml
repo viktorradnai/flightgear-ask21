@@ -18,6 +18,12 @@
         <type>rotate</type>
         <object-name>needle</object-name>
         <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
+        <condition>
+            <and>
+                <property>/controls/electric/battery-switch</property>
+                <property>/controls/electric/turn-slip-switch</property>
+            </and>
+        </condition>
         <interpolation>
             <entry>
                 <ind>-2.5</ind>
@@ -43,6 +49,12 @@
         <type>rotate</type>
         <object-name>ball</object-name>
         <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+        <condition>
+            <and>
+                <property>/controls/electric/battery-switch</property>
+                <property>/controls/electric/turn-slip-switch</property>
+            </and>
+        </condition>
         <factor>5.729</factor>
         <min-deg>-10</min-deg>
         <max-deg> 10</max-deg>

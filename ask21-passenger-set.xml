@@ -7,7 +7,7 @@ See AUTHORS.txt for credits
 -->
 <PropertyList>
     <sim>
-        <description>ASK 21 Passenger/Instructor View</description>
+        <description>Schleicher ASK 21 Passenger/Instructor View for Multiplayer</description>
         <author>Patrice Poly; D-ECHO</author>
         <status>early-production</status>
         <rating>

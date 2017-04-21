@@ -211,11 +211,11 @@ See AUTHORS.txt for credits
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <heading-offset-deg type="double">0</heading-offset-deg>
                 <x-offset-m archive="y" type="double">0.0</x-offset-m>
-                <y-offset-m archive="y" type="double">1.0692</y-offset-m>
-                <z-offset-m archive="y" type="double">-1.57576</z-offset-m>
+                <y-offset-m archive="y" type="double">1.09137</y-offset-m>
+                <z-offset-m archive="y" type="double">-1.41704</z-offset-m>
                 <default-heading-offset-deg>0</default-heading-offset-deg>
                 <pitch-offset-deg>-10</pitch-offset-deg>
-                <default-field-of-view-deg>55.0</default-field-of-view-deg>
+                <default-field-of-view-deg>65</default-field-of-view-deg>
                 <limits>
                     <enabled type="bool">false</enabled>
                     <left>
@@ -264,29 +264,36 @@ See AUTHORS.txt for credits
                     <item>
                         <label>Aerotow Settings</label>
                         <binding>
-                            <command>nasal</command>
-                            <script>ask21.aerotow_dialog.open()</script>
+                            <command>dialog-show</command>
+                            <dialog-name>aerotow_dialog</dialog-name>
                         </binding>
                     </item>
                     <item>
                         <label>Winch Settings</label>
                         <binding>
-                            <command>nasal</command>
-                            <script>ask21.winch_dialog.open()</script>
+                            <command>dialog-show</command>
+                            <dialog-name>winch_dialog</dialog-name>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Rope Breakage</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>breakage</dialog-name>
                         </binding>
                     </item>
                     <item>
                         <label>Simulation Options</label>
                         <binding>
-                            <command>nasal</command>
-                            <script>ask21.options_dialog.open()</script>
+                            <command>dialog-show</command>
+                            <dialog-name>options_dialog</dialog-name>
                         </binding>
                     </item>
                     <item>
                         <label>Ground services</label>
                         <binding>
-                            <command>nasal</command>
-                            <script>ask21.groundservice_dialog.open()</script>
+                            <command>dialog-show</command>
+                            <dialog-name>groundservice_dialog</dialog-name>
                         </binding>
                     </item>
                     <item>
@@ -299,8 +306,8 @@ See AUTHORS.txt for credits
                     <item>
                     <label>Select Immatriculation</label>
                     <binding>
-                        <command>nasal</command>
-                        <script>ask21.immat_dialog.open()</script>
+                            <command>dialog-show</command>
+                            <dialog-name>Immatriculation</dialog-name>
                     </binding>
                     </item>
                 </menu>
@@ -349,7 +356,25 @@ See AUTHORS.txt for credits
         <mtow-lbs>1322.77</mtow-lbs>
 
     </limits>
+    <instrumentation>
+        <comm>
+            <serviceable-int type="int">0</serviceable-int>
+        </comm>
+        <transponder>
+                <knob-mode type="int">0</knob-mode> <!--The ASK21 is not equipped with a transponder-->
+        </transponder>
+    </instrumentation>
     <controls>
+        <cabin>
+            <armrests type="bool">0</armrests><!--Black armrests off by default-->
+        </cabin>
+        <breakage>
+            <enabled type="bool">0</enabled><!--Rope Breakage by default disabled-->
+            <altitude-m type="double">50</altitude-m>
+        </breakage>
+        <electric>
+            <battery-switch-pos type="double">0</battery-switch-pos>
+        </electric>
         <engines>
             <engine>
                 <throttle>1.0</throttle>
@@ -559,13 +584,13 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
             <file>Aircraft/ASK21/Nasal/GMeter.nas</file>
-            <file>Aircraft/ASK21/Nasal/dialogs.nas</file>
             <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
              <file>Aircraft/ASK21/Nasal/immat.nas</file>
+             <file>Aircraft/ASK21/Nasal/listeners.nas</file>
         </ask21>
     </nasal>
 </PropertyList>

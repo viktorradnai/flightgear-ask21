@@ -472,7 +472,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front</object-name>
+        <object-name>windowF</object-name>
         <property>sim/model/door-positions/canopyF/position-norm</property>
         <interpolation>
             <entry>
@@ -503,7 +503,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front</object-name>
+        <object-name>windowF</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -518,7 +518,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front</object-name>
+        <object-name>windowF</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -533,7 +533,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front</object-name>
+        <object-name>windowF</object-name>
         <property>sim/model/door-positions/canopyFJ/position-norm</property>
         <interpolation>
             <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
@@ -548,7 +548,7 @@
   <animation>
         <type>select</type>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.front</object-name>
+        <object-name>windowF</object-name>
         <condition>
             <less-than>
                 <property>sim/model/door-positions/canopyFJ/position-norm</property>
@@ -559,7 +559,7 @@
   <!--Back Canopy-->
     <animation>
         <type>pick</type>
-        <object-name>canopy.backframe</object-name>
+        <object-name>canopy.rearframe</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -572,8 +572,8 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>canopy.backframe</object-name>
-        <object-name>canopy.back</object-name>
+        <object-name>canopy.rearframe</object-name>
+        <object-name>windowR</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -629,7 +629,7 @@
         <object-name>fuselage</object-name>
         <object-name>tail.ac.fairing</object-name>
         <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.backframe</object-name>
+        <object-name>canopy.rearframe</object-name>
         <object-name>gearfairing1</object-name>
         <object-name>gearfairing2</object-name>
         <object-name>gearfairing3</object-name>

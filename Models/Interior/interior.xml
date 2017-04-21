@@ -9,8 +9,18 @@
         <offsets>
             <x-m>-3.43276</x-m>
             <y-m> 0</y-m>
-            <z-m>0.87607</z-m>
-            <pitch-deg>0</pitch-deg>
+            <z-m>0.88</z-m>
+            <pitch-deg>22</pitch-deg>
+        </offsets>
+    </model>
+    <model>
+        <name>yawstring2</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/wool-thread/wool-thread.xml</path>
+        <offsets>
+            <x-m>-2.22</x-m>
+            <y-m> 0</y-m>
+            <z-m>1.18</z-m>
+            <pitch-deg>40</pitch-deg>
         </offsets>
     </model>
     <model>
@@ -26,155 +36,6 @@
         <name>pilots</name>
         <path>Aircraft/ASK21/Models/Interior/Pilots/pilots.xml</path>
     </model>
-    <!--Small windows-->
-    <animation>
-        <type>slider</type>
-        <object-name>sliding_window.front</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
-                <factor>-0.05</factor>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>windowF</tooltip-id>
-                <label>Front Window: %3d%% open</label>
-                <mapping>percent</mapping>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
-            </binding>
-        </hovered>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.01</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.01</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <y>1</y>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.0</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.18</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x1-m>-2.94858</x1-m>
-            <y1-m>-0.31449</y1-m>
-            <z1-m>0.70963</z1-m>
-            <x2-m>-2.63997</x2-m>
-            <y2-m>-0.32957</y2-m>
-            <z2-m>0.76366</z2-m>
-        </axis>
-    </animation>
-    <animation>
-        <type>slider</type>
-        <object-name>sliding_window.back</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-adjust</command>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
-                <factor>0.05</factor>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>windowR</tooltip-id>
-                <label>Rear Window: %3d%% open</label>
-                <mapping>percent</mapping>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
-            </binding>
-        </hovered>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.back</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.01</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.01</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <y>1</y>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>sliding_window.back</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
-        <interpolation>
-            <entry>
-                <ind>0</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0.1</ind>
-                <dep>0.0</dep>
-            </entry>
-            <entry>
-                <ind>1</ind>
-                <dep>0.12</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x1-m>-1.80509</x1-m>
-            <y1-m>-0.31714</y1-m>
-            <z1-m>0.92524</z1-m>
-            <x2-m>-2.0615</x2-m>
-            <y2-m>-0.31714</y2-m>
-            <z2-m>0.90689</z2-m>
-        </axis>
-    </animation>
     <!--Airbrake Handle-->
     <animation>
         <type>slider</type>
@@ -217,55 +78,16 @@
             </entry>
             <entry>
                 <ind>0</ind>
-                <dep>.25</dep>
+                <dep>.21</dep>
             </entry>
         </interpolation>
         <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>airbrake-front</object-name>
-        <property>/controls/engines/engine/throttle</property>
-        <factor>-1</factor>
-        <interpolation>
-            <entry>
-                <ind>1</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0</ind>
-                <dep>-0.025</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    <animation>
-        <type>translate</type>
-        <object-name>airbrake-front</object-name>
-        <property>/controls/engines/engine/throttle</property>
-        <factor>1</factor>
-        <interpolation>
-            <entry>
-                <ind>1</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>0</ind>
-                <dep>.045</dep>
-            </entry>
-        </interpolation>
-        <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
+            <x1-m>-3.10624</x1-m>
+            <y1-m>-0.24893</y1-m>
+            <z1-m>0.47521</z1-m>
+            <x2-m>-2.81179</x2-m>
+            <y2-m>-0.27476</y2-m>
+            <z2-m>0.53454</z2-m>
         </axis>
     </animation>
     <animation>
@@ -279,16 +101,16 @@
             </entry>
             <entry>
                 <ind>0</ind>
-                <dep>.26</dep>
+                <dep>.21</dep>
             </entry>
         </interpolation>
         <axis>
-            <x1-m>-2.18095</x1-m>
+            <x1-m>-2.17081</x1-m>
             <y1-m>-0.27942</y1-m>
-            <z1-m>0.56584</z1-m>
-            <x2-m>-1.88049</x2-m>
-            <y2-m>-0.27933</y2-m>
-            <z2-m>0.58584</z2-m>
+            <z1-m>0.58221</z1-m>
+            <x2-m>-1.87227</x2-m>
+            <y2-m>-0.29</y2-m>
+            <z2-m>0.62263</z2-m>
         </axis>
     </animation>
     <!--Air Vent Front-->
@@ -311,8 +133,8 @@
         <hovered>
             <binding>
                 <command>set-tooltip</command>
-                <label>Airvent: %3d%% open</label>
-                <measure-text>Airvent: 100% open</measure-text>
+                <label>Airvent Front: %3d%% open</label>
+                <measure-text>Airvent Front: 100% open</measure-text>
                 <tooltip-id>airventF</tooltip-id>
                 <mapping>percent</mapping>
                 <property>controls/cabin/airvent</property>
@@ -326,8 +148,51 @@
         <factor>-90</factor>
         <center>
             <x-m>-3.04436</x-m>
-            <y-m>0.25812</y-m>
-            <z-m>0.61025</z-m>
+            <y-m>0.2424</y-m>
+            <z-m>0.63454</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>slider</type>
+        <object-name>airventR</object-name>
+        <visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/cabin/airventR</property>
+            <factor>0.033</factor>
+            <min>0</min>
+            <max>1</max>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Airvent Rear: %3d%% open</label>
+                <measure-text>Airvent Rear: 100% open</measure-text>
+                <tooltip-id>airventF</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/cabin/airventR</property>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>airventR</object-name>
+        <property>controls/cabin/airventR</property>
+        <factor>-90</factor>
+        <center>
+            <x-m>-2.06556</x-m>
+            <y-m>0.27639</y-m>
+            <z-m>0.7548</z-m>
         </center>
         <axis>
             <x>1</x>
@@ -377,6 +242,19 @@
         <axis>
             <x>0</x>
             <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <!--Trim Indicator Front-->
+    <animation>
+        <type>textranslate</type>
+        <object-name>trim.ind.f</object-name>
+        <object-name>trim.ind.r</object-name>
+        <property>/controls/flight/elevator-trim</property>
+        <factor>0.09</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
             <z>0</z>
         </axis>
     </animation>
@@ -616,8 +494,8 @@
         <property>/controls/flight/rudder</property>
         <factor>30</factor>
         <center>
-            <x-m>-3.70132</x-m>
-            <z-m>0.37895</z-m>
+            <x-m>-3.70169</x-m>
+            <z-m>0.37877</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -631,8 +509,8 @@
         <property>/controls/flight/rudder</property>
         <factor>-30</factor>
         <center>
-            <x-m>-3.70132</x-m>
-            <z-m>0.37895</z-m>
+            <x-m>-3.70169</x-m>
+            <z-m>0.37877</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -646,8 +524,8 @@
         <property>/controls/flight/rudder</property>
         <factor>30</factor>
         <center>
-            <x-m>-2.45888</x-m>
-            <z-m>0.24153</z-m>
+            <x-m>-2.41629</x-m>
+            <z-m>0.27413</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -661,8 +539,8 @@
         <property>/controls/flight/rudder</property>
         <factor>-30</factor>
         <center>
-            <x-m>-2.45888</x-m>
-            <z-m>0.24153</z-m>
+            <x-m>-2.41629</x-m>
+            <z-m>0.27413</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -670,6 +548,41 @@
             <z>0</z>
         </axis>
     </animation>
+    
+    <!--Select armrest-->
+    <animation>
+        <type>pick</type>
+        <object-name>armrest.L2</object-name>
+        <object-name>armrest.R2</object-name>
+        <object-name>armrest.L2.below</object-name>
+        <object-name>armrest.R2.below</object-name>
+        <object-name>ptt-rear</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/controls/cabin/armrests</property>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>armrest</tooltip-id>
+                <label>Swap Armrests</label>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>select</type>
+        <object-name>armrest.L2</object-name>
+        <object-name>armrest.R2</object-name>
+        <condition>
+            <property>/controls/cabin/armrests</property>
+        </condition>
+    </animation>
+    
     
     <!--Cockpit Shader-->
     <effect>
@@ -681,19 +594,27 @@
         <object-name>stick-front</object-name>
         <object-name>trim-front</object-name>
         <object-name>releasecable-front</object-name>
-        <object-name>placards-front</object-name>
-        <object-name>block</object-name>
-        <object-name>block.screws.001</object-name>
+        <object-name>placards.front</object-name>
+        <object-name>seatF.cushion</object-name>
+        <object-name>armrestL</object-name>
+        <object-name>armrestR</object-name>
+        <object-name>armrest.L2</object-name>
+        <object-name>armrest.R2</object-name>
+        <object-name>screws</object-name>
     </effect>
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow-back</inherits-from>
         <object-name>interiorR</object-name>
         <object-name>seatR</object-name>
-        <object-name>canopy.back.left</object-name>
-        <object-name>canopy.back.right</object-name>
+        <object-name>canopy.rear.left</object-name>
+        <object-name>canopy.rear.right</object-name>
+        <object-name>canopy.rear.bars</object-name>
         <object-name>stick-rear</object-name>
         <object-name>trim-rear</object-name>
-        <object-name>placards-rear</object-name>
+        <object-name>placards.rear</object-name>
+        <object-name>seatR.cushion</object-name>
+        <object-name>armrestRL</object-name>
+        <object-name>armrestRR</object-name>
     </effect>
     <!--CANOPY-->
     <animation>
@@ -703,6 +624,8 @@
         <object-name>canopy.front.int</object-name>
         <object-name>yawstring</object-name>
         <object-name>sliding_window.front</object-name>
+        <object-name>canopy.frontframe.2</object-name>
+        <object-name>canopy.front.bars</object-name>
     </animation>
     
     <animation>
@@ -769,7 +692,7 @@
         </axis>
         <center>
             <x-m>-3.04127</x-m>
-            <y-m>-0.2964</y-m>
+            <y-m>-0.27589</y-m>
             <z-m>0.65308</z-m>
         </center>
     </animation>
@@ -796,7 +719,7 @@
         </axis>
         <center>
             <x-m>-3.04127</x-m>
-            <y-m>0.2964</y-m>
+            <y-m>0.27589</y-m>
             <z-m>0.65308</z-m>
         </center>
     </animation>
@@ -878,8 +801,8 @@
   <!--Back Canopy-->
     <animation>
         <type>pick</type>
-        <object-name>canopy.back.left</object-name>
-        <object-name>canopy.back.right</object-name>
+        <object-name>canopy.rear.left</object-name>
+        <object-name>canopy.rear.right</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
@@ -892,10 +815,13 @@
     </animation> 
     <animation>
         <type>rotate</type>
-        <object-name>canopy.back.left</object-name>
-        <object-name>canopy.back.right</object-name>
-        <object-name>canopy.back.int</object-name>
-        <object-name>sliding_window.back</object-name>
+        <object-name>canopy.rear.left</object-name>
+        <object-name>canopy.rear.right</object-name>
+        <object-name>canopy.rear.int</object-name>
+        <object-name>sliding_window.rear</object-name>
+        <object-name>canopy.rear.bars</object-name>
+        <object-name>canopy.rearframe.2</object-name>
+        <object-name>yawstring2</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -921,7 +847,7 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>canopy.back.left</object-name>
+        <object-name>canopy.rear.left</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -941,14 +867,14 @@
             <z>1</z>
         </axis>
         <center>
-            <x-m>-1.94174</x-m>
-            <y-m>-0.33063</y-m>
+            <x-m>-1.9962</x-m>
+            <y-m>-0.32172</y-m>
             <z-m>0.77602</z-m>
         </center>
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>canopy.back.right</object-name>
+        <object-name>canopy.rear.right</object-name>
         <property>sim/model/door-positions/canopyB/position-norm</property>
         <interpolation>
             <entry>
@@ -968,10 +894,159 @@
             <z>1</z>
         </axis>
         <center>
-            <x-m>-1.94174</x-m>
-            <y-m>0.33063</y-m>
+            <x-m>-1.9962</x-m>
+            <y-m>0.32172</y-m>
             <z-m>0.77602</z-m>
         </center>
+    </animation>
+    <!--Small windows-->
+    <animation>
+        <type>slider</type>
+        <object-name>sliding_window.front</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>sim/model/door-positions/frontwin/position-norm</property>
+                <factor>-0.05</factor>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>windowF</tooltip-id>
+                <label>Front Window: %3d%% open</label>
+                <mapping>percent</mapping>
+                <property>sim/model/door-positions/frontwin/position-norm</property>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.front</object-name>
+        <property>sim/model/door-positions/frontwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.007</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.007</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <y>1</y>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.front</object-name>
+        <property>sim/model/door-positions/frontwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.16</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-2.97019</x1-m>
+            <y1-m>-0.2595</y1-m>
+            <z1-m>0.80747</z1-m>
+            <x2-m>-2.65423</x2-m>
+            <y2-m>-0.27586</y2-m>
+            <z2-m>0.86276</z2-m>
+        </axis>
+    </animation>
+    <animation>
+        <type>slider</type>
+        <object-name>sliding_window.rear</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>sim/model/door-positions/rearwin/position-norm</property>
+                <factor>0.05</factor>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>windowR</tooltip-id>
+                <label>Rear Window: %3d%% open</label>
+                <mapping>percent</mapping>
+                <property>sim/model/door-positions/rearwin/position-norm</property>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.rear</object-name>
+        <property>sim/model/door-positions/rearwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.01</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.01</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <y>1</y>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>sliding_window.rear</object-name>
+        <property>sim/model/door-positions/rearwin/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>0.12</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-1.80509</x1-m>
+            <y1-m>-0.31714</y1-m>
+            <z1-m>0.92524</z1-m>
+            <x2-m>-2.0615</x2-m>
+            <y2-m>-0.31714</y2-m>
+            <z2-m>0.90689</z2-m>
+        </axis>
     </animation>
     <!--SHADERS/EFFECTS-->
     <!--Enable/disable windows for better visibility-->
@@ -981,9 +1056,9 @@
             <property>/sim/model/window</property>
         </condition>
         <object-name>canopy.front.int</object-name>
-        <object-name>canopy.back.int</object-name>
+        <object-name>canopy.rear.int</object-name>
         <object-name>sliding_window.front</object-name>
-        <object-name>sliding_window.back</object-name>
+        <object-name>sliding_window.rear</object-name>
     </animation>
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-glass-front</inherits-from>
@@ -992,7 +1067,7 @@
     </effect>
     <effect>
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-glass-back</inherits-from>
-        <object-name>canopy.back.int</object-name>
-        <object-name>sliding_window.back</object-name>
+        <object-name>canopy.rear.int</object-name>
+        <object-name>sliding_window.rear</object-name>
     </effect>
 </PropertyList>

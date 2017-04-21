@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+	<path>switch-small-rnd.ac</path>
+	<animation>
+		<type>rotate</type>
+		<object-name>lever</object-name>
+		<property>/controls/electric/battery-switch-pos</property>
+                <factor>-30</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>lever</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+                                <property>/controls/electric/battery-switch</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>/sim/sound/switch</property>
+			</binding>
+		</action>
+	</animation>
+</PropertyList>
