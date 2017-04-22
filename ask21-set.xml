@@ -373,6 +373,7 @@ See AUTHORS.txt for credits
             <altitude-m type="double">50</altitude-m>
         </breakage>
         <electric>
+            <battery-switch type="bool">0</battery-switch>
             <battery-switch-pos type="double">0</battery-switch-pos>
         </electric>
         <engines>
