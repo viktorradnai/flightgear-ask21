@@ -59,8 +59,9 @@
     <weight x="1.72727" y="0.0" z="0.75498" mass-prop="/sim/weight[1]/weight-lb"/>
     <!--Tail ballast to enable spin with two pilots-->
     <weight x="-3.5" y="0.0" z="0.8" mass-prop="/sim/weight[2]/weight-lb"/>
-    <!--Distribute mass towards nose (cockpit weight etc.)-->
-    <ballast x="2" y="0" z=".5" mass="350"/>
+    <!--Distribute mass towards nose (cockpit weight etc.) and towards the wingtips to increase roll and yaw inertia -->
+    <ballast x="2" y="-10" z=".5" mass="175"/>
+    <ballast x="2" y="10" z=".5" mass="175"/>
     <!--FOR EASY GROUND HANDLING-->
     <!--Assiting gears for ground movement-->
     <gear x="0.99095" y="3" z="0.05" compression=".1"
