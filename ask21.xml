@@ -13,9 +13,8 @@
     <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
     <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
         <stall aoa="23" width="8" peak="1.5"/>
-        <flap0 start="0.43" end="0.97" lift="1.3" drag="1.7"/>
-        <spoiler start="0.34" end="0.44" lift="-4" drag="75.5"/>
-<!-- drag="35.5 -->
+        <flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
+        <spoiler start="0.34" end="0.44" lift="-4.5" drag="75.5"/>
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
         <control-output control="FLAP0" side="left" prop="surface-positions/left-aileron-pos-norm"/>
         <control-output control="FLAP0" side="right" prop="surface-positions/right-aileron-pos-norm"/>
@@ -44,7 +43,7 @@
     <!-- main wheel-->
     <!--As on the ASK13, brake is tied to airbrake-->
     <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.4" sfric="0.8">
-        <control-input axis="/controls/engines/engine/throttle" control="BRAKE" src0="0" src1="0.15" dst0="1" dst1="0"/>
+        <control-input axis="/controls/engines/engine/throttle" control="BRAKE" src0="0" src1="0.1" dst0="1" dst1="0"/>
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     </gear>
     <!-- Tail wheel -->
