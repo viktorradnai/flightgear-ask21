@@ -23,7 +23,7 @@ See AUTHORS.txt for credits
                 <path>Aircraft/ASK21/shadow-system.xml</path>
             </property-rule>
         </systems>
-        <aircraft-version>201702</aircraft-version>
+        <aircraft-version>201703</aircraft-version>
         <flight-model archive="y">yasim</flight-model>
         <aero archive="y">ask21</aero>
         <startup>
@@ -136,7 +136,7 @@ See AUTHORS.txt for credits
             <config>
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <x-offset-m type="double">0.0</x-offset-m>
-                <y-offset-m type="double">0.92727</y-offset-m>
+                <y-offset-m type="double">1.04</y-offset-m>
                 <z-offset-m type="double">-2.51535</z-offset-m>
                 <pitch-offset-deg>-8</pitch-offset-deg>
                 <limits>
@@ -429,7 +429,7 @@ See AUTHORS.txt for credits
                 <binding>
                     <condition>
                         <greater-than-equals>
-                            <property>sim/model/door-positions/frontwin/position-norm</property> 
+                            <property>sim/model/door-positions/frontwin/position-norm</property>
                             <value>0.5</value>
                         </greater-than-equals>
                     </condition>
