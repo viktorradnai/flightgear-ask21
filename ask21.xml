@@ -1,24 +1,60 @@
 <?xml version="1.0"?>
+<!--Herby notes:
+
+
+Original:
+
+approach speed="38" aoa="2.7" glide-angle="5.2"
+cruise speed="52" alt="5000" glide-angle="4.7"
+wing: stall aoa="23" width="8" peak="1.5"
+
+YASim solution results:
+       Iterations: 4241
+ Drag Coefficient: 2.49345
+       Lift Ratio: 2896.94
+       Cruise AoA: 1.2866
+   Tail Incidence: -2.74599
+Approach Elevator: 0.0859411
+            CG: 1.060, -0.000, 0.765
+            
+       63 km/h = 34.0 kts    Stall speed
+      140 km/h = 75.6 kts    Reisespeed 1.6 m/s
+      
+           km/h = 25.0 kts              m/s 0.98  1.05
+           km/h = 30.0 kts              m/s 0.88  1.05 1.12                                       0.90  
+           63 km/h = 34.0 kts         1.80 m/s 0.80  0.94 0.96 0.84 aoa 23>21        aoa 21>22.7  0.83
+        66 km/h = 35.6 kts         1.00 m/s 0.79  0.91 0.93 0.82               0.80               0.82
+        70 km/h = 37.8 kts         0.80 m/s 0.82  0.90 0.90 0.80               0.78               0.80
+        82 km/h = 44.2 kts         0.75 m/s 0.82  0.86 0.86 0.80               0.76               0.80
+       140 km/h = 75.6 kts         1.60 m/s 1.89  1.64 1.50 1.62               1.46               1.60
+       180 km/h = 97.2 kts         2.90 m/s 3.63  3.04 2.70 3.01               2.70               2.97
+-->  
 <airplane mass="720" version="YASIM_VERSION_CURRENT">
-<!--<airplane mass="720">-->
+	
     <!-- Approach configuration -->
     <approach speed="38" aoa="2.7" glide-angle="5.2">
     </approach>
     <!-- Cruise configuration -->
-    <cruise speed="52" alt="5000" glide-angle="4.7">
+    <cruise speed="75.6" alt="5000" glide-angle="4.7">
          <control-setting axis="/controls/flight/elevator-trim" value="0.2"/>
     </cruise>
+    
     <!-- pilot's eyepoint -->
     <cockpit x="2.5396" y="0" z="0.94214"/>
+    
     <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
+    
     <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
-        <stall aoa="23" width="8" peak="1.5"/>
+        <stall aoa="22.7" width="8" peak="1.5"/>
         <flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
-        <spoiler start="0.34" end="0.44" lift="-4.5" drag="75.5"/>
+        <flap1 start="0.0" end="0.4" lift="0.15" drag="1.70"/>
+        <spoiler start="0.34" end="0.44" lift="-4.3" drag="75.5"/>
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
+        <control-input axis="/controls/flight/stallflap" control="FLAP1"/>
         <control-output control="FLAP0" side="left" prop="surface-positions/left-aileron-pos-norm"/>
         <control-output control="FLAP0" side="right" prop="surface-positions/right-aileron-pos-norm"/>
         <control-speed control="FLAP0" transition-time="0.5"/>
+        <control-speed control="FLAP1" transition-time="0.05"/>
 
         <control-input axis="/controls/engines/engine/throttle" control="SPOILER" src0="0" src1="1.0" dst0="1.0" dst1="0"/>
         <control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
@@ -38,6 +74,7 @@
         <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="4" max="-4"/>
     </vstab>
+    
     <!-- nose wheel -->
     <gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.6" sfric="1"></gear>
     <!-- main wheel-->
@@ -52,7 +89,8 @@
     <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="1.5" sfric="1.5"/>
     <!--lef wing skid-->
     <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="1.5" sfric="1.5"/>
-    <!-- pilots -->
+    
+    <!-- PILOTS -->
     <!-- Front -->
     <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>
     <!--Rear-->

@@ -16,12 +16,15 @@
     
     <animation>
         <type>select</type>
-        <condition>
-            <property>/sim/model/pilots-enabled</property>
-            <not-equals>
-                <property>/sim/current-view/view-number</property>
-                <value>0</value>
-            </not-equals>
+	<condition>
+		<property>/sim/model/pilots-enabled</property>
+		<or>
+			<not-equals>
+				<property>/sim/current-view/view-number</property>
+				<value>0</value>
+			</not-equals>
+			<property>/sim/model/pilots-always-present</property>
+		</or>
         </condition>
         <object-name>pilot</object-name>
     </animation>
@@ -31,10 +34,13 @@
             <and>
             <property>/sim/model/pilots-enabled</property>
             <property>/sim/model/copilot-present</property>
-            <not-equals>
-                <property>/sim/current-view/view-number</property>
-                <value>11</value>
-            </not-equals>
+	    <or>
+		<not-equals>
+			<property>/sim/current-view/view-number</property>
+			<value>11</value>
+		</not-equals>
+		<property>/sim/model/pilots-always-present</property>
+	</or>
             </and>
         </condition>
         <object-name>copilot</object-name>

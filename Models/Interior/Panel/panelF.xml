@@ -3,6 +3,25 @@
     <path>panelF.ac</path>
     <!--COCKPIT-->
     <!--FRONT INSTRUMENTS-->
+    
+    <!--Aftermarket Windcompass by Herby :D-->
+    <model>
+        <name>wind</name>
+        <path>Instruments/windcompass/windcompass.xml</path>
+        <offsets>
+            <x-m>-3.328</x-m>
+            <y-m>-0.0</y-m>
+            <z-m>0.74</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
+    <animation>
+	    <type>select</type>
+	    <object-name>wind</object-name>
+	    <condition>
+		    <property>/sim/model/windcompass</property>
+	    </condition>
+    </animation>
     <!--ASI-->
     <model>
         <name>asi</name>

@@ -32,7 +32,7 @@
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeLac1</object-name>
         <object-name>speedbrakeLac2</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -55,7 +55,7 @@
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeLac1</object-name>
         <object-name>speedbrakeLac2</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -74,7 +74,7 @@
         <object-name>wing.L3</object-name>
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -91,7 +91,7 @@
     <animation>
         <type>rotate</type>
         <object-name>wing.L4</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -115,7 +115,7 @@
         <object-name>speedbrakeR</object-name>
         <object-name>speedbrakeRac1</object-name>
         <object-name>speedbrakeRac2</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -138,7 +138,7 @@
         <object-name>speedbrakeR</object-name>
         <object-name>speedbrakeRac1</object-name>
         <object-name>speedbrakeRac2</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -157,7 +157,7 @@
         <object-name>wing.R3</object-name>
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -174,7 +174,7 @@
     <animation>
         <type>rotate</type>
         <object-name>wing.R4</object-name>
-        <property>accelerations/pilot-g[0]</property>
+        <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -192,7 +192,7 @@
     <animation>
         <type>rotate</type>
         <object-name>aileronL</object-name>
-        <property>controls/flight/aileron</property>
+        <property>surface-positions/left-aileron-pos-norm</property>
         <factor>-24</factor>
         <axis>
             <x1-m>-0.87208</x1-m>
@@ -206,7 +206,7 @@
     <animation>
         <type>rotate</type>
         <object-name>aileronR</object-name>
-        <property>controls/flight/aileron</property>
+        <property>surface-positions/right-aileron-pos-norm</property>
         <factor>-24</factor>
         <axis>
             <x1-m>-0.87208</x1-m>
@@ -383,8 +383,8 @@
     <animation>
         <type>rotate</type>
         <object-name>elevator</object-name>
-        <property>controls/flight/elevator</property>
-        <factor>24</factor>
+        <property>surface-positions/elevator-pos-norm</property>
+        <factor>6</factor>
         <center>
             <x-m>3.788</x-m>
             <y-m>0.0</y-m>
@@ -455,7 +455,86 @@
             <z>1</z>
         </axis>
     </animation>
+    
+    <!--Spinning-->
+    <animation>
+    <type>spin</type>
+    <object-name>wheelF</object-name>
+    <property>sim/multiplay/generic/float[5]</property>
+    <factor> -30 </factor>
+    <center>
+      <x-m> -3.273 </x-m>
+      <y-m>   0.00000 </y-m>
+      <z-m>  0.194 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>spin</type>
+    <object-name>wheelM</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <factor> -30 </factor>
+    <center>
+      <x-m> -1.012 </x-m>
+      <y-m>   0.00000 </y-m>
+      <z-m>  0.190 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>spin</type>
+    <object-name>wheelR</object-name>
+    <property>sim/multiplay/generic/float[7]</property>
+    <factor> -30 </factor>
+    <center>
+      <x-m> 3.611 </x-m>
+      <y-m>   0.00000 </y-m>
+      <z-m>  0.616 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  
     <!--CANOPY-->
+    
+    <animation>
+    <object-name>windowF</object-name>
+    <object-name>windowR</object-name>
+</animation>
+
+<animation>
+<type>noshadow</type>
+    <object-name>windowF</object-name>
+    <object-name>windowR</object-name>
+</animation>
+
+<effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>/sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>windowF</object-name>
+    <object-name>windowR</object-name>
+  </effect>
+  
+  <animation>
+    <object-name>windowF</object-name>
+    <object-name>windowR</object-name>
+</animation>
+
+
     <animation>
         <type>pick</type>
         <object-name>canopy.frontframe</object-name>

@@ -77,6 +77,21 @@
         <property>/sim/model/pilots-enabled</property>
         </binding>
     </checkbox>
+    <checkbox>
+	<enable>
+		<property>/sim/model/pilots-enabled</property>
+	</enable>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Pilot models from inside visible</label>
+        <property>/sim/model/pilots-always-present</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+        <property>/sim/model/pilots-always-present</property>
+        </binding>
+    </checkbox>
     <hrule/>
     <checkbox>
         <row>2</row>
@@ -88,6 +103,19 @@
         <binding>
             <command>property-toggle</command>
             <property>/sim/model/shadow</property>
+        </binding>
+    </checkbox>
+    <hrule/>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Enable windcompass</label>
+        <property>/sim/model/windcompass</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/sim/model/windcompass</property>
         </binding>
     </checkbox>
     <hrule/>

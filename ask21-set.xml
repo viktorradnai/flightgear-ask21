@@ -6,7 +6,7 @@ See AUTHORS.txt for credits
 <PropertyList include="walker-include.xml">
     <sim>
         <description>Schleicher ASK 21 Glider</description>
-        <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf and Gilberto Agostinho</author>
+        <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho and Herbert Wagner</author>
         <long-description>
             The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
         </long-description>
@@ -34,7 +34,9 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
+	    <pilots-always-present type="bool">1</pilots-always-present><!--Disable pilot models always present by default-->
             <instruments-light type="int">0</instruments-light><!--Disable fake instrument lights by default-->
+	    <windcompass type="bool">0</windcompass><!--Disable Windcompass by default-->
             <shadow type="bool">1</shadow>
             <door-positions>
                 <frontwin>
@@ -88,6 +90,7 @@ See AUTHORS.txt for credits
                 <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
+                <float n="9"  alias="/accelerations/pilot-g[0]"/>
                 <!-- For Bombable -->
                 <int   n="10" type="int"/>
                 <string n="9" type="string"/>
@@ -98,7 +101,9 @@ See AUTHORS.txt for credits
             <path>/sim/model/window</path>
             <path>/sim/model/window-shader</path>
             <path>/sim/model/pilots-enabled</path>
+            <path>/sim/model/pilots-always-present</path>
             <path>/sim/model/instruments-light</path>
+            <path>/sim/model/windcompass</path>
             <path>/sim/weight[0]/weight-lb</path>
             <path>/sim/weight[1]/weight-lb</path>
         </aircraft-data>
@@ -136,9 +141,10 @@ See AUTHORS.txt for credits
             <config>
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <x-offset-m type="double">0.0</x-offset-m>
-                <y-offset-m type="double">1.04</y-offset-m>
-                <z-offset-m type="double">-2.51535</z-offset-m>
+                <y-offset-m type="double">0.95</y-offset-m>
+                <z-offset-m type="double">-2.56</z-offset-m>
                 <pitch-offset-deg>-8</pitch-offset-deg>
+		<default-field-of-view-deg type="double">73.0</default-field-of-view-deg>
                 <limits>
                     <enabled type="bool">false</enabled>
                     <left>
@@ -167,7 +173,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">-1.53362</z-offset-m>
                 <default-heading-offset-deg>300</default-heading-offset-deg>
                 <pitch-offset-deg>-17.1</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="101">
@@ -183,7 +189,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">-1.35395</z-offset-m>
                 <default-heading-offset-deg>90</default-heading-offset-deg>
                 <pitch-offset-deg>00</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="102">
@@ -199,7 +205,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">3.36041</z-offset-m>
                 <default-heading-offset-deg>0</default-heading-offset-deg>
                 <pitch-offset-deg>-10</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="103">
@@ -211,11 +217,11 @@ See AUTHORS.txt for credits
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <heading-offset-deg type="double">0</heading-offset-deg>
                 <x-offset-m archive="y" type="double">0.0</x-offset-m>
-                <y-offset-m archive="y" type="double">1.09137</y-offset-m>
-                <z-offset-m archive="y" type="double">-1.41704</z-offset-m>
+                <y-offset-m archive="y" type="double">1.0</y-offset-m>
+                <z-offset-m archive="y" type="double">-1.49</z-offset-m>
                 <default-heading-offset-deg>0</default-heading-offset-deg>
                 <pitch-offset-deg>-10</pitch-offset-deg>
-                <default-field-of-view-deg>65</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">89</default-field-of-view-deg>
                 <limits>
                     <enabled type="bool">false</enabled>
                     <left>
@@ -588,6 +594,7 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
             <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
+            <file>Aircraft/ASK21/Nasal/stall.nas</file>
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
              <file>Aircraft/ASK21/Nasal/immat.nas</file>
