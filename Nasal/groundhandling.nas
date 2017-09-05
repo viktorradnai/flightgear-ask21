@@ -16,9 +16,9 @@ var update_systems = func {
 
 
 
-    # Conditions: glider must be on ground and people can only run up to 15kts (about), towing can be done up to 20
+    # Conditions: glider must be on ground, engine must not be running and people can only run up to 15kts (about), towing can be done up to 20
     var assistConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 15;
-    var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20;
+    var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20 and getprop("/engines/engine[0]/running") == 0;
 
     # Wing holder
     if (getprop("/controls/gear/assist-1") == 1 and assistConditions) {
@@ -28,15 +28,21 @@ var update_systems = func {
         setprop("/controls/gear/assist-1", 0); #automatically reset assisting gears on takeoff
     }
 
+    if(getprop("/sim/model/variant")==1){
+	var handlingThrottle=getprop("/controls/ask21/groundhandling-throttle");
+    }else{
+	var handlingThrottle=getprop("/controls/engines/engine/throttle");
+    }
+    
     # Ground handling
     if (getprop("/controls/ground-handling") == 1 and handlingConditions) {
         setprop("/controls/flight/rudder2", getprop("/controls/flight/rudder"));
         setprop("/controls/flight/aileron2", getprop("/controls/flight/aileron"));
-        setprop("/controls/throttle-2", getprop("/controls/engines/engine/throttle"));
+        setprop("/controls/throttle-2", handlingThrottle);
 
         if (getprop("/controls/engines/engine/reverser")==1) {
             setprop("/controls/throttle-2", 0);
-            setprop("/controls/throttle-reverse", getprop("/controls/engines/engine/throttle"));
+            setprop("/controls/throttle-reverse", handlingThrottle);
         } else {
             setprop("/controls/throttle-reverse", 0);
         }

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<filter>
+		<debug>false</debug>
+		<type>noise-spike</type>
+		<input>
+			<condition>
+				<greater-than>
+					<property>/position/gear-agl-m</property>
+					<value>5</value> <!--ground effect-->
+				</greater-than>
+			</condition>
+			<expression>
+				<table>
+					<property>/velocities/airspeed-kt</property>
+					<entry><ind>25</ind><dep>1</dep></entry>
+					<entry><ind>30</ind><dep> 0.85</dep></entry>
+					<entry><ind>34</ind><dep> 0.2</dep></entry>
+					<entry><ind>35.6</ind><dep> 0.02</dep></entry>
+					<entry><ind>37.8</ind><dep>0</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/controls/flight/stallflap</output>
+		<max-rate-of-change>2.0</max-rate-of-change>
+	</filter>
+	
+</PropertyList>

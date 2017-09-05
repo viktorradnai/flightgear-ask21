@@ -300,7 +300,7 @@
 				<property>sim/walker/key-triggers/outside-toggle</property>
 			</binding>
 		</key>
--->
+--><!--
             <key n="106">
                 <name>j</name>
                 <desc>open parachute</desc>
@@ -309,7 +309,7 @@
                     <command>nasal</command>
                     <script>walk.open_chute()</script>
                 </binding>
-            </key>
+            </key>-->
             <key n="101">
                 <name>e</name>
                 <desc>Walk forward</desc>

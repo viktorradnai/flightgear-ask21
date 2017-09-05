@@ -23,14 +23,53 @@
             <pitch-deg>40</pitch-deg>
         </offsets>
     </model>
+    <!--Different Panel variations for normal and -mi-->
     <model>
         <name>panelF</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/panelF.xml</path>
     </model>
     <model>
+        <name>panelFmi</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/panelF-mi.xml</path>
+    </model>
+    <model>
         <name>panelR</name>
         <path>Aircraft/ASK21/Models/Interior/Panel/panelR.xml</path>
     </model>
+    <model>
+        <name>panelRmi</name>
+	<path>Aircraft/ASK21/Models/Interior/Panel/panelR-mi.xml</path> <!--to come-->
+    </model>
+    <!--Engine Console, only present in -mi-->
+    <model>
+        <name>engconsole</name>
+        <path>Aircraft/ASK21/Models/Interior/engconsole.xml</path>
+    </model>
+    
+	<animation>
+		<type>select</type>
+		<object-name>engconsole</object-name> 
+		<object-name>panelFmi</object-name>   
+		<object-name>panelRmi</object-name>   
+		<condition>
+			<equals>
+				<property>sim/multiplay/generic/int[14]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>panelF</object-name>   
+		<object-name>panelR</object-name>  
+		<condition>
+			<equals>
+				<property>sim/multiplay/generic/int[14]</property>
+				<value>0</value>
+			</equals>
+		</condition>
+	</animation>
+    
     <!--Pilots-->
     <model>
         <name>pilots</name>

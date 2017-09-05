@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!--
+YASim Schleicher ASK 21 Glider
+See AUTHORS.txt for credits
+-->
+<PropertyList include="ask21-main.xml">
+  <sim>
+    <description>Schleicher ASK 21 Mi Motorized Glider</description>
+    <long-description>
+            The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*).
+            It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped
+            with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload.
+            The K21, how it is also called sometimes, was first built in 1978. This version, the "Mi" is equipped with a 41kW-engine for independent takeoff and safe home return without thermals.
+        </long-description>
+    <status>production</status>
+        <variant-of>ask21</variant-of>
+    <rating>
+      <FDM type="int">4</FDM>
+      <systems type="int">4</systems>
+      <cockpit type="int">4</cockpit>
+      <model type="int">4</model>
+    </rating>
+    <systems>
+      <property-rule n="102">
+	<name>Engine</name><!--only included in the -mi, supports toggle between throttle to throttle and throttle to airbrake-->
+        <path>Systems/engine.xml</path>
+      </property-rule>
+    </systems>
+    <flight-model archive="y">yasim</flight-model>
+    <aero archive="y">ask21mi</aero>
+    <startup>
+      <splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
+    </startup>
+    <model>
+      <variant type="int">1</variant>
+    </model>
+		
+	<previews>
+		<preview>
+			<type>exterior</type>
+			<splash type="bool">true</splash>
+			<path>ask21mi-splash.png</path>
+		</preview>
+	</previews>
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic>
+        <int type="int" n="12" alias="/engines/engine[0]/running">  0 </int>
+        <int type="int" n="13" alias="/engines/engine[0]/cranking">  0 </int>
+        <float n="10" alias="/engines/engine/prop-pos-norm"/>
+        <!-- Motor-->
+        <float n="11" alias="/controls/engines/engine[0]/throttle"/>
+        <float n="12" alias="/engines/engine[0]/mp-osi"/>
+      </generic>
+    </multiplay>
+	<!-- Speedbreake step settings -->
+    <spoilers>
+      <setting>0.00</setting>
+      <setting>0.08</setting>
+      <setting>0.16</setting>
+      <setting>0.32</setting>
+      <setting>0.48</setting>
+      <setting>0.64</setting>
+      <setting>0.82</setting>
+      <setting>1.00</setting>
+    </spoilers>
+    <!-- Save some properties when the simulator is shut down -->
+    <aircraft-data>
+      <path>/controls/ask21/throttle-to-airbrake</path>
+      <path>/instrumentation/ilec/hours</path>
+    </aircraft-data>
+    <sound>
+      <path>Aircraft/ASK21/Sounds/ask21mi-sound.xml</path>
+    </sound>
+    <help include="ask21mi-help.xml"/>
+  </sim>
+  <controls>
+    <ask21>
+	    <groundhandling-throttle type="double">0</groundhandling-throttle>
+      <throttle-to-airbrake type="bool">0</throttle-to-airbrake>
+    </ask21>
+    <electric>
+      <engine-battery-switch type="bool">0</engine-battery-switch>
+      <engine-battery-switch-pos type="float">0</engine-battery-switch-pos>
+    </electric>
+    <engines>
+      <engine n="0">
+        <boost type="double">0</boost>
+        <magnetos>0</magnetos>
+        <extend-propeller type="bool">0</extend-propeller>
+        <extend-propeller-pos type="float">0</extend-propeller-pos>
+        <throttle-int type="double">0</throttle-int>
+      </engine>
+    </engines>
+  </controls>
+  <engines>
+    <engine>
+      <prop-pos-norm type="float">0</prop-pos-norm>
+    </engine>
+  </engines>
+  <input>
+    <keyboard>
+      <key n="101">
+        <name>e</name>
+        <desc>Extend engine</desc>
+        <binding>
+          <command>property-toggle</command>
+	  <property>/controls/engines/engine/extend-propeller</property>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+  
+  <nasal>
+	  <ilec>
+		  <file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC.nas</file>
+	  </ilec>
+  </nasal>
+</PropertyList>
+

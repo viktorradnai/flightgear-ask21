@@ -23,7 +23,7 @@
      <object-name>winvalid</object-name>
      <object-name>n2</object-name>         
     <emission>
-      <factor-prop>controls/switches/gauge-light</factor-prop>
+      <factor-prop>controls/electric/battery-switch</factor-prop>
       <red>   0.35 </red>
       <green> 0.35 </green>
       <blue>  0.35 </blue>
@@ -42,7 +42,7 @@
 <object-name>w10</object-name> 
 <object-name>w100</object-name>
     <emission>
-      <factor-prop>controls/switches/gauge-light</factor-prop>
+      <factor-prop>controls/electric/battery-switch</factor-prop>
       <red>   0.55 </red>
       <green> 0.55 </green>
       <blue>  0.55 </blue>

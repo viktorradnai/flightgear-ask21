@@ -329,6 +329,7 @@
             <max-dist>10</max-dist>
         </airbrake-close>
 
+	<!--ILEC SC7 electric vario based on http://www.ilec-gmbh.com/ilec/manuals/SC7_Handbuch_d_2014.pdf-->
         <variometer-up>
             <name>variometer-up</name>
             <mode>looped</mode>
@@ -340,6 +341,10 @@
                     <value>0.01</value>
                 </greater-than>
                 <property>/controls/electric/battery-switch</property>
+		<greater-than>
+			<property>/instrumentation/ilec-sc7/audio</property>
+			<value>0</value>
+		</greater-than>
                 </and>
             </condition>
             <pitch>
@@ -377,6 +382,10 @@
                         <value>-0.01</value>
                     </less-than>
                 </and>
+		<equals>
+			<property>/instrumentation/ilec-sc7/audio</property>
+			<value>2</value>
+		</equals>
                 <property>/controls/electric/battery-switch</property>
                 </and>
             </condition>
