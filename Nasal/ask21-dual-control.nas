@@ -15,7 +15,7 @@ var DCT = dual_control_tools;
 ######################################################################
 # Pilot/copilot aircraft identifiers. Used by dual_control.
 var pilot_type   = "Aircraft/ASK21/Models/ask21.xml";
-var copilot_type = "";
+var copilot_type = "Aircraft/ASK21/Models/ask21-passenger.xml";
 
 props.globals.initNode("/sim/remote/pilot-callsign", "", "STRING");
 
@@ -140,6 +140,8 @@ var set_copilot_wrappers = func (pilot) {
     p = "sim/model/door-positions/canopyB/position-norm";
     props.globals.getNode(p).alias(pilot.getNode(p));
     p = "sim/model/door-positions/canopyF/position-norm";
+    props.globals.getNode(p).alias(pilot.getNode(p));
+    p = "sim/model/door-positions/canopyFJ/position-norm";
     props.globals.getNode(p).alias(pilot.getNode(p));
     p = "/surface-positions/speedbrake-pos-norm";
     props.globals.getNode(p).alias(pilot.getNode(p));

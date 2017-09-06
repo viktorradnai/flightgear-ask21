@@ -301,6 +301,16 @@ See AUTHORS.txt for credits
                             <dialog-name>Immatriculation</dialog-name>
                     </binding>
                     </item>
+                    <item>
+                        <label>Select MP-pilot</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                dual_control_tools.
+                                copilot_dialog.show(aircraft_dual_control.pilot_type);
+                            </script>
+                        </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>
@@ -591,5 +601,14 @@ See AUTHORS.txt for credits
              <file>Aircraft/ASK21/Nasal/immat.nas</file>
              <file>Aircraft/ASK21/Nasal/listeners.nas</file>
         </ask21>
+        <dual_control>
+            <file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
+        </dual_control>
+        <aircraft_dual_control>
+            <file>Aircraft/ASK21/Nasal/ask21-dual-control.nas</file>
+        </aircraft_dual_control>
+        <dual_control_tools>
+            <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+        </dual_control_tools>
     </nasal>
 </PropertyList>

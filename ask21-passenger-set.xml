@@ -10,13 +10,13 @@ See AUTHORS.txt for credits
         <description>Schleicher ASK 21 Passenger/Instructor View for Multiplayer</description>
         <author>Patrice Poly; D-ECHO</author>
         <status>early-production</status>
-        <rating>
+        <!--<rating>
             <FDM type="int">2</FDM>
             <systems type="int">2</systems>
             <cockpit type="int">2</cockpit>
             <model type="int">3</model>
-        </rating>
-        <aircraft-version>20161003</aircraft-version>
+        </rating>-->
+        <aircraft-version>201703</aircraft-version>
         <variant-of>ask21</variant-of>
         <flight-model>null</flight-model>
         <startup>
@@ -148,7 +148,7 @@ See AUTHORS.txt for credits
         <menubar>
             <default>
                 <menu n="100">
-                    <label>ASK21</label>
+                    <label>ASK21 Passenger/Instructor</label>
                     <enabled type="bool">true</enabled>
                     <item>
                         <label>Select MP-pilot</label>
