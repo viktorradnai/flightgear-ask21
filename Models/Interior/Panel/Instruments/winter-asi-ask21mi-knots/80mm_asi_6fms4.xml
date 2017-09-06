@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!-- Airspeed indicator -->
+<PropertyList>
+    <path>80mm_asi_6fms4.ac</path>
+    <texture-path>Textures</texture-path>
+    <animation>
+        <type>material</type>
+        <object-name>backplane</object-name>
+        <object-name>needle</object-name>
+        <emission>
+            <red>0.28</red>
+            <green>0.14</green>
+            <blue>0.07</blue>
+            <factor-prop>sim/model/instruments-light</factor-prop>
+        </emission>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>needle</object-name>
+        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <interpolation>
+            <entry>
+                <ind>  0.0</ind>
+                <dep>  0  </dep>
+            </entry>
+            <entry>
+                <ind> 10.0</ind>
+                <dep>  1.0</dep>
+            </entry>
+            <entry>
+                <ind> 20.0</ind>
+                <dep> 16.9</dep>
+            </entry>
+            <entry>
+                <ind> 30.0</ind>
+                <dep> 59.5</dep>
+            </entry>
+            <entry>
+                <ind> 40.0</ind>
+                <dep>109.5</dep>
+            </entry>
+            <entry>
+                <ind> 50.0</ind>
+                <dep>151.3</dep>
+            </entry>
+            <entry>
+                <ind> 60.0</ind>
+                <dep>187.6</dep>
+            </entry>
+            <entry>
+                <ind> 70.0</ind>
+                <dep>219.3</dep>
+            </entry>
+            <entry>
+                <ind> 80.0</ind>
+                <dep>251.7</dep>
+            </entry>
+            <entry>
+                <ind> 90.0</ind>
+                <dep>278.1</dep>
+            </entry>
+            <entry>
+                <ind>100.0</ind>
+                <dep>304.9</dep>
+            </entry>
+            <entry>
+                <ind>110.0</ind>
+                <dep>328.5</dep>
+            </entry>
+            <entry>
+                <ind>120.0</ind>
+                <dep>350.5</dep>
+            </entry>
+            <entry>
+                <ind>124.5</ind>
+                <dep>360.0</dep>
+            </entry>
+            <entry>
+                <ind>130.0</ind>
+                <dep>371.7</dep>
+            </entry>
+            <entry>
+                <ind>140.0</ind>
+                <dep>389.9</dep>
+            </entry>
+            <entry>
+                <ind>150.0</ind>
+                <dep>408.8</dep>
+            </entry>
+            <entry>
+                <ind>160.0</ind>
+                <dep>427.7</dep>
+            </entry>
+            <entry>
+                <ind>170.0</ind>
+                <dep>446.8</dep>
+            </entry>
+            <entry>
+                <ind>180.0</ind>
+                <dep>464.2</dep>
+            </entry>
+            <entry>
+                <ind>190.0</ind>
+                <dep>481.0</dep>
+            </entry>
+            <entry>
+                <ind>200.0</ind>
+                <dep>498.8</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+</PropertyList>

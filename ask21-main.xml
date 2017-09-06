@@ -302,14 +302,14 @@ See AUTHORS.txt for credits
                     </binding>
                     </item>
                     <item>
-                        <label>Select MP-pilot</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                dual_control_tools.
-                                copilot_dialog.show(aircraft_dual_control.pilot_type);
-                            </script>
-                        </binding>
+			<name>mpcopilot</name>
+			<label>Select MP Copilot</label>
+			<binding>
+				<command>nasal</command>
+				<script>
+					dual_control_tools.copilot_dialog.show(aircraft_dual_control.copilot_type);
+				</script>
+			</binding>
                     </item>
                 </menu>
             </default>

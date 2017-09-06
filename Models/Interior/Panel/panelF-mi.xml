@@ -26,14 +26,14 @@
     <!--ASI-->
     <model>
         <name>asi</name>
-        <path>Instruments/winter-asi-ask21-kph/80mm_asi_6fms4.xml</path>
+        <path>Instruments/winter-asi-ask21mi-kph/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
             <y-m>-0.11</y-m>
             <z-m>0.74</z-m>
             <pitch-deg>-4</pitch-deg>
         </offsets>
-    </model>
+    </model><!--
     <model>
         <name>asi-1</name>
         <path>Instruments/winter-asi-6221/winter-asi-6221.xml</path>
@@ -43,10 +43,10 @@
             <z-m>0.74</z-m>
             <pitch-deg>-4</pitch-deg>
         </offsets>
-    </model>
+    </model>-->
     <model>
         <name>asi-2</name>
-        <path>Instruments/winter-asi-ask21-knots/80mm_asi_6fms4.xml</path>
+        <path>Instruments/winter-asi-ask21mi-knots/80mm_asi_6fms4.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
             <y-m>-0.11</y-m>
@@ -63,7 +63,7 @@
                 <value>0</value>
             </equals>
         </condition>
-    </animation>
+    </animation><!--
     <animation>
         <type>select</type>
         <object-name>asi-1</object-name>
@@ -73,7 +73,7 @@
                 <value>1</value>
             </equals>
         </condition>
-    </animation>
+    </animation>-->
     <animation>
         <type>select</type>
         <object-name>asi-2</object-name>

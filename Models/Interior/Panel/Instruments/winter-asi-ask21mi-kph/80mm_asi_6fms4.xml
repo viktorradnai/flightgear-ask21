@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--This models the Winter 6 FMS 4   300 Km/h Art. 6421 see https://www.winter-instruments.de/ -->
+<!-- Airspeed indicator -->
+<PropertyList>
+    <path>80mm_asi_6fms4.ac</path>
+    <texture-path>Textures</texture-path>
+    <animation>
+        <type>material</type>
+        <object-name>backplane</object-name>
+        <object-name>needle</object-name>
+        <emission>
+            <red>0.28</red>
+            <green>0.14</green>
+            <blue>0.07</blue>
+            <factor-prop>sim/model/instruments-light</factor-prop>
+        </emission>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>needle</object-name>
+        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <!-- factor 1.852 for 1 knot to 1 km/h -->
+        <!-- 0 - 27 knot = 0 - 50 km/h -->
+        <!-- 27 - 162 knot = 50 - 300 km/h -->
+        <!--Calibrated for new texture-->
+        <interpolation>
+            <entry>
+                <ind>  0.0</ind>
+                <dep>  0  </dep>
+            </entry>
+            <entry>
+                <ind> 21.6</ind> <!--40 km/h-->
+                <dep> 30.15</dep>
+            </entry>
+            <entry>
+                <ind> 27</ind> <!--50 km/h-->
+                <dep> 59.3</dep>
+            </entry>
+            <entry>
+                <ind> 32.39</ind> <!--60 km/h-->
+                <dep> 83.4</dep>
+            </entry>
+            <entry>
+                <ind> 37.8</ind> <!--70 km/h-->
+                <dep> 114.5</dep>
+            </entry>
+            <entry>
+                <ind> 43.2</ind> <!--80 km/h-->
+                <dep> 140.7</dep>
+            </entry>
+            <entry>
+                <ind> 48.6</ind> <!--90 km/h-->
+                <dep> 165.8</dep>
+            </entry>
+            <entry>
+                <ind> 54</ind> <!--100 km/h-->
+                <dep> 189.6</dep>
+            </entry>
+            <entry>
+                <ind> 59.4</ind> <!--110 km/h-->
+                <dep>210</dep>
+            </entry>
+            <entry>
+                <ind> 64.8</ind> <!--120 km/h-->
+                <dep>228</dep>
+            </entry>
+            <entry>
+                <ind> 70.2</ind> <!--130 km/h-->
+                <dep>244</dep>
+            </entry>
+            <entry>
+                <ind> 75.6</ind> <!--140 km/h-->
+                <dep>261</dep>
+            </entry>
+            <entry>
+                <ind> 81</ind> <!--150 km/h-->
+                <dep>280</dep>
+            </entry>
+            <entry>
+                <ind> 86.4</ind> <!--160 km/h-->
+                <dep>294</dep>
+            </entry>
+            <entry>
+                <ind> 91.8</ind> <!--170 km/h-->
+                <dep>314</dep>
+            </entry>
+            <entry>
+                <ind> 97.2</ind> <!--180 km/h-->
+                <dep>331</dep>
+            </entry>
+            <entry>
+                <ind> 102.6</ind> <!--190 km/h-->
+                <dep>347</dep>
+            </entry>
+            <entry>
+                <ind> 108</ind> <!--200 km/h-->
+                <dep>363</dep>
+            </entry>
+            <entry>
+                <ind> 113.4</ind> <!--210 km/h-->
+                <dep>378</dep>
+            </entry>
+            <entry>
+                <ind> 118.8</ind> <!--220 km/h-->
+                <dep>392</dep>
+            </entry>
+            <entry>
+                <ind> 124.2</ind> <!--230 km/h-->
+                <dep>410</dep>
+            </entry>
+            <entry>
+                <ind> 129.6</ind> <!--240 km/h-->
+                <dep>425</dep>
+            </entry>
+            <entry>
+                <ind> 135</ind> <!--250 km/h-->
+                <dep>441</dep>
+            </entry>
+            <entry>
+                <ind> 140.4</ind> <!--260 km/h-->
+                <dep>460</dep>
+            </entry>
+            <entry>
+                <ind> 145.8</ind> <!--270 km/h-->
+                <dep>475</dep>
+            </entry>
+            <entry>
+                <ind> 151.2</ind> <!--280 km/h-->
+                <dep>488</dep>
+            </entry>
+            <entry>
+                <ind> 156.6</ind> <!--290 km/h-->
+                <dep>500</dep>
+            </entry>
+            <entry>
+                <ind> 162</ind> <!--300 km/h-->
+                <dep>510</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+</PropertyList>
