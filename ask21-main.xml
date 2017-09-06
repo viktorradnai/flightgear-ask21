@@ -331,6 +331,13 @@ See AUTHORS.txt for credits
             </winch>
         </hitches>
     </sim>
+    <consumables>
+	    <fuel>
+		    <tank>
+			    <selected>0</selected>
+		    </tank>
+	    </fuel>
+    </consumables>
     <limits>
         <max-spoiler-extension-speed>151.2</max-spoiler-extension-speed>
 

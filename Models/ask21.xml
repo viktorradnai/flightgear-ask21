@@ -32,6 +32,7 @@
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeLac1</object-name>
         <object-name>speedbrakeLac2</object-name>
+        <object-name>wingwheelL</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -55,6 +56,7 @@
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeLac1</object-name>
         <object-name>speedbrakeLac2</object-name>
+        <object-name>wingwheelL</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -74,6 +76,7 @@
         <object-name>wing.L3</object-name>
         <object-name>wing.L4</object-name>
         <object-name>aileronL</object-name>
+        <object-name>wingwheelL</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -91,6 +94,7 @@
     <animation>
         <type>rotate</type>
         <object-name>wing.L4</object-name>
+        <object-name>wingwheelL</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
@@ -115,6 +119,7 @@
         <object-name>speedbrakeR</object-name>
         <object-name>speedbrakeRac1</object-name>
         <object-name>speedbrakeRac2</object-name>
+        <object-name>wingwheelR</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -138,6 +143,7 @@
         <object-name>speedbrakeR</object-name>
         <object-name>speedbrakeRac1</object-name>
         <object-name>speedbrakeRac2</object-name>
+        <object-name>wingwheelR</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -157,6 +163,7 @@
         <object-name>wing.R3</object-name>
         <object-name>wing.R4</object-name>
         <object-name>aileronR</object-name>
+        <object-name>wingwheelR</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -174,6 +181,7 @@
     <animation>
         <type>rotate</type>
         <object-name>wing.R4</object-name>
+        <object-name>wingwheelR</object-name>
         <property>sim/multiplay/generic/float[9]</property>
         <factor>0.5</factor>
         <offset-deg>0</offset-deg>
@@ -456,6 +464,30 @@
         </axis>
     </animation>
     
+    <!--Nose wheel steering for -mi-->
+    <animation>
+    <type>rotate</type>
+    <object-name>wheelF</object-name>
+    <condition>
+	    <equals>
+		<property>/sim/model/variant</property>
+		<value>1</value>
+	    </equals>
+	</condition>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -8 </factor>
+    <center>
+      <x-m> -3.273 </x-m>
+      <y-m>   0.00000 </y-m>
+      <z-m>  0.194 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  0 </y>
+      <z>  1 </z>
+    </axis>
+  </animation>
+    
     <!--Spinning-->
     <animation>
     <type>spin</type>
@@ -721,9 +753,13 @@
       
   <animation>
     <name>EngineComplete</name>
+    <object-name>engine</object-name>  
     <object-name>engine_attach</object-name>      
-    <object-name>propeller</object-name>      
-    <object-name>propfix</object-name>      
+    <object-name>propeller</object-name>     
+    <object-name>propeller.na</object-name>    
+    <object-name>spinner1</object-name>         
+    <object-name>spinner2</object-name>      
+    <object-name>spinner3</object-name>     
     <object-name>propblur</object-name>
     <object-name>propdisc</object-name>
   </animation>
@@ -737,9 +773,9 @@
       <entry><ind> 1 </ind><dep>  0 </dep></entry>
     </interpolation>
     <center>
-      <x-m> -0.22779 </x-m>
+      <x-m>-0.38807 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m>  0.85378 </z-m>
+      <z-m>  0.93565 </z-m>
     </center>
     <axis>
       <x> 0 </x>
@@ -753,7 +789,9 @@
     <name>PropellerComplete</name>
     <object-name>propeller</object-name>
     <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>
+    <object-name>propblur</object-name>      
+    <object-name>spinner1</object-name>         
+    <object-name>spinner2</object-name>   
   </animation>
 
   <!-- Select object based on RPM -->
@@ -788,6 +826,7 @@
   <animation>
     <type>select</type>
     <object-name>propeller</object-name>
+    <object-name>spinner1</object-name>
     <condition>
       <less-than>
         <property>engines/engine[0]/rpm</property>
@@ -804,22 +843,27 @@
         <property>engines/engine[0]/rpm</property>
         <value> 5 </value>
       </greater-than>
+      <equals>
+        <property>sim/multiplay/generic/float[10]</property>
+        <value>1</value>
+      </equals>
     </condition>
     <property>engines/engine[0]/rpm</property>
     <factor> 1 </factor>
     <axis>
-      <x1-m> -0.331 </x1-m>
+      <x1-m> -0.42391 </x1-m>
       <y1-m>  0.000 </y1-m>
-      <z1-m>  1.834 </z1-m>
-      <x2-m> -0.423 </x2-m>
+      <z1-m>  1.84469 </z1-m>
+      <x2-m> -0.26713 </x2-m>
       <y2-m>  0.000 </y2-m>
-      <z2-m>  1.837 </z2-m>
+      <z2-m>  1.83856 </z2-m>
     </axis>
   </animation>
 
   <animation>
     <type>select</type>
-    <object-name>propfix</object-name>      
+    <object-name>propeller.na</object-name>   
+    <object-name>spinner3</object-name>    
     <condition>
       <less-than>
         <property>sim/multiplay/generic/float[10]</property>
@@ -831,6 +875,7 @@
   <animation>
     <name>PropAnim</name>
     <object-name>propeller</object-name>
+    <object-name>spinner2</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
   </animation>
@@ -853,6 +898,9 @@
     <object-name>fuselage-mi</object-name>   
         <object-name>engdoorL</object-name>
         <object-name>engdoorR</object-name>  
+        <object-name>gearfairing1mi</object-name>
+        <object-name>wingwheelL</object-name>
+        <object-name>wingwheelR</object-name>
     <condition>
       <equals>
         <property>sim/multiplay/generic/int[14]</property>
@@ -862,7 +910,8 @@
   </animation>
   <animation>
     <type>select</type> 
-    <object-name>fuselage</object-name>     
+    <object-name>fuselage</object-name>
+        <object-name>gearfairing1</object-name>     
     <condition>
       <equals>
         <property>sim/multiplay/generic/int[14]</property>
@@ -905,11 +954,17 @@
         <object-name>fuselage-mi</object-name>
         <object-name>engdoorL</object-name>
         <object-name>engdoorR</object-name>
+        <object-name>propeller</object-name>
+        <object-name>propeller.na</object-name>
+        <object-name>spinner1</object-name>
+        <object-name>spinner2</object-name>  
+	<object-name>spinner3</object-name>  
         <object-name>engine_attach</object-name>
         <object-name>tail.ac.fairing</object-name>
         <object-name>canopy.frontframe</object-name>
         <object-name>canopy.rearframe</object-name>
         <object-name>gearfairing1</object-name>
+        <object-name>gearfairing1mi</object-name>
         <object-name>gearfairing2</object-name>
         <object-name>gearfairing3</object-name>
     </effect>
@@ -921,6 +976,7 @@
         <object-name>engdoorL</object-name>
         <object-name>engdoorR</object-name>
         <object-name>gearfairing1</object-name>
+        <object-name>gearfairing1mi</object-name>
         <object-name>gearfairing2</object-name>
         <object-name>gearfairing3</object-name>
         <object-name>vstabilizer</object-name>

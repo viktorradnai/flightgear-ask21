@@ -74,6 +74,10 @@ See AUTHORS.txt for credits
     </sound>
     <help include="ask21mi-help.xml"/>
   </sim>
+    <limits>
+        <mtow-lbs>1554.26</mtow-lbs>
+
+    </limits>
   <controls>
     <ask21>
 	    <groundhandling-throttle type="double">0</groundhandling-throttle>

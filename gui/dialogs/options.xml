@@ -153,6 +153,25 @@
         </binding>
     </checkbox>
     <hrule/>
+    <checkbox>
+	<enable>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>1</value>
+		</equals>
+	</enable>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Mixture to airbrake</label>
+        <property>/controls/ask21/mixture-to-airbrake</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+		<property>/controls/ask21/mixture-to-airbrake</property>
+        </binding>
+    </checkbox>
+    <hrule/>
     <button>
             <pref-width>140</pref-width>
             <pref-height>50</pref-height>

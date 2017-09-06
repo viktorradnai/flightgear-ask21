@@ -31,9 +31,17 @@ setlistener("/controls/engines/engine/extend-propeller", func{
 	interpolate("controls/engines/engine/extend-propeller-pos", getprop("/controls/engines/engine/extend-propeller"), 0.25);
 	
 });
+setlistener("/controls/engines/engine/magnetos", func{
+	if(getprop("/controls/engines/engine/magnetos")<3){
+		setprop("/consumables/fuel/tank/selected", 0);
+	}else{
+		setprop("/consumables/fuel/tank/selected", 1);	
+	}
+});
 	
 	
 setlistener("/sim/signals/fdm-initialized", func{
+	setprop("/consumables/fuel/tank/selected", 0);
 	print("Hourmeter initialized");
 	settimer(update_hourmeter, 36);
 });

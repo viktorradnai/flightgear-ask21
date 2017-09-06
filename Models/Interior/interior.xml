@@ -85,8 +85,27 @@
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
+		<condition>
+			<equals>
+				<property>/sim/model/variant</property>
+				<value>0</value>
+			</equals>
+		</condition>
                 <command>property-adjust</command>
                 <property>/controls/engines/engine/throttle</property>
+                <factor>0.05</factor>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+		<condition>
+			<equals>
+				<property>/sim/model/variant</property>
+				<value>1</value>
+			</equals>
+		</condition>
+                <command>property-adjust</command>
+                <property>/controls/flight/spoilers</property>
                 <factor>0.05</factor>
                 <min>0</min>
                 <max>1</max>
@@ -94,6 +113,12 @@
         </action>
         <hovered>
             <binding>
+		<condition>
+			<equals>
+				<property>/sim/model/variant</property>
+				<value>0</value>
+			</equals>
+		</condition>
                 <command>set-tooltip</command>
                 <tooltip-id>airbrake</tooltip-id>
                 <label>%s</label>
@@ -103,9 +128,31 @@
                     return sprintf("Speedbrake %d%% out", 100-arg[0]*100);
                 </script>
             </binding>
+            <binding>
+		<condition>
+			<equals>
+				<property>/sim/model/variant</property>
+				<value>1</value>
+			</equals>
+		</condition>
+                <command>set-tooltip</command>
+                <tooltip-id>airbrake-mi</tooltip-id>
+                <label>%s</label>
+                <mapping>nasal</mapping>
+                <property>/controls/flight/spoilers</property>
+                <script>
+                    return sprintf("Speedbrake %d%% out", 100-arg[0]*100);
+                </script>
+            </binding>
         </hovered>
     </animation>
     <animation>
+	<condition>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>0</value>
+		</equals>
+	</condition>
         <type>translate</type>
         <object-name>airbrake-front</object-name>
         <property>/controls/engines/engine/throttle</property>
@@ -130,6 +177,42 @@
         </axis>
     </animation>
     <animation>
+	<condition>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>1</value>
+		</equals>
+	</condition>
+        <type>translate</type>
+        <object-name>airbrake-front</object-name>
+        <property>/controls/flight/spoilers</property>
+        <factor>1</factor>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>.21</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-3.10624</x1-m>
+            <y1-m>-0.24893</y1-m>
+            <z1-m>0.47521</z1-m>
+            <x2-m>-2.81179</x2-m>
+            <y2-m>-0.27476</y2-m>
+            <z2-m>0.53454</z2-m>
+        </axis>
+    </animation>
+    <animation>
+	<condition>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>0</value>
+		</equals>
+	</condition>
         <type>translate</type>
         <object-name>airbrake-rear</object-name>
         <property>/controls/engines/engine/throttle</property>
@@ -140,6 +223,35 @@
             </entry>
             <entry>
                 <ind>0</ind>
+                <dep>.21</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-2.17081</x1-m>
+            <y1-m>-0.27942</y1-m>
+            <z1-m>0.58221</z1-m>
+            <x2-m>-1.87227</x2-m>
+            <y2-m>-0.29</y2-m>
+            <z2-m>0.62263</z2-m>
+        </axis>
+    </animation>
+    <animation>
+	<condition>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>1</value>
+		</equals>
+	</condition>
+        <type>translate</type>
+        <object-name>airbrake-rear</object-name>
+        <property>/controls/flight/spoilers</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
                 <dep>.21</dep>
             </entry>
         </interpolation>
