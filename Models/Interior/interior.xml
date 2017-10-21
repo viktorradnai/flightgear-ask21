@@ -564,9 +564,25 @@
     <animation>
         <type>rotate</type>
         <object-name>stick-front</object-name>
-        <object-name>trim-front</object-name>
         <object-name>ptt-front</object-name>
         <property>/controls/flight/elevator</property>
+        <factor>10</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-3.137</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.34858</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>trim-front</object-name>
+        <property>/controls/flight/elevator-trim-jump</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>

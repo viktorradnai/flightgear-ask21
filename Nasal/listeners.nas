@@ -39,6 +39,15 @@ setlistener("/controls/engines/engine/magnetos", func{
 	}
 });
 	
+setlistener("/controls/flight/elevator", func{
+	if(getprop("/controls/flight/elevator")<-0.9){
+		setprop("/controls/flight/elevator-trim-jump", -1);
+	}else if(getprop("/controls/flight/elevator")>0.9){
+		setprop("/controls/flight/elevator-trim-jump", 1);
+	}else{
+		setprop("/controls/flight/elevator-trim-jump", 0);
+	}
+});
 	
 setlistener("/sim/signals/fdm-initialized", func{
 	setprop("/consumables/fuel/tank/selected", 0);

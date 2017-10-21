@@ -117,7 +117,7 @@ Approach Elevator: 0.0859411
     
     
     <!-- nose wheel -->
-    <gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.6" sfric="0.8">
+    <gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.8" sfric="1.2">
       
       <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="-0.75" dst1="0.75" square="true"/>
       <control-output control="STEER" prop="/gear/gear[0]/steering-norm"/>
@@ -125,15 +125,15 @@ Approach Elevator: 0.0859411
       </gear>
     <!-- main wheel-->
     <!--As on the ASK13, brake is tied to airbrake, not anymore!-->
-    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.4" sfric="0.8">
+    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.8" sfric="1.2">
         <control-input axis="/controls/flight/spoilers" control="BRAKE" src0="0.9" src1="1" dst0="0" dst1="1"/>
     </gear>
     <!-- Tail wheel -->
-    <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="0.8"/>
+    <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="1.2"/>
     <!--right wing wheel-->
-    <gear x="1.25252" y="-8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="0.8"/>
+    <gear x="1.25252" y="-8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
     <!--lef wing wheel-->
-    <gear x="1.25252" y="8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="0.8"/>
+    <gear x="1.25252" y="8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
     <!-- pilots -->
     <!-- Front -->
     <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>

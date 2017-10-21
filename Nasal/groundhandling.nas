@@ -18,7 +18,7 @@ var update_systems = func {
 
     # Conditions: glider must be on ground, engine must not be running and people can only run up to 15kts (about), towing can be done up to 20
     var assistConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 15;
-    var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20 and getprop("/engines/engine[0]/running") == 0;
+    var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20 and getprop("/engines/engine[0]/running") or 0 == 0;
 
     # Wing holder
     if (getprop("/controls/gear/assist-1") == 1 and assistConditions) {

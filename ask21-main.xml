@@ -485,6 +485,10 @@ See AUTHORS.txt for credits
                 <desc>Increase winch speed</desc>
                 <binding>
                     <command>nasal</command>
+                    <script>ask21.faster()</script>
+                </binding>
+               <!-- <binding>
+                    <command>nasal</command>
                     <script>
                         throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
                         if (throttle > 1) throttle = 1;
@@ -493,11 +497,15 @@ See AUTHORS.txt for credits
                         force = getprop("/sim/hitches/winch/force");
                         gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
-                </binding>
+                </binding>-->
             </key>
             <key n="119">
                 <name>w</name>
                 <desc>Decrease winch speed</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>ask21.slower()</script>
+                </binding><!--
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -508,7 +516,26 @@ See AUTHORS.txt for credits
                         force = getprop("/sim/hitches/winch/force");
                         gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
                     </script>
-                </binding>
+                </binding>-->
+            </key>
+            <key n="113">
+                <name>q</name>
+                <desc>Stop winch launch</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>ask21.stop()</script>
+                </binding><!--
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
+                        if (0 > throttle) throttle = 0;
+                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+                        force = getprop("/sim/hitches/winch/force");
+                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
+                    </script>
+                </binding>-->
             </key>
             <key n="15">
                 <name>Ctrl-o</name>
@@ -600,15 +627,16 @@ See AUTHORS.txt for credits
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
              <file>Aircraft/ASK21/Nasal/immat.nas</file>
              <file>Aircraft/ASK21/Nasal/listeners.nas</file>
+             <file>Aircraft/ASK21/Nasal/winch.nas</file>
         </ask21>
-        <dual_control>
-            <file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
-        </dual_control>
-        <aircraft_dual_control>
-            <file>Aircraft/ASK21/Nasal/ask21-dual-control.nas</file>
-        </aircraft_dual_control>
         <dual_control_tools>
             <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
         </dual_control_tools>
+        <aircraft_dual_control>
+            <file>Aircraft/ASK21/Nasal/ask21-dual-control.nas</file>
+        </aircraft_dual_control>
+        <dual_control>
+            <file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
+        </dual_control>
     </nasal>
 </PropertyList>
