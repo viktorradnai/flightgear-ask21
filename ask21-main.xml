@@ -12,7 +12,7 @@ See AUTHORS.txt for credits
                 <path>Aircraft/ASK21/Systems/stall.xml</path>
             </property-rule>
             <property-rule n="101">
-                <name>gear_agl-m</name>
+                <name>shadow-sys</name>
                 <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
             </property-rule>
         </systems>
