@@ -46,7 +46,7 @@ Approach Elevator: 0.0859411
     
     <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
         <stall aoa="22.7" width="8" peak="1.5"/>
-        <flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
+        <flap0 start="0.43" end="0.97" lift="1.3" drag="3.2"/>
         <flap1 start="0.0" end="0.4" lift="0.15" drag="1.70"/>
         <spoiler start="0.34" end="0.44" lift="-4.3" drag="75.5"/>
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
@@ -86,9 +86,9 @@ Approach Elevator: 0.0859411
     <!-- Tail wheel -->
     <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="1.2" />
     <!--right wing skid-->
-    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="3" sfric="3"/>
+    <gear x="1.25252" y="-8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="6" sfric="5"/>
     <!--lef wing skid-->
-    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="3" sfric="3"/>
+    <gear x="1.25252" y="8.44562" z="1.2" skid="1" compression="0.10" spring="0.8" dfric="6" sfric="5"/>
     
     <!-- PILOTS -->
     <!-- Front -->

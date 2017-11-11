@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name>Winch launch</name>
+
+    <description>
+	    This tutorial covers the winch launch.
+    </description>
+
+    <audio-dir>Tutorials/startup</audio-dir>
+    
+    <step>
+        <set>
+            <property>/controls/engines/engine[0]/throttle</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/controls/electric/battery-switch</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/instrumentation/AR-3201/power</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/controls/ground-handling</property>
+            <value>0</value>
+        </set>
+        <message></message><!--
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-12</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <x-offset-m>-0.21</x-offset-m>
+            <y-offset-m>0.19</y-offset-m>
+            <field-of-view>73.6</field-of-view>
+        </view>-->
+    </step>
+
+    <step>
+        <message>In this lesson we'll do our first winch launch!.</message><!--
+        <nasal>
+            <script>
+                var listeners = std.Vector.new();
+
+                listeners.append(setlistener("/engines/active-engine/running", func (node) {
+                    if (node.getBoolValue()) {
+                        setprop("/controls/switches/starter", 0);
+                        foreach (var listener; listeners.vector) {
+                            removelistener(listener);
+                        }
+                        listeners.clear();
+                    }
+                }, 1, 0));
+            </script>
+        </nasal>-->
+    </step>
+    
+    <step>
+        <message>In the first phase of the launch (beneath 50m AGL) aim for a low climb angle of a few degrees. During the whole launch your speed should be between 100 and 140 kph.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>When passing 50m (also called the "safety altitude") you can carefully start pulling the stick back, maintaining a speed of 100 to 140kph.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>During the last phase the winch driver slowly pulls out the throttle, so you have to ease on the stick to maintain the speed.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>Once the cable released (it'll do that automatically most of the times, otherwise you have to pull the yellow knob), you pull three times the yellow knob to ensure the cable is out.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>Ready? Here we go!</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-8</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>73.0</field-of-view>
+        </view>
+	    <nasal>
+		    <script>
+			    towing.setWinchPositionAuto();
+		    </script>
+	    </nasal>
+	    <wait>0.5</wait>
+    </step>
+    <step>
+	    <message>While still on the ground, push full left rudder as the hook is on the left side of the fuselage, wanting to turn the aircraft right</message>
+    </step>
+    <step>
+        <message>Climb flat until reaching 50m</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-8</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>73.0</field-of-view>
+        </view>
+        <error>
+            <message>You're too fast, tell the winch driver to slow down by pressing w and pull the elevator carefully.</message>
+            <condition>
+		    <greater-than>
+			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+			<value>75.6</value>
+		</greater-than>
+            </condition>
+        </error>
+        <error>
+            <message>You're too slow, ease on the stick and tell the winch driver to speed up by pressing Shift-W.</message>
+            <condition>
+		    <less-than>
+			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+			<value>54</value>
+		</less-than>
+            </condition>
+        </error>
+        <exit>
+            <condition>
+                    <greater-than>
+                        <property>/position/gear-agl-m</property>
+                        <value>50</value>
+                    </greater-than>
+            </condition>
+        </exit>
+    </step>
+    <step>
+        <message></message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-8</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>73.0</field-of-view>
+        </view>
+        <error>
+            <message>You're too fast, tell the winch driver to slow down by pressing w and pull the elevator carefully.</message>
+            <condition>
+		    <greater-than>
+			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+			<value>75.6</value>
+		</greater-than>
+		<not>
+                        <property>/sim/hitches/winch/open</property>
+		</not>
+            </condition>
+        </error>
+        <error>
+            <message>You're too slow, ease on the stick and tell the winch driver to speed up by pressing Shift-W.</message>
+            <condition>
+		    <less-than>
+			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+			<value>54</value>
+		</less-than>
+		<not>
+                        <property>/sim/hitches/winch/open</property>
+		</not>
+            </condition>
+        </error>
+        <exit>
+            <condition>
+                    <equals>
+                        <property>/sim/hitches/winch/open</property>
+                        <value>1</value>
+                    </equals>
+            </condition>
+        </exit>
+    </step>
+
+    <step>
+	    <message>You made it! Pull the yellow lever three times to ensure the cable is out..</message>
+    </step>
+
+</PropertyList>

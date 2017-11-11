@@ -13,6 +13,7 @@
         <reflection-dynamic type="int">1</reflection-dynamic>
         <reflection-rainbow type="float">0.01</reflection-rainbow>
         -->
+        <rain-enabled type="int"><use>/sim/model/rendering/rain-enabled</use></rain-enabled>
         <reflection-enabled type="int"><use>/sim/model/rendering/reflection-enabled</use></reflection-enabled>
         <reflection-type type="int"><use>/sim/model/rendering/reflection-type</use></reflection-type>
         <reflection-correction type="float"><use>/sim/model/rendering/reflection-correction</use></reflection-correction>

@@ -63,3 +63,15 @@ var update_hourmeter = func{
 	
 	settimer(update_hourmeter, 36);
 }
+
+var windcheck = func{
+	wd=getprop("/environment/wind-from-heading-deg");
+	ch=getprop("/orientation/heading-deg");
+	ws=getprop("/environment/wind-speed-kt");
+	var wdi=wd-ch;
+	if(wdi<0){
+		gui.popupTip(sprintf("Wind from %d degrees left at %.1f knots", -wdi, ws));
+	}else{
+		gui.popupTip(sprintf("Wind from %d degrees right at %.1f knots", wdi, ws));
+	}
+}

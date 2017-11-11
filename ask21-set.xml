@@ -32,5 +32,6 @@ See AUTHORS.txt for credits
         <panel>
             <visibility archive="y">false</visibility>
         </panel>
+        <tutorials include="Tutorials/ask21-tutorials.xml"/>
 </sim>
 </PropertyList>

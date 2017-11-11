@@ -8,4 +8,17 @@
     <reference>6</reference>
     <output>/position/altitude-agl-m</output>
   </filter>
+  
+  <filter>
+    <type>gain</type>
+    <gain>33.863886666667</gain>
+    <input>/environment/pressure-sea-level-inhg</input>
+    <output>/environment/pressure-sea-level-hpa</output>
+  </filter>
+  <filter>
+    <type>gain</type>
+    <gain>33.863886666667</gain>
+    <input>/environment/pressure-inhg</input>
+    <output>/environment/pressure-hpa</output>
+  </filter>
 </PropertyList>

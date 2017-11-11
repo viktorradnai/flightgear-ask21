@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name>Pre-launch checks</name>
+
+    <description>
+	    This tutorial covers the pre-launch checks.
+    </description>
+
+    <audio-dir>Tutorials/startup</audio-dir>
+    
+    <step>
+        <set>
+            <property>/controls/engines/engine[0]/throttle</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/controls/electric/battery-switch</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/instrumentation/AR-3201/power</property>
+            <value>1</value>
+        </set>
+        <set>
+            <property>/controls/ground-handling</property>
+            <value>0</value>
+        </set>
+        <message></message><!--
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-12</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <x-offset-m>-0.21</x-offset-m>
+            <y-offset-m>0.19</y-offset-m>
+            <field-of-view>73.6</field-of-view>
+        </view>-->
+    </step>
+
+    <step>
+        <message>In this lesson we'll do the checks for our first winch launch!.</message><!--
+        <nasal>
+            <script>
+                var listeners = std.Vector.new();
+
+                listeners.append(setlistener("/engines/active-engine/running", func (node) {
+                    if (node.getBoolValue()) {
+                        setprop("/controls/switches/starter", 0);
+                        foreach (var listener; listeners.vector) {
+                            removelistener(listener);
+                        }
+                        listeners.clear();
+                    }
+                }, 1, 0));
+            </script>
+        </nasal>-->
+    </step>
+    
+    <step>
+        <message>You first check whether you wear your parachute and whether your seat belts are attached and fastened. </message>
+	<wait>2</wait>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-39</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60.0</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>Now we'll check the aircraft's controls, starting with the airbrakes: The airbrakes are tied to the throttle lever at this simulated aircraft, throttle pulled back means airbrakes out.</message>
+	<wait>3</wait>
+    </step>
+
+    <step>
+        <message>Pull back the airbrake lever, check whether the airbrakes are out on the left wing...</message>
+        <view>
+            <heading-offset-deg>105.2</heading-offset-deg>
+            <pitch-offset-deg>1.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60.0</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>...and on the right wing as well. After this, put them back in and lock them.</message>
+        <view>
+            <heading-offset-deg>-105.2</heading-offset-deg>
+            <pitch-offset-deg>1.0</pitch-offset-deg>
+	    <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60.0</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>Now, we're getting to the flight controls. Check that the your stick (aileron/elevator) and rudder pedals move freely into all directions.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-28</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60.0</field-of-view>
+        </view>
+	<wait>5</wait>
+    </step>
+
+    <step>
+        <message>Check the trim, it's the green lever next to the stick: Nose-heavy, tail-heavy and back to takeoff position, which is slightly nose-heavy.</message>
+        <view>
+            <heading-offset-deg>-20</heading-offset-deg>
+            <pitch-offset-deg>-44</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60.0</field-of-view>
+        </view>
+	<wait>5</wait>
+
+        <error>
+            <message>Set the elevator trim a bit more NOSE UP!</message>
+            <condition>
+                <greater-than>
+                    <property>/controls/flight/elevator-trim</property>
+                    <value>0.2</value>
+                </greater-than>
+            </condition>
+        </error>
+
+        <error>
+            <message>Set the elevator trim a bit more NOSE DOWN!</message>
+            <condition>
+                <less-than>
+                    <property>/controls/flight/elevator-trim</property>
+                    <value>0.1</value>
+                </less-than>
+            </condition>
+        </error>
+
+        <exit>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>/controls/flight/elevator-trim</property>
+                        <value>0.1</value>
+                    </greater-than>
+                    <less-than>
+                        <property>/controls/flight/elevator-trim</property>
+                        <value>0.2</value>
+                    </less-than>
+                </and>
+            </condition>
+        </exit>
+    </step>
+
+    <step>
+        <message>Now we're getting to the aircraft's instruments:</message>
+	<wait>1</wait>
+</step>
+<step>
+	<message>Set the altimeter to the present QNH or QFE.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-20.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>40.0</field-of-view>
+        </view>
+        <marker>
+            <x-m>-0.3476</x-m>
+            <y-m>0.0898</y-m>
+            <z-m>-0.2289</z-m>
+            <scale>3.6933</scale>
+        </marker>
+        <error>
+            <message>This is neither of them, you can press u to show the current QNH and QFE</message>
+            <condition>
+		<property>/instrumentation/altimeter/setting-mismatch</property>
+            </condition>
+        </error>
+    </step>
+
+    <step>
+        <message>IRL, you'd now check that the FLARM collision avoidance system is switched on and working.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-20.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>40.0</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>Check that the radio (bottom part of the panel) is on and showing the correct frequency.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>-20.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>40.0</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>Now we're getting to the outside world:</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+
+    <step>
+        <message>Check that there is no person, aircraft, car or whatever on the runway...</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0.0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>...and that the airspace the winch launch takes us into is clear.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>20</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>Check the wind. This is very important to realise what to do in case of a rope breakage.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>If you don't have a windsock in sight, pressing Shift-Q will print you the current wind direction and speed.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+    <step>
+        <message>We'll learn about what to do in case of a rope breakage later, for now we're proceeding directly to the launch.</message>
+        <view>
+            <heading-offset-deg>0.0</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <roll-offset-deg>0.0</roll-offset-deg>
+            <field-of-view>60</field-of-view>
+        </view>
+    </step>
+
+</PropertyList>

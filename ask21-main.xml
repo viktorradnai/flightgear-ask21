@@ -44,6 +44,7 @@ See AUTHORS.txt for credits
                 </instruments>
             </livery>
             <rendering>
+                <rain-enabled type="int">1</rain-enabled>
                 <reflection-enabled type="int">1</reflection-enabled>
                 <reflection-type type="int">2</reflection-type>
                 <reflection-dynamic type="int">1</reflection-dynamic>
@@ -606,6 +607,25 @@ See AUTHORS.txt for credits
                 <binding>
                     <command>property-toggle</command>
                     <property>controls/smoke</property>
+                </binding>
+            </key>
+	    <!--Helper Functions-->
+            <key n="117">
+                <name>u</name>
+                <desc>Show current QNH and current pressure</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>qnh=getprop("/environment/pressure-sea-level-hpa");
+			    cp=getprop("environment/pressure-hpa");
+			    gui.popupTip(sprintf("Current QNH %d, current pressure (QFE when on ground) %d", qnh, cp));</script>
+                </binding>
+            </key>
+            <key n="81">
+                <name>Q</name>
+                <desc>Show current wind data</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>ask21.windcheck();</script>
                 </binding>
             </key>
         </keyboard>

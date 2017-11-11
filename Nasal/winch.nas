@@ -2,27 +2,39 @@
 
 #Seil straffen: not implemented
 #Anschleppen: 10% throttle until aircraft is rolling, then rapidly (1s) increase to percentage set in -set file (ac-specific)
-#Gas rausnehmen: When speed-in-tow-direction<15 (after it was above), slowly (5s) decrease throttle to 0
+#Gas rausnehmen: When speed-in-tow-direction<10 (after it was above), slowly (5s) decrease throttle to 0
 var throttle="/sim/hitches/winch/winch/rel-speed";
 var sitd="/sim/hitches/winch/speed-in-tow-direction";
 var ac_rel=getprop("/sim/hitches/winch/aircraft-speed") or 0.8;
-var was_above_15=0;
+var was_above_10=0;
 var at_speed=0;
 var stop=0;
 var ac_type=getprop("/sim/aero") or 0;
+var launch_in_progress = 0;
+setprop("/sim/hitches/winch/first-phase", 0);
+setprop("/sim/hitches/winch/second-phase", 0);
+setprop("/sim/hitches/winch/third-phase", 0);
 
 setlistener("/sim/hitches/winch/open", func{
 	if(getprop("/sim/hitches/winch/open")==0){
 		launch();
 		setprop(throttle, 0);
-	}
+	}else{
+		launch_in_progress=0;
+	}		
 });
 
 
 var launch = func{
-	setprop("/controls/gear/assist-1", 1);
-	setprop("/sim/messages/ground",sprintf("%s at the rope, ready for departure, winch ready, pulling rope",ac_type));
-	first_phase();
+	if(!launch_in_progress){
+		setprop("/controls/gear/assist-1", 1);
+		setprop("/sim/messages/ground",sprintf("%s at the rope, ready for departure, winch ready, pulling rope",ac_type));
+		launch_in_progress=1;
+		setprop("/sim/hitches/winch/first-phase", 1);
+		first_phase();
+	}else{
+		setprop("/sim/messages/ground","Launch already in progress! You can stop launch by pressing q");
+	}
 }
 
 #First phase: Anschleppen
@@ -32,13 +44,17 @@ var first_phase = func{
 	}
 	
 	if(getprop("/gear/gear[1]/rollspeed-ms")>=0.2){
+	setprop("/sim/hitches/winch/first-phase", 0);
+	setprop("/sim/hitches/winch/second-phase", 1);
 		second_phase();
 		setprop("/sim/messages/ground", "Ready");
 	}else{
 		if(stop==1){
 			setprop(throttle, 0);
 			setprop("/sim/messages/ground","Stop! Stop! Stop! Open hook!");
+			launch_in_progress=0;
 			stop=0;
+			setprop("/sim/hitches/winch/first-phase", 0);
 		}else{
 			settimer(first_phase, 0.1);
 		}
@@ -54,13 +70,15 @@ var second_phase = func{
 		at_speed=1;
 	}
 	
-	if(was_above_15!=1 and getprop(sitd)>15){
-		was_above_15=1;
+	if(was_above_10!=1 and getprop(sitd)>10){
+		was_above_10=1;
 	}
 	
-	if(was_above_15==1 and getprop(sitd)<15){
+	if(was_above_10==1 and getprop(sitd)<10){
+		setprop("/sim/hitches/winch/second-phase", 0);
+		setprop("/sim/hitches/winch/third-phase", 1);
 		third_phase();
-		was_above_15=0;
+		was_above_10=0;
 		at_speed=0;
 	}else{
 		settimer(second_phase, 0.1);
@@ -73,20 +91,23 @@ var third_phase = func{
 		setprop(throttle, getprop(throttle)-0.05);
 		settimer(third_phase, 0.1);
 		#print("In third phase");
+	}else{
+		setprop("/sim/hitches/winch/third-phase", 0);
+		launch_in_progress=0;
 	}
 }
 
 var faster = func{
-	if(getprop(throttle)<=0.8){
-		setprop(throttle, getprop(throttle)+0.2);
+	if(getprop(throttle)<=0.95){
+		setprop(throttle, getprop(throttle)+0.15);
 	}else{
 		setprop(throttle, 1);
 	}
 }
 
 var slower = func{
-	if(getprop(throttle)>=0.2){
-		setprop(throttle, getprop(throttle)-0.2);
+	if(getprop(throttle)>=0.15){
+		setprop(throttle, getprop(throttle)-0.15);
 	}else{
 		setprop(throttle, 1);
 	}
@@ -97,8 +118,10 @@ var stop = func{
 		setprop("/sim/message/atc", "Stop not possible, Continuing");
 	}else{
 		stop=1;
+		
 	}
 }
+
 
 
 		
