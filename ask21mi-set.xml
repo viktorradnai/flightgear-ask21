@@ -21,7 +21,7 @@ See AUTHORS.txt for credits
       <model type="int">4</model>
     </rating>
     <systems>
-      <property-rule n="102">
+      <property-rule n="103">
 	<name>Engine</name><!--only included in the -mi, supports toggle between throttle to throttle and throttle to airbrake-->
         <path>Systems/engine.xml</path>
       </property-rule>
