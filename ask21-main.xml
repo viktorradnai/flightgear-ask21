@@ -15,6 +15,10 @@ See AUTHORS.txt for credits
                 <name>shadow-sys</name>
                 <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
             </property-rule>
+            <property-rule n="102">
+                <name>shadow-sys</name>
+                <path>Aircraft/ASK21/Systems/sound.xml</path>
+            </property-rule>
         </systems>
         <aircraft-version>201703</aircraft-version>
         <model>
