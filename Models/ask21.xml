@@ -231,7 +231,7 @@
         <object-name>speedbrakeL</object-name>
         <object-name>speedbrakeLac1</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>90</factor>
+        <factor>34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>-3.3164</y-m>
@@ -247,7 +247,7 @@
         <type>rotate</type>
         <object-name>speedbrakeLac2</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>90</factor>
+        <factor>34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>-4.0165</y-m>
@@ -263,7 +263,7 @@
         <type>rotate</type>
         <object-name>speedbrakeL</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>-90</factor>
+        <factor>-34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>-3.07511</y-m>
@@ -280,7 +280,7 @@
         <object-name>speedbrakeR</object-name>
         <object-name>speedbrakeRac1</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>-90</factor>
+        <factor>-34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>3.3164</y-m>
@@ -296,7 +296,7 @@
         <type>rotate</type>
         <object-name>speedbrakeRac2</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>-90</factor>
+        <factor>-34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>4.0165</y-m>
@@ -312,7 +312,7 @@
         <type>rotate</type>
         <object-name>speedbrakeR</object-name>
         <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>90</factor>
+        <factor>34.65</factor>
         <center>
             <x-m>-1.17459</x-m>
             <y-m>3.07511</y-m>
