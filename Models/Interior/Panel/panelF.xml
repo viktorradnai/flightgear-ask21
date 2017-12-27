@@ -94,8 +94,8 @@
         </offsets>
     </model>
     <model>
-        <name>alt-1</name>
-        <path>Instruments/alt/Altimeter.xml</path>
+        <name>alt-ft</name>
+        <path>Instruments/alti-4320/winter-4320.xml</path>
         <offsets>
             <x-m>-3.315</x-m>
             <y-m>-0.16</y-m>
@@ -114,7 +114,7 @@
     </animation>
     <animation>
         <type>select</type>
-        <object-name>alt-1</object-name>
+        <object-name>alt-ft</object-name>
         <condition>
             <equals>
                 <property>/sim/model/livery/instruments/alt</property>

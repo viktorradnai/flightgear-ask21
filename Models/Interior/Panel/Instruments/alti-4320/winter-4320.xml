@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <PropertyList>
-    <path>winter-4110.ac</path>
+    <path>winter-4320.ac</path>
     <animation>
         <type>material</type>
         <object-name>alt-face</object-name>
         <object-name>alt-face-press</object-name>
-        <object-name>needle-m</object-name>
+        <object-name>needle.100</object-name>
+        <object-name>needle.1000</object-name>
+        <object-name>needle.10000</object-name>
         <object-name>needle-km</object-name>
-        <object-name>needle.001-m</object-name>
-        <object-name>needle.001-km</object-name>
         <emission>
             <red>0.28</red>
             <green>0.14</green>
@@ -18,10 +18,9 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>needle-km</object-name>
-        <object-name>needle.001-km</object-name>
+        <object-name>needle.100</object-name>
         <property>/instrumentation/altimeter/indicated-altitude-ft</property>
-        <factor>0.010973</factor>
+        <factor>0.36</factor>
         <axis>
             <x>-1</x>
             <y>0</y>
@@ -30,10 +29,20 @@
     </animation>
     <animation>
         <type>rotate</type>
-        <object-name>needle-m</object-name>
-        <object-name>needle.001-m</object-name>
+        <object-name>needle.1000</object-name>
         <property>/instrumentation/altimeter/indicated-altitude-ft</property>
-        <factor>0.10973</factor>
+        <factor>0.036</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>needle.10000</object-name>
+        <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+        <factor>0.0036</factor>
         <axis>
             <x>-1</x>
             <y>0</y>
@@ -43,19 +52,19 @@
     <animation>
         <type>rotate</type>
         <object-name>alt-face-press</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>/instrumentation/altimeter/setting-hpa</property>
         <interpolation>
             <entry>
-                <ind>28.05</ind>
-                <dep>0.0</dep>
+                <ind>940</ind>
+                <dep>-165</dep>
             </entry>
             <entry>
-                <ind>31.01</ind>
-                <dep>282</dep>
+                <ind>1050</ind>
+                <dep>165</dep>
             </entry>
         </interpolation>
         <axis>
-            <x>-1</x>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>
