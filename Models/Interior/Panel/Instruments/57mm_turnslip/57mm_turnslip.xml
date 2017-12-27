@@ -18,12 +18,6 @@
         <type>rotate</type>
         <object-name>needle</object-name>
         <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
-        <condition>
-            <and>
-                <property>/controls/electric/battery-switch</property>
-                <property>/controls/electric/turn-slip-switch</property>
-            </and>
-        </condition>
         <interpolation>
             <entry>
                 <ind>-2.5</ind>
