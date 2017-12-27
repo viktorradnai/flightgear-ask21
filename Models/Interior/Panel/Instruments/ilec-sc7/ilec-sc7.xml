@@ -26,6 +26,12 @@
   <type>rotate</type>
   <object-name>Needle</object-name>
   <property>/instrumentation/ilec-sc7/te-reading-mps</property>
+	<condition>
+		<greater-than-equals>
+			<property>/systems/electrical/outputs/ilec-sc7</property>
+			<value>9</value>
+		</greater-than-equals>
+	</condition>
   <interpolation>
    <entry><ind>    -5</ind><dep>-119.713</dep></entry>
    <entry><ind>    0.0</ind><dep>   0.0</dep></entry>
@@ -322,6 +328,19 @@
 	</animation>
 
     <!-- digits -->
+	<animation>
+		<type>select</type>
+		<object-name>decimals-digit</object-name>
+		<object-name>units-digit</object-name>
+		<object-name>sign-digit</object-name>
+		<object-name>dot-digit</object-name>
+		<condition>
+			<greater-than-equals>
+				<property>/systems/electrical/outputs/ilec-sc7</property>
+				<value>9</value>
+			</greater-than-equals>
+		</condition>
+	</animation>
 
 	<animation>
 		<type>textranslate</type>

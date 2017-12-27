@@ -336,15 +336,18 @@
             <path>Aircraft/ASK21/Sounds/vario.wav</path>
             <condition>
                 <and>
-                <greater-than>
-                    <property>/instrumentation/variometer/te-reading-mps</property>
-                    <value>0.01</value>
-                </greater-than>
-                <property>/controls/electric/battery-switch</property>
-		<greater-than>
-			<property>/instrumentation/ilec-sc7/audio</property>
-			<value>0</value>
-		</greater-than>
+			<greater-than>
+			<property>/instrumentation/variometer/te-reading-mps</property>
+			<value>0.01</value>
+			</greater-than>
+			<greater-than-equals>
+				<property>/systems/electrical/outputs/ilec-sc7</property>
+				<value>9</value>
+			</greater-than-equals>
+			<greater-than>
+				<property>/instrumentation/ilec-sc7/audio</property>
+				<value>0</value>
+			</greater-than>
                 </and>
             </condition>
             <pitch>
@@ -372,21 +375,24 @@
             <path>Aircraft/ASK21/Sounds/vario2.wav</path>
             <condition>
                 <and>
-                <greater-than>
-                    <property>/instrumentation/variometer/te-reading-mps</property>
-                    <value>-10.00</value>
-                </greater-than>
-                <and>
-                    <less-than>
-                        <property>/instrumentation/variometer/te-reading-mps</property>
-                        <value>-0.01</value>
-                    </less-than>
-                </and>
-		<equals>
-			<property>/instrumentation/ilec-sc7/audio</property>
-			<value>2</value>
-		</equals>
-                <property>/controls/electric/battery-switch</property>
+			<greater-than>
+			<property>/instrumentation/variometer/te-reading-mps</property>
+			<value>-10.00</value>
+			</greater-than>
+			<and>
+			<less-than>
+				<property>/instrumentation/variometer/te-reading-mps</property>
+				<value>-0.01</value>
+			</less-than>
+			</and>
+			<equals>
+				<property>/instrumentation/ilec-sc7/audio</property>
+				<value>2</value>
+			</equals>
+			<greater-than-equals>
+				<property>/systems/electrical/outputs/ilec-sc7</property>
+				<value>9</value>
+			</greater-than-equals>
                 </and>
             </condition>
             <pitch>

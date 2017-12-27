@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <name>electrical_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>5</default-padding>
+    <modal>false</modal>
+    <width>300</width>
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <text>
+            <label>Electrical</label>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    <hrule/>
+    <layout>hbox</layout>
+    <text>
+	    <label>Switches</label>
+    </text>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Master Switch</label>
+            <property>/controls/electric/battery-switch</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/controls/electric/battery-switch</property>
+        </binding>
+    </checkbox>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Turn/Slip Switch</label>
+            <property>/controls/electric/turn-slip-switch</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/controls/electric/turn-slip-switch</property>
+        </binding>
+    </checkbox>
+    <hrule/>
+    <button>
+            <pref-width>200</pref-width>
+            <pref-height>50</pref-height>
+            <legend>Recharge Battery to 100%</legend>
+            <default>1</default>
+            <border>2</border>
+            <binding>
+                <command>nasal</command>
+		<script>ls4.recharge_battery()</script>
+            </binding>
+    </button>
+    <hrule/>
+    <text>
+	    <label>Options</label>
+    </text>
+    <checkbox>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+	<label>Save battery state between sessions</label>
+            <property>/systems/electrical/save-battery-charge</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+            <property>/systems/electrical/save-battery-charge</property>
+        </binding>
+    </checkbox>
+    
+    <hrule />
+    <text>
+	    <label>System Failures</label>
+    </text>
+    <checkbox>
+	<enable>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>1</value>
+		</equals>
+	</enable>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Fail engine generator</label>
+        <property>/controls/electric/generator-fail</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+		<property>/controls/electric/generator-fail</property>
+        </binding>
+    </checkbox>
+    
+</PropertyList>
