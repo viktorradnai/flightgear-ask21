@@ -924,7 +924,7 @@
     <!--SHADERS/EFFECTS-->
     <!--Glass shader-->
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/ASK21/Models/Effects/ask21_glass</inherits-from>
         <object-name>canopy.front</object-name>
         <object-name>canopy.back</object-name>
     </effect>
