@@ -2,8 +2,8 @@ AC3Db
 MATERIAL "DefaultWhite" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 64 trans 0.0000
 MATERIAL "DefaultWhite.000" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 64 trans 0.0000
 MATERIAL "ASK21" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 64 trans 0.0000
-MATERIAL "transparentHelice" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 64 trans 0.7000
-MATERIAL "GLASS" rgb 0.4200 0.4200 0.4200  amb 0.4200 0.4200 0.4200  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 64 trans 0.7500
+MATERIAL "transparentHelice" rgb 1.0000 1.0000 1.0000  amb 1.0000 1.0000 1.0000  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 128 trans 0.7000
+MATERIAL "GLASS" rgb 0.42 0.42 0.6  amb 0.42 0.42 0.6  emis 0.0000 0.0000 0.0000  spec 1.0000 1.0000 1.0000  shi 128 trans 0.700
 OBJECT world
 name "Blender_export__ask21.ac"
 kids 52
