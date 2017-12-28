@@ -23,5 +23,15 @@
         <reflection-noise type="float"><use>/sim/model/rendering/reflection-noise</use></reflection-noise>
         <reflection-dynamic type="int"><use>/sim/model/rendering/reflection-dynamic</use></reflection-dynamic>
         <ambient-correction type="float"><use>/sim/model/rendering/ambient-correction</use></ambient-correction>
+	
+		<images>
+			<positive-x>Aircraft/Generic/Effects/CubeMaps/buildings/N.png</positive-x>
+			<negative-x>Aircraft/Generic/Effects/CubeMaps/buildings/S.png</negative-x>
+			<positive-y>Aircraft/Generic/Effects/CubeMaps/buildings/W.png</positive-y>
+			<negative-y>Aircraft/Generic/Effects/CubeMaps/buildings/E.png</negative-y>
+			<positive-z>Aircraft/Generic/Effects/CubeMaps/buildings/U.png</positive-z>
+			<negative-z>Aircraft/Generic/Effects/CubeMaps/buildings/D.png</negative-z>
+		</images>	
+	
     </parameters>
 </PropertyList>
