@@ -13,7 +13,7 @@ See AUTHORS.txt for credits
             The K21, how it is also called sometimes, was first built in 1978. This version, the "Mi" is equipped with a 41kW-engine for independent takeoff and safe home return without thermals.
         </long-description>
     <status>production</status>
-        <variant-of>ask21</variant-of>
+<!--        <variant-of>ask21</variant-of>-->
     <rating>
       <FDM type="int">4</FDM>
       <systems type="int">4</systems>
@@ -67,6 +67,8 @@ See AUTHORS.txt for credits
     <!-- Save some properties when the simulator is shut down -->
     <aircraft-data>
       <path>/controls/ask21/throttle-to-airbrake</path>
+      <path>/controls/ask21/mixture-to-airbrake</path>
+      <path>/controls/ask21/mixture-to-throttle</path>
       <path>/instrumentation/ilec/hours</path>
     </aircraft-data>
     <sound>
@@ -81,14 +83,18 @@ See AUTHORS.txt for credits
   <controls>
     <ask21>
 	    <groundhandling-throttle type="double">0</groundhandling-throttle>
-      <throttle-to-airbrake type="bool">0</throttle-to-airbrake>
+	<throttle-to-airbrake type="bool">0</throttle-to-airbrake>
+	<mixture-to-airbrake type="bool">0</mixture-to-airbrake>
+	<mixture-to-throttle type="bool">0</mixture-to-throttle>
     </ask21>
     <electric>
       <engine-battery-switch type="bool">0</engine-battery-switch>
       <engine-battery-switch-pos type="float">0</engine-battery-switch-pos>
+      <generator-fail type="bool">0</generator-fail>
     </electric>
     <engines>
       <engine n="0">
+	      <mixture-int>0</mixture-int>
         <boost type="double">0</boost>
         <magnetos>0</magnetos>
         <extend-propeller type="bool">0</extend-propeller>
@@ -100,6 +106,8 @@ See AUTHORS.txt for credits
   <engines>
     <engine>
       <prop-pos-norm type="float">0</prop-pos-norm>
+      <engine-rpm type="float">0</engine-rpm>
+      <engine-rpm-checked type="float">0</engine-rpm-checked>
     </engine>
   </engines>
   <input>
@@ -116,6 +124,9 @@ See AUTHORS.txt for credits
   </input>
   
   <nasal>
+		<electrical>
+			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>
+		</electrical>
 	  <ilec>
 		  <file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC.nas</file>
 	  </ilec>

@@ -20,7 +20,7 @@ setprop("instrumentation/comm/frequencies/selected-mhz", ch[0]);
 
 setlistener("instrumentation/AR-3201/power", func { 
 
-         if ( getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 and getprop("/controls/electric/battery-switch") )
+         if ( getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 and getprop("/systems/electrical/outputs/ar-3201-norm") )
 	      {
 		setprop("instrumentation/AR-3201/starting", 1);
                 settimer(func { 
@@ -40,9 +40,9 @@ setlistener("instrumentation/AR-3201/power", func {
 
  });
 
-setlistener("/controls/electric/battery-switch", func { 
+setlistener("/systems/electrical/outputs/ar-3201-norm", func { 
 
-         if ( getprop("/controls/electric/battery-switch")==1 and getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 )
+         if ( getprop("/systems/electrical/outputs/ar-3201-norm") and getprop("instrumentation/AR-3201/power") == 1 and getprop("instrumentation/comm/serviceable") == 0 )
 	      {
 		setprop("instrumentation/AR-3201/starting", 1);
                 settimer(func { 
@@ -54,7 +54,7 @@ setlistener("/controls/electric/battery-switch", func {
 			      }, 2);			      
 	      }
 
-         if (getprop("/controls/electric/battery-switch") == 0)
+         if (getprop("/systems/electrical/outputs/ar-3201-norm") == 0)
 	      {
                 setprop("instrumentation/AR-3201/starting", 0);
 		setprop("instrumentation/comm/serviceable" ,0 );

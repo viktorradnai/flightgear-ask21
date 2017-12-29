@@ -15,6 +15,7 @@ See AUTHORS.txt for credits
                 <name>shadow-sys</name>
                 <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
             </property-rule>
+	    <electrical><path></path></electrical>
         </systems>
         <aircraft-version>201703</aircraft-version>
         <model>
@@ -22,7 +23,7 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
-	    <pilots-always-present type="bool">1</pilots-always-present><!--Disable pilot models always present by default-->
+	    <pilots-always-present type="bool">0</pilots-always-present><!--Disable pilot models always present by default-->
             <instruments-light type="int">0</instruments-light><!--Disable fake instrument lights by default-->
 	    <windcompass type="bool">0</windcompass><!--Disable Windcompass by default-->
             <shadow type="bool">1</shadow>
@@ -286,6 +287,13 @@ See AUTHORS.txt for credits
                         <binding>
                             <command>dialog-show</command>
                             <dialog-name>groundservice_dialog</dialog-name>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Electrical</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>electrical_dialog</dialog-name>
                         </binding>
                     </item>
                     <item>
@@ -630,7 +638,18 @@ See AUTHORS.txt for credits
             </key>
         </keyboard>
     </input>
+    <systems>
+	    <electrical>
+		    <save-battery-charge type="bool">0</save-battery-charge><!--only for those wanting more advanced sim so not to discourage people because suddenly electrical is not working anymore-->
+		    <outputs>
+			    <ar-3201-norm type="bool">0</ar-3201-norm>
+		    </outputs>
+	    </electrical>
+    </systems>
     <nasal>
+        <updateloop>
+		<file>Aircraft/Generic/updateloop.nas</file> <!--necessary for electrical system nasal-->
+        </updateloop>
         <doors>
             <file>Aircraft/ASK21/Nasal/door.nas</file>
         </doors>

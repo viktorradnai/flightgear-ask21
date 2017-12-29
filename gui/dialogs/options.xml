@@ -152,7 +152,6 @@
 		<property>/controls/ask21/throttle-to-airbrake</property>
         </binding>
     </checkbox>
-    <hrule/>
     <checkbox>
 	<enable>
 		<equals>
@@ -169,6 +168,24 @@
         <binding>
             <command>property-toggle</command>
 		<property>/controls/ask21/mixture-to-airbrake</property>
+        </binding>
+    </checkbox>
+    <checkbox>
+	<enable>
+		<equals>
+			<property>/sim/model/variant</property>
+			<value>1</value>
+		</equals>
+	</enable>
+        <row>2</row>
+        <col>1</col>
+        <halign>left</halign>
+        <label>Mixture to throttle</label>
+        <property>/controls/ask21/mixture-to-throttle</property>
+        <live>true</live>
+        <binding>
+            <command>property-toggle</command>
+		<property>/controls/ask21/mixture-to-throttle</property>
         </binding>
     </checkbox>
     <hrule/>

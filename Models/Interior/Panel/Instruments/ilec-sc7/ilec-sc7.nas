@@ -43,7 +43,9 @@ var averager = Averager.new(
 	input: probe,
 	buffer_size: 25);
 
-var battery_level = { output: 9.9 };
+var battery_level = PropertyReader.new(
+	property: "systems/electrical/volts",
+	scale: 1);
 
 var temperature = PropertyReader.new(
 	property: "environment/temperature-degc",

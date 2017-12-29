@@ -38,13 +38,13 @@ Approach Elevator: 0.0859411
     <!-- Approach configuration -->
     <approach speed="38" aoa="2.7" glide-angle="3.6">
       <control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
-      <control-setting axis="/controls/engines/engine[0]/mixture"  value="0.65"/>
+      <control-setting axis="/controls/engines/engine[0]/mixture-int"  value="1"/>
     </approach>
       <!-- Cruise configuration -->
     <cruise speed="75.6" alt="5000" glide-angle="3.9">
          
 	<control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
-	<control-setting axis="/controls/engines/engine[0]/mixture" value="0.65"/>
+	<control-setting axis="/controls/engines/engine[0]/mixture-int" value="1"/>
     </cruise>
 	<!-- pilot's eyepoint -->
 	<cockpit x="2.5396" y="0" z="0.94214"/>
@@ -102,8 +102,10 @@ Approach Elevator: 0.0859411
              cruise-alt="5000" 
              cruise-power="50"
              takeoff-power="56" 
-             takeoff-rpm="2700">
+             takeoff-rpm="2700"
+	     manual-pitch="1">
              <actionpt x="-0.388" y="0.0" z="0.716"/>
+	     <control-input control="PROPPITCH" axis="/engines/engine/prop-pos-norm" src0="0" src1="1" dst0="0" dst1="0.55"/><!--Simulate change of drag due to propeller extended/retracted-->
              <piston-engine eng-rpm="2700" 
                             eng-power="56"
                             displacement="294" 
@@ -111,7 +113,7 @@ Approach Elevator: 0.0859411
                             <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle-int" />
                             <control-input control="STARTER" axis="/controls/engines/engine[0]/starter" />
                             <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos" />
-                            <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture" />
+                            <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture-int" />
              </piston-engine>
   </propeller>
     
