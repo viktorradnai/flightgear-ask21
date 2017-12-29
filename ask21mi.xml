@@ -102,8 +102,10 @@ Approach Elevator: 0.0859411
              cruise-alt="5000" 
              cruise-power="50"
              takeoff-power="56" 
-             takeoff-rpm="2700">
+             takeoff-rpm="2700"
+	     manual-pitch="1">
              <actionpt x="-0.388" y="0.0" z="0.716"/>
+	     <control-input control="PROPPITCH" axis="/engines/engine/prop-pos-norm" src0="0" src1="1" dst0="0" dst1="0.55"/><!--Simulate change of drag due to propeller extended/retracted-->
              <piston-engine eng-rpm="2700" 
                             eng-power="56"
                             displacement="294" 

@@ -106,6 +106,8 @@ See AUTHORS.txt for credits
   <engines>
     <engine>
       <prop-pos-norm type="float">0</prop-pos-norm>
+      <engine-rpm type="float">0</engine-rpm>
+      <engine-rpm-checked type="float">0</engine-rpm-checked>
     </engine>
   </engines>
   <input>

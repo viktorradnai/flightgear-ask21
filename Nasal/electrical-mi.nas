@@ -101,7 +101,7 @@ var AlternatorClass = {};
 
 AlternatorClass.new = func {
     var obj = { parents : [AlternatorClass],
-                rpm_source : "/engines/engine[0]/engine-rpm",
+                rpm_source : "/engines/engine[0]/engine-rpm-checked", #RPM depending on propeller extended/retracted
                 rpm_threshold : 2200.0,
                 ideal_volts : 28.0,
                 ideal_amps : 60.0 };
@@ -217,6 +217,11 @@ var update_virtual_bus = func (dt) {
     var master_bat = getprop("/controls/electric/battery-switch");
     var genfail = getprop("/controls/electric/generator-fail");
 
+    if(getprop("/engines/engine/prop-pos-norm")==1){
+	setprop("/engines/engine/engine-rpm-checked", getprop("/engines/engine/engine-rpm"));
+    }else{
+	setprop("/engines/engine/engine-rpm", 0);
+    }
     
     # determine power source
     var bus_volts=0.0;

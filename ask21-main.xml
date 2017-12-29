@@ -23,7 +23,7 @@ See AUTHORS.txt for credits
             <window type="bool">1</window> <!--Enable window visibility by default-->
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
-	    <pilots-always-present type="bool">1</pilots-always-present><!--Disable pilot models always present by default-->
+	    <pilots-always-present type="bool">0</pilots-always-present><!--Disable pilot models always present by default-->
             <instruments-light type="int">0</instruments-light><!--Disable fake instrument lights by default-->
 	    <windcompass type="bool">0</windcompass><!--Disable Windcompass by default-->
             <shadow type="bool">1</shadow>
