@@ -330,6 +330,9 @@ See AUTHORS.txt for credits
             <hook-open type="bool">false</hook-open>
             <aerotow>
                 <tow>
+			<local-pos-x type="float">0</local-pos-x>
+			<local-pos-y type="float">0</local-pos-y>
+			<local-pos-z type="float">0</local-pos-z>
                     <length type="float">60</length>
                     <elastic-constant type="float">10000</elastic-constant>
                     <weight-per-m-kg-m type="float">1</weight-per-m-kg-m>

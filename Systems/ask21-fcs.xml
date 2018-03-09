@@ -1,0 +1,34 @@
+<system name="ASK21: FCS">
+	
+	<channel name="Wheel Brake">
+		
+		<fcs_function name="fcs/speedbrake-inverted">
+			<function>
+				<table>
+					<independentVar lookup="row">/controls/engines/engine/throttle</independentVar>
+					<tableData>
+						0	1
+						1	0
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<kinematic name="rubbish/brake">
+			<input>fcs/speedbrake-inverted</input>
+			<traverse>
+				<setting>
+					<position>0</position>
+					<time>0</time>
+				</setting>
+				<setting>
+					<position>1</position>
+					<time>0</time>
+				</setting>
+			</traverse>
+			<output>fcs/left-brake-cmd-norm</output>
+		</kinematic>
+		
+	
+	</channel>
+</system>

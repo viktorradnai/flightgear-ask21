@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+YASim Schleicher ASK 21 Glider
+See AUTHORS.txt for credits
+-->
+<PropertyList include="ask21-main.xml">
+	<sim>
+		<description>Schleicher ASK 21 Glider JSB</description>
+		<long-description>
+		The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
+		</long-description>
+		<status>production</status>
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">4</systems>
+			<cockpit type="int">4</cockpit>
+			<model type="int">4</model>
+		</rating>
+		<flight-model archive="y">jsb</flight-model>
+		<aero archive="y">ask21-jsb</aero>
+		<startup>
+			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
+		</startup>
+		<sound>
+			<path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
+		</sound>
+		<model>
+			<variant type="int">0</variant>
+		</model>
+		<help include="ask21-help.xml"/>
+		<!-- hide the 2D panel -->
+		<panel>
+			<visibility archive="y">false</visibility>
+		</panel>
+		<tutorials include="Tutorials/ask21-tutorials.xml"/>
+		
+		
+
+		<glider>
+			<winch>
+				<conf>
+					<rope_initial_length_m>1000.0</rope_initial_length_m>
+					<pull_max_lbs>1102.0</pull_max_lbs> <!-- 500daN -->
+				</conf>
+			</winch>
+			<towing>
+				<conf>
+					<rope_length_m>60.0</rope_length_m>
+					<nominal_towforce_lbs>500.0</nominal_towforce_lbs>
+					<breaking_towforce_lbs>9999.0</breaking_towforce_lbs>
+				</conf>
+				<hooked>0</hooked>
+			</towing>
+		</glider>
+
+	</sim>
+	
+	<input>
+		<keyboard>
+			<key n="23">
+				<name>Ctrl-w</name>
+				<desc>Place Winch and hook in</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.placeWinch()</script>
+				</binding>
+			</key>
+			
+			<key n="119">
+				<name>w</name>
+				<desc>Start winch</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.startWinch()</script>
+				</binding>
+			</key>
+			
+			<key n="87">
+				<name>W</name>
+				<desc>Release winch hook</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.releaseWinch()</script>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+	<nasal>
+		<ask21>
+			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
+			<file>Aircraft/DG-101G/Nasal/messages.nas</file>
+		</ask21>
+		<electrical>
+			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
+		</electrical>
+	</nasal>
+</PropertyList>
