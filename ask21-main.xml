@@ -81,7 +81,7 @@ See AUTHORS.txt for credits
                 <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
-                <float n="9"  alias="/accelerations/pilot-g[0]"/>
+		<float n="9"  alias="/sim/model/wingflex"/>
                 <!-- For Bombable -->
                 <int   n="10" type="int"/>
                 <string n="9" type="string"/>

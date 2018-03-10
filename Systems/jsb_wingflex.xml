@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<filter>
+		<type>gain</type>
+		<gain>2</gain>
+		<input>/sim/systems/wingflexer/z-m</input>
+		<output>/sim/model/wingflex</output>
+	</filter>
+  
+</PropertyList>

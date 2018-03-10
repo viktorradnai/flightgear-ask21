@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+	<params>
+		<m-wing-dry-kg type="double">100</m-wing-dry-kg>
+		<K type="double">8</K>
+		<D type="double">2</D>
+		<fuel-frac type="double">0.1</fuel-frac>
+		<lift-node-lbs alias="/fdm/jsbsim/aero/force/Lift_alpha"/>
+		<fuel-node-1-kg type="double">0</fuel-node-1-kg>
+		<fuel-node-2-kg type="double">0</fuel-node-2-kg>
+		<fuel-node-3-kg type="double">0</fuel-node-3-kg>
+		<fuel-node-4-kg type="double">0</fuel-node-4-kg>
+		<z-fac type="double">-0.1</z-fac>
+	</params>
+
+</PropertyList>

@@ -15,6 +15,35 @@
             <factor-prop>sim/model/instruments-light</factor-prop>
         </emission>
     </animation>
+    
+    <animation>
+	    <type>pick</type>
+	    <object-name>backplane</object-name>
+	    <action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/partialpanel/asi</property>
+		</binding>
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>pp-asi</tooltip-id>
+				<label>Fit partial panel cover</label>
+			</binding>
+		</hovered>
+	</animation>
+			    
+    <animation>
+	    <type>select</type>
+	    <condition>
+		    <property>/instrumentation/partialpanel/asi</property>
+	    </condition>
+	    <object-name>partial_panel_asi</object-name>
+    </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>needle</object-name>

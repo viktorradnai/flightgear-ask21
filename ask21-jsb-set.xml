@@ -16,6 +16,18 @@ See AUTHORS.txt for credits
 			<cockpit type="int">4</cockpit>
 			<model type="int">4</model>
 		</rating>
+		<systems>
+			<wingflexer include="Systems/wingflexer-params.xml"/>
+			<property-rule n="102">
+				<name>JSB Wingflex</name>
+				<path>Systems/jsb_wingflex.xml</path>
+			</property-rule>
+			<property-rule n="103">
+				<name>wing flexer property rule</name>
+				<path>Aircraft/Generic/wingflexer.xml</path>
+			</property-rule>
+		</systems>
+		
 		<flight-model archive="y">jsb</flight-model>
 		<aero archive="y">ask21-jsb</aero>
 		<startup>
@@ -33,7 +45,6 @@ See AUTHORS.txt for credits
 			<visibility archive="y">false</visibility>
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
-		
 		
 
 		<glider>
