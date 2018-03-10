@@ -715,7 +715,8 @@ var runWinch = func {
 	var rollspeed = getprop("/gear/gear[1]/rollspeed-ms");
 	var wow = getprop("/gear/gear[1]/wow");
 	if(rollspeed<1 and wow){
-		winch_factor=0.05;
+		winch_factor=0.15;
+		interpolate("orientation/roll-deg",0,0.5);                    # level the plane
 	}else if (keep==0){
 		if(alpha<0.55 and winch_factor!=1){
 			if(winch_factor > 0.8){
