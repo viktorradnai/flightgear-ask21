@@ -113,6 +113,8 @@
   var winch_factor = 1;
   
   var winch_factor_old = 1;
+  
+  var keep = 0;
 
 
 
@@ -312,9 +314,10 @@ var placeWinch = func {
   
   
   if ( getprop("sim/glider/winch/flags/placed") == 1 ) {
-    atc_msg("Winch allready placed"); 
+	removeWinch();
+	msg("atc","Removed old winch");
   }
-  else {
+  
     if ( getprop("gear/gear/wow") ) { 
      # common variables
       var ac_pos = geo.aircraft_position(); 
@@ -438,12 +441,12 @@ var placeWinch = func {
       winchrope_flg.getNode("exist", 1).setIntValue(1);
       
      # finally send message
-      atc_msg("Winch placed in front of you");
+      msg("atc","Winch placed in front of you");
     }
     else { 
-      atc_msg("winch in air useless, no winch placed"); 
+      msg("atc","winch in air useless, no winch placed"); 
     }
-  }
+  
 } # End Function placeWinch
 
 
@@ -494,10 +497,11 @@ var startWinch = func {
   if ( getprop("sim/glider/winch/flags/placed") == 1 ) {     # check for placed winch
     if ( getprop("sim/glider/winch/flags/used") == 0 ) {     # check for unused winch
       setprop("fdm/jsbsim/fcs/winch-cmd-norm",1);           # closes the hook
-      atc_msg("hook closed"); 
+      var ac_type=getprop("/sim/glider/ac-designator");
+      msg("atc",ac_type~" at the rope, ready for departure"); 
       setprop("orientation/roll-deg",0);                    # level the plane
-      atc_msg("glider leveled"); 
-      atc_msg("winch starts running"); 
+      msg("atc","Glider levelled."); 
+      msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); 
       var wp = geo.Coord.new().set_latlon( 
           (getprop("sim/glider/winch/work/wp-lat-deg")),
           (getprop("sim/glider/winch/work/wp-lon-deg")),
@@ -511,11 +515,11 @@ var startWinch = func {
       setprop("sim/glider/winch/flags/pull",1);              # winch is pulling
     }
     else {
-      atc_msg("Sorry, only one time hooking");
+      msg("atc","Sorry, only one time hooking");
     }
   }
   else {                                                    # failure: no winch placed
-    atc_msg("no winch");
+    msg("atc","no winch");
   }
 
 } # End Function startWinch
@@ -540,11 +544,11 @@ var releaseWinch = func {
     setprop("fdm/jsbsim/external_reactions/winchy/magnitude", 0);  # forces 
     setprop("fdm/jsbsim/external_reactions/winchz/magnitude", 0);  # to zero
     setprop("sim/glider/winch/flags/hooked",0);
-    atc_msg("Hook opened, tow released");
+    msg("atc","Hook opened, tow released");
     print("Hook opened, tow released");
   }
   else {                                                        # winch not working
-    atc_msg("not hooked to a winch");
+    msg("atc","not hooked to a winch");
   }
   
 } # End Function releaseWinch
@@ -575,11 +579,11 @@ var removeWinch = func {
     props.globals.getNode(modelsNode).remove();
     props.globals.getNode("ai/models/winchrope").remove();
     props.globals.getNode("sim/glider/winchrope/work").remove();
-    atc_msg("winch rope removed");
+    msg("atc","winch rope removed");
     setprop("/sim/glider/winchrope/flags/exist", 0);
   }
   else {                                                     # do nothing
-    atc_msg("winch rope does not exist");
+    msg("atc","winch rope does not exist");
   }
   
   
@@ -600,12 +604,12 @@ var removeWinch = func {
     props.globals.getNode(modelsNode).remove();
     props.globals.getNode("ai/models/winch").remove();
     props.globals.getNode("sim/glider/winch/work").remove();
-    atc_msg("winch rope removed");
+    msg("atc","winch rope removed");
     setprop("/sim/glider/winch/flags/pull", 0);
     setprop("/sim/glider/winch/flags/placed", 0);
   }
   else {                                                     # do nothing
-    atc_msg("winch does not exist");
+    msg("atc","winch does not exist");
   }
 
 } # End Function removeWinch
@@ -665,7 +669,6 @@ var runWinch = func {
   else {
     var deltatime_s = winch_timeincrement_s;
   }
-  
   if (getprop ("sim/glider/winch/flags/pull")) {        # is a winch placed and working
     var wp = geo.Coord.new().set_latlon( 
         (getprop("sim/glider/winch/work/wp-lat-deg")),
@@ -703,16 +706,38 @@ var runWinch = func {
         var k_force_speed = k_speed_y1 + (k_speed_y2 - k_speed_y1)/
                                          (k_speed_x2 - k_speed_x1)*
                                          (ropespeed/speedmax - k_speed_x1);
-	#Implement winch speed governing
-	#print(alpha);
-	#print(winch_factor);
-	if(alpha<0.55){
-		winch_factor=1;
-	}else if(winch_factor>0.1){
-		#print("sth");
-		winch_factor=winch_factor-0.02;
-		#print(winch_factor);
+	#Implement winch speed governing, 3 phases:
+	#		1. while ac is not rolling, only little throttle
+	#		2. once ac is rolling advance quickly to full throttle
+	#		3. when ac is getting close to disconnection point, slowly reduce throttle to idle
+	
+	winch_factor=getprop("/sim/glider/winch/winch-factor");
+	var rollspeed = getprop("/gear/gear[1]/rollspeed-ms");
+	var wow = getprop("/gear/gear[1]/wow");
+	if(rollspeed<1 and wow){
+		winch_factor=0.05;
+	}else if (keep==0){
+		if(alpha<0.55 and winch_factor!=1){
+			if(winch_factor > 0.8){
+				winch_factor=1;
+				keep=1;
+			}else{
+				winch_factor=winch_factor+0.2;
+			}
+		}else if(winch_factor>0.1){
+			winch_factor=winch_factor-0.02;
+		}
 	}
+	
+	if(alpha>0.55 and winch_factor>0.1){
+		winch_factor=winch_factor-0.417*deltatime_s;
+	}
+		
+	#print(winch_factor);
+	#print(keep);
+	
+	setprop("/sim/glider/winch/winch-factor", winch_factor);
+		
         var k_force_angle = k_angle_y1 + (k_angle_y2 - k_angle_y1)/
                                          (k_angle_x2 - k_angle_x1)*
                                          (alpha / 0.01745 / roperelease_deg - k_angle_x1);
@@ -807,8 +832,17 @@ var runWinch = func {
 
 } # End Function runWinch
 
-
+var winch_faster = func(){
+	interpolate("/sim/glider/winch/winch-factor", getprop("/sim/glider/winch/winch-factor")+0.1,0.5);
+}
+var winch_slower = func(){
+	interpolate("/sim/glider/winch/winch-factor", getprop("/sim/glider/winch/winch-factor")-0.1,0.5);
+}
 
 
 var pulling = setlistener("sim/glider/winch/flags/pull", runWinch);
 var initializing_winch = setlistener("sim/signals/fdm-initialized", globalsWinch);
+
+setlistener("/sim/hitches/winch/open", func{
+	releaseWinch();
+});

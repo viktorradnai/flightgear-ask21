@@ -62,6 +62,7 @@ See AUTHORS.txt for credits
 				</conf>
 				<hooked>0</hooked>
 			</towing>
+			<ac-designator type="string">ASK21</ac-designator>
 		</glider>
 
 	</sim>
@@ -73,10 +74,11 @@ See AUTHORS.txt for credits
 				<desc>Place Winch and hook in</desc>
 				<binding>
 				<command>nasal</command>
-				<script>ask21.placeWinch()</script>
+				<script>ask21.placeWinch();
+					ask21.startWinch();</script>
 				</binding>
 			</key>
-			
+			<!--
 			<key n="119">
 				<name>w</name>
 				<desc>Start winch</desc>
@@ -84,7 +86,7 @@ See AUTHORS.txt for credits
 				<command>nasal</command>
 				<script>ask21.startWinch()</script>
 				</binding>
-			</key>
+			</key>--><!--
 			
 			<key n="87">
 				<name>W</name>
@@ -94,12 +96,78 @@ See AUTHORS.txt for credits
 				<script>ask21.releaseWinch()</script>
 				</binding>
 			</key>
+			-->
+			<key n="87">
+				<name>W</name>
+				<desc>Increase winch speed</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.winch_faster()</script>
+				</binding>
+			<!-- <binding>
+				<command>nasal</command>
+				<script>
+					throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
+					if (throttle > 1) throttle = 1;
+					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+					force = getprop("/sim/hitches/winch/force");
+					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
+				</script>
+				</binding>-->
+			</key>
+			<key n="119">
+				<name>w</name>
+				<desc>Decrease winch speed</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.winch_slower()</script>
+				</binding><!--
+				<binding>
+				<command>nasal</command>
+				<script>
+					throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
+					if (0 > throttle) throttle = 0;
+					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+					force = getprop("/sim/hitches/winch/force");
+					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
+				</script>
+				</binding>-->
+			</key>
+			<key n="111">
+				<name>o</name>
+				<desc>Open hook</desc>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/hook-open</property>
+				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/aerotow/open</property>
+				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/winch/open</property>
+				<value type="bool">true</value>
+				</binding>
+				<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/hook-open</property>
+					<value type="bool">false</value>
+				</binding>
+				</mod-up>
+
+			</key>
 		</keyboard>
 	</input>
 	<nasal>
 		<ask21>
+			<file>Aircraft/ASK21/Nasal/message.nas</file>
 			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
-			<file>Aircraft/DG-101G/Nasal/messages.nas</file>
 			<file>Aircraft/ASK21/Nasal/te-vario.nas</file>
 			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
 		</ask21>

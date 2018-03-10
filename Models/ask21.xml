@@ -214,8 +214,8 @@
     <animation>
         <type>rotate</type>
         <object-name>aileronR</object-name>
-        <property>surface-positions/right-aileron-pos-norm</property>
-        <factor>24</factor>
+        <property>surface-positions/left-aileron-pos-norm</property>
+        <factor>-24</factor>
         <axis>
             <x1-m>-0.87208</x1-m>
             <y1-m>5.1648</y1-m>
