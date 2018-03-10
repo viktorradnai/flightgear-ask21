@@ -90,6 +90,7 @@ See AUTHORS.txt for credits
 			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
 			<file>Aircraft/DG-101G/Nasal/messages.nas</file>
 			<file>Aircraft/ASK21/Nasal/te-vario.nas</file>
+			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
 		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>

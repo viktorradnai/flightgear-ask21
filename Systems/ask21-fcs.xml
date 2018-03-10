@@ -8,6 +8,7 @@
 					<independentVar lookup="row">/controls/engines/engine/throttle</independentVar>
 					<tableData>
 						0	1
+						0.1	0
 						1	0
 					</tableData>
 				</table>

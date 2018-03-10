@@ -108,6 +108,11 @@
 # ####################################################################################
 # global variables for this script
   var winch_timeincrement_s = 0;                       # timer increment
+  
+  
+  var winch_factor = 1;
+  
+  var winch_factor_old = 1;
 
 
 
@@ -390,8 +395,8 @@ var placeWinch = func {
       var rope_length_m = (ac_pos.direct_distance_to(wpos_geo));
       var rope_heading_deg = (ac_pos.course_to(wpos_geo));
       var rope_pitch_deg = 10; # must be corrected by arcsin function for glider to winch height relation
-      var install_distance_m = 0.05; # 0.05m in front of ref-point of glider, must be tuned
-      var install_alt_m = -1; # 1m below ref-point of glider, must be tuned
+      var install_distance_m = 1.94837; # 1.94837m in front of ref-point of glider, must be tuned
+      var install_alt_m = 0.2361; #  0.2361m above ref-point of glider, must be tuned
       var rope_pos    = ac_pos.apply_course_distance( ac_hd , install_distance_m );   
       rope_pos.set_alt(ac_pos.alt() + install_alt_m);       # correct hight by pitch
       # get the next free ai id and model id
@@ -498,7 +503,7 @@ var startWinch = func {
           (getprop("sim/glider/winch/work/wp-lon-deg")),
           (getprop("sim/glider/winch/work/wp-alti-m")));    # gets winch position
       var ac = geo.aircraft_position();                     # gets aircraft position
-      var dd_m = (ac.direct_distance_to(wp));               # gets distance 
+      var dd_m = (ac.direct_distance_to(wp)-1.94837);               # gets distance 
       setprop("sim/glider/winch/work/rope_m", dd_m );       # set the rope length
       setprop("sim/glider/winch/work/speed",0);             # winch has speed 0
       setprop("sim/glider/winch/flags/used", 1);             # one time hooked, never 
@@ -638,8 +643,8 @@ var runWinch = func {
   
   
   var roperelease_deg = 70;  # release winch automatically
-  var install_distance_m = 0.05; # 0.05m in front of ref-point of glider, must be tuned
-  var install_alt_m = -1; # 1m below ref-point of glider, must be tuned
+  var install_distance_m = 1.94837; # 1.948375m in front of ref-point of glider, must be tuned
+  var install_alt_m = 0.2361; # 0.2361m above ref-point of glider, must be tuned
 
   var pullmax = getprop("sim/glider/winch/conf/pull_max_lbs");
   var speedmax = getprop("sim/glider/winch/conf/pull_max_speed_mps");
@@ -698,6 +703,16 @@ var runWinch = func {
         var k_force_speed = k_speed_y1 + (k_speed_y2 - k_speed_y1)/
                                          (k_speed_x2 - k_speed_x1)*
                                          (ropespeed/speedmax - k_speed_x1);
+	#Implement winch speed governing
+	#print(alpha);
+	#print(winch_factor);
+	if(alpha<0.55){
+		winch_factor=1;
+	}else if(winch_factor>0.1){
+		#print("sth");
+		winch_factor=winch_factor-0.02;
+		#print(winch_factor);
+	}
         var k_force_angle = k_angle_y1 + (k_angle_y2 - k_angle_y1)/
                                          (k_angle_x2 - k_angle_x1)*
                                          (alpha / 0.01745 / roperelease_deg - k_angle_x1);
@@ -731,9 +746,9 @@ var runWinch = func {
         } 
         # otherwise set the current forces
         else  { 
-          forcex = forcex * k_force_speed * k_force_angle;
-          forcey = forcey * k_force_speed * k_force_angle;
-          forcez = forcez * k_force_speed * k_force_angle;
+          forcex = forcex * k_force_speed * k_force_angle * winch_factor;
+          forcey = forcey * k_force_speed * k_force_angle * winch_factor;
+          forcez = forcez * k_force_speed * k_force_angle * winch_factor;
           setprop("fdm/jsbsim/external_reactions/winchx/magnitude",  forcex );
           setprop("fdm/jsbsim/external_reactions/winchy/magnitude",  forcey );
           setprop("fdm/jsbsim/external_reactions/winchz/magnitude",  forcez );
