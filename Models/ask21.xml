@@ -709,6 +709,102 @@
         </center>
     </animation>
     
+    
+    <!--Spin ballast (tail)-->
+    <animation>
+	    <type>select</type>
+	    <object-name>screw.L</object-name>
+	    <object-name>screw.R</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>0</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>translate</type>
+	    <object-name>screw.L</object-name>
+		<property>/sim/weight[2]/weight-lb</property>
+		<factor>-0.00408317</factor>
+		<offset-m>0.108</offset-m>
+		<axis>
+			<y>1</y>
+		</axis>
+    </animation>
+    <animation>
+	    <type>translate</type>
+	    <object-name>screw.R</object-name>
+		<property>/sim/weight[2]/weight-lb</property>
+		<factor>0.00408317</factor>
+		<offset-m>-0.108</offset-m>
+		<axis>
+			<y>1</y>
+		</axis>
+    </animation>
+    
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.6</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>26.45</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.5</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>22</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.4</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>17.63</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.3</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>13.2</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.2</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>8.81</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>spinballast.1</object-name>
+	    <condition>
+			<greater-than>
+				<property>/sim/weight[2]/weight-lb</property>
+				<value>4.4</value>
+			</greater-than>
+	    </condition>
+    </animation>
+    
+    
     <!--Engine animations for -mi variant-->
     <!-- Engine doors -->
   <animation>

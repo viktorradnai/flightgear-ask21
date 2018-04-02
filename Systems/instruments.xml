@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<condition>
+				<equals>
+					<property>/sim/flight-model</property>
+					<value>jsb</value>
+				</equals>
+			</condition>
+			<expression>
+				<product>
+					<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+					<table>
+						<property>/fdm/jsbsim/aero/beta-deg</property>
+						<entry><ind>-25</ind><dep>0.2</dep></entry>
+						<entry><ind>-8</ind><dep>0.9</dep></entry>
+						<entry><ind>-3</ind><dep>1</dep></entry>
+						<entry><ind>0</ind><dep>1</dep></entry>
+						<entry><ind>3</ind><dep>1</dep></entry>
+						<entry><ind>8</ind><dep>0.9</dep></entry>
+						<entry><ind>25</ind><dep>0.2</dep></entry>
+					</table>
+				</product>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<equals>
+					<property>/sim/flight-model</property>
+					<value>yasim</value>
+				</equals>
+			</condition>
+			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+		</input>
+		<output>/instrumentation/airspeed-indicator/indicated-corr-speed-kt</output>
+	</filter>
+	
+</PropertyList>
