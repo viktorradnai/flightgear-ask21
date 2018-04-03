@@ -112,9 +112,9 @@ See AUTHORS.txt for credits
         </weight>
         <weight n="2">
             <name type="string">Tail Ballast</name>
-            <weight-lb>1</weight-lb>
-            <max-lb>200</max-lb>
-            <min-lb>0</min-lb>
+	    <weight-lb type="double">0</weight-lb><!--0 for no plates atm, later we can simulate weight from empty holding when installed-->
+	    <max-lb>26.456</max-lb> <!--12kg: 12 plates*1kg per plate-->
+	    <min-lb>0</min-lb>
         </weight>
         <!-- hide the 2D panel -->
         <panel>

@@ -26,6 +26,10 @@ See AUTHORS.txt for credits
 				<name>wing flexer property rule</name>
 				<path>Aircraft/Generic/wingflexer.xml</path>
 			</property-rule>
+			<property-rule n="104">
+				<name>Instrument correction</name>
+				<path>Systems/instruments.xml</path>
+			</property-rule>
 		</systems>
 		
 		<flight-model archive="y">jsb</flight-model>
@@ -34,7 +38,7 @@ See AUTHORS.txt for credits
 			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
 		</startup>
 		<sound>
-			<path>Aircraft/ASK21/Sounds/ask21-sound.xml</path>
+			<path>Aircraft/ASK21/Sounds/ask21jsb-sound.xml</path>
 		</sound>
 		<model>
 			<variant type="int">0</variant>

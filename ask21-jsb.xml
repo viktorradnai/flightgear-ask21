@@ -386,19 +386,20 @@
 
   <channel name="Speedbrake">
 	  <!--
-	  <function name="fcs/speedbrake-cmd-norm">
-		  <description>Speedbrake from throttle</description>
+	  <function name="fcs/speedbrake-int-norm">
+		  <description>Speedbrake only operates through 9/10 of the pulling length, rest is for wheel brake</description>
 		  <table>
-			  <independentVar lookup="row">/controls/engines/engine/throttle</independentVar>
+			  <independentVar lookup="row">fcs/speedbrake-cmd-norm</independentVar>
 			  <tableData>
-				  0	1
-				  1	0
+				  0	0
+				  0.9	1
+				  1	1
 			  </tableData>
 		  </table>
 	  </function>-->
 	  
    <kinematic name="Speedbrake Control">
-     <input>fcs/speedbrake-cmd-norm</input>
+     <input>fcs/speedbrake-int-norm</input>
      <traverse>
        <setting>
           <position> 0 </position>
@@ -867,7 +868,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>aero/beta-rad</property>
-           <value>0.12</value>
+           <value>0.15</value>
        </product>
     </function>
 
@@ -890,7 +891,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>fcs/rudder-pos-rad</property>
-           <value>-0.05</value>
+           <value>-0.016</value>
        </product>
     </function>
 
