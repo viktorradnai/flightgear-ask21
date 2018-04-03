@@ -379,6 +379,16 @@ See AUTHORS.txt for credits
     <instrumentation>
         <comm>
             <serviceable-int type="int">0</serviceable-int>
+	    <current-change type="int">0</current-change>
+	    <sql-ic-pressed type="bool">0</sql-ic-pressed>
+	    <intercom type="bool">0</intercom>
+	    <sq type="bool">0</sq>
+	    <start type="double">0</start>
+	    <pilot-menu type="int">0</pilot-menu>
+	    <channel-menu type="int">0</channel-menu>
+	    <brightness type="double">0.7</brightness>
+	    <squelch-lim type="double">8</squelch-lim>
+	    <selected-channel type="int">0</selected-channel>
         </comm>
         <transponder>
                 <knob-mode type="int">0</knob-mode> <!--The ASK21 is not equipped with a transponder-->
@@ -656,6 +666,9 @@ See AUTHORS.txt for credits
         <doors>
             <file>Aircraft/ASK21/Nasal/door.nas</file>
         </doors>
+	<canvas_ar6201>
+		<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201.nas</file>
+	</canvas_ar6201>
         <ask21>
             <file>Aircraft/ASK21/Nasal/limits.nas</file>
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
