@@ -26,10 +26,6 @@ See AUTHORS.txt for credits
 				<name>wing flexer property rule</name>
 				<path>Aircraft/Generic/wingflexer.xml</path>
 			</property-rule>
-			<property-rule n="104">
-				<name>Instrument correction</name>
-				<path>Systems/instruments.xml</path>
-			</property-rule>
 		</systems>
 		
 		<flight-model archive="y">jsb</flight-model>

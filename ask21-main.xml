@@ -15,6 +15,11 @@ See AUTHORS.txt for credits
                 <name>shadow-sys</name>
                 <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
             </property-rule>
+	    <!--2 and 3 used for JSB wingflexer, 2 used for -mi engine system-->
+		<property-rule n="104">
+			<name>Instrument correction</name>
+			<path>Systems/instruments.xml</path>
+		</property-rule>
 	    <electrical><path></path></electrical>
         </systems>
         <aircraft-version>201703</aircraft-version>

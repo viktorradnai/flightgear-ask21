@@ -1009,10 +1009,10 @@
     <object-name>fuselage</object-name>
         <object-name>gearfairing1</object-name>     
     <condition>
-      <equals>
+      <not-equals>
         <property>sim/multiplay/generic/int[14]</property>
-        <value>0</value>
-      </equals>
+        <value>1</value>
+      </not-equals>
     </condition>
   </animation>
     
