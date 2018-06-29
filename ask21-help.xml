@@ -21,16 +21,28 @@
         <desc>Open aerotow and winch hooks. This releases the cable if one is attached.</desc>
     </key>
     <key>
+        <name>D</name>
+        <desc>Toggle windows</desc>
+    </key>
+    <key>
+	    <name>Electric System</name>
+	    <desc></desc>
+    </key>
+    <key>
+        <name>Ctrl-b</name>
+        <desc>Battery Master Switch</desc>
+    </key>
+    <key>
+        <name>Ctrl-t</name>
+        <desc>Turn Coordinator Switch</desc>
+    </key>
+    <key>
         <name>S</name>
         <desc>Increase variometer volume</desc>
     </key>
     <key>
         <name>s</name>
         <desc>Decrease variometer volume</desc>
-    </key>
-    <key>
-        <name>D</name>
-        <desc>Toggle windows</desc>
     </key>
     <text>
     === General Help ===

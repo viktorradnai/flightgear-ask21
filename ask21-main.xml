@@ -617,6 +617,22 @@ See AUTHORS.txt for credits
                     <property>controls/smoke</property>
                 </binding>
             </key>
+            <key n="2">
+                <name>Ctrl-b</name>
+                <desc>Electric Master Switch on/off</desc>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/controls/electric/battery-switch</property>
+                </binding>
+            </key>
+            <key n="20">
+                <name>Ctrl-t</name>
+                <desc>Turn Coordinator Switch on/off</desc>
+                <binding>
+			<command>property-toggle</command>
+			<property>/controls/electric/turn-slip-switch</property>
+                </binding>
+            </key>
 	    <!--Helper Functions-->
             <key n="117">
                 <name>u</name>

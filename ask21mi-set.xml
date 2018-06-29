@@ -112,14 +112,68 @@ See AUTHORS.txt for credits
   </engines>
   <input>
     <keyboard>
-      <key n="101">
-        <name>e</name>
-        <desc>Extend engine</desc>
-        <binding>
-          <command>property-toggle</command>
-	  <property>/controls/engines/engine/extend-propeller</property>
-        </binding>
-      </key>
+	<key n="115">
+		<name>s</name>
+		<desc>Starter</desc>
+		<binding>
+			<condition>
+				<equals>
+					<property>sim/multiplay/generic/float[10]</property>
+					<value>1</value>
+				</equals>
+				<property>controls/electric/engine-battery-switch</property>
+			</condition>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine/starter</property>
+		</binding>
+		<mod-up>
+			<binding>
+				<condition>
+					<equals>
+						<property>sim/multiplay/generic/float[10]</property>
+						<value>1</value>
+					</equals>
+					<property>controls/electric/engine-battery-switch</property>
+				</condition>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine/starter</property>
+			</binding>
+		</mod-up>
+	</key>
+	<key n="5">
+		<name>Ctrl-e</name>
+		<desc>Engine Electric Master Switch</desc>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/electric/engine-battery-switch</property>
+		</binding>
+	</key>
+	<key n="125">
+		<name>}</name>
+		<desc>Ignition Main Switch ON</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/engines/engine/magnetos</property>
+			<value>3</value>
+		</binding>
+	</key>
+	<key n="123">
+		<name>{</name>
+		<desc>Ignition Main Switch ON</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/engines/engine/magnetos</property>
+			<value>0</value>
+		</binding>
+	</key>
+	<key n="101">
+		<name>e</name>
+		<desc>Extend engine</desc>
+		<binding>
+			<command>property-toggle</command>
+			<property>/controls/engines/engine/extend-propeller</property>
+		</binding>
+	</key>
     </keyboard>
   </input>
   

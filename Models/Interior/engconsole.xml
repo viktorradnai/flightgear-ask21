@@ -17,6 +17,28 @@
                 <min>0</min>
                 <max>1</max>
             </binding>
+            <binding>
+		    <condition>
+			    <property>/controls/ask21/mixture-to-throttle</property>
+		    </condition>
+                <command>property-adjust</command>
+                <property>controls/engines/engine/mixture</property>
+                <factor>0.05</factor>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+		    <condition>
+			    <not>
+				<property>/controls/ask21/throttle-to-airbrake</property>
+			</not>
+		    </condition>
+                <command>property-adjust</command>
+                <property>controls/engines/engine/throttle</property>
+                <factor>0.05</factor>
+                <min>0</min>
+                <max>1</max>
+            </binding>
         </action>
         <hovered>
             <binding>

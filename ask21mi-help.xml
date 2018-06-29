@@ -1,8 +1,8 @@
 <PropertyList>
-    <title>ASK 21</title>
+    <title>ASK 21mi</title>
     <key>
         <name>Ctrl-w</name>
-        <desc>Place winch in front of aircraft</desc>
+        <desc>Place winch in front of aircraft and start pulling</desc>
     </key>
     <key>
         <name>W</name>
@@ -25,20 +25,40 @@
         <desc>speedbrakes out/in</desc>
     </key>
     <key>
-        <name>B , .</name>
-        <desc>Parking Brake, brakes</desc>
+	    <name>Electric System</name>
+	    <desc></desc>
+    </key>
+    <key>
+        <name>Ctrl-b</name>
+        <desc>Battery Master Switch</desc>
+    </key>
+    <key>
+        <name>Ctrl-t</name>
+        <desc>Turn Coordinator Switch</desc>
+    </key>
+    <key>
+	    <name>Engine Controls</name>
+	    <desc></desc>
+    </key>
+    <key>
+        <name>Ctrl-e</name>
+        <desc>Toggle Engine Electric Master</desc>
+    </key>
+    <key>
+        <name>s</name>
+        <desc>Starter</desc>
     </key>
     <key>
         <name>e</name>
         <desc>Extend/retract engine</desc>
     </key>
     <key>
-        <name>{/}</name>
-        <desc>Magnetos, press 3 times</desc>
+        <name>}</name>
+        <desc>Ignition Switch ON</desc>
     </key>
     <key>
-        <name>s</name>
-        <desc>Starter</desc>
+        <name>{</name>
+        <desc>Ignition Switch OFF</desc>
     </key>
     
     <text>
@@ -47,7 +67,24 @@
      - You can take off using your engine,a winch or another aircraft as an aerotow.
      - The winch / aerotow cable can be released with the "o" key or using button 1 of the (first) joystick.
      - NOTE: The Walker is not in the MP, so he has to go away.
-
+     
+     === Powered Takeoff Procedure ===
+     - Fully extend speed brake so that wheel brake comes in
+     - Set trim just forward of the middle position.
+     - Switch on battery if not already done ("Ctrl-b")
+     - Switch on the Engine Electric Master or press "Ctrl-e"
+     - Extend your propeller (Switch on ILEC or "e")
+     - Check that the propeller area is clear
+     - Switch on the Ignition Switch (Switch on ILEC or "}")
+     - Release the propeller brake
+     - Press the starter switch or "s"
+     - Wait until engine catches
+     - Advance your throttle fully forward and retract and lock the speedbrakes
+     - Level the glider and keep it level using your aileron
+     - Stay on centerline using your rudder
+     - Take off when the glider has enough speed to lift on its own, dont pull it up much.
+     - Maintain the best climb speed (blue line on the ASI)
+     
     === Winch Takeoff Procedure ===
 
      - Retract speed brake
