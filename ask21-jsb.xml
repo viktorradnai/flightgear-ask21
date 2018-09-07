@@ -700,11 +700,11 @@
           <table>
             <independentVar lookup="row">aero/beta-rad</independentVar>
             <tableData>
-              -1.57    1.230
-              -0.26    0.050
+              -1.57    1.430
+              -0.26    0.070
                0.00    0.000
-               0.26    0.050
-               1.57    1.230
+               0.26    0.070
+               1.57    1.430
             </tableData>
           </table>
        </product>
@@ -826,7 +826,7 @@
           <table>
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
-              0.0     -1.200
+              0.0     -0.600
               2.0     -0.400
             </tableData>
           </table>
@@ -891,7 +891,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>fcs/rudder-pos-rad</property>
-           <value>-0.016</value>
+           <value>-0.03</value>
        </product>
     </function>
 
@@ -902,7 +902,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>fcs/left-aileron-pos-rad</property>
-           <value>-0.04</value>
+           <value>-0.05</value>
        </product>
     </function>
 

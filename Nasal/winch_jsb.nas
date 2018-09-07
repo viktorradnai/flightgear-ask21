@@ -84,7 +84,7 @@
 #                                                          0: winch not placed
 # /sim/glider/winch/flags/used                            bool storing allready used 
 #                                                          winch to prevent against
-#                                                          reconnecting
+#                                                          reconnecting     			-> why? We want to be able to make multiple winch launches per session, so this is disabled
 # /sim/glider/winch/flags/pull                            bool storing working of winch
 #                                                          1: winch is working
 #                                                          0: winch is not working
@@ -385,7 +385,7 @@ var placeWinch = func {
       winch_mod.model.getNode("load", 1).remove();
       # set flags for placed winch and prevent against additional winches
       winch_flg.getNode("placed", 1).setIntValue(1);
-      winch_flg.getNode("used", 1).setIntValue(0);
+      #winch_flg.getNode("used", 1).setIntValue(0);
       winch_flg.getNode("hooked", 1).setIntValue(1);
       
      # setup rope and parachute for animation
@@ -495,13 +495,13 @@ var startWinch = func {
   # if not exit
   
   if ( getprop("sim/glider/winch/flags/placed") == 1 ) {     # check for placed winch
-    if ( getprop("sim/glider/winch/flags/used") == 0 ) {     # check for unused winch
+    #if ( getprop("sim/glider/winch/flags/used") == 0 ) {     # check for unused winch
       setprop("fdm/jsbsim/fcs/winch-cmd-norm",1);           # closes the hook
       var ac_type=getprop("/sim/glider/ac-designator");
-      msg("atc",ac_type~" at the rope, ready for departure"); 
+      msg("atc",ac_type~" at the rope, ready for departure"); # simulate message to winch
       setprop("orientation/roll-deg",0);                    # level the plane
       msg("atc","Glider levelled."); 
-      msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); 
+      msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); # simulate message re-reading from winch
       var wp = geo.Coord.new().set_latlon( 
           (getprop("sim/glider/winch/work/wp-lat-deg")),
           (getprop("sim/glider/winch/work/wp-lon-deg")),
@@ -510,13 +510,13 @@ var startWinch = func {
       var dd_m = (ac.direct_distance_to(wp)-1.94837);               # gets distance 
       setprop("sim/glider/winch/work/rope_m", dd_m );       # set the rope length
       setprop("sim/glider/winch/work/speed",0);             # winch has speed 0
-      setprop("sim/glider/winch/flags/used", 1);             # one time hooked, never 
-                                                            # hook again
+     # setprop("sim/glider/winch/flags/used", 1);             # one time hooked, never 
+      #                                                      # hook again
       setprop("sim/glider/winch/flags/pull",1);              # winch is pulling
-    }
-    else {
-      msg("atc","Sorry, only one time hooking");
-    }
+    #}
+    #else {
+    #  msg("atc","Sorry, only one time hooking");
+    #}
   }
   else {                                                    # failure: no winch placed
     msg("atc","no winch");
@@ -544,6 +544,7 @@ var releaseWinch = func {
     setprop("fdm/jsbsim/external_reactions/winchy/magnitude", 0);  # forces 
     setprop("fdm/jsbsim/external_reactions/winchz/magnitude", 0);  # to zero
     setprop("sim/glider/winch/flags/hooked",0);
+    keep=0;
     msg("atc","Hook opened, tow released");
     print("Hook opened, tow released");
   }
@@ -552,6 +553,7 @@ var releaseWinch = func {
   }
   
 } # End Function releaseWinch
+
 
 
 
@@ -647,8 +649,8 @@ var runWinch = func {
   
   
   var roperelease_deg = 70;  # release winch automatically
-  var install_distance_m = 1.94837; # 1.948375m in front of ref-point of glider, must be tuned
-  var install_alt_m = 0.2361; # 0.2361m above ref-point of glider, must be tuned
+  var install_distance_m = 1.94837; 				# 1.948375m in front of ref-point of glider, must be tuned
+  var install_alt_m = 0.2361; 					# 0.2361m above ref-point of glider, must be tuned
 
   var pullmax = getprop("sim/glider/winch/conf/pull_max_lbs");
   var speedmax = getprop("sim/glider/winch/conf/pull_max_speed_mps");
