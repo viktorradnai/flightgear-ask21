@@ -15,6 +15,11 @@ See AUTHORS.txt for credits
                 <name>shadow-sys</name>
                 <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
             </property-rule>
+	    <!--2 and 3 used for JSB wingflexer, 2 used for -mi engine system-->
+		<property-rule n="104">
+			<name>Instrument correction</name>
+			<path>Systems/instruments.xml</path>
+		</property-rule>
 	    <electrical><path></path></electrical>
         </systems>
         <aircraft-version>201703</aircraft-version>
@@ -81,7 +86,7 @@ See AUTHORS.txt for credits
                 <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
-                <float n="9"  alias="/accelerations/pilot-g[0]"/>
+		<float n="9"  alias="/sim/model/wingflex"/>
                 <!-- For Bombable -->
                 <int   n="10" type="int"/>
                 <string n="9" type="string"/>
@@ -112,9 +117,9 @@ See AUTHORS.txt for credits
         </weight>
         <weight n="2">
             <name type="string">Tail Ballast</name>
-            <weight-lb>1</weight-lb>
-            <max-lb>200</max-lb>
-            <min-lb>0</min-lb>
+	    <weight-lb type="double">0</weight-lb><!--0 for no plates atm, later we can simulate weight from empty holding when installed-->
+	    <max-lb>26.456</max-lb> <!--12kg: 12 plates*1kg per plate-->
+	    <min-lb>0</min-lb>
         </weight>
         <!-- hide the 2D panel -->
         <panel>
@@ -330,6 +335,9 @@ See AUTHORS.txt for credits
             <hook-open type="bool">false</hook-open>
             <aerotow>
                 <tow>
+			<local-pos-x type="float">0</local-pos-x>
+			<local-pos-y type="float">0</local-pos-y>
+			<local-pos-z type="float">0</local-pos-z>
                     <length type="float">60</length>
                     <elastic-constant type="float">10000</elastic-constant>
                     <weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
@@ -376,6 +384,16 @@ See AUTHORS.txt for credits
     <instrumentation>
         <comm>
             <serviceable-int type="int">0</serviceable-int>
+	    <current-change type="int">0</current-change>
+	    <sql-ic-pressed type="bool">0</sql-ic-pressed>
+	    <intercom type="bool">0</intercom>
+	    <sq type="bool">0</sq>
+	    <start type="double">0</start>
+	    <pilot-menu type="int">0</pilot-menu>
+	    <channel-menu type="int">0</channel-menu>
+	    <brightness type="double">0.7</brightness>
+	    <squelch-lim type="double">8</squelch-lim>
+	    <selected-channel type="int">0</selected-channel>
         </comm>
         <transponder>
                 <knob-mode type="int">0</knob-mode> <!--The ASK21 is not equipped with a transponder-->
@@ -669,6 +687,9 @@ See AUTHORS.txt for credits
         <doors>
             <file>Aircraft/ASK21/Nasal/door.nas</file>
         </doors>
+	<canvas_ar6201>
+		<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201.nas</file>
+	</canvas_ar6201>
         <ask21>
             <file>Aircraft/ASK21/Nasal/limits.nas</file>
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>

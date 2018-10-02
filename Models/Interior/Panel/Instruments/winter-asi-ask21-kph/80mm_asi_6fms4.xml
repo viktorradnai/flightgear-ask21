@@ -15,15 +15,48 @@
             <factor-prop>sim/model/instruments-light</factor-prop>
         </emission>
     </animation>
+    
+    <animation>
+	    <type>pick</type>
+	    <object-name>backplane</object-name>
+	    <action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+				<command>property-toggle</command>
+				<property>/instrumentation/partialpanel/asi</property>
+		</binding>
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>pp-asi</tooltip-id>
+				<label>Fit partial panel cover</label>
+			</binding>
+		</hovered>
+	</animation>
+			    
+    <animation>
+	    <type>select</type>
+	    <condition>
+		    <property>/instrumentation/partialpanel/asi</property>
+	    </condition>
+	    <object-name>partial_panel_asi</object-name>
+    </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>needle</object-name>
-        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <property>/instrumentation/airspeed-indicator/indicated-corr-speed-kt</property>
         <!-- factor 1.852 for 1 knot to 1 km/h -->
         <!-- 0 - 27 knot = 0 - 50 km/h -->
         <!-- 27 - 162 knot = 50 - 300 km/h -->
         <!--Calibrated for new texture-->
         <interpolation>
+	    <entry><!--added for beta false indication-->
+                <ind> -162</ind> 
+                <dep>-510</dep>
+            </entry>
             <entry>
                 <ind>  0.0</ind>
                 <dep>  0  </dep>

@@ -18,6 +18,12 @@ See AUTHORS.txt for credits
 		</rating>
 		<flight-model archive="y">yasim</flight-model>
 		<aero archive="y">ask21</aero>
+		<systems>
+			<property-rule n="102">
+				<name>YASim Wingflex</name>
+				<path>Systems/yasim_wingflex.xml</path>
+			</property-rule>
+		</systems>
 		<startup>
 			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
 		</startup>

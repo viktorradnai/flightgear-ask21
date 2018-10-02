@@ -200,7 +200,7 @@
     <!-- COM Radio -->
     <model>
         <name>com</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-3201/ar-3201.xml</path>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar-6201.xml</path>
         <offsets>
             <x-m>-3.313</x-m>
             <y-m>0.0</y-m>
