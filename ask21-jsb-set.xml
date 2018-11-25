@@ -46,7 +46,19 @@ See AUTHORS.txt for credits
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
 		
-
+		<hitches>
+			<aerotow>
+				<force_name_jsbsim type="string">aerotow_hitch</force_name_jsbsim>
+				<force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
+				<mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
+				<!-- OPTIONAL
+				<decoupled-force-and-rope-locations type="bool">true</decoupled-force-and-rope-locations>
+				<local-pos-x type="float">1.5</local-pos-x>
+				<local-pos-y type="float"> 0.00</local-pos-y>
+				<local-pos-z type="float">-0.3</local-pos-z>
+				-->
+			</aerotow>
+		</hitches>
 		<glider>
 			<winch>
 				<conf>
@@ -68,7 +80,24 @@ See AUTHORS.txt for credits
 	</sim>
 	
 	<input>
-		<keyboard>
+		<keyboard> 
+			<key n="15">
+				<name>Ctrl-o</name>
+				<desc>Find aircraft for aerotow</desc>
+				<binding>
+					<command>nasal</command>
+					<script>towing.findBestAIObject()</script>
+				</binding>
+			</key>
+			
+			<key n="111">
+				<name>o</name>
+				<desc>Lock aerotow-hook</desc>
+				<binding>
+					<command>nasal</command>
+					<script>towing.closeHitch()</script>
+				</binding>
+			</key>
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
@@ -78,25 +107,6 @@ See AUTHORS.txt for credits
 					ask21.startWinch();</script>
 				</binding>
 			</key>
-			<!--
-			<key n="119">
-				<name>w</name>
-				<desc>Start winch</desc>
-				<binding>
-				<command>nasal</command>
-				<script>ask21.startWinch()</script>
-				</binding>
-			</key>--><!--
-			
-			<key n="87">
-				<name>W</name>
-				<desc>Release winch hook</desc>
-				<binding>
-				<command>nasal</command>
-				<script>ask21.releaseWinch()</script>
-				</binding>
-			</key>
-			-->
 			<key n="87">
 				<name>W</name>
 				<desc>Increase winch speed</desc>
@@ -104,17 +114,6 @@ See AUTHORS.txt for credits
 				<command>nasal</command>
 				<script>ask21.winch_faster()</script>
 				</binding>
-			<!-- <binding>
-				<command>nasal</command>
-				<script>
-					throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
-					if (throttle > 1) throttle = 1;
-					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-					force = getprop("/sim/hitches/winch/force");
-					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-				</script>
-				</binding>-->
 			</key>
 			<key n="119">
 				<name>w</name>
@@ -122,18 +121,7 @@ See AUTHORS.txt for credits
 				<binding>
 				<command>nasal</command>
 				<script>ask21.winch_slower()</script>
-				</binding><!--
-				<binding>
-				<command>nasal</command>
-				<script>
-					throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
-					if (0 > throttle) throttle = 0;
-					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-					force = getprop("/sim/hitches/winch/force");
-					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-				</script>
-				</binding>-->
+				</binding>
 			</key>
 			<key n="111">
 				<name>o</name>
@@ -152,6 +140,10 @@ See AUTHORS.txt for credits
 				<command>property-assign</command>
 				<property>/sim/hitches/winch/open</property>
 				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>nasal</command>
+				<script>towing.releaseHitch("aerotow")</script>
 				</binding>
 				<mod-up>
 				<binding>

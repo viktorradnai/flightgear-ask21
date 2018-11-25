@@ -41,6 +41,9 @@ See AUTHORS.txt for credits
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
 	</sim>
 	<nasal>
+		<ask21>
+			<file>Aircraft/ASK21/Nasal/winch.nas</file>
+		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>
