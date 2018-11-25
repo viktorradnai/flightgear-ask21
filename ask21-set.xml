@@ -34,6 +34,7 @@ See AUTHORS.txt for credits
 			<variant type="int">0</variant>
 		</model>
 		<help include="ask21-help.xml"/>
+		<checklists include="ask21-checklists.xml"/>
 		<!-- hide the 2D panel -->
 		<panel>
 			<visibility archive="y">false</visibility>

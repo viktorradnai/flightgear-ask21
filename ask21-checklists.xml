@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<!--Checklists for the ASK21 (glider variant)-->
+	<!--according to https://www.alexander-schleicher.de/wp-content/uploads/2015/02/210_TM04B_D_HB.pdf -->
+
+    <checklist>
+        <title>Pre-Launch Check</title>
+        <page>
+            <item>
+                <name>Tail dolly</name>
+                <value>REMOVED</value>
+            </item>
+            <item>
+                <name>Spin Ballast</name>
+                <value>CHECK</value>
+            </item>
+            <item>
+                <name>Parachute</name>
+                <value>PRESENT and TIGHT</value>
+                <value>ROPE FIT (for automatic parachutes)</value>
+            </item>
+            <item>
+                <name>Seatbelts</name>
+                <value>FASTENED</value>
+            </item>
+            <item>
+                <name>Rudder Pedals</name>
+                <value>VERIFY CORRECTLY ADJUSTED</value>
+            </item>
+            <item>
+                <name>Speedbrakes</name>
+                <value>EXTEND ON BOTH WINGS</value>
+                <condition>
+                    <less-than>
+                        <property>/controls/engines/engine[0]/throttle</property>
+                        <value>0.1</value>
+                    </less-than>
+                </condition>
+                <binding>
+                    <command>property-interpolate</command>
+                        <property>/controls/engines/engine[0]/throttle</property>
+			<value>0</value>
+			<rate>1</rate>
+                </binding>
+            </item>
+            <item>
+                <name>Speedbrakes</name>
+                <value>CLOSED and LOCKED</value>
+                <condition>
+                    <greater-than>
+                        <property>/controls/engines/engine[0]/throttle</property>
+                        <value>0.99</value>
+                    </greater-than>
+                </condition>
+                <binding>
+                    <command>property-interpolate</command>
+                        <property>/controls/engines/engine[0]/throttle</property>
+			<value>1</value>
+			<rate>1</rate>
+                </binding>
+            </item>
+            <item>
+                <name>Flight Controls</name>
+                <value>FREE and CORRECT</value>
+            </item>
+            <item>
+                <name>Altimeter</name>
+                <value>CHECK QNH/QFE</value>
+                <marker>
+                    <x-m>-3.2</x-m>
+                    <y-m>-0.16</y-m>
+                    <z-m>0.65</z-m>
+                    <scale>2.6333</scale>
+                </marker>
+                <condition>
+                    <not>
+			    <property>instrumentation/altimeter/setting-mismatch</property>
+                    </not>
+                </condition>
+                <binding>
+                    <command>property-assign</command>
+			    <property>instrumentation/altimeter/setting-hpa</property>
+			    <property>environment/pressure-sea-level-hpa</property>
+                </binding>
+            </item>
+            <item>
+                <name>Elevator Trim</name>
+                <value>CHECK TRAVEL, set TAKEOFF POSITION</value>
+                <value>(slightly nose-heavy)</value>
+               <!-- <marker>
+                    <x-m>-3.313</x-m>
+                    <y-m>0.0</y-m>
+                    <z-m>0.52</z-m>
+                    <scale>2.6333</scale>
+                </marker>-->
+		<condition>
+			<and>
+			<greater-than>
+				<property>/controls/flight/elevator-trim</property>
+				<value>0.1</value>
+			</greater-than>
+			<less-than>
+				<property>/controls/flight/elevator-trim</property>
+				<value>0.2</value>
+			</less-than>
+			</and>
+		</condition>
+                <binding>
+			<command>property-assign</command>
+			<property>/controls/flight/elevator-trim</property>
+			<value>0.15</value>
+                </binding>
+            </item>
+            <item>
+                <name>Radio</name>
+                <value>CHECK ON, FREQUENCY and VOLUME</value>
+                <marker>
+                    <x-m>-3.313</x-m>
+                    <y-m>0.0</y-m>
+                    <z-m>0.52</z-m>
+                    <scale>2.6333</scale>
+                </marker>
+                <condition>
+			<equals>
+				<property>instrumentation/comm[0]/start</property>
+				<value>1</value>
+			</equals>
+			<greater-than>
+				<property>instrumentation/comm[0]/volume</property>
+				<value>0.1</value>
+			</greater-than>
+                </condition>
+                <binding>
+			<command>property-assign</command>
+			<property>instrumentation/comm[0]/volume</property>
+			<value>0.7</value>
+                </binding>
+                <binding>
+			<command>property-assign</command>
+			<property>controls/electric/battery-switch</property>
+			<value>1</value>
+                </binding>
+            </item>
+            <item>
+                <name>Runway and airspace</name>
+                <value>CLEAR</value>
+            </item>
+            <item>
+                <name>Wind</name>
+                <value>CHECK</value>
+		<binding>
+			<command>nasal</command>
+			<script>ask21.windcheck();</script>
+		</binding>
+            </item>
+            <item>
+                <name>PREPARE FOR ROPE BREAKAGE</name>
+            </item>
+            <item>
+                <name>Both Canopies</name>
+                <value>CLOSED and LOCKED</value>
+            </item>
+            <item>
+                <name>Emergency Canopy Jettison</name>
+                <value>PREPARE FOR USE</value>
+            </item>
+    </page>
+    </checklist>
+    <checklist>
+        <title>Approach Check (on downwind)</title>
+        <page>
+            <item>
+                <name>Airspace</name>
+                <value>CHECK FOR OTHER APPROACHING TRAFFIC</value>
+            </item>
+            <item>
+                <name>Radio</name>
+                <value>ANNOUNCE APPROACH</value>
+            </item>
+            <item>
+                <name>Wind</name>
+                <value>CHECK, DECIDE APPROACH SPEED</value>
+                <value>(increase for headwind)</value>
+		<binding>
+			<command>nasal</command>
+			<script>ask21.windcheck();</script>
+		</binding>
+            </item>
+            <item>
+                <name>Runway</name>
+                <value>VERIFY CLEAR</value>
+            </item>
+            <item>
+                <name>Altimeter</name>
+                <value>CHECK QNH/QFE</value>
+                <marker>
+                    <x-m>-3.3</x-m>
+                    <y-m>-0.16</y-m>
+                    <z-m>0.65</z-m>
+                    <scale>2.6333</scale>
+                </marker>
+                <condition>
+                    <not>
+			    <property>instrumentation/altimeter/setting-mismatch</property>
+                    </not>
+                </condition>
+                <binding>
+                    <command>property-assign</command>
+			    <property>instrumentation/altimeter/setting-hpa</property>
+			    <property>environment/pressure-sea-level-hpa</property>
+                </binding>
+            </item>
+            <item>
+                <name>Speedbrake Lever</name>
+                <value>HAND ON, PREPARE FOR USE</value>
+            </item>
+            <item>
+                <name>Approach Speed</name>
+                <value>MONITOR</value>
+            </item>
+    </page>
+    </checklist>
+</PropertyList>
