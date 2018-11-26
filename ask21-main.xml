@@ -7,6 +7,7 @@ See AUTHORS.txt for credits
 	<sim>
 		<author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho and Herbert Wagner</author>
 		<systems>
+			<wingflexer include="Systems/wingflexer-params.xml"/>
 			<property-rule n="100">
 				<name>gear_agl-m</name>
 				<path>Aircraft/ASK21/Systems/stall.xml</path>
@@ -15,7 +16,11 @@ See AUTHORS.txt for credits
 				<name>shadow-sys</name>
 				<path>Aircraft/ASK21/Systems/shadow-system.xml</path>
 			</property-rule>
-			<!--2 and 3 used for JSB wingflexer, 2 used for -mi engine system-->
+			<!--2 used for variant specific wingflexer, 6 used for -mi engine system-->
+			<property-rule n="103">
+				<name>wing flexer property rule</name>
+				<path>Aircraft/Generic/wingflexer.xml</path>
+			</property-rule>
 			<property-rule n="104">
 				<name>Instrument correction</name>
 				<path>Systems/instruments.xml</path>
@@ -24,10 +29,15 @@ See AUTHORS.txt for credits
 				<name>Ground Handling</name>
 				<path>Systems/ground_handling.xml</path>
 			</property-rule>
-			<property-rule n="106">
+			<property-rule n="107">
 				<name>Various Helper Functions</name>
 				<path>Systems/helpers.xml</path>
 			</property-rule>
+			<property-rule n="108">
+				<name>Move view according to wingflex</name>
+				<path>Systems/wingflex_view.xml</path>
+			</property-rule>
+			<!--9 used for fuel/payload dialog-->
 			<electrical>
 				<path/>
 			</electrical>
@@ -79,6 +89,13 @@ See AUTHORS.txt for credits
 				<reflection-noise type="float">0.00</reflection-noise>
 				<ambient-correction type="float">0.15</ambient-correction>
 			</rendering>
+			<!-- An exit for the walker -->
+			<map>
+				<default_exit>
+					<x-offset-m type="float">-2.56</x-offset-m>
+					<y-offset-m type="float">-0.88</y-offset-m>
+				</default_exit>
+			</map>
 		</model>
 		<multiplay>
 			<chat_display>1</chat_display>
@@ -118,7 +135,7 @@ See AUTHORS.txt for credits
 				<float n="6" alias="/gear/gear[1]/rollspeed-ms"/>
 				<float n="7" alias="/gear/gear[2]/rollspeed-ms"/>
 				<float n="8" alias="/surface-positions/speedbrake-pos-norm"/>
-				<float n="9" alias="/sim/model/wingflex"/>
+				<float n="9"  alias="/sim/systems/wingflexer/z-m"/>
 				<!-- For Bombable -->
 				<int n="10" type="int"/>
 				<string n="9" type="string"/>
@@ -138,13 +155,13 @@ See AUTHORS.txt for credits
 		<weight n="0">
 			<name type="string">Pilot</name>
 			<weight-lb>140</weight-lb>
-			<max-lb>230</max-lb>
-			<min-lb>100</min-lb>
+			<max-lb>243</max-lb>
+			<min-lb>0</min-lb>
 		</weight>
 		<weight n="1">
 			<name type="string">Passenger/Instructor</name>
 			<weight-lb>140</weight-lb>
-			<max-lb>230</max-lb>
+			<max-lb>243</max-lb>
 			<min-lb>0</min-lb>
 		</weight>
 		<weight n="2">
@@ -718,6 +735,9 @@ See AUTHORS.txt for credits
 		</electrical>
 	</systems>
 	<nasal>
+		<global>
+			<file>Aircraft/ASK21/Nasal/global.canvas.nas</file>
+		</global>
 		<updateloop>
 			<file>Aircraft/Generic/updateloop.nas</file>
 			<!--necessary for electrical system nasal-->
@@ -735,7 +755,6 @@ See AUTHORS.txt for credits
 			<file>Aircraft/ASK21/Nasal/AR3201.nas</file>
 			<file>Aircraft/ASK21/Nasal/GMeter.nas</file>
 			<file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
-			<file>Aircraft/ASK21/Nasal/wingbending.nas</file>
 			<file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
 			<file>Aircraft/ASK21/Nasal/liveries.nas</file>
 			<file>Aircraft/ASK21/Nasal/rain.nas</file>

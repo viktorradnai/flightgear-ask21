@@ -17,19 +17,18 @@ See AUTHORS.txt for credits
 			<model type="int">4</model>
 		</rating>
 		<systems>
-			<wingflexer include="Systems/wingflexer-params.xml"/>
 			<property-rule n="102">
 				<name>JSB Wingflex</name>
 				<path>Systems/jsb_wingflex.xml</path>
 			</property-rule>
-			<property-rule n="103">
-				<name>wing flexer property rule</name>
-				<path>Aircraft/Generic/wingflexer.xml</path>
+			<property-rule n="109">
+				<name>Properties for fuel and payload dialog</name>
+				<path>Systems/fuelpayload.xml</path>
 			</property-rule>
 		</systems>
-		
 		<flight-model archive="y">jsb</flight-model>
 		<aero archive="y">ask21-jsb</aero>
+		<variant-of>ask21</variant-of>
 		<startup>
 			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
 		</startup>
@@ -78,6 +77,28 @@ See AUTHORS.txt for credits
 		</glider>
 
 	</sim>
+	
+	
+	<payload>
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Copilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Spin Ballast</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">26.45</max-lb>
+		</weight>
+	</payload>
 	
 	<input>
 		<keyboard> 
@@ -166,5 +187,8 @@ See AUTHORS.txt for credits
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>
+		<dialogs>
+			<file>gui/dialogs/fuelpayload.nas</file>
+		</dialogs>
 	</nasal>
 </PropertyList>

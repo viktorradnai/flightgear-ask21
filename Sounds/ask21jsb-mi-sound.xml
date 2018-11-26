@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!--from the bocian by AJ MacLeod-->
+<PropertyList include="ask21jsb-sound.xml">
+    <fx>
+     
+      <!-- Motor start -->
+     
+          <crank>
+      <name>engstart</name>
+      <path>Sounds/engstart.wav</path>
+      <property>sim/multiplay/generic/int[13]</property>
+      <volume>
+        <offset>0.25</offset>
+      </volume>
+    </crank>
+    
+    <crank>
+      <name>crank</name>
+      <mode>looped</mode>
+      <path>Sounds/cranking.wav</path>
+      <condition>
+        <property>sim/multiplay/generic/int[13]</property>
+        <not>
+          <property>sim/multiplay/generic/int[12]</property>
+        </not>
+      </condition>
+      <volume>
+        <offset>0.25</offset>
+      </volume>
+    </crank>
+    
+    <crank>
+      <name>cough</name>
+      <path>Sounds/coughing.wav</path>
+      <property>sim/multiplay/generic/int[12]</property>
+      <volume>
+        <offset>0.25</offset>
+      </volume>
+    </crank>
+    
+    <engine>
+      <name>engine</name>
+      <mode>looped</mode>
+      <path>engine.wav</path>
+      <property>sim/multiplay/generic/int[12]</property>
+      <volume>
+        <property>sim/multiplay/generic/float[12]</property>
+        <factor>0.00375</factor>
+        <min>0.15</min>
+        <max>0.5</max>
+      </volume>
+      <volume>
+        <property>sim/multiplay/generic/float[13]</property>
+        <type>log</type>
+        <min>1.0</min>
+        <max>1.5</max>
+      </volume>
+      <volume>
+        <property>/sim/current-view/internal</property>
+        <offset>1.0</offset>
+        <factor>-0.7</factor>
+      </volume>
+      <pitch>
+        <property>/engines/engine[0]/rpm</property>
+        <factor>0.0002</factor>
+        <min>0.5</min>
+        <max>2.0</max>
+        <offset>0.15</offset>
+      </pitch>
+    </engine>
+    <!--
+    <propeller>
+      <name>propeller</name>
+      <mode>looped</mode>
+      <path>Sounds/turboprop1.wav</path>
+      <property>sim/multiplay/generic/int[12]</property>
+      <volume>
+        <property>sim/multiplay/generic/float[13]</property>
+        <type>log</type>
+        <min>0.2</min>
+        <max>1.0</max>
+      </volume>
+      <volume>
+        <property>/sim/current-view/internal</property>
+        <factor>0.5</factor>
+      </volume>
+      <pitch>
+        <property>sim/multiplay/generic/float[12]</property>
+        <factor>0.0036</factor>
+        <min>0.5</min>
+        <max>2.0</max>
+        <offset>0.9</offset>
+      </pitch>
+    </propeller>-->
+    
+    <click> 
+      <name>Magnetos-off</name>
+      <path>Sounds/click.wav</path>
+      <condition>
+        <not>
+          <property>controls/engines/engine[0]/magnetos</property>
+        </not>
+      </condition>
+      <volume> 
+        <factor>0.8</factor>
+      </volume>
+    </click>
+    
+    <click> 
+      <name>Magnetos-R</name>
+      <path>Sounds/click.wav</path>
+      <condition>
+        <equals>
+          <property>controls/engines/engine[0]/magnetos</property>
+          <value>1</value>
+        </equals>
+      </condition>
+      <volume> 
+        <factor>0.8</factor>
+      </volume>
+    </click>
+    
+    <click> 
+      <name>Magnetos-L</name>
+      <path>Sounds/click.wav</path>
+      <condition>
+        <equals>
+          <property>controls/engines/engine[0]/magnetos</property>
+          <value>2</value>
+        </equals>
+      </condition>
+      <volume> 
+        <factor>0.8</factor>
+      </volume>
+    </click>
+    
+    <click> 
+      <name>Magnetos-B</name>
+      <path>Sounds/click.wav</path>
+      <condition>
+        <equals>
+          <property>controls/engines/engine[0]/magnetos</property>
+          <value>3</value>
+        </equals>
+      </condition>
+      <volume> 
+        <factor>0.8</factor>
+      </volume>
+    </click>
+    
+    <!-- Motor end -->
+    </fx>
+</PropertyList>

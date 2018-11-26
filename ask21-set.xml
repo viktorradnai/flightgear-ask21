@@ -41,6 +41,9 @@ See AUTHORS.txt for credits
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
 	</sim>
+	<limits>
+		<mtow-lbs>1554</mtow-lbs>
+	</limits>
 	<nasal>
 		<ask21>
 			<file>Aircraft/ASK21/Nasal/winch.nas</file>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+	
+<!--
+    properties necessary for fuel and payload dialog, based on extra500
+-->
+<PropertyList>
+	
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<input>/fdm/jsbsim/inertia/weight-lbs</input>
+		<output>/fdm/jsbsim/inertia/nt-weight-lbs</output>
+	</filter>
+	
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/fdm/jsbsim/inertia/cg-x-in</property>
+						<value>25.4</value>
+					</product>
+					<value>1636</value>
+				</sum>
+			</expression>
+		</input>
+		<output>/fdm/jsbsim/inertia/cg-x-mm-rp</output>
+	</filter>
+</PropertyList>
+
+
+

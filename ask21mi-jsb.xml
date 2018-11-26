@@ -98,9 +98,9 @@
 			<description> weight of the spinballast </description>
 			<weight unit="KG">   0 </weight>
 			<location name="POINTMASS" unit="M">
-			<x> 3.5 </x>
-			<y>   0.00 </y>
-			<z>  0.8 </z>
+				<x> 3.5 </x>
+				<y>   0.00 </y>
+				<z>  0.8 </z>
 			</location>
 		</pointmass>
 	</mass_balance>
@@ -116,7 +116,7 @@
 			<rolling_friction> 0.020 </rolling_friction>
 			<spring_coeff unit="LBS/FT">      9323.00 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   661.50 </damping_coeff>
-			<max_steer unit="DEG">0</max_steer>
+			<max_steer unit="DEG">20</max_steer>
 			<brake_group>NONE</brake_group>
 			<retractable>0</retractable>
 		</contact>
@@ -126,8 +126,8 @@
 				<y>   0.0 </y>
 				<z>0.00498 </z>
 			</location>
-			<static_friction>  0.700 </static_friction>
-			<dynamic_friction> 0.500 </dynamic_friction>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
 			<rolling_friction> 0.020 </rolling_friction>
 			<spring_coeff unit="LBS/FT">      6323.00 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   661.50 </damping_coeff>
@@ -158,7 +158,7 @@
 			</location>
 			<static_friction>  0.600 </static_friction>
 			<dynamic_friction> 0.400 </dynamic_friction>
-			<rolling_friction> 0.400 </rolling_friction>
+			<rolling_friction> 0.020 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
 			<max_steer unit="DEG">0</max_steer>
@@ -173,7 +173,7 @@
 			</location>
 			<static_friction>  0.600 </static_friction>
 			<dynamic_friction> 0.400 </dynamic_friction>
-			<rolling_friction> 0.400 </rolling_friction>
+			<rolling_friction> 0.020 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
 			<max_steer unit="DEG">0</max_steer>
@@ -186,9 +186,9 @@
 				<y>  -8.43947 </y>
 				<z> 0.05 </z>
 			</location>
-			<static_friction>  0.800 </static_friction>
-			<dynamic_friction> 0.500 </dynamic_friction>
-			<rolling_friction> 0.500 </rolling_friction>
+			<static_friction>  0.300 </static_friction>
+			<dynamic_friction> 0.200 </dynamic_friction>
+			<rolling_friction> 0.200 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
 			<max_steer unit="DEG">0</max_steer>
@@ -201,44 +201,55 @@
 				<y>  8.43947 </y>
 				<z> 0.05 </z>
 			</location>
-			<static_friction>  0.800 </static_friction>
-			<dynamic_friction> 0.500 </dynamic_friction>
-			<rolling_friction> 0.500 </rolling_friction>
+			<static_friction>  0.300 </static_friction>
+			<dynamic_friction> 0.200 </dynamic_friction>
+			<rolling_friction> 0.200 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
 			<max_steer unit="DEG">0</max_steer>
 			<brake_group>NONE</brake_group>
 			<retractable>1</retractable>
 		</contact>
-		<!--
-
-  <contact type="STRUCTURE" name="LEFT_WING">
-    <location unit="IN">
-     <x> 163.39 </x>
-     <y> -334.66 </y>
-     <z>  -8.22 </z>
-   </location>
-   <static_friction>  1.00 </static_friction>
-   <dynamic_friction> 1.00 </dynamic_friction>
-   <spring_coeff unit="LBS/FT">       1323.00 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC">  1323.00 </damping_coeff>
-  </contact>
-
-  <contact type="STRUCTURE" name="RIGHT_WING">
-    <location unit="IN">
-     <x> 163.39 </x>
-     <y> 334.66 </y>
-     <z>  -8.22 </z>
-   </location>
-   <static_friction>  1.00 </static_friction>
-   <dynamic_friction> 1.00 </dynamic_friction>
-   <spring_coeff unit="LBS/FT">       1323.00 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC">  1323.00 </damping_coeff>
-  </contact>-->
 	</ground_reactions>
 	<propulsion>
-
- </propulsion>
+		<engine file="IAE50R-AA">
+			<location unit="M">
+				<x>  0.0 </x>
+				<y>   0.00 </y>
+				<z>  0.88 </z>
+			</location>
+			<orient unit="DEG">
+				<pitch> 0.00 </pitch>
+				<roll>  0.00 </roll>
+				<yaw>   0.00 </yaw>
+			</orient>
+			<feed>0</feed>
+			<thruster file="AS2F1-1_R153-92-N1">
+				<sense> 1 </sense>
+				<location unit="M">
+					<x>  -0.40978</x>
+					<y>   0.00 </y>
+					<z>   1.84412 </z>
+				</location>
+				<orient unit="DEG">
+					<pitch> 1 </pitch>
+					<roll>  0.00 </roll>
+					<yaw>   0.00 </yaw>
+				</orient>
+			</thruster>
+		</engine>
+		<!--one fuel tank in the fuselage, 47.25 gallons = 284.445 lbs -->
+		<tank type="FUEL" number="0">
+			<location unit="M">
+				<x>-1.06023 </x>
+				<y> 0.0 </y>
+				<z> 0.9575 </z>
+			</location>
+			<capacity unit="LBS"> 36.34 </capacity>
+			<!--23l AVGAS-->
+			<contents unit="LBS"> 20 </contents>
+		</tank>
+	</propulsion>
 	<flight_control name="FCS: ASK21">
 		<channel name="Pitch">
 			<summer name="Pitch Trim Sum">
@@ -496,5 +507,5 @@
 			</direction>
 		</force>
 	</external_reactions>
-	<system file="ask21-fcs"/>
+	<system file="ask21mi-fcs"/>
 </fdm_config>

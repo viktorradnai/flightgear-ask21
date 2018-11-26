@@ -5,8 +5,15 @@
 	<filter>
 		<type>gain</type>
 		<gain>1</gain>
-		<input>/accelerations/pilot-g</input>
-		<output>/sim/model/wingflex</output>
+		<input>
+			<expression>
+				<product>
+					<property>/yasim/gross-weight-lbs</property>
+					<property>/accelerations/pilot-g</property>
+				</product>
+			</expression>
+		</input>
+		<output>/sim/model/wingflex-lift</output>
 	</filter>
   
 </PropertyList>

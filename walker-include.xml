@@ -310,8 +310,8 @@
                     <script>walk.open_chute()</script>
                 </binding>
             </key>-->
-            <key n="101">
-                <name>e</name>
+            <key n="114">
+                <name>r</name>
                 <desc>Walk forward</desc>
                 <repeatable>false</repeatable>
                 <binding n="0">
@@ -337,8 +337,8 @@
                     </binding>
                 </mod-up>
             </key>
-            <key n="69">
-                <name>E</name>
+            <key n="82">
+                <name>R</name>
                 <desc>Run forward</desc>
                 <repeatable>false</repeatable>
                 <binding n="0">
@@ -369,8 +369,8 @@
                     </binding>
                 </mod-up>
             </key>
-            <key n="100">
-                <name>d</name>
+            <key n="102">
+                <name>f</name>
                 <desc>Walk backward</desc>
                 <repeatable>false</repeatable>
                 <binding n="0">
@@ -396,8 +396,8 @@
                     <property>sim/walker/speed-mps</property>
                 </binding>
             </key>
-            <key n="68">
-                <name>D</name>
+            <key n="70">
+                <name>F</name>
                 <desc>Walk/run backward</desc>
                 <repeatable>false</repeatable>
                 <binding n="0">
@@ -428,209 +428,6 @@
                     </binding>
                 </mod-up>
             </key>
-            <!--
-		<key n="97"> 
-			<name>a</name>
-			<desc>Slide left</desc>
-			<repeatable>false</repeatable>
-			<binding n="0">
-  			<condition>
-   					<equals>
-   	 					<property>sim/current-view/name</property>
-  			 	 		<value>Walk View</value>
-   					</equals>
- 			 </condition>
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/slide</property>
-				<value>-1</value>
-			</binding>
-			<binding n="1">
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<property>sim/walker/speed-mps</property>
-			</binding>
-	<binding n="2">
-  			<condition>
-					<and>
-   					<not-equals>
-   	 					<property>sim/current-view/name</property>
-  			 	 		<value>Walk View</value>
-   					</not-equals>
-  			 		<not-equals>
-   				 		<property>sim/current-view/name</property>
-   				 		<value>Walker Orbit View</value>
-   					</not-equals>
-					</and>
- 			 </condition>
-		<command>nasal</command>
-		<script>controls.speedup(1);</script>
-	</binding>
-			<binding n="3">
-  			<condition>
-  			 		<equals>
-   				 		<property>sim/current-view/name</property>
-   				 		<value>Walker Orbit View</value>
-   					</equals>
- 			 </condition>
-   <command>property-adjust</command>
-   <property>/sim/walker/model-heading-deg</property>
-	 <min>0</min>
-	 <max>360</max>
-	 <wrap type="bool">true</wrap>
-   <step type="int">-10</step>
-			</binding>
-			<mod-up>
-				<binding n="0">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/slide</property>
-					<value>0</value>
-				</binding>
-				<binding n="1">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/speed</property>
-					<property>sim/walker/speed-mps</property>
-				</binding>
-			</mod-up>
-		</key>
-		<key n="65"> 
-			<name>A</name>
-			<desc>Slide left2, override default assignment</desc>
-			<repeatable>false</repeatable>
-			<binding n="0">
-  			<condition>
-					<or>
-   					<equals>
-   	 					<property>sim/current-view/name</property>
-  			 	 		<value>Walk View</value>
-   					</equals>
-  			 		<equals>
-   				 		<property>sim/current-view/name</property>
-   				 		<value>Walker Orbit View</value>
-   					</equals>
-					</or>
- 			 </condition>
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/slide</property>
-				<value>-1</value>
-			</binding>
-			<binding n="1">
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<property>sim/walker/speed-mps</property>
-			</binding>
-			<binding n="2">
-				<command>property-multiply</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<factor>2.5</factor>
-			</binding>
-	<binding n="3">
-  			<condition>
-					<and>
-   					<not-equals>
-   	 					<property>sim/current-view/name</property>
-  			 	 		<value>Walk View</value>
-   					</not-equals>
-  			 		<not-equals>
-   				 		<property>sim/current-view/name</property>
-   				 		<value>Walker Orbit View</value>
-   					</not-equals>
-					</and>
- 			 </condition>
-		<command>nasal</command>
-		<script>controls.speedup(-1);</script>
-	</binding>
-			<mod-up>
-				<binding n="0">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/slide</property>
-					<value>0</value>
-				</binding>
-				<binding n="1">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/speed</property>
-					<property>sim/walker/speed-mps</property>
-				</binding>
-			</mod-up>
-		</key>
-		<key n="100"> 
-			<name>d</name>
-			<desc>Slide right</desc>
-			<repeatable>false</repeatable>
-			<binding n="0">
-  			<condition>
-   					<equals>
-   	 					<property>sim/current-view/name</property>
-  			 	 		<value>Walk View</value>
-   					</equals>
- 			 </condition>
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/slide</property>
-				<value>1</value>
-			</binding>
-			<binding n="1">
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<property>sim/walker/speed-mps</property>
-			</binding>
-			<binding n="2">
-  			<condition>
-  			 		<equals>
-   				 		<property>sim/current-view/name</property>
-   				 		<value>Walker Orbit View</value>
-   					</equals>
- 			 </condition>
-   <command>property-adjust</command>
-   <property>/sim/walker/model-heading-deg</property>
-	 <min>0</min>
-	 <max>360</max>
-	 <wrap type="bool">true</wrap>
-   <step type="int">10</step>
-			</binding>
-			<mod-up>
-				<binding n="0">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/slide</property>
-					<value>0</value>
-				</binding>
-				<binding n="1">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/speed</property>
-					<property>sim/walker/speed-mps</property>
-				</binding>
-			</mod-up>
-		</key>
-		<key n="68"> 
-			<name>D</name>
-			<desc>Slide right2</desc>
-			<repeatable>false</repeatable>
-			<binding n="0">
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/slide</property>
-				<value>1</value>
-			</binding>
-			<binding n="1">
-				<command>property-assign</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<property>sim/walker/speed-mps</property>
-			</binding>
-			<binding n="2">
-				<command>property-multiply</command>
-				<property>sim/walker/key-triggers/speed</property>
-				<factor>2.5</factor>
-			</binding>
-			<mod-up>
-				<binding n="0">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/slide</property>
-					<value>0</value>
-				</binding>
-				<binding n="1">
-					<command>property-assign</command>
-					<property>sim/walker/key-triggers/speed</property>
-					<property>sim/walker/speed-mps</property>
-				</binding>
-			</mod-up>
-		</key>-->
         </keyboard>
     </input>
     <nasal n="0">
