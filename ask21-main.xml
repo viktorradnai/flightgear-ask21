@@ -770,5 +770,8 @@ See AUTHORS.txt for credits
 		<dual_control>
 			<file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
 		</dual_control>
+		<FLARM>
+			<file>Aircraft/ASK21/Nasal/FLARM.nas</file>
+		</FLARM>
 	</nasal>
 </PropertyList>

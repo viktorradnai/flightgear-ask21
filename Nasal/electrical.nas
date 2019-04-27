@@ -230,6 +230,7 @@ var electrical_bus_1 = func() {
     }
     
     setprop("/systems/electrical/outputs/flarm", bus_volts);
+    setprop("/systems/electrical/outputs/comm[0]", bus_volts);
 
     # register bus voltage
     ebus1_volts = bus_volts;

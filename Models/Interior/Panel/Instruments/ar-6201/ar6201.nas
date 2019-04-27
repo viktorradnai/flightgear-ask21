@@ -15,11 +15,14 @@ var page = "only";
 
 var base = "/instrumentation/comm[0]/";
 
+var instrument_path = "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/";
+
 setprop(base~"sq", 1);
 
 var volume_prop = base~"volume";
 var start_prop = base~"start";
-var battery_prop = "/controls/electric/battery-switch";
+var volt_prop = "/systems/electrical/outputs/comm[0]";
+var volts = props.globals.getNode(volt_prop, 1);
 var pilotmenu_prop = base~"pilot-menu";
 var channelmenu_prop = base~"channel-menu";
 var brightness_prop = base~"brightness";
@@ -101,16 +104,17 @@ var canvas_AR6201_base = {
 		return [];
 	},
 	update: func() {
-		var battery = getprop(battery_prop) or 0;
+		var volt = volts.getValue();
 		var volume = getprop(volume_prop) or 0;
 		var start = getprop(start_prop) or 0;
-		if ( start == 1 and battery == 1 and volume > 0 ) {
+		if ( start == 1 and volt > 9 and volume > 0 ) {
 			AR6201_start.page.hide();
 			var pilot_menu = getprop(pilotmenu_prop) or 0;
 			var channel_menu = getprop(channelmenu_prop) or 0;
 			if(pilot_menu==1){
 				AR6201_only.page.hide();
 				AR6201_brightness.page.show();
+				AR6201_brightness.update();
 				AR6201_squelch.page.hide();
 				AR6201_sch.page.hide();
 				AR6201_sach.page.hide();
@@ -118,6 +122,7 @@ var canvas_AR6201_base = {
 				AR6201_only.page.hide();
 				AR6201_brightness.page.hide();
 				AR6201_squelch.page.show();
+				AR6201_squelch.update();
 				AR6201_sch.page.hide();
 				AR6201_sach.page.hide();
 			}else if(channel_menu == 1){
@@ -125,21 +130,24 @@ var canvas_AR6201_base = {
 				AR6201_brightness.page.hide();
 				AR6201_squelch.page.hide();
 				AR6201_sch.page.show();	
+				AR6201_sch.update();
 				AR6201_sach.page.hide();		
 			}else if(channel_menu == 2){
 				AR6201_only.page.hide();
 				AR6201_brightness.page.hide();
 				AR6201_squelch.page.hide();
 				AR6201_sch.page.hide();	
-				AR6201_sach.page.show();		
+				AR6201_sach.page.show();	
+				AR6201_sach.update();
 			}else{
 				AR6201_only.page.show();
+				AR6201_only.update();
 				AR6201_brightness.page.hide();
 				AR6201_squelch.page.hide();
 				AR6201_sch.page.hide();
 				AR6201_sach.page.hide();
 			}
-		} else if ( start > 0 and start < 1 and battery == 1 and volume > 0){
+		} else if ( start > 0 and start < 1 and volt > 9 and volume > 0){
 			AR6201_only.page.hide();
 			AR6201_brightness.page.hide();
 			AR6201_start.page.show();
@@ -236,9 +244,6 @@ var canvas_AR6201_only = {
 			me["change.khz"].show();
 			me["change.khz.digits"].setText(sprintf("%02d", math.mod(standby_frequency*1000,100)));
 		}
-		
-		
-		settimer(func me.update(), 0.02);
 	}
 	
 };
@@ -254,8 +259,6 @@ var canvas_AR6201_start = {
 	getKeys: func() {
 		return [];
 	},
-	update: func() {
-	}
 	
 };
 
@@ -279,8 +282,6 @@ var canvas_AR6201_brightness = {
 		
 		me["brightness.digits"].setText(sprintf("%3d", brightness*100));
 		me["brightness.bar"].setTranslation((1-brightness)*(-315),0);
-		
-		settimer(func me.update(), 0.02);
 	}
 	
 };
@@ -305,8 +306,6 @@ var canvas_AR6201_squelch = {
 		
 		me["squelch.digits"].setText(sprintf("%3d", squelch));
 		me["squelch.bar"].setTranslation((1-((squelch-6)/20))*(-315),0);
-		
-		settimer(func me.update(), 0.02);
 	}
 	
 };
@@ -343,9 +342,6 @@ var canvas_AR6201_sch = {
 			}
 			me["channel.num"].setText(sprintf("%02d", channel));
 		}
-		
-		
-		settimer(func me.update(), 0.02);
 	}
 	
 };
@@ -383,9 +379,6 @@ var canvas_AR6201_sach = {
 		}else{
 			me["ind"].setText("FREE");
 		}
-		
-		
-		settimer(func me.update(), 0.02);
 	}
 	
 };
@@ -403,8 +396,8 @@ setlistener("/instrumentation/transponder/inputs/ident-btn-2", func{
 
 setlistener("sim/signals/fdm-initialized", func {
 	AR6201_display = canvas.new({
-		"name": "GTX327",
-		"size": [1024, 512],
+		"name": "AR6201",
+		"size": [512, 256],
 		"view": [512, 256],
 		"mipmapping": 1
 	});
@@ -417,12 +410,12 @@ setlistener("sim/signals/fdm-initialized", func {
 	var groupSach = AR6201_display.createGroup();
 
 
-	AR6201_only = canvas_AR6201_only.new(groupOnly, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201.svg");
-	AR6201_start = canvas_AR6201_start.new(groupStart, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201-start.svg");
-	AR6201_brightness = canvas_AR6201_brightness.new(groupBrightness, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201-menu-brightness.svg");
-	AR6201_squelch = canvas_AR6201_squelch.new(groupSquelch, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201-menu-squelch.svg");
-	AR6201_sch = canvas_AR6201_sch.new(groupSch, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201-select-channel.svg");
-	AR6201_sach = canvas_AR6201_sach.new(groupSach, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201-save-channel.svg");
+	AR6201_only = canvas_AR6201_only.new(groupOnly, instrument_path~"ar6201.svg");
+	AR6201_start = canvas_AR6201_start.new(groupStart, instrument_path~"ar6201-start.svg");
+	AR6201_brightness = canvas_AR6201_brightness.new(groupBrightness, instrument_path~"ar6201-menu-brightness.svg");
+	AR6201_squelch = canvas_AR6201_squelch.new(groupSquelch, instrument_path~"ar6201-menu-squelch.svg");
+	AR6201_sch = canvas_AR6201_sch.new(groupSch, instrument_path~"ar6201-select-channel.svg");
+	AR6201_sach = canvas_AR6201_sach.new(groupSach, instrument_path~"ar6201-save-channel.svg");
 
 	AR6201_only.update();
 	AR6201_brightness.update();
@@ -432,7 +425,7 @@ setlistener("sim/signals/fdm-initialized", func {
 	canvas_AR6201_base.update();
 });
 
-var showGTX327 = func {
+var showAR6201 = func {
 	var dlg = canvas.Window.new([512, 256], "dialog").set("resize", 1);
 	dlg.setCanvas(AR6201_display);
 }
@@ -556,17 +549,17 @@ var modepressed = func () {
 }
 
 setlistener(volume_prop, func{
-	if(getprop(volume_prop) > 0 and getprop(battery_prop) == 1 and getprop(start_prop) == 0){
+	if(getprop(volume_prop) > 0 and volts.getValue() > 9 and getprop(start_prop) == 0){
 		interpolate(start_prop, 1, 5 );
-	}else if( ( getprop(volume_prop) == 0 or getprop(battery_prop) == 0 ) and getprop(start_prop) != 0){
+	}else if( ( getprop(volume_prop) == 0 or volts.getValue() <= 9 ) and getprop(start_prop) != 0){
 		setprop(start_prop, 0);
 	}
 });
 
-setlistener(battery_prop, func{
-	if(getprop(volume_prop) > 0 and getprop(battery_prop) == 1 and getprop(start_prop) == 0){
+setlistener(volt_prop, func{
+	if(getprop(volume_prop) > 0 and volts.getValue() > 9 and getprop(start_prop) == 0){
 		interpolate(start_prop, 1, 5 );
-	}else if( ( getprop(volume_prop) == 0 or getprop(battery_prop) == 0 ) and getprop(start_prop) != 0){
+	}else if( ( getprop(volume_prop) == 0 or volts.getValue() <= 9 ) and getprop(start_prop) != 0){
 		setprop(start_prop, 0);
 	}
 });

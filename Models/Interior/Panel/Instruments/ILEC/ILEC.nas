@@ -1,4 +1,4 @@
-# Garmin GTX 327 by D-ECHO based on
+# ILEC Engine Instrument by D-ECHO based on
 
 # A3XX Lower ECAM Canvas
 # Joshua Davidson (it0uchpods)
@@ -16,7 +16,7 @@ setprop("/engines/engine[0]/engine-rpm", 0);
 var canvas_ILEC_base = {
 	init: func(canvas_group, file) {
 		var font_mapper = func(family, weight) {
-			#return "LiberationFonts/LiberationMono-Bold.ttf";
+			return "LiberationFonts/LiberationSans-Bold.ttf";
 		};
 
 		canvas.parsesvg(canvas_group, file, {'font-mapper': font_mapper});
@@ -66,26 +66,17 @@ var canvas_ILEC_only = {
 	}
 	me["RightInd"].setText(sprintf("%s", math.round(getprop("/consumables/fuel/tank/level-m3")*1000,1)));
 
-		settimer(func me.update(), 0.02);
+		settimer(func me.update(), 0.1);
 	},
 };
 
-
-var identoff = func {
-	setprop("/instrumentation/transponder/inputs/ident-btn", 0);
-}
-
-setlistener("/instrumentation/transponder/inputs/ident-btn-2", func{
-	setprop("/instrumentation/transponder/inputs/ident-btn", 1);
-	settimer(identoff, 18);
-});
 
 
 setlistener("sim/signals/fdm-initialized", func {
 	ILEC_display = canvas.new({
 		"name": "ILEC",
-		"size": [1280, 512],
-		"view": [1280, 512],
+		"size": [320, 128],
+		"view": [320, 128],
 		"mipmapping": 1
 	});
 	ILEC_display.addPlacement({"node": "ILEC.screen"});

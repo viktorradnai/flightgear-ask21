@@ -315,6 +315,7 @@ var electrical_bus_1 = func() {
     }
     
     setprop("/systems/electrical/outputs/flarm", bus_volts);
+    setprop("/systems/electrical/outputs/comm[0]", bus_volts);
     
     #Prop in/out
     if ( getprop("/controls/engines/engine/extend-propeller")==1 and getprop("/engines/engine/prop-pos-norm")!=1 or getprop("/controls/engines/engine/extend-propeller")==0 and getprop("/engines/engine/prop-pos-norm")!=0 )  {
