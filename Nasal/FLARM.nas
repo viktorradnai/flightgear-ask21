@@ -128,6 +128,9 @@ setlistener("/sim/signals/fdm-initialized", func{
 	#print("FLARM update started");
 });
 
+
+	
+
 var update_FLARM = func{
 
 	var f=0;
@@ -262,7 +265,7 @@ var update_FLARM = func{
 	
 	
 	if((getprop("/systems/electrical/outputs/flarm") or 0)>15){
-		settimer(update_FLARM, 1);
+		settimer(update_FLARM, 0.1);
 		running=1;
 	}else{
 		running=0;

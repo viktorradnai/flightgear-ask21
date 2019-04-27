@@ -53,6 +53,10 @@
         <desc>Extend/retract engine</desc>
     </key>
     <key>
+        <name>E (Shift-e)</name>
+        <desc>Propeller brake on/off</desc>
+    </key>
+    <key>
         <name>}</name>
         <desc>Ignition Switch ON</desc>
     </key>

@@ -151,6 +151,16 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 					<property>/controls/electric/engine-battery-switch</property>
 				</binding>
 			</key>
+			<key n="69">
+				<name>Shift-E</name>
+				<desc>Propeller Brake</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>/controls/engines/engine/propeller-brake</property>
+					<value>1</value>
+					<value>0</value>
+				</binding>
+			</key>
 			<key n="125">
 				<name>}</name>
 				<desc>Ignition Main Switch ON</desc>
