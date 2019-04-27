@@ -375,7 +375,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/cbarw-ft</property>
            <property>aero/alpha-rad</property>
-           <value>-0.5</value>
+           <value>-0.7</value>
        </product>
     </function>
 
@@ -415,7 +415,8 @@
            <property>metrics/cbarw-ft</property>
            <property>aero/ci2vel</property>
            <property>velocities/q-aero-rad_sec</property>
-           <value>-9</value>
+           <value>-13.5</value>
+           <property>/test-factor</property>
        </product>
     </function>
 
@@ -476,7 +477,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>fcs/left-aileron-pos-rad</property>
-           <value>-0.03</value>
+           <value>-0.02</value>
        </product>
     </function>
 
