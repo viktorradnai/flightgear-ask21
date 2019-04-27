@@ -9,7 +9,7 @@
         <path>Instruments/windcompass/windcompass.xml</path>
         <offsets>
             <x-m>-3.328</x-m>
-            <y-m>-0.0</y-m>
+            <y-m>-0.03</y-m>
             <z-m>0.74</z-m>
             <pitch-deg>-4</pitch-deg>
         </offsets>
@@ -22,6 +22,17 @@
 	    </condition>
     </animation>
     
+    <!--FLARM v3 Display-->
+    <model>
+        <name>flarmv3</name>
+        <path>Instruments/FLARMv3/FLARMv3.xml</path>
+        <offsets>
+            <x-m>-3.328</x-m>
+            <y-m>0.03</y-m>
+            <z-m>0.74</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
     
     <!--ASI-->
     <model>
