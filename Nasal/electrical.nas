@@ -228,6 +228,8 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/turn", 0.0);
         setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
     }
+    
+    setprop("/systems/electrical/outputs/flarm", bus_volts);
 
     # register bus voltage
     ebus1_volts = bus_volts;

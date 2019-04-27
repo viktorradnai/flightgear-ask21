@@ -5,6 +5,17 @@
  <path>panelR.ac</path>
 
     <!--COCKPIT-->
+    <!--FLARM-->
+    <model>
+        <name>flarm</name>
+        <path>Instruments/FLARM/FLARM.xml</path>
+        <offsets>
+            <x-m>-2.2</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.89</z-m>
+            <pitch-deg>-10</pitch-deg>
+        </offsets>
+    </model>
     <!--REAR INSTRUMENTS-->
     <!--Altimeter-->
     <model>
