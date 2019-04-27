@@ -97,7 +97,22 @@
 			</traverse>
 			<output>gear/gear-pos-norm</output>
 		</kinematic>
-		
+	</channel>
 	
+	<property value="1">/controls/engines/engine[0]/propeller-brake</property>
+	
+	<channel name="Engine">
+		<fcs_function name="fcs/propeller-brake">
+			<function>
+				<table>
+					<independentVar lookup="row">/controls/engines/engine[0]/propeller-brake</independentVar>
+					<tableData>
+						0	0.27
+						1	15
+					</tableData>
+				</table>
+			</function>
+			<output>propulsion/engine[0]/friction-hp</output>
+		</fcs_function>
 	</channel>
 </system>

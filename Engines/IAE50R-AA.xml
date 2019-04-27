@@ -18,7 +18,7 @@
   <volumetric-efficiency> 0.85 </volumetric-efficiency>
   <man-press-lag> 0.1 </man-press-lag>
   <static-friction  unit="HP"> 0.27 </static-friction>
-  <starter-torque> 43.98 </starter-torque>
+  <starter-torque> 55 </starter-torque>
   <starter-rpm> 3300 </starter-rpm>
  <!-- Defining <bsfc> over-rides the built-in horsepower calculations -->
  <!--<bsfc>           0.45 </bsfc>-->

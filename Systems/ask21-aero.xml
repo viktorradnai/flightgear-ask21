@@ -416,7 +416,6 @@
            <property>aero/ci2vel</property>
            <property>velocities/q-aero-rad_sec</property>
            <value>-13.5</value>
-           <property>/test-factor</property>
        </product>
     </function>
 

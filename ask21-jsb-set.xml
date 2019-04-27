@@ -177,7 +177,6 @@ See AUTHORS.txt for credits
 			</key>
 		</keyboard>
 	</input>
-	<test-factor type="double">1</test-factor>
 	<nasal>
 		<ask21>
 			<file>Aircraft/ASK21/Nasal/message.nas</file>
