@@ -52,7 +52,6 @@ See AUTHORS.txt for credits
             <rendering>
                 <rain-enabled type="int">2</rain-enabled>
                 <reflection-enabled type="int">1</reflection-enabled>
-                <reflection-type type="int">1</reflection-type>
                 <reflection-dynamic type="int">1</reflection-dynamic>
                 <reflection-correction type="float">-0.6</reflection-correction>
                 <reflection-fresnel type="float">0.0</reflection-fresnel>
