@@ -666,10 +666,12 @@ See AUTHORS.txt for credits
 		<electrical>
 			<save-battery-charge type="bool">0</save-battery-charge>
 			<!--only for those wanting more advanced sim so not to discourage people because suddenly electrical is not working anymore-->
-			<outputs>
-				<ar-3201-norm type="bool">0</ar-3201-norm>
-			</outputs>
 		</electrical>
+		<groundhandling>
+			<rudder type="double">0</rudder>
+			<throttle type="double">0</throttle>
+			<wingholder type="bool">0</wingholder>
+		</groundhandling>
 	</systems>
 	<nasal>
 		<global>
@@ -688,8 +690,8 @@ See AUTHORS.txt for credits
 		<ask21>
 			<file>Aircraft/ASK21/Nasal/limits.nas</file>
 			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
-			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
-			<file>Aircraft/ASK21/Nasal/AR3201.nas</file>
+			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file><!--
+			<file>Aircraft/ASK21/Nasal/AR3201.nas</file>-->
 			<file>Aircraft/ASK21/Nasal/GMeter.nas</file>
 			<file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
 			<file>Aircraft/ASK21/Nasal/jsoverride.nas</file>

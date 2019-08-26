@@ -5,7 +5,7 @@ See AUTHORS.txt for credits
 -->
 <PropertyList include="ask21-main.xml">
 	<sim>
-		<description>Schleicher ASK 21 Mi Motorized Glider (YASim)</description>
+		<description>Schleicher ASK 21 Mi Motorglider (YASim)</description>
 		<long-description>
 The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*).
 It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped

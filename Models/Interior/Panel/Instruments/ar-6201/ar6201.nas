@@ -51,7 +51,9 @@ for(var i = 0; i <= 15; i += 1){
 var applySelectedFrequency = func () {
 	var current_channel = getprop(base~"selected-channel");
 	var current_channel_frequency = stored_frequencies[current_channel].frequency;
-	setprop(base~"frequencies/selected-mhz", current_channel_frequency);
+	if(current_channel_frequency != nil){
+		setprop(base~"frequencies/selected-mhz", current_channel_frequency);
+	}
 	setprop(base~"channel-menu", 0);
 	setprop(base~"selected-channel", 0);
 }
