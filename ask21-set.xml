@@ -5,7 +5,7 @@ See AUTHORS.txt for credits
 -->
 <PropertyList include="ask21-main.xml">
 	<sim>
-		<description>Schleicher ASK 21 Glider</description>
+		<description>Schleicher ASK 21 Glider (YASim)</description>
 		<long-description>
 		The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
 		</long-description>
@@ -18,6 +18,7 @@ See AUTHORS.txt for credits
 		</rating>
 		<flight-model archive="y">yasim</flight-model>
 		<aero archive="y">ask21</aero>
+		<variant-of>ask21-jsb</variant-of>
 		<systems>
 			<property-rule n="102">
 				<name>YASim Wingflex</name>
