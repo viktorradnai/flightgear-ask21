@@ -7,7 +7,8 @@
 		<K type="double">8</K>
 		<D type="double">2</D>
 		<fuel-frac type="double">0.1</fuel-frac>
-		<lift-node-lbs alias="/fdm/jsbsim/aero/force/Lift_alpha"/>
+		<lift-node-lbs alias="/sim/model/wingflex-lift"/>
+<!--		<lift-node-lbs alias="/fdm/jsbsim/aero/force/Lift_alpha"/>-->
 		<fuel-node-1-kg type="double">0</fuel-node-1-kg>
 		<fuel-node-2-kg type="double">0</fuel-node-2-kg>
 		<fuel-node-3-kg type="double">0</fuel-node-3-kg>

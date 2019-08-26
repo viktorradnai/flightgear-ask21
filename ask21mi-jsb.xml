@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ASK21" version="2.0" release="ALPHA" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+	<fileheader>
+		<author> Aeromatic v 0.96 </author>
+		<filecreationdate>2018-03-09</filecreationdate>
+		<version>$Revision: 1.20 $</version>
+		<description> Models a ASK21. </description>
+	</fileheader>
+	<!--
+  File:     ASK21.xml
+  Inputs:
+    name:          ASK21
+    type:          glider
+    max weight:    1323 lb
+    wing span:     55.777 ft
+    length:        27.39635 ft
+    wing area:     193.23104995 sq-ft
+    gear type:     tricycle
+    castering:     
+    retractable?:  no
+    # engines:     0
+    engine type:   piston
+    engine layout: forward fuselage
+    yaw damper?    no
+
+  Outputs:
+    wing loading:  6.85 lb/sq-ft
+    payload:       529.2 lbs
+    CL-alpha:      5.5 per radian
+    CL-0:          0.25
+    CL-max:        1.4
+    CD-0:          0.012
+    K:             0.023
+
+-->
+	<!--FRAME NOTES:
+     x: + = front  - = rear
+     y: + = right  - = left
+     z: + = down   - = up
+ -->
+	<metrics>
+		<wingarea unit="FT2">  193.23 </wingarea>
+		<wingspan unit="FT">   55.78 </wingspan>
+		<wing_incidence>          3.00 </wing_incidence>
+		<chord unit="FT">    3.46 </chord>
+		<htailarea unit="FT2">   19.17 </htailarea>
+		<htailarm unit="FT">   13.78 </htailarm>
+		<vtailarea unit="FT2">    5.31 </vtailarea>
+		<vtailarm unit="FT">   13.45 </vtailarm>
+		<location name="AERORP" unit="M">
+			<x> -1.34</x>
+			<y>   0.00 </y>
+			<z>  0.79163 </z>
+		</location>
+		<location name="EYEPOINT" unit="M">
+			<x>  -2.6 </x>
+			<y>   0.00 </y>
+			<z>  1 </z>
+		</location>
+		<location name="VRP" unit="M">
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+		</location>
+	</metrics>
+	<mass_balance>
+		<ixx unit="SLUG*FT2">      1000 </ixx>
+		<iyy unit="SLUG*FT2">       504 </iyy>
+		<izz unit="SLUG*FT2">      2355 </izz>
+		<emptywt unit="LBS">       794 </emptywt>
+		<location name="CG" unit="M">
+			<x>  -0.9 </x>
+			<!--315mm aft of reference point (leading edge)-->
+			<!--empty mass-->
+			<y>   0.00 </y>
+			<z>  0.76674 </z>
+		</location>
+		<pointmass name="Pilot">
+			<description> weight of the pilot </description>
+			<weight unit="KG">    80 </weight>
+			<location name="POINTMASS" unit="M">
+				<x> -2.8 </x>
+				<y>   0.00 </y>
+				<z>  0.5 </z>
+			</location>
+		</pointmass>
+		<pointmass name="Copilot">
+			<description> weight of the copilot </description>
+			<weight unit="KG">    80 </weight>
+			<location name="POINTMASS" unit="M">
+				<x> -1.8 </x>
+				<y>   0.00 </y>
+				<z>  0.6 </z>
+			</location>
+		</pointmass>
+		<pointmass name="Spin Ballast">
+			<description> weight of the spinballast </description>
+			<weight unit="KG">   0 </weight>
+			<location name="POINTMASS" unit="M">
+				<x> 3.5 </x>
+				<y>   0.00 </y>
+				<z>  0.8 </z>
+			</location>
+		</pointmass>
+	</mass_balance>
+	<ground_reactions>
+		<contact type="BOGEY" name="FRONT_WHEEL">
+			<location unit="M">
+				<x> -3.29687 </x>
+				<y>  0.0 </y>
+				<z> 0.07763 </z>
+			</location>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.020 </rolling_friction>
+			<spring_coeff unit="LBS/FT">      9323.00 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   661.50 </damping_coeff>
+			<max_steer unit="DEG">20</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		<contact type="BOGEY" name="MAIN_WHEEL">
+			<location unit="M">
+				<x> -1.01145 </x>
+				<y>   0.0 </y>
+				<z>0.00498 </z>
+			</location>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.020 </rolling_friction>
+			<spring_coeff unit="LBS/FT">      6323.00 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   661.50 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>LEFT</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		<contact type="BOGEY" name="TAIL_WHEEL">
+			<location unit="M">
+				<x>  3.60148 </x>
+				<y>   0.00 </y>
+				<z> 0.4706 </z>
+			</location>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.020 </rolling_friction>
+			<spring_coeff unit="LBS/FT">        9096.90 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		<contact type="BOGEY" name="LEFT_WING_SKID">
+			<location unit="M">
+				<x>  -1.25364 </x>
+				<y>  -8.43947 </y>
+				<z> 1.22131 </z>
+			</location>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.020 </rolling_friction>
+			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		<contact type="BOGEY" name="RIGHT_WING_SKID">
+			<location unit="M">
+				<x>  -1.25364 </x>
+				<y>  8.43947 </y>
+				<z> 1.22131 </z>
+			</location>
+			<static_friction>  0.600 </static_friction>
+			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.020 </rolling_friction>
+			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		<contact type="BOGEY" name="LEFT_WING_ASSIST_GEAR">
+			<location unit="M">
+				<x>  -1.25364 </x>
+				<y>  -8.43947 </y>
+				<z> 0.05 </z>
+			</location>
+			<static_friction>  0.300 </static_friction>
+			<dynamic_friction> 0.200 </dynamic_friction>
+			<rolling_friction> 0.200 </rolling_friction>
+			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>1</retractable>
+		</contact>
+		<contact type="BOGEY" name="RIGHT_WING_ASSIST_GEAR">
+			<location unit="M">
+				<x>  -1.25364 </x>
+				<y>  8.43947 </y>
+				<z> 0.05 </z>
+			</location>
+			<static_friction>  0.300 </static_friction>
+			<dynamic_friction> 0.200 </dynamic_friction>
+			<rolling_friction> 0.200 </rolling_friction>
+			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
+			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>1</retractable>
+		</contact>
+	</ground_reactions>
+	<propulsion>
+		<engine file="IAE50R-AA">
+			<location unit="M">
+				<x>  0.0 </x>
+				<y>   0.00 </y>
+				<z>  0.88 </z>
+			</location>
+			<orient unit="DEG">
+				<pitch> 0.00 </pitch>
+				<roll>  0.00 </roll>
+				<yaw>   0.00 </yaw>
+			</orient>
+			<feed>0</feed>
+			<thruster file="AS2F1-1_R153-92-N1">
+				<sense> 1 </sense>
+				<location unit="M">
+					<x>  -0.40978</x>
+					<y>   0.00 </y>
+					<z>   1.84412 </z>
+				</location>
+				<orient unit="DEG">
+					<pitch> 1 </pitch>
+					<roll>  0.00 </roll>
+					<yaw>   0.00 </yaw>
+				</orient>
+			</thruster>
+		</engine>
+		<!--one fuel tank in the fuselage, 47.25 gallons = 284.445 lbs -->
+		<tank type="FUEL" number="0">
+			<location unit="M">
+				<x>-1.06023 </x>
+				<y> 0.0 </y>
+				<z> 0.9575 </z>
+			</location>
+			<capacity unit="LBS"> 36.34 </capacity>
+			<!--23l AVGAS-->
+			<contents unit="LBS"> 20 </contents>
+		</tank>
+	</propulsion>
+	<flight_control name="FCS: ASK21">
+		<channel name="Pitch">
+			<summer name="Pitch Trim Sum">
+				<input>fcs/elevator-cmd-norm</input>
+				<input>fcs/pitch-trim-cmd-norm</input>
+				<clipto>
+					<min> -1 </min>
+					<max>  1 </max>
+				</clipto>
+			</summer>
+			<aerosurface_scale name="Elevator Control">
+				<input>fcs/pitch-trim-sum</input>
+				<range>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</range>
+				<output>fcs/elevator-pos-rad</output>
+			</aerosurface_scale>
+			<aerosurface_scale name="elevator normalization">
+				<input>fcs/elevator-pos-rad</input>
+				<domain>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</domain>
+				<range>
+					<min> -1 </min>
+					<max>  1 </max>
+				</range>
+				<output>fcs/elevator-pos-norm</output>
+			</aerosurface_scale>
+		</channel>
+		<channel name="Roll">
+			<summer name="Roll Trim Sum">
+				<input>fcs/aileron-cmd-norm</input>
+				<input>fcs/roll-trim-cmd-norm</input>
+				<clipto>
+					<min> -1 </min>
+					<max>  1 </max>
+				</clipto>
+			</summer>
+			<aerosurface_scale name="Left Aileron Control">
+				<input>fcs/roll-trim-sum</input>
+				<range>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</range>
+				<output>fcs/left-aileron-pos-rad</output>
+			</aerosurface_scale>
+			<aerosurface_scale name="Right Aileron Control">
+				<input>fcs/roll-trim-sum</input>
+				<range>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</range>
+				<output>fcs/right-aileron-pos-rad</output>
+			</aerosurface_scale>
+			<aerosurface_scale name="left aileron normalization">
+				<input>fcs/left-aileron-pos-rad</input>
+				<domain>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</domain>
+				<range>
+					<min> -1 </min>
+					<max>  1 </max>
+				</range>
+				<output>fcs/left-aileron-pos-norm</output>
+			</aerosurface_scale>
+			<aerosurface_scale name="right aileron normalization">
+				<input>fcs/right-aileron-pos-rad</input>
+				<domain>
+					<min> -0.35 </min>
+					<max>  0.35 </max>
+				</domain>
+				<range>
+					<min> -1 </min>
+					<max>  1 </max>
+				</range>
+				<output>fcs/right-aileron-pos-norm</output>
+			</aerosurface_scale>
+		</channel>
+		<channel name="Yaw">
+			<summer name="Rudder Command Sum">
+				<input>fcs/rudder-cmd-norm</input>
+				<input>fcs/yaw-trim-cmd-norm</input>
+				<clipto>
+					<min> -1 </min>
+					<max>  1 </max>
+				</clipto>
+			</summer>
+			<aerosurface_scale name="Rudder Control">
+				<input>fcs/rudder-command-sum</input>
+				<range>
+					<min> -1 </min>
+					<max>  1 </max>
+				</range>
+				<output>fcs/rudder-pos-rad</output>
+			</aerosurface_scale>
+			<aerosurface_scale name="rudder normalization">
+				<input>fcs/rudder-pos-rad</input>
+				<domain>
+					<min> -1 </min>
+					<max>  1 </max>
+				</domain>
+				<range>
+					<min> -1 </min>
+					<max>  1 </max>
+				</range>
+				<output>fcs/rudder-pos-norm</output>
+			</aerosurface_scale>
+		</channel>
+		<channel name="Flaps">
+			<kinematic name="Flaps Control">
+				<input>fcs/flap-cmd-norm</input>
+				<traverse>
+					<setting>
+						<position>  0 </position>
+						<time>      0 </time>
+					</setting>
+					<setting>
+						<position> 15 </position>
+						<time>      4 </time>
+					</setting>
+					<setting>
+						<position> 30 </position>
+						<time>      3 </time>
+					</setting>
+				</traverse>
+				<output>fcs/flap-pos-deg</output>
+			</kinematic>
+			<aerosurface_scale name="flap normalization">
+				<input>fcs/flap-pos-deg</input>
+				<domain>
+					<min>  0 </min>
+					<max> 30 </max>
+				</domain>
+				<range>
+					<min> 0 </min>
+					<max> 1 </max>
+				</range>
+				<output>fcs/flap-pos-norm</output>
+			</aerosurface_scale>
+		</channel>
+		<channel name="Landing Gear">
+  </channel>
+		<channel name="Speedbrake">
+			<!--
+	  <function name="fcs/speedbrake-int-norm">
+		  <description>Speedbrake only operates through 9/10 of the pulling length, rest is for wheel brake</description>
+		  <table>
+			  <independentVar lookup="row">fcs/speedbrake-cmd-norm</independentVar>
+			  <tableData>
+				  0	0
+				  0.9	1
+				  1	1
+			  </tableData>
+		  </table>
+	  </function>-->
+			<kinematic name="Speedbrake Control">
+				<input>fcs/speedbrake-int-norm</input>
+				<traverse>
+					<setting>
+						<position> 0 </position>
+						<time>     0 </time>
+					</setting>
+					<setting>
+						<position> 1 </position>
+						<time>     0 </time>
+					</setting>
+				</traverse>
+				<output>fcs/speedbrake-pos-norm</output>
+			</kinematic>
+		</channel>
+	</flight_control>
+	<aerodynamics file="Systems/ask21-aero.xml"/>
+	<!-- external forces, for ground handling, winch start and aerotowing -->
+	<external_reactions>
+		<force name="turn" frame="BODY">
+			<location unit="M">
+				<x> -0.99095</x>
+				<!--wing tip-->
+				<y>  -8</y>
+				<z> 1.3</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="pull" frame="BODY">
+			<location unit="M">
+				<x> -0.99095</x>
+				<!--body-->
+				<y>  0</y>
+				<z> 1.3</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<property>fcs/winch-cmd-norm</property>
+		<force name="winchx" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="winchy" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 0.0</x>
+				<y> 1.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="winchz" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 0.0</x>
+				<y> 0.0</y>
+				<z> 1.0</z>
+			</direction>
+		</force>
+		<force name="aerotow_hitch" frame="BODY" unit="LBS">
+			<location unit="M">
+				<x> -3.42633</x>
+				<!--approximate aerotow hook position-->
+				<y>  0.0</y>
+				<z> 0.2176</z>
+			</location>
+			<direction>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</direction>
+		</force>
+	</external_reactions>
+	<system file="ask21mi-fcs"/>
+</fdm_config>

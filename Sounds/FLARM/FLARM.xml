@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<PropertyList>
+ <fx>
+  
+	<flarm_info>
+		<name>flarm new contact</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/FLARM/flarm_new_contact.wav</path>
+		<condition>
+			<and>
+				<greater-than>
+					<property>/systems/electrical/outputs/flarm</property>
+					<value>12</value>
+				</greater-than>
+				<equals>
+					<property>/instrumentation/FLARM/sound/new-contact</property>
+					<value>0</value>
+				</equals>
+			</and>
+		</condition>
+		<position>
+			<x>-1.35</x>
+			<y>0.0</y>
+			<z>0.1</z>
+		</position>
+	</flarm_info>
+	<flarm_info>
+		<name>flarm new contact 2</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/FLARM/flarm_new_contact.wav</path>
+		<condition>
+			<and>
+				<greater-than>
+					<property>/systems/electrical/outputs/flarm</property>
+					<value>12</value>
+				</greater-than>
+				<equals>
+					<property>/instrumentation/FLARM/sound/new-contact</property>
+					<value>1</value>
+				</equals>
+			</and>
+		</condition>
+		<position>
+			<x>-1.35</x>
+			<y>0.0</y>
+			<z>0.1</z>
+		</position>
+	</flarm_info>
+  
+	<flarm_warn>
+		<name>flarm warn 1</name>
+		<mode>looped</mode>
+		<path>Aircraft/ASK21/Sounds/FLARM/flarm1.wav</path>
+		<condition>
+			<and>
+				<greater-than>
+					<property>/systems/electrical/outputs/flarm</property>
+					<value>12</value>
+				</greater-than>
+				<equals>
+					<property>/instrumentation/FLARM/sound/warn</property>
+					<value>1</value>
+				</equals>
+			</and>
+		</condition>
+		<position>
+			<x>-1.35</x>
+			<y>0.0</y>
+			<z>0.1</z>
+		</position>
+	</flarm_warn>
+
+	<flarm_warn>
+		<name>flarm warn 2</name>
+		<mode>looped</mode>
+		<path>Aircraft/ASK21/Sounds/FLARM/flarm2.wav</path>
+		<condition>
+			<and>
+				<greater-than>
+					<property>/systems/electrical/outputs/flarm</property>
+					<value>12</value>
+				</greater-than>
+				<equals>
+					<property>/instrumentation/FLARM/sound/warn</property>
+					<value>2</value>
+				</equals>
+			</and>
+		</condition>
+		<position>
+			<x>-1.35</x>
+			<y>0.0</y>
+			<z>0.1</z>
+		</position>
+	</flarm_warn>
+  
+
+</fx>
+ 
+</PropertyList>

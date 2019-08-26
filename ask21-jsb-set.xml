@@ -17,19 +17,18 @@ See AUTHORS.txt for credits
 			<model type="int">4</model>
 		</rating>
 		<systems>
-			<wingflexer include="Systems/wingflexer-params.xml"/>
 			<property-rule n="102">
 				<name>JSB Wingflex</name>
 				<path>Systems/jsb_wingflex.xml</path>
 			</property-rule>
-			<property-rule n="103">
-				<name>wing flexer property rule</name>
-				<path>Aircraft/Generic/wingflexer.xml</path>
+			<property-rule n="109">
+				<name>Properties for fuel and payload dialog</name>
+				<path>Systems/fuelpayload.xml</path>
 			</property-rule>
 		</systems>
-		
 		<flight-model archive="y">jsb</flight-model>
 		<aero archive="y">ask21-jsb</aero>
+		<variant-of>ask21</variant-of>
 		<startup>
 			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
 		</startup>
@@ -40,13 +39,25 @@ See AUTHORS.txt for credits
 			<variant type="int">0</variant>
 		</model>
 		<help include="ask21-help.xml"/>
+		<checklists include="ask21-checklists.xml"/>
 		<!-- hide the 2D panel -->
 		<panel>
 			<visibility archive="y">false</visibility>
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
-		
-
+		<hitches>
+			<aerotow>
+				<force_name_jsbsim type="string">aerotow_hitch</force_name_jsbsim>
+				<force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
+				<mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
+				<!-- OPTIONAL
+				<decoupled-force-and-rope-locations type="bool">true</decoupled-force-and-rope-locations>
+				<local-pos-x type="float">1.5</local-pos-x>
+				<local-pos-y type="float"> 0.00</local-pos-y>
+				<local-pos-z type="float">-0.3</local-pos-z>
+				-->
+			</aerotow>
+		</hitches>
 		<glider>
 			<winch>
 				<conf>
@@ -67,8 +78,47 @@ See AUTHORS.txt for credits
 
 	</sim>
 	
+	
+	<payload>
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Copilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Spin Ballast</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">26.45</max-lb>
+		</weight>
+	</payload>
+	
 	<input>
-		<keyboard>
+		<keyboard> 
+			<key n="15">
+				<name>Ctrl-o</name>
+				<desc>Find aircraft for aerotow</desc>
+				<binding>
+					<command>nasal</command>
+					<script>towing.findBestAIObject()</script>
+				</binding>
+			</key>
+			
+			<key n="111">
+				<name>o</name>
+				<desc>Lock aerotow-hook</desc>
+				<binding>
+					<command>nasal</command>
+					<script>towing.closeHitch()</script>
+				</binding>
+			</key>
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
@@ -78,25 +128,6 @@ See AUTHORS.txt for credits
 					ask21.startWinch();</script>
 				</binding>
 			</key>
-			<!--
-			<key n="119">
-				<name>w</name>
-				<desc>Start winch</desc>
-				<binding>
-				<command>nasal</command>
-				<script>ask21.startWinch()</script>
-				</binding>
-			</key>--><!--
-			
-			<key n="87">
-				<name>W</name>
-				<desc>Release winch hook</desc>
-				<binding>
-				<command>nasal</command>
-				<script>ask21.releaseWinch()</script>
-				</binding>
-			</key>
-			-->
 			<key n="87">
 				<name>W</name>
 				<desc>Increase winch speed</desc>
@@ -104,17 +135,6 @@ See AUTHORS.txt for credits
 				<command>nasal</command>
 				<script>ask21.winch_faster()</script>
 				</binding>
-			<!-- <binding>
-				<command>nasal</command>
-				<script>
-					throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
-					if (throttle > 1) throttle = 1;
-					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-					force = getprop("/sim/hitches/winch/force");
-					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-				</script>
-				</binding>-->
 			</key>
 			<key n="119">
 				<name>w</name>
@@ -122,18 +142,7 @@ See AUTHORS.txt for credits
 				<binding>
 				<command>nasal</command>
 				<script>ask21.winch_slower()</script>
-				</binding><!--
-				<binding>
-				<command>nasal</command>
-				<script>
-					throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
-					if (0 > throttle) throttle = 0;
-					setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-					speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-					force = getprop("/sim/hitches/winch/force");
-					gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-				</script>
-				</binding>-->
+				</binding>
 			</key>
 			<key n="111">
 				<name>o</name>
@@ -152,6 +161,10 @@ See AUTHORS.txt for credits
 				<command>property-assign</command>
 				<property>/sim/hitches/winch/open</property>
 				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>nasal</command>
+				<script>towing.releaseHitch("aerotow")</script>
 				</binding>
 				<mod-up>
 				<binding>
@@ -174,5 +187,8 @@ See AUTHORS.txt for credits
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>
+		<dialogs>
+			<file>gui/dialogs/fuelpayload.nas</file>
+		</dialogs>
 	</nasal>
 </PropertyList>

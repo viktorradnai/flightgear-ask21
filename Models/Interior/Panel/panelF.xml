@@ -22,6 +22,17 @@
 		    <property>/sim/model/windcompass</property>
 	    </condition>
     </animation>
+    <!--FLARM v3 Display-->
+    <model>
+        <name>flarmv3</name>
+        <path>Instruments/FLARMv3/FLARMv3.xml</path>
+        <offsets>
+            <x-m>-3.322</x-m>
+            <y-m>-0.08</y-m>
+            <z-m>0.666733</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
     <!--ASI-->
     <model>
         <name>asi</name>

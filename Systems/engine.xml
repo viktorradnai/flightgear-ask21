@@ -7,6 +7,23 @@
 		<enable>
 			<condition>
 				<equals>
+					<property>/sim/flight-model</property>
+					<value>jsb</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<value>1</value>
+		</input>
+		<output>/fdm/jsbsim/fcs/mixture-cmd-norm</output>
+		<output>/fdm/jsbsim/fcs/mixture-pos-norm</output>
+	</filter>
+	<filter>
+		<debug>false</debug>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
 					<property>/controls/ask21/throttle-to-airbrake</property>
 					<value>1</value> 
 				</equals>
@@ -123,9 +140,29 @@
 		<debug>false</debug>
 		<type>gain</type>
 		<input>
+			<condition>
+				<equals>
+					<property>/sim/flight-model</property>
+					<value>jsb</value>
+				</equals>
+			</condition>					
 			<property>/engines/engine/rpm</property>
 		</input>
-		<gain>2.68</gain>
+		<input>
+			<condition>
+				<equals>
+					<property>/sim/flight-model</property>
+					<value>yasim</value>
+				</equals>
+			</condition>
+			<expression>
+				<product>
+					<property>/engines/engine/rpm</property>
+					<value>2.68</value>
+				</product>
+			</expression>
+		</input>
+		<gain>1</gain>
 		<output>/engines/engine/engine-rpm</output>
 	</filter>
 	

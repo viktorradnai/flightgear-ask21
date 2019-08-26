@@ -34,13 +34,20 @@ See AUTHORS.txt for credits
 			<variant type="int">0</variant>
 		</model>
 		<help include="ask21-help.xml"/>
+		<checklists include="ask21-checklists.xml"/>
 		<!-- hide the 2D panel -->
 		<panel>
 			<visibility archive="y">false</visibility>
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
 	</sim>
+	<limits>
+		<mtow-lbs>1554</mtow-lbs>
+	</limits>
 	<nasal>
+		<ask21>
+			<file>Aircraft/ASK21/Nasal/winch.nas</file>
+		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>

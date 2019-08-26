@@ -1,29 +1,22 @@
-# Garmin GTX 327 by D-ECHO based on
+# ILEC Engine Instrument by D-ECHO based on
 
 # A3XX Lower ECAM Canvas
 # Joshua Davidson (it0uchpods)
 #######################################
 
-var GTX327_only = nil;
-var GTX327_display = nil;
+var ILEC_only = nil;
+var ILEC_display = nil;
 var page = "only";
-var GTX327_flight_counter = 0;
-var GTX327_flight_counter_stop = 0;
-var GTX327_up_counter = 0;
-var GTX327_down_counter = 0;
-setprop("/engines/engine[0]/rpm", 0);
-setprop("/instrumentation/transponder/inputs/digitnbr", 1);
-setprop("/instrumentation/transponder/inputs/ident-btn", 0);
-setprop("/instrumentation/transponder/inputs/ident-btn-2", 0);
-setprop("/instrumentation/GTX327/start", 0);
-setprop("/instrumentation/GTX327/stop", 0);
-setprop("/instrumentation/GTX327/func", 1);
-setprop("/systems/electrical/avionics1-bus/GTX327", 0);
+var ILEC_flight_counter = 0;
+var ILEC_flight_counter_stop = 0;
+var ILEC_up_counter = 0;
+var ILEC_down_counter = 0;
+setprop("/engines/engine[0]/engine-rpm", 0);
 
-var canvas_GTX327_base = {
+var canvas_ILEC_base = {
 	init: func(canvas_group, file) {
 		var font_mapper = func(family, weight) {
-			#return "LiberationFonts/LiberationMono-Bold.ttf";
+			return "LiberationFonts/LiberationSans-Bold.ttf";
 		};
 
 		canvas.parsesvg(canvas_group, file, {'font-mapper': font_mapper});
@@ -42,9 +35,9 @@ var canvas_GTX327_base = {
 	},
 	update: func() {
 		if (getprop("/controls/electric/battery-switch") == 1) {
-			GTX327_only.page.show();
+			ILEC_only.page.show();
 		} else {
-			GTX327_only.page.hide();
+			ILEC_only.page.hide();
 		}
 		
 		settimer(func me.update(), 0.02);
@@ -52,9 +45,9 @@ var canvas_GTX327_base = {
 };
 	
 	
-var canvas_GTX327_only = {
+var canvas_ILEC_only = {
 	new: func(canvas_group, file) {
-		var m = { parents: [canvas_GTX327_only , canvas_GTX327_base] };
+		var m = { parents: [canvas_ILEC_only , canvas_ILEC_base] };
 		m.init(canvas_group, file);
 
 		return m;
@@ -66,45 +59,36 @@ var canvas_GTX327_only = {
 	
 			
 	
-	if(getprop("/engines/engine[0]/rpm")>=1000){
+	if(getprop("/engines/engine[0]/engine-rpm")>=1000){
 		me["LeftInd"].setText(sprintf("%s", math.round(getprop("/engines/engine[0]/engine-rpm") or 0,100)));
 	}else{
 		me["LeftInd"].setText(sprintf("%s", 0000));
 	}
 	me["RightInd"].setText(sprintf("%s", math.round(getprop("/consumables/fuel/tank/level-m3")*1000,1)));
 
-		settimer(func me.update(), 0.02);
+		settimer(func me.update(), 0.1);
 	},
 };
 
 
-var identoff = func {
-	setprop("/instrumentation/transponder/inputs/ident-btn", 0);
-}
-
-setlistener("/instrumentation/transponder/inputs/ident-btn-2", func{
-	setprop("/instrumentation/transponder/inputs/ident-btn", 1);
-	settimer(identoff, 18);
-});
-
 
 setlistener("sim/signals/fdm-initialized", func {
-	GTX327_display = canvas.new({
-		"name": "GTX327",
-		"size": [1280, 512],
-		"view": [1280, 512],
+	ILEC_display = canvas.new({
+		"name": "ILEC",
+		"size": [320, 128],
+		"view": [320, 128],
 		"mipmapping": 1
 	});
-	GTX327_display.addPlacement({"node": "ILEC.screen"});
-	var groupOnly = GTX327_display.createGroup();
+	ILEC_display.addPlacement({"node": "ILEC.screen"});
+	var groupOnly = ILEC_display.createGroup();
 
-	GTX327_only = canvas_GTX327_only.new(groupOnly, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC-display.svg");
+	ILEC_only = canvas_ILEC_only.new(groupOnly, "Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC-display.svg");
 
-	GTX327_only.update();
-	canvas_GTX327_base.update();
+	ILEC_only.update();
+	canvas_ILEC_base.update();
 });
 
-var showGTX327 = func {
+var showILEC = func {
 	var dlg = canvas.Window.new([128, 512], "dialog").set("resize", 1);
-	dlg.setCanvas(GTX327_display);
+	dlg.setCanvas(ILEC_display);
 }

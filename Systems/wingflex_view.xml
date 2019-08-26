@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<!--The wingtip and below-wing views are moved according to wingflex to mimic a camera mounted to the wing-->
+	
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<enable>
+			<condition>
+				<equals>
+					<property>/sim/current-view/view-number</property>
+					<value>9</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/multiplay/generic/float[9]</property> <!--Wingflex property-->
+						<value>0.17</value>
+					</product>
+					<value>1.5</value>
+				</sum>
+			</expression>
+		</input>
+		<output>/sim/current-view/y-offset-m</output>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<enable>
+			<condition>
+				<equals>
+					<property>/sim/current-view/view-number</property>
+					<value>8</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/multiplay/generic/float[9]</property> <!--Wingflex property-->
+						<value>0.0175</value>
+					</product>
+					<value>0.7</value>
+				</sum>
+			</expression>
+		</input>
+		<output>/sim/current-view/y-offset-m</output>
+	</filter>
+  
+</PropertyList>

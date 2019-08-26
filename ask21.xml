@@ -78,7 +78,7 @@ Approach Elevator: 0.0859411
     <!-- nose wheel -->
     <gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.8" sfric="1.2" />
     <!-- main wheel-->
-    <!--As on the ASK13, brake is tied to airbrake-->
+    <!--Brake is tied to (full) airbrake-->
     <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.8" sfric="1.2">
         <control-input axis="/controls/engines/engine/throttle" control="BRAKE" src0="0" src1="0.1" dst0="1" dst1="0"/>
        <!-- <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>   not existing in the real ASK21-->

@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<!--
+YASim Schleicher ASK 21 Glider
+See AUTHORS.txt for credits
+-->
+<PropertyList include="ask21-main.xml">
+	<sim>
+		<description>Schleicher ASK 21mi Motorglider JSB</description>
+		<long-description>
+		The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
+		</long-description>
+		<status>production</status>
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">4</systems>
+			<cockpit type="int">4</cockpit>
+			<model type="int">4</model>
+		</rating>
+		<systems>
+			<property-rule n="102">
+				<name>JSB Wingflex</name>
+				<path>Systems/jsb_wingflex.xml</path>
+			</property-rule>
+			<property-rule n="106">
+				<name>Engine</name><!--only included in the -mi, supports toggle between throttle to throttle and throttle to airbrake-->
+				<path>Systems/engine.xml</path>
+			</property-rule>
+			<property-rule n="109">
+				<name>Properties for fuel and payload dialog</name>
+				<path>Systems/fuelpayload.xml</path>
+			</property-rule>
+		</systems>
+		
+		<flight-model archive="y">jsb</flight-model>
+		<aero archive="y">ask21mi-jsb</aero>
+		<variant-of>ask21mi</variant-of>
+		<startup>
+			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
+		</startup>
+		<model>
+			<variant type="int">1</variant>
+		</model>
+		<sound>
+			<path>Aircraft/ASK21/Sounds/ask21jsb-mi-sound.xml</path>
+		</sound>
+			
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>ask21mi-splash.png</path>
+			</preview>
+		</previews>
+		<multiplay>
+			<chat_display>1</chat_display>
+			<generic>
+				<int type="int" n="12" alias="/engines/engine[0]/running">  0 </int>
+				<int type="int" n="13" alias="/engines/engine[0]/cranking">  0 </int>
+				<float n="10" alias="/engines/engine/prop-pos-norm"/>
+				<!-- Motor-->
+				<float n="11" alias="/controls/engines/engine[0]/throttle"/>
+				<float n="12" alias="/engines/engine[0]/mp-osi"/>
+			</generic>
+		</multiplay>
+			<!-- Speedbreake step settings -->
+		<spoilers>
+			<setting>0.00</setting>
+			<setting>0.08</setting>
+			<setting>0.16</setting>
+			<setting>0.32</setting>
+			<setting>0.48</setting>
+			<setting>0.64</setting>
+			<setting>0.82</setting>
+			<setting>1.00</setting>
+		</spoilers>
+		<!-- Save some properties when the simulator is shut down -->
+		<aircraft-data>
+			<path>/controls/ask21/throttle-to-airbrake</path>
+			<path>/controls/ask21/mixture-to-airbrake</path>
+			<path>/controls/ask21/mixture-to-throttle</path>
+			<path>/instrumentation/ilec/hours</path>
+		</aircraft-data>
+		
+		<help include="ask21mi-help.xml"/>
+		<!-- hide the 2D panel -->
+		<panel>
+			<visibility archive="y">false</visibility>
+		</panel>
+		<tutorials include="Tutorials/ask21-tutorials.xml"/>
+		
+
+		<glider>
+			<winch>
+				<conf>
+					<rope_initial_length_m>1000.0</rope_initial_length_m>
+					<pull_max_lbs>1102.0</pull_max_lbs> <!-- 500daN -->
+				</conf>
+			</winch>
+			<towing>
+				<conf>
+					<rope_length_m>60.0</rope_length_m>
+					<nominal_towforce_lbs>500.0</nominal_towforce_lbs>
+					<breaking_towforce_lbs>9999.0</breaking_towforce_lbs>
+				</conf>
+				<hooked>0</hooked>
+			</towing>
+			<ac-designator type="string">ASK21mi</ac-designator>
+		</glider>
+
+	</sim>
+	
+	
+	<limits>
+		<mtow-lbs>1554.26</mtow-lbs>
+	</limits>
+	<controls>
+		<ask21>
+			<groundhandling-throttle type="double">0</groundhandling-throttle>
+			<throttle-to-airbrake type="bool">0</throttle-to-airbrake>
+			<mixture-to-airbrake type="bool">0</mixture-to-airbrake>
+			<mixture-to-throttle type="bool">0</mixture-to-throttle>
+		</ask21>
+			<electric>
+				<engine-battery-switch type="bool">0</engine-battery-switch>
+				<engine-battery-switch-pos type="float">0</engine-battery-switch-pos>
+				<generator-fail type="bool">0</generator-fail>
+			</electric>
+		<engines>
+			<engine n="0">
+				<mixture-int>0</mixture-int>
+				<boost type="double">0</boost>
+				<magnetos>0</magnetos>
+				<extend-propeller type="bool">0</extend-propeller>
+				<extend-propeller-pos type="float">0</extend-propeller-pos>
+				<throttle-int type="double">0</throttle-int>
+			</engine>
+		</engines>
+	</controls>
+	<engines>
+		<engine>
+			<prop-pos-norm type="float">0</prop-pos-norm>
+			<engine-rpm type="float">0</engine-rpm>
+			<engine-rpm-checked type="float">0</engine-rpm-checked>
+		</engine>
+	</engines>
+	<input>
+		<keyboard>
+			<key n="115">
+				<name>s</name>
+				<desc>Starter</desc>
+				<binding>
+					<condition>
+						<equals>
+							<property>sim/multiplay/generic/float[10]</property>
+							<value>1</value>
+						</equals>
+						<property>controls/electric/engine-battery-switch</property>
+					</condition>
+					<command>property-toggle</command>
+					<property>/controls/engines/engine/starter</property>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<equals>
+								<property>sim/multiplay/generic/float[10]</property>
+								<value>1</value>
+							</equals>
+							<property>controls/electric/engine-battery-switch</property>
+						</condition>
+						<command>property-toggle</command>
+						<property>/controls/engines/engine/starter</property>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="5">
+				<name>Ctrl-e</name>
+				<desc>Engine Electric Master Switch</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>/controls/electric/engine-battery-switch</property>
+				</binding>
+			</key>
+			<key n="69">
+				<name>Shift-E</name>
+				<desc>Propeller Brake</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>/controls/engines/engine/propeller-brake</property>
+					<value>1</value>
+					<value>0</value>
+				</binding>
+			</key>
+			<key n="125">
+				<name>}</name>
+				<desc>Ignition Main Switch ON</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/engines/engine/magnetos</property>
+					<value>3</value>
+				</binding>
+			</key>
+			<key n="123">
+				<name>{</name>
+				<desc>Ignition Main Switch ON</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/engines/engine/magnetos</property>
+					<value>0</value>
+				</binding>
+			</key>
+			<key n="101">
+				<name>e</name>
+				<desc>Extend/Retract engine</desc>
+				<binding>
+				<command>property-toggle</command>
+				<property>/controls/engines/engine/extend-propeller</property>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+	
+	<payload>
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Copilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Spin Ballast</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">26.45</max-lb>
+		</weight>
+	</payload>
+        
+	
+	<input>
+		<keyboard>
+			<key n="23">
+				<name>Ctrl-w</name>
+				<desc>Place Winch and hook in</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.placeWinch();
+					ask21.startWinch();</script>
+				</binding>
+			</key>
+			<key n="87">
+				<name>W</name>
+				<desc>Increase winch speed</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.winch_faster()</script>
+				</binding>
+			</key>
+			<key n="119">
+				<name>w</name>
+				<desc>Decrease winch speed</desc>
+				<binding>
+				<command>nasal</command>
+				<script>ask21.winch_slower()</script>
+				</binding>
+			</key>
+			<key n="111">
+				<name>o</name>
+				<desc>Open hook</desc>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/hook-open</property>
+				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/aerotow/open</property>
+				<value type="bool">true</value>
+				</binding>
+				<binding>
+				<command>property-assign</command>
+				<property>/sim/hitches/winch/open</property>
+				<value type="bool">true</value>
+				</binding>
+				<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/hook-open</property>
+					<value type="bool">false</value>
+				</binding>
+				</mod-up>
+
+			</key>
+		</keyboard>
+	</input>
+	<nasal>
+		<ask21>
+			<file>Aircraft/ASK21/Nasal/message.nas</file>
+			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
+			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
+			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
+		</ask21>
+		<electrical>
+			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>
+		</electrical>
+		<ilec>
+			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC.nas</file>
+		</ilec>
+		<dialogs>
+			<file>gui/dialogs/fuelpayload.nas</file>
+		</dialogs>
+	</nasal>
+</PropertyList>

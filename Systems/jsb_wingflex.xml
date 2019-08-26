@@ -5,8 +5,8 @@
 	<filter>
 		<type>gain</type>
 		<gain>2</gain>
-		<input>/sim/systems/wingflexer/z-m</input>
-		<output>/sim/model/wingflex</output>
+		<input>/fdm/jsbsim/aero/force/Lift_alpha</input>
+		<output>/sim/model/wingflex-lift</output>
 	</filter>
   
 </PropertyList>

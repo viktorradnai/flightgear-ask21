@@ -425,7 +425,7 @@ var placeWinch = func {
       # setup model properties
       winchrope_mod.model = winchrope_mod.getChild("model", freeModelid, 1);
       winchrope_mod.model.getNode("path", 1).setValue(
-            "Aircraft/DG-101G/Models/Ropes/winchrope.xml");
+            "Models/Aircraft/towropes.xml");
       winchrope_mod.model.getNode("longitude-deg-prop", 1).setValue(
             "ai/models/winchrope/position/longitude-deg");
       winchrope_mod.model.getNode("latitude-deg-prop", 1).setValue(
@@ -499,7 +499,7 @@ var startWinch = func {
       setprop("fdm/jsbsim/fcs/winch-cmd-norm",1);           # closes the hook
       var ac_type=getprop("/sim/glider/ac-designator");
       msg("atc",ac_type~" at the rope, ready for departure"); # simulate message to winch
-      setprop("orientation/roll-deg",0);                    # level the plane
+      setprop("controls/gear/assist-1",1);                    # level the plane
       msg("atc","Glider levelled."); 
       msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); # simulate message re-reading from winch
       var wp = geo.Coord.new().set_latlon( 
@@ -727,9 +727,10 @@ var runWinch = func {
 			}else{
 				winch_factor=winch_factor+0.2;
 			}
-		}else if(winch_factor>0.1){
-			winch_factor=winch_factor-0.02;
 		}
+		#else if(winch_factor>0.1){
+		#	winch_factor=winch_factor-0.02;
+		#}
 	}
 	
 	if(alpha>0.55 and winch_factor>0.1){
@@ -801,7 +802,7 @@ var runWinch = func {
         setprop("sim/glider/winchrope/work/longitude-deg", hook_pos.lon());
         setprop("sim/glider/winchrope/work/altitude-m", hook_pos.alt());
         # update length of rope
-        setprop("sim/glider/winchrope/work/xstretch_rel", dd_m);
+        setprop("sim/hitches/winch/tow/dist", dd_m);
         # update pitch and heading of rope
         setprop("sim/glider/winchrope/work/rope_heading_deg", hw_deg);
         setprop("sim/glider/winchrope/work/rope_pitch_deg", wnpitchto);
@@ -846,6 +847,17 @@ var winch_slower = func(){
 var pulling = setlistener("sim/glider/winch/flags/pull", runWinch);
 var initializing_winch = setlistener("sim/signals/fdm-initialized", globalsWinch);
 
-setlistener("/sim/hitches/winch/open", func{
-	releaseWinch();
+setlistener("/sim/hitches/winch/open", func(i){
+	if(i.getValue()==1){
+		releaseWinch();
+	}
+});
+
+#set hook open (for winch rope animation)
+setlistener("sim/glider/winch/flags/hooked", func(i) {
+	if(i.getValue()==1){
+		setprop("sim/hitches/winch/open", 0);
+	}else if(i.getValue()==0){
+		setprop("sim/hitches/winch/open", 1);
+	}
 });
