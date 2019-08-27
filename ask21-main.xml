@@ -20,6 +20,10 @@ See AUTHORS.txt for credits
 			<name>Instrument correction</name>
 			<path>Systems/instruments.xml</path>
 		</property-rule>
+		<property-rule n="105">
+			<name>Ground handling</name>
+			<path>Systems/ground_handling.xml</path>
+		</property-rule>
 	    <electrical><path></path></electrical>
         </systems>
         <aircraft-version>201703</aircraft-version>
@@ -252,6 +256,13 @@ See AUTHORS.txt for credits
                         <binding>
                             <command>dialog-show</command>
                             <dialog-name>aerotow_dialog</dialog-name>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Drag Robot</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>dragrobot_dialog</dialog-name>
                         </binding>
                     </item>
                     <item>

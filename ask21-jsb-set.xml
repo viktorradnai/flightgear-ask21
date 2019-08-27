@@ -73,6 +73,9 @@ See AUTHORS.txt for credits
 				<hooked>0</hooked>
 			</towing>
 			<ac-designator type="string">ASK21</ac-designator>
+			<dragger>
+				<model type="string">DR400</model>
+			</dragger>
 		</glider>
 
 	</sim>
@@ -189,5 +192,8 @@ See AUTHORS.txt for credits
 		<dialogs>
 			<file>gui/dialogs/fuelpayload.nas</file>
 		</dialogs>
+		<dragrobot>
+			<file>Aircraft/ASK21/Nasal/dragrobot.nas</file>
+		</dragrobot>
 	</nasal>
 </PropertyList>
