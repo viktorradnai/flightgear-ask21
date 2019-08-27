@@ -5,6 +5,13 @@
 #
 # Based on C172P electrical system.
 
+# Initialize properties
+var com_ptt = props.globals.getNode("/instrumentation/comm[0]/ptt", 1);
+var com_start = props.globals.getNode("/instrumentation/comm[0]/start", 1);
+var vario_vol = props.globals.getNode("/instrumentation/ilec-sc7/volume", 1);
+var vario_aud = props.globals.getNode("/instrumentation/ilec-sc7/audio", 1);
+var vario_read = props.globals.getNode("/instrumentation/ilec-sc7/te-reading-mps", 1);
+var turnbank_spin = props.globals.getNode("/instrumentation/turn-indicator/spin", 1);
 
 ##
 # Initialize internal values
@@ -23,9 +30,9 @@ var BatteryClass = {};
 
 BatteryClass.new = func {
     var obj = { parents : [BatteryClass],
-                ideal_volts : 24.0,
+                ideal_volts : 12.0,
                 ideal_amps : 30.0,
-                amp_hours : 3.1875,
+                amp_hours : 7.6,
                 charge_percent : getprop("/systems/electrical/battery-charge-percent") or 1.0,
                 charge_amps : 7.0 };
     setprop("/systems/electrical/battery-charge-percent", obj.charge_percent);
@@ -185,7 +192,8 @@ var update_virtual_bus = func (dt) {
     # outputs
     setprop("/systems/electrical/amps", ammeter_ave);
     setprop("/systems/electrical/volts", bus_volts);
-    if (bus_volts > 12)
+    setprop("/systems/electrical/load", load);
+    if (bus_volts > 9)
         vbus_volts = bus_volts;
     else
         vbus_volts = 0.0;
@@ -194,49 +202,73 @@ var update_virtual_bus = func (dt) {
 }
 
 
+#Load sources:
+#	com:		https://www.skyfox.com/becker-ar6201-022-vhf-am-sprechfunkgeraet-8-33.html
+#	vario:		http://www.ilec-gmbh.com/ilec/manuals/SC7pd.pdf
+#	turn:		https://www.airteam.eu/de/p/falcon-tb02e-2-1 (not the same but similar)
+#	flarm:		http://flarm.com/wp-content/uploads/man/FLARM_InstallationManual_D.pdf
+#	flarm display:	https://www.air-store.eu/Display-V3-FLARM
+
 var electrical_bus_1 = func() {
-    var bus_volts = 0.0;
-    var load = 0.0;
+	var bus_volts = 0.0;
+	var load = 0.0;
     
-    # check master breaker
-   # if ( getprop("/controls/circuit-breakers/master") ) {
-        # we are feed from the virtual bus
-        bus_volts = vbus_volts;        
-   # }
-    #print("Bus volts: ", bus_volts);
+	bus_volts = vbus_volts;       
+	
+	if(bus_volts > 9){
         
-    # Vario
-    setprop("/systems/electrical/outputs/ilec-sc7", bus_volts);
-    load += bus_volts / 57;
+		# Vario
+		setprop("/systems/electrical/outputs/ilec-sc7", bus_volts);
+		#Energy consumption:	25mA (medium volume) 60mA (max volume) -> guess: at 12V
+		#			guess: base consumption 5mA (no volume)
+		load += 0.06 / bus_volts;
+		if(vario_aud.getValue() == 2 or (vario_aud.getValue() == 1 and vario_read.getValue() > 0)){
+			load += (vario_vol.getValue()*0.66) / bus_volts;
+		}
+	
+	
+		# Radio  
+		setprop("/systems/electrical/outputs/comm", bus_volts);
+		if(com_ptt.getBoolValue() and com_start.getValue()==1){
+			load += 19.2 / bus_volts;
+		}else{
+			load += 1.02*com_start.getValue() / bus_volts;
+		}
     
-    
-    # Radio    
-    setprop("/systems/electrical/outputs/ar-3201", bus_volts);
-	if(bus_volts>12){
-		setprop("/systems/electrical/outputs/ar-3201-norm", 1);
+		#Turn Coordinator
+		#Energy Consumption:
+		#	starting ~9.9 / volts (approx)
+		#	running ~7.8 / volts (approx)
+		if ( getprop("/controls/electric/turn-slip-switch")==1) {
+			#setprop("/systems/electrical/outputs/turn", bus_volts);
+			setprop("/systems/electrical/outputs/turn-coordinator", bus_volts);
+			if( turnbank_spin.getValue() > 0.99 ){
+				load += 7.8 / bus_volts;
+			}else{
+				load += 9.9 / bus_volts;
+			}
+		} else {
+			#setprop("/systems/electrical/outputs/turn", 0.0);
+			setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
+		}
+		
+		setprop("/systems/electrical/outputs/flarm", bus_volts);
+		load += 0.66 / bus_volts; #FLARM
+		load += 0.12 / bus_volts; #FLARM display
 	}else{
-		setprop("/systems/electrical/outputs/ar-3201-norm", 0);
+		setprop("/systems/electrical/outputs/comm", 0.0);
+		setprop("/systems/electrical/outputs/ilec-sc7", 0.0);
+		#setprop("/systems/electrical/outputs/turn", 0.0);
+		setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
+		setprop("/systems/electrical/outputs/flarm", 0.0);
 	}
-    load += bus_volts / 57;
-    
-    #Turn Coordinator
-    if ( getprop("/controls/electric/turn-slip-switch")==1) {
-        setprop("/systems/electrical/outputs/turn", bus_volts);
-        setprop("/systems/electrical/outputs/turn-coordinator", bus_volts);
-        load += bus_volts / 57;
-    } else {
-        setprop("/systems/electrical/outputs/turn", 0.0);
-        setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
-    }
-    
-    setprop("/systems/electrical/outputs/flarm", bus_volts);
-    setprop("/systems/electrical/outputs/comm[0]", bus_volts);
+		
 
-    # register bus voltage
-    ebus1_volts = bus_volts;
+	# register bus voltage
+	ebus1_volts = bus_volts;
 
-    # return cumulative load
-    return load;
+	# return cumulative load
+	return load;
 }
 
 ##

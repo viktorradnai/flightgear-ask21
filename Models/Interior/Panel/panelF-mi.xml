@@ -4,6 +4,17 @@
     <!--COCKPIT-->
     <!--FRONT INSTRUMENTS-->
     
+    <!--57mm turnslip-->
+    <model>
+        <name>turnslip</name>
+        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_turnslip.xml</path>
+        <offsets>
+            <x-m>-3.325</x-m>
+            <y-m>-0.03</y-m>
+            <z-m>0.74</z-m>
+            <pitch-deg>-4</pitch-deg>
+        </offsets>
+    </model>
     <model>
         <name>wind</name>
         <path>Instruments/windcompass/windcompass.xml</path>
@@ -19,6 +30,15 @@
 	    <object-name>wind</object-name>
 	    <condition>
 		    <property>/sim/model/windcompass</property>
+	    </condition>
+    </animation>
+    <animation>
+	    <type>select</type>
+	    <object-name>turnslip</object-name>
+	    <condition>
+		    <not>
+			<property>/sim/model/windcompass</property>
+		</not>
 	    </condition>
     </animation>
     
@@ -241,17 +261,6 @@
             <pitch-deg>-5</pitch-deg>
         </offsets>
     </model>
-    <!--57mm turnslip--><!--
-    <model>
-        <name>turnslip</name>
-        <path>Aircraft/ASK21/Models/Interior/Panel/Instruments/57mm_turnslip/57mm_turnslip.xml</path>
-        <offsets>
-            <x-m>-3.314</x-m>
-            <y-m>0</y-m>
-            <z-m>0.68</z-m>
-            <pitch-deg>-5</pitch-deg>
-        </offsets>
-    </model>-->
     <!-- Master switch -->
     <model>
         <name>masterswitch</name>

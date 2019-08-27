@@ -211,7 +211,7 @@
 				<value>2000</value>
 			</less-than>
 			<less-than>
-				<property>systems/electrical/volts</property>
+				<property>systems/electrical/eng-volts</property>
 				<value>12.8</value>
 			</less-than>
 		</or>
