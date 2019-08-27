@@ -7,22 +7,37 @@ See AUTHORS.txt for credits
     <sim>
         <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho and Herbert Wagner</author>
         <systems>
-            <property-rule n="100">
-                <name>gear_agl-m</name>
-                <path>Aircraft/ASK21/Systems/stall.xml</path>
-            </property-rule>
-            <property-rule n="101">
-                <name>shadow-sys</name>
-                <path>Aircraft/ASK21/Systems/shadow-system.xml</path>
-            </property-rule>
-	    <!--2 and 3 used for JSB wingflexer, 2 used for -mi engine system-->
+		<property-rule n="100">
+			<name>gear_agl-m</name>
+			<path>Aircraft/ASK21/Systems/stall.xml</path>
+		</property-rule>
+		<property-rule n="101">
+			<name>shadow-sys</name>
+			<path>Aircraft/ASK21/Systems/shadow-system.xml</path>
+		</property-rule>
+		<!--2 used for YASim/JSBSim wingflex-->
 		<property-rule n="104">
 			<name>Instrument correction</name>
 			<path>Systems/instruments.xml</path>
 		</property-rule>
+		<property-rule n="105">
+			<name>Groundhandling</name>
+			<path>Systems/ground_handling.xml</path>
+		</property-rule>
+		<!--6 used for engine system-->
+		<property-rule n="107">
+			<name>Move View according to wingflex</name>
+			<path>Systems/wingflex_view.xml</path>
+		</property-rule>
+		<wingflexer include="Systems/wingflexer-params.xml"/>
+		<property-rule n="108">
+			<name>wing flexer property rule</name>
+			<path>Aircraft/Generic/wingflexer.xml</path>
+		</property-rule>
+		<!--9 used for fuel and payload dialog properties (JSB only)-->
 	    <electrical><path></path></electrical>
         </systems>
-        <aircraft-version>201703</aircraft-version>
+        <aircraft-version>5.0</aircraft-version>
         <model>
             <path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
             <window type="bool">1</window> <!--Enable window visibility by default-->
@@ -74,7 +89,7 @@ See AUTHORS.txt for credits
                 <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
-		<float n="9"  alias="/sim/model/wingflex"/>
+		<float n="9"  alias="/sim/systems/wingflexer/z-m"/>
                 <!-- For Bombable -->
                 <int   n="10" type="int"/>
                 <string n="9" type="string"/>
