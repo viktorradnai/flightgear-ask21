@@ -120,10 +120,10 @@
       <pref-height>6</pref-height>
     </empty>
     <button>
-      <legend>advanced configuration drag roboter</legend>
+      <legend>Advanced Drag Robot Configuration</legend>
       <binding>
-        <command>nasal</command>
-        <script>dragrobot.dragrobot_advanced_dialog.open()</script>
+	      <command>dialog-show</command>
+	      <dialog-name>dragrobot_advanced_dialog</dialog-name>
       </binding>
     </button>
     <empty>
@@ -202,7 +202,7 @@
     </button>
     <empty>
       <pref-height>6</pref-height>
-    </empty><!--
+    </empty>
     <button>
       <legend>Cancel</legend>
       <binding>
@@ -212,7 +212,7 @@
       <binding>
         <command>dialog-close</command>
       </binding>
-    </button>-->
+    </button>
   </group>
 
 

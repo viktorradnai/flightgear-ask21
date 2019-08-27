@@ -21,7 +21,8 @@
 var models = { DR400 : 'AI/Aircraft/DR400/Models/dr400-ai.xml', PA28 : 'AI/Aircraft/pa-28/pa-28-d-emlh.xml', Ercoupe : 'AI/Aircraft/ercoupe/Models/ercoupe-ai.xml', Staggerwing : 'AI/Aircraft/Beechcraft-Staggerwing/Models/model17-ai.xml'};
 
 
-
+    
+    
 # drag-robot dialog: helper function to run the roboter, avoiding race conditions
 var guiRunDragRobot = func {
     towing.findBestAIObject();
@@ -29,6 +30,14 @@ var guiRunDragRobot = func {
     setprop("controls/gear/assist-1",1);                    # level the plane
     ask21.msg("atc","Glider levelled."); 
     startDragRobot();
+}
+
+# ####################################################################################
+# drag-robot dialog: helper function to cancel the roboter, avoiding race conditions
+var guiCancelDragRobot = func {
+    removeDragRobot();
+    resetRobotAttributes();
+    #removeTowingRope();
 }
 
 
@@ -199,6 +208,10 @@ var dragrobot_timeincrement_s = 0;                     # timer increment
 # setup-file
 # store global values or plane-specific values to prepare for reset option
 var initRobotAttributes = func {
+  # SI units for the advanced dialog
+    setprop("sim/glider/gui/dragrobot/min_speed_takeoff", 72);
+    setprop("sim/glider/gui/dragrobot/max_speed", 129.6);
+    setprop("sim/glider/gui/dragrobot/max_speed_tauten", 10.8);
   # constants for describing dragger attributes, if not defined by plane setup-file
   var glob_min_speed_takeoff_mps  = 20;       # min. speed for take-off of drag-robot
   var glob_max_speed_mps          = 36;       # max. speed of drag-robot
@@ -447,7 +460,6 @@ var createDragRobot = func {
   # place drag roboter with a distance, that the tow is nearly tautened
   var rope_length_m = getprop("/sim/hitches/aerotow/tow/length");
   var tauten_relative = getprop("/sim/glider/towing/conf/rope_x1") or 0.7;
-  print("tauten_relative: "~tauten_relative);
   var install_distance_m = rope_length_m * (tauten_relative - 0.02);
   
   # local variables

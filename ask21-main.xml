@@ -24,6 +24,10 @@ See AUTHORS.txt for credits
 			<name>Ground handling</name>
 			<path>Systems/ground_handling.xml</path>
 		</property-rule>
+		<property-rule n="106">
+			<name>Ground handling</name>
+			<path>Systems/helpers.xml</path>
+		</property-rule>
 	    <electrical><path></path></electrical>
         </systems>
         <aircraft-version>201703</aircraft-version>
