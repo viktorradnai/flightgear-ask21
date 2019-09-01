@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--from the bocian by AJ MacLeod-->
-<PropertyList>
+<PropertyList include="FLARM/FLARM.xml">
     <fx>
         <nose-wheel-spin>
             <name>wheel-spin</name>

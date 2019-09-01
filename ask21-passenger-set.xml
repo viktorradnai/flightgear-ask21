@@ -17,7 +17,7 @@ See AUTHORS.txt for credits
             <model type="int">3</model>
         </rating>-->
         <aircraft-version>201703</aircraft-version>
-        <variant-of>ask21</variant-of>
+        <variant-of>ask21-jsb</variant-of>
         <flight-model>null</flight-model>
         <startup>
             <splash-texture>Aircraft/ASK21/ask21-passenger-splash.png</splash-texture>
