@@ -399,6 +399,9 @@ See AUTHORS.txt for credits
 			<squelch-lim type="double">8</squelch-lim>
 			<selected-channel type="int">0</selected-channel>
 		</comm>
+		<FLARM>
+			<receive-int type="bool">0</receive-int>
+		</FLARM>
 		<transponder>
 			<knob-mode type="int">0</knob-mode>
 			<!--The ASK21 is not equipped with a transponder-->
