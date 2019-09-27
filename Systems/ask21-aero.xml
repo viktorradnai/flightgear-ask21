@@ -430,6 +430,17 @@
            <value>-12</value>
        </product>
     </function>
+    
+    <function name="aero/moment/Pitch_speedbrake">
+       <description>Pitch moment due to speedbrake extension</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/cbarw-ft</property>
+           <property>fcs/speedbrake-pos-norm</property>
+	   <value>-0.015</value>
+       </product>
+    </function>
 
   </axis>
 
@@ -454,7 +465,7 @@
            <property>metrics/bw-ft</property>
            <property>aero/bi2vel</property>
            <property>velocities/r-aero-rad_sec</property>
-           <value>-0.15</value>
+           <value>-0.08</value>
        </product>
     </function>
 

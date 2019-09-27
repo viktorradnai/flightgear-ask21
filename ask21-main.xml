@@ -738,5 +738,6 @@ See AUTHORS.txt for credits
 		<FLARM>
 			<file>Aircraft/ASK21/Nasal/FLARM.nas</file>
 		</FLARM>
-	</nasal>
+	</nasal><!--
+	<test-value type="double">1.0</test-value>-->
 </PropertyList>
