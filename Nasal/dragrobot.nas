@@ -20,7 +20,8 @@
 # possible models for the Dragger
 var models = { DR400 : 'AI/Aircraft/DR400/Models/dr400-ai.xml', PA28 : 'AI/Aircraft/pa-28/pa-28-d-emlh.xml', Ercoupe : 'AI/Aircraft/ercoupe/Models/ercoupe-ai.xml', Staggerwing : 'AI/Aircraft/Beechcraft-Staggerwing/Models/model17-ai.xml'};
 
-
+var sent = 0;
+var last_leg = 0;
     
     
 # drag-robot dialog: helper function to run the roboter, avoiding race conditions
@@ -30,6 +31,13 @@ var guiRunDragRobot = func {
     setprop("controls/gear/assist-1",1);                    # level the plane
     ask21.msg("atc","Glider levelled."); 
     startDragRobot();
+}
+
+var print_straight= func (leg_distance_m) {	
+    ask21.msg("ai-plane", "straight ahead for " ~ math.round(leg_distance_m) ~ "m");
+}
+var print_turn = func (direction, degrees) {
+    ask21.msg("ai-plane", "turn " ~ direction ~ " " ~ math.round(degrees) ~ " deg");
 }
 
 # ####################################################################################
@@ -706,8 +714,7 @@ var leg0DragRobot = func {
     # set next exit criteria for straight leg, 200m ... 400m 
     leg_distance_m = 200 + rand() * 200;
     setprop("sim/glider/dragger/robot/leg_distance_m", leg_distance_m ); 
-    ask21.msg("ai-plane","straight ahead");
-    ask21.msg("ai-plane", leg_distance_m, "m");
+    print_straight(leg_distance_m);
   }
 }
 
@@ -814,13 +821,12 @@ var leg1DragRobot = func {
         setprop("sim/glider/dragger/robot/anchorlat_deg", dragpos_geo.lat());
         setprop("sim/glider/dragger/robot/anchorlon_deg", dragpos_geo.lon());
         setprop("sim/glider/dragger/robot/anchoralt_m", dragpos_geo.alt());
-        # set next leg
-        setprop("sim/glider/dragger/robot/leg_segment", 2);
-        setprop("sim/glider/dragger/robot/leg_type", 2);
-        var length_m = 100;                                    # first turn after 100m
-        setprop("sim/glider/dragger/robot/leg_distance_m", length_m); 
-        ask21.msg("ai-plane","straight leg");
-        ask21.msg("ai-plane", length_m, "m");
+	# set next leg
+	setprop("sim/glider/dragger/robot/leg_segment", 2);
+	setprop("sim/glider/dragger/robot/leg_type", 2);
+	var length_m = 100;                                    # first turn after 100m
+	setprop("sim/glider/dragger/robot/leg_distance_m", length_m); 
+	print_straight(length_m);
       }
     }
   }
@@ -859,13 +865,19 @@ var leg1DragRobot = func {
         setprop("sim/glider/dragger/robot/anchorlat_deg", dragpos_geo.lat());
         setprop("sim/glider/dragger/robot/anchorlon_deg", dragpos_geo.lon());
         setprop("sim/glider/dragger/robot/anchoralt_m", dragpos_geo.alt());
-        # set next leg
-        setprop("sim/glider/dragger/robot/leg_segment", 2);
-        setprop("sim/glider/dragger/robot/leg_type", 2);
-        var length_m = 100;                                    # first turn after 100m
-        setprop("sim/glider/dragger/robot/leg_distance_m", length_m); 
-        ask21.msg("ai-plane","straight leg");
-        ask21.msg("ai-plane", length_m, "m");
+        if(!last_leg){
+		# set next leg
+		setprop("sim/glider/dragger/robot/leg_segment", 2);
+		setprop("sim/glider/dragger/robot/leg_type", 2);
+		var length_m = 100;                                    # first turn after 100m
+		setprop("sim/glider/dragger/robot/leg_distance_m", length_m); 
+		print_straight(length_m);
+	}else{
+		setprop("sim/glider/dragger/robot/leg_segment", 2);
+		setprop("sim/glider/dragger/robot/leg_type", 2);
+		setprop("sim/glider/dragger/robot/leg_distance_m", 1500); 
+		setprop("sim/glider/dragger/conf/glob_max_speed_lift_mps", 0);
+	}
       }
     }
   }
@@ -1004,39 +1016,45 @@ var leg2DragRobot = func {
   setprop("ai/models/dragger/velocities/vertical-speed-fps", newlift_mps * M2FT);
   
   
-  # exit criteria to next turn
-  if ( dragpos_geo.direct_distance_to(initpos_geo) > leg_distance_m ) { 
-    var turn_deg = 30 + rand() * 240;                    # turn range from 30° to 270°
-    if ( (oldheading_deg + turn_deg) >= 360) {
-      leg_angle_deg = oldheading_deg + turn_deg - 360;
-    }
-    else {
-      leg_angle_deg = oldheading_deg + turn_deg;
-    }
-    setprop("sim/glider/dragger/robot/leg_angle_deg", leg_angle_deg);
-    var side = rand();
-    if (side > 0.5) {
-      setprop("sim/glider/dragger/robot/turnside", 1);
-      ask21.msg("ai-plane","turn right");
-      ask21.msg("ai-plane", turn_deg , "deg");
-    }
-    else {
-      setprop("sim/glider/dragger/robot/turnside", 0);
-      ask21.msg("ai-plane","turn left");
-      ask21.msg("ai-plane", turn_deg , "deg");
-    }
-    setprop("sim/glider/dragger/robot/leg_type", 1);
-    setprop("sim/glider/dragger/robot/leg_segment", 2);
-  }
+	
   
-  # exit criteria to final drop-down: max height reached
-  if ( dragpos_geo.alt() > getprop("sim/glider/dragger/robot/exit_height_m") ) { 
-    ask21.msg("ai-plane"," we have reached max height, bye bye");
-    settimer(func(){
-	setprop("sim/glider/dragger/robot/leg_type", 3);
-	setprop("sim/glider/dragger/robot/leg_segment", 2);
-	}, 2);
-  }
+	# exit criteria to final drop-down: max height reached
+	if(!last_leg){
+		if ( dragpos_geo.alt() > getprop("sim/glider/dragger/robot/exit_height_m") and sent == 0) {
+			ask21.msg("ai-plane"," we have reached max height, bye bye"); 
+			sent = 1;
+			settimer(func(){
+					setprop("sim/glider/dragger/robot/leg_type", 3);
+					setprop("sim/glider/dragger/robot/leg_segment", 2);
+					ask21.msg("ai-plane","turn right, I turn left" );
+					# unhook from dragger
+					towing.releaseHitch("aerotow");
+				}, 2);
+		}else{
+			# exit criteria to next turn
+			if ( dragpos_geo.direct_distance_to(initpos_geo) > leg_distance_m ) { 
+				var turn_deg = 30 + rand() * 240;                    # turn range from 30° to 270°
+				if ( (oldheading_deg + turn_deg) >= 360) {
+					leg_angle_deg = oldheading_deg + turn_deg - 360;
+				}else {
+					leg_angle_deg = oldheading_deg + turn_deg;
+				}
+				setprop("sim/glider/dragger/robot/leg_angle_deg", leg_angle_deg);
+				var side = rand();
+				if (side > 0.5) {
+					setprop("sim/glider/dragger/robot/turnside", 1);
+					print_turn("right", turn_deg);
+				}else {
+					setprop("sim/glider/dragger/robot/turnside", 0);
+					print_turn("left", turn_deg);
+				}
+				setprop("sim/glider/dragger/robot/leg_type", 1);
+				setprop("sim/glider/dragger/robot/leg_segment", 2);
+			}
+		}
+	}else if ( dragpos_geo.direct_distance_to(initpos_geo) > leg_distance_m ){
+		stopRobot();
+	}
 }
 
 
@@ -1045,12 +1063,99 @@ var leg2DragRobot = func {
 # run the drag robot for final leg
 var leg3DragRobot = func {
   
-  ask21.msg("ai-plane"," turn right, I turn left" );
-  # unhook from dragger
-  towing.releaseHitch("aerotow");
   
   
-  # stop loop for updating roboter
+  var initpos_geo = geo.Coord.new();
+  var dragpos_geo = geo.Coord.new();
+  
+  var oldspeed_mps     = 0;
+  var oldheading_deg   = 0;
+  var newspeed_mps     = 0;
+  var newlift_mps      = 0;
+  var newliftdist_m    = 0;
+  var newelevation_m   = 0;
+  var distance_m       = 0;
+  var leg_distance_m   = 0;
+  var deltatime_s      = 0;
+  var leg_angle_deg    = 0;
+  var wind_from_east_mps = 0;
+  var wind_from_nord_mps = 0;
+  var wind_from_down_mps = 0;
+  
+  var glob_min_speed_takeoff_mps = 
+    getprop("sim/glider/dragger/conf/glob_min_speed_takeoff_mps");
+  var glob_max_speed_mps         = 
+    getprop("sim/glider/dragger/conf/glob_max_speed_mps");
+  var glob_max_speed_lift_mps    = 
+    getprop("sim/glider/dragger/conf/glob_max_speed_lift_mps");
+  var glob_max_acceleration_mpss = 
+    getprop("sim/glider/dragger/conf/glob_max_acceleration_mpss");
+  
+  
+  if ( dragrobot_timeincrement_s == 0 ) {
+    deltatime_s = getprop("sim/time/delta-sec");
+  }
+  else {
+    deltatime_s = dragrobot_timeincrement_s;
+  }
+  
+  speed_mps     = getprop("ai/models/dragger/velocities/true-airspeed-kt") * KT2MPS;
+  oldheading_deg   = getprop("ai/models/dragger/orientation/true-heading-deg");
+  leg_distance_m   = 50;
+  wind_from_east_mps = getprop("environment/wind-from-east-fps") * FT2M;
+  wind_from_nord_mps = getprop("environment/wind-from-north-fps") * FT2M;
+  wind_from_down_mps = getprop("environment/wind-from-down-fps") * FT2M;
+  
+  initpos_geo.set_latlon( getprop("sim/glider/dragger/robot/anchorlat_deg"), 
+                          getprop("sim/glider/dragger/robot/anchorlon_deg"), 
+                          getprop("sim/glider/dragger/robot/anchoralt_m") );
+  dragpos_geo.set_latlon( getprop("ai/models/dragger/position/latitude-deg"), 
+                          getprop("ai/models/dragger/position/longitude-deg"), 
+                          getprop("ai/models/dragger/position/altitude-ft") * FT2M);
+  
+    distance_m = speed_mps * deltatime_s;
+  
+  newlift_mps = 0.0;
+  newliftdist_m = wind_from_down_mps * deltatime_s;
+  
+  dragpos_geo.apply_course_distance( oldheading_deg , distance_m );
+  dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
+  dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
+  newelevation_m = dragpos_geo.alt() + newliftdist_m;
+  dragpos_geo.set_alt(newelevation_m);
+  
+  setprop("ai/models/dragger/position/latitude-deg", dragpos_geo.lat());
+  setprop("ai/models/dragger/position/longitude-deg", dragpos_geo.lon());
+  setprop("ai/models/dragger/position/altitude-ft", dragpos_geo.alt() * M2FT);
+  setprop("ai/models/dragger/velocities/true-airspeed-kt", speed_mps * MPS2KT);
+  setprop("ai/models/dragger/velocities/vertical-speed-fps", newlift_mps * M2FT);
+  
+  
+  # left turn
+  if ( dragpos_geo.direct_distance_to(initpos_geo) > leg_distance_m ) { 
+	setprop("sim/glider/dragger/robot/leg_type", 1);
+	setprop("sim/glider/dragger/robot/leg_segment", 2);
+	setprop("sim/glider/dragger/robot/turnside", 0);
+	setprop("sim/glider/dragger/conf/glob_max_speed_lift_mps", -1);
+	setprop("sim/glider/dragger/conf/glob_max_roll_deg", 45);
+	setprop("sim/glider/dragger/conf/glob_max_turnrate_degs", 8);
+	if ( (oldheading_deg - 90) <= 0) {
+		leg_angle_deg = 360 + ( oldheading_deg - 90 );
+	}
+	else {
+		leg_angle_deg = oldheading_deg - 90;
+	}
+	setprop("sim/glider/dragger/robot/leg_angle_deg", leg_angle_deg);
+	last_leg = 1;
+	
+  }
+  
+  
+}
+
+
+var stopRobot = func {
+	  # stop loop for updating roboter
   if ( getprop("sim/glider/dragger/flags/run") == 1 ) {
     setprop("sim/glider/dragger/flags/run", 0);
   }
@@ -1062,7 +1167,7 @@ var leg3DragRobot = func {
   setprop("ai/models/dragger/position/longitude-deg",        
                   getprop("sim/glider/dragger/robot/wp0lon_deg") );
   setprop("ai/models/dragger/position/altitude-ft",          
-                  getprop("sim/glider/dragger/robot/wp0alt_m")  * M2FT);
+                  getprop("sim/glider/dragger/robot/wp0alt_m")  * M2FT - 33);
   setprop("ai/models/dragger/orientation/true-heading-deg",  
                   getprop("sim/glider/dragger/robot/wp0head_deg") );
   setprop("ai/models/dragger/orientation/roll-deg",          0);
@@ -1070,9 +1175,10 @@ var leg3DragRobot = func {
   setprop("ai/models/dragger/velocities/vertical-speed-fps", 0);
   setprop("sim/glider/dragger/robot/leg_type", 0);
   setprop("sim/glider/dragger/robot/leg_segment", 0);
+setprop("sim/glider/dragger/conf/glob_max_speed_lift_mps", 3);
   
+  removeDragRobot();
 }
-
 
 
 # ####################################################################################
