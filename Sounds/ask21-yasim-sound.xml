@@ -11,8 +11,8 @@
                 <and>
                     <property>/gear/gear[1]/wow</property>
                     <greater-than>
-                        <property>/fcs/wheelbrake-cmd</property>
-                        <value>0.05</value>
+                        <property>/surface-positions/speedbrake-pos-norm</property>
+                        <value>0.85</value>
                     </greater-than>
                 </and>
             </condition>
@@ -61,8 +61,8 @@
                 <max>1.0</max>
             </volume>
             <volume>
-                <property>fdm/jsbsim/aero/qbar-psf</property>
-                <factor>0.2</factor>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.01</factor>
                 <min>0.0</min>
                 <max>5</max>
                 <offset>-0.2</offset>

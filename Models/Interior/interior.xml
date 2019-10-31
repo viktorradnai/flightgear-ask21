@@ -1022,6 +1022,10 @@
                 <dep>0</dep>
             </entry>
             <entry>
+                <ind>0.1</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
                 <ind>0.2</ind>
                 <dep>-60</dep>
             </entry>
@@ -1046,6 +1050,10 @@
         <interpolation>
             <entry>
                 <ind>0.0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind>
                 <dep>0</dep>
             </entry>
             <entry>
