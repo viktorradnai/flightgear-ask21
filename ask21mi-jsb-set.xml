@@ -87,7 +87,13 @@ See AUTHORS.txt for credits
 		</panel>
 		<tutorials include="Tutorials/ask21-tutorials.xml"/>
 		
-
+		<hitches>
+			<aerotow>
+				<force_name_jsbsim type="string">aerotow_hitch</force_name_jsbsim>
+				<force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
+				<mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
+			</aerotow>
+		</hitches>
 		<glider>
 			<winch>
 				<conf>
@@ -104,6 +110,9 @@ See AUTHORS.txt for credits
 				<hooked>0</hooked>
 			</towing>
 			<ac-designator type="string">ASK21mi</ac-designator>
+			<dragger>
+				<model type="string">DR400</model>
+			</dragger>
 		</glider>
 
 	</sim>
@@ -313,5 +322,8 @@ See AUTHORS.txt for credits
 		<dialogs>
 			<file>gui/dialogs/fuelpayload.nas</file>
 		</dialogs>
+		<dragrobot>
+			<file>Aircraft/ASK21/Nasal/dragrobot.nas</file>
+		</dragrobot>
 	</nasal>
 </PropertyList>
