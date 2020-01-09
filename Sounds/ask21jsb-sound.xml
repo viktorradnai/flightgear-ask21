@@ -337,7 +337,7 @@
             <condition>
                 <and>
 			<greater-than>
-			<property>/instrumentation/variometer/te-reading-mps</property>
+			<property>/instrumentation/ilec-sc7/te-reading-mps</property>
 			<value>0.01</value>
 			</greater-than>
 			<greater-than-equals>
@@ -351,9 +351,8 @@
                 </and>
             </condition>
             <pitch>
-                <property>/instrumentation/variometer/te-reading-mps</property>
-                <factor>0.075</factor>
-                <offset>1.0</offset>
+                <property>/instrumentation/ilec-sc7/sound-pitch</property>
+                <offset>0</offset>
             </pitch>
             <volume>
                 <property>/instrumentation/ilec-sc7/volume</property>
@@ -376,12 +375,12 @@
             <condition>
                 <and>
 			<greater-than>
-			<property>/instrumentation/variometer/te-reading-mps</property>
+			<property>/instrumentation/ilec-sc7/te-reading-mps</property>
 			<value>-10.00</value>
 			</greater-than>
 			<and>
 			<less-than>
-				<property>/instrumentation/variometer/te-reading-mps</property>
+				<property>/instrumentation/ilec-sc7/te-reading-mps</property>
 				<value>-0.01</value>
 			</less-than>
 			</and>
@@ -396,9 +395,8 @@
                 </and>
             </condition>
             <pitch>
-                <property>/instrumentation/variometer/te-reading-mps</property>
-                <factor>0.075</factor>
-                <offset>1.0</offset>
+                <property>/instrumentation/ilec-sc7/sound-pitch</property>
+                <offset>0</offset>
             </pitch>
             <volume>
                 <property>/instrumentation/ilec-sc7/volume</property>
