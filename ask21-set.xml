@@ -20,6 +20,10 @@ See AUTHORS.txt for credits
 		<aero archive="y">ask21</aero>
 		<variant-of>ask21-jsb</variant-of>
 		<systems>
+			<property-rule n="100">
+				<name>Stall</name>
+				<path>Aircraft/ASK21/Systems/stall.xml</path>
+			</property-rule>
 			<property-rule n="102">
 				<name>YASim Wingflex</name>
 				<path>Systems/yasim_wingflex.xml</path>

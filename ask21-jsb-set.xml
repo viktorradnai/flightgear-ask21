@@ -49,12 +49,6 @@ See AUTHORS.txt for credits
 				<force_name_jsbsim type="string">aerotow_hitch</force_name_jsbsim>
 				<force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
 				<mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
-				<!-- OPTIONAL
-				<decoupled-force-and-rope-locations type="bool">true</decoupled-force-and-rope-locations>
-				<local-pos-x type="float">1.5</local-pos-x>
-				<local-pos-y type="float"> 0.00</local-pos-y>
-				<local-pos-z type="float">-0.3</local-pos-z>
-				-->
 			</aerotow>
 		</hitches>
 		<glider>
@@ -73,6 +67,9 @@ See AUTHORS.txt for credits
 				<hooked>0</hooked>
 			</towing>
 			<ac-designator type="string">ASK21</ac-designator>
+			<dragger>
+				<model type="string">DR400</model>
+			</dragger>
 		</glider>
 
 	</sim>
@@ -131,46 +128,46 @@ See AUTHORS.txt for credits
 				<name>W</name>
 				<desc>Increase winch speed</desc>
 				<binding>
-				<command>nasal</command>
-				<script>ask21.winch_faster()</script>
+					<command>nasal</command>
+					<script>ask21.winch_faster()</script>
 				</binding>
 			</key>
 			<key n="119">
 				<name>w</name>
 				<desc>Decrease winch speed</desc>
 				<binding>
-				<command>nasal</command>
-				<script>ask21.winch_slower()</script>
+					<command>nasal</command>
+					<script>ask21.winch_slower()</script>
 				</binding>
 			</key>
 			<key n="111">
 				<name>o</name>
 				<desc>Open hook</desc>
 				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/hook-open</property>
-				<value type="bool">true</value>
-				</binding>
-				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/aerotow/open</property>
-				<value type="bool">true</value>
-				</binding>
-				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/winch/open</property>
-				<value type="bool">true</value>
-				</binding>
-				<binding>
-				<command>nasal</command>
-				<script>towing.releaseHitch("aerotow")</script>
-				</binding>
-				<mod-up>
-				<binding>
 					<command>property-assign</command>
 					<property>/sim/hitches/hook-open</property>
-					<value type="bool">false</value>
+					<value type="bool">true</value>
 				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">true</value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/winch/open</property>
+					<value type="bool">true</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>towing.releaseHitch("aerotow")</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>/sim/hitches/hook-open</property>
+						<value type="bool">false</value>
+					</binding>
 				</mod-up>
 
 			</key>
@@ -189,5 +186,8 @@ See AUTHORS.txt for credits
 		<dialogs>
 			<file>gui/dialogs/fuelpayload.nas</file>
 		</dialogs>
+		<dragrobot>
+			<file>Aircraft/ASK21/Nasal/dragrobot.nas</file>
+		</dragrobot>
 	</nasal>
 </PropertyList>

@@ -16,6 +16,7 @@ var vario_vol = props.globals.getNode("/instrumentation/ilec-sc7/volume", 1);
 var vario_aud = props.globals.getNode("/instrumentation/ilec-sc7/audio", 1);
 var vario_read = props.globals.getNode("/instrumentation/ilec-sc7/te-reading-mps", 1);
 var turnbank_spin = props.globals.getNode("/instrumentation/turn-indicator/spin", 1);
+var flarm_receive = props.globals.getNode("/instrumentation/FLARM/receive-int", 1);
 
 var eng_battswitch 	=	props.globals.getNode("/controls/electric/engine-battery-switch", 1);
 var eng_starter		=	props.globals.getNode("/controls/engines/engine[0]/starter", 1);
@@ -334,8 +335,11 @@ var electrical_bus_1 = func() {
 		}
 		
 		setprop("/systems/electrical/outputs/flarm", bus_volts);
-		load += 0.66 / bus_volts; #FLARM
-		load += 0.12 / bus_volts; #FLARM display
+		if(bus_volts>9){
+			setprop("/instrumentation/FLARM/receive", flarm_receive.getValue()*bus_volts);
+			load += 0.66 / bus_volts; #FLARM
+			load += 0.12 / bus_volts; #FLARM display
+		}
 	}else{
 		setprop("/systems/electrical/outputs/comm", 0.0);
 		setprop("/systems/electrical/outputs/ilec-sc7", 0.0);

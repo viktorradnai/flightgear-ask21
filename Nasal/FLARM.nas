@@ -11,6 +11,8 @@ var prop_base = "instrumentation/FLARM/";
 var nc_prop = prop_base~"sound/new-contact";
 var warn_prop = prop_base~"sound/warn";
 
+var volts = props.globals.getNode("/systems/electrical/outputs/flarm", 1);
+
 #Set properties
 while(f<20){
 	setprop(prop_base~"targets-tracked/mp["~f~"]", 0);
@@ -41,18 +43,20 @@ var new_contact = func ()  { #Sound message for new contact
 
 #var target1 = Target.new(ID,brg,dst,hdg,alt);
 var Target = {
-    new : func(ID,brg,dst,hdg,alt){
-    m = { parents : [Target] };
+	new : func(ID,brg,dst,hdg,alt,scnd){
+	m = { parents : [Target] };
 		m.ident=ID;
 		m.bearing=brg;
 		m.distance=dst;
+		m.actual_dist=dst;
+		m.second=0.0;
 		m.heading=hdg;
 		m.altitude=alt;
 		new_contact();
-    return m;
-    },
+	return m;
+	},
     
-    update_data : func(ID,brg,dst,hdg,alt){
+	update_data : func(ID,brg,dst,hdg,alt){
 		me.ident=ID;
 		me.bearing=brg;
 		me.distance=dst;
@@ -61,8 +65,34 @@ var Target = {
 		#print(sprintf("new values: %s, %d, %d, %d, %d", ID, brg, dst, hdg, alt));
 	},
     
-    update_LED : func(current_heading, current_velocity) {
-	
+	update_LED : func(current_alt, current_heading, second, distance) {
+		
+		#Time difference
+		var delta_time=second-me.second;
+		me.second=second;
+		#print(me.second);
+		#Calculate actual distance
+		#actual distance (including altitude) in meters
+		#print(distance);
+		#print(me.altitude);
+		var actual_dist_now=math.sqrt(math.pow(me.distance*1000,2)+math.pow((current_alt-me.altitude)*FT2M,2));
+		#print("alt dist"~(me.altitude-current_alt)*FT2M);
+		#print("lateral distance in km"~(me.distance));
+		#print("total distance in km"~actual_dist_now/1000);
+		#Closure rate
+		#print("distance change:"~math.round(me.actual_dist-(actual_dist_now or 0)));
+		var delta_dist=(me.actual_dist-actual_dist_now)/delta_time;
+		#print("rate in m/s"~delta_dist);
+		
+		#(Theoretical) time to collision
+		var ttc=actual_dist_now/delta_dist;
+		if(ttc<=0){
+			ttc=999;
+		}
+		#print("Time"~ttc);
+		
+		#print(delta_dist);
+		
 		var LED={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0};
 		#print("Being called");
 		#print(me.bearing);
@@ -71,13 +101,13 @@ var Target = {
 		#print("Relative bearing is");
 		#print(relative_bearing);
 		var heading_deviation=me.heading-(me.bearing-180);
-		if(me.distance<warn2_dist and (heading_deviation<30 or relative_bearing<30 and relative_bearing>-30 or relative_bearing>330 and relative_bearing<390) and current_velocity>5){
+		if(ttc<6){
 			#Warn 1: all LEDs red
 			setprop(warn_prop, 2);
 			foreach(var key; keys(LED)){
 				LED[key]=2;
 			}
-		}else if(me.distance<warn1_dist){
+		}else if(ttc<14){
 			#Warn 2: corresponding LED red
 			setprop(warn_prop, 1);
 			LED[int(relative_bearing/30+1)] = 2;
@@ -87,23 +117,9 @@ var Target = {
 			LED[int(relative_bearing/30+1)] = 1;
 		}
 		
+		me.actual_dist=actual_dist_now;
+		
 		return LED;
-		
-		
-	#	if(me.distance<0.1 and me.heading-(me.bearing-180)<5 and me.heading-(me.bearing-180)>-5 ){
-	#		foreach(var i; keys(LED_green)){
-	#			setprop("/instrumentation/FLARM/LED"~i~"-red", 1);
-	#		}
-	#	}else if(me.distance<0.2){
-	#		foreach(var i; keys(LED_green)){
-	#			setprop("/instrumentation/FLARM/LED"~i~"-red", LED_green[i]);
-	#		}
-	#	}else{
-	#		foreach(var i; keys(LED_green)){
-	#			#print(LED_green[i]);
-	#			setprop("/instrumentation/FLARM/LED"~i~"-green", LED_green[i]);
-	#		}
-	#	}
 	},
 	update_ub : func(current_altitude){
 		var alt_diff=me.altitude-current_altitude; #Altitude difference in ft
@@ -146,7 +162,8 @@ var update_FLARM = func{
 				var dst=getprop("/ai/models/multiplayer["~f~"]/distance-to-km");
 				var hdg=getprop("/ai/models/multiplayer["~f~"]/orientation/heading-deg") or 0;
 				var alt=getprop("/ai/models/multiplayer["~f~"]/position/altitude-ft") or 0;
-				targets[f]=Target.new(ID,brg,dst,hdg,alt);
+				var scnd=getprop("/sim/time/elapsed-sec") or 0;
+				targets[f]=Target.new(ID,brg,dst,hdg,alt,scnd);
 				setprop("/instrumentation/FLARM/targets-tracked/mp["~f~"]", 1);
 			}else if(getprop("/ai/models/multiplayer["~f~"]/distance-to-km")>max_dist and getprop("/instrumentation/FLARM/targets-tracked/mp["~f~"]")==1){
 				#Target existing, but has moved meanwhile out of range
@@ -177,7 +194,7 @@ var update_FLARM = func{
 		}
 	}
 	
-	setprop("/instrumentation/FLARM/receive", receive);
+	setprop("/instrumentation/FLARM/receive-internal", receive);
 	
 	
 	
@@ -185,7 +202,7 @@ var update_FLARM = func{
 	#12 LEDS, each cover 30 degrees	
 	
 	heading=getprop("/orientation/heading-deg") or 0;
-	velocity=getprop("/velocities/groundspeed-kt") or 0;
+	var altitude=getprop("/position/altitude-ft") or 0;
 	
 	var stored_distance=9999;
 	var used_angle=nil;
@@ -193,7 +210,7 @@ var update_FLARM = func{
 	foreach(var key; keys(targets)){
 		if(targets[key]!=nil){
 			#print("Checking LED on non-nil target");
-			var LED=targets[key].update_LED(heading,velocity);
+			var LED=targets[key].update_LED(altitude, heading, getprop("/sim/time/elapsed-sec"),getprop("/ai/models/multiplayer["~key~"]/distance-to-km"));
 			#print(LED);
 			foreach(var f; keys(LED)){
 				if(LED[f]==1){
@@ -264,8 +281,8 @@ var update_FLARM = func{
 	
 	
 	
-	if((getprop("/systems/electrical/outputs/flarm") or 0)>15){
-		settimer(update_FLARM, 0.1);
+	if((getprop("/systems/electrical/outputs/flarm") or 0)>9){
+		settimer(update_FLARM, 1.0);
 		running=1;
 	}else{
 		running=0;
@@ -301,7 +318,7 @@ var update_FLARM = func{
 }
 
 setlistener("/systems/electrical/outputs/flarm", func{
-	if((getprop("/systems/electrical/outputs/flarm") or 0)>15 and running==0){
+	if((getprop("/systems/electrical/outputs/flarm") or 0)>9 and running==0){
 		settimer(update_FLARM, 1);
 		running=1;
 	}

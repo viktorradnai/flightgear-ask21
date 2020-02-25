@@ -114,4 +114,24 @@
 		<input>1</input>
 		<output>sim/hitches/winch/open</output>
 	</filter>
+	
+	<!--Unit conversion for the drag robot dialog-->
+	<filter>
+		<type>gain</type>
+		<gain>3.6</gain>				
+		<input>sim/glider/dragger/conf/glob_min_speed_takeoff_mps</input>
+		<output>sim/glider/gui/dragrobot/min_speed_takeoff</output>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>3.6</gain>				
+		<input>sim/glider/dragger/conf/glob_max_speed_mps</input>
+		<output>sim/glider/gui/dragrobot/max_speed</output>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>3.6</gain>				
+		<input>sim/glider/dragger/conf/glob_max_speed_tauten_mps</input>
+		<output>sim/glider/gui/dragrobot/max_speed_tauten</output>
+	</filter>
 </PropertyList>

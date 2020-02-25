@@ -112,159 +112,6 @@
             <max-dist>30</max-dist>
         </wheel-rumble>
 
-        <wheelbrake>
-            <name>wheelbrake</name>
-            <mode>looped</mode>
-            <path>Aircraft/ASK21/Sounds/wheelbrake.wav</path>
-            <condition>
-                <and>
-                    <property>/gear/gear[1]/wow</property>
-                    <greater-than>
-                        <property>/surface-positions/speedbrake-pos-norm</property>
-                        <value>0.85</value>
-                    </greater-than>
-                </and>
-            </condition>
-            <volume>
-                <property>velocities/groundspeed-kt</property>
-                <factor>0.05</factor>
-            </volume>
-        </wheelbrake>
-        <!--Wind outside-->
-        <wind>
-            <name>wind</name>
-            <mode>looped</mode>
-            <path>Sounds/wind.wav</path>
-            <property>velocities/airspeed-kt</property>
-            <volume>
-                <property>position/altitude-ft</property>
-                <factor>-0.000015</factor>
-                <offset>1.0</offset>
-                <min>0.1</min>
-                <max>1.0</max>
-            </volume>
-            <volume>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.005</factor>
-                <min>0.0</min>
-                <max>1</max>
-                <offset>-0.2</offset>
-            </volume>
-            <pitch>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-                <offset>1</offset>
-            </pitch>
-        </wind>
-        <!--Wind in cockpit - front-->
-        <wind>
-            <name>wind front</name>
-            <mode>looped</mode>
-            <path>Sounds/wind.wav</path>
-            <property>velocities/airspeed-kt</property>
-            <volume>
-                <property>position/altitude-ft</property>
-                <factor>-0.000015</factor>
-                <offset>1.0</offset>
-                <min>0.1</min>
-                <max>1.0</max>
-            </volume>
-            <volume>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-                <min>0.0</min>
-                <max>5</max>
-                <offset>-0.2</offset>
-            </volume>
-            <volume>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
-                <interpolation>
-                    <entry>
-                            <ind>0.0</ind>
-                            <dep>0.25</dep>
-                    </entry>
-                    <entry>
-                            <ind>0.1</ind>
-                            <dep>0.65</dep>
-                    </entry>
-                    <entry>
-                            <ind>1</ind>
-                            <dep>0.75</dep>
-                    </entry>
-                </interpolation><!--
-                <factor>0.95</factor>
-                <min>0.05</min>
-                <max>1</max>
-                <offset>0.05</offset>-->
-            </volume>
-            <pitch>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-                <offset>1.1</offset>
-            </pitch>
-            <position>
-                <x>-2.8</x>
-                <y>0.0</y>
-                <z>0.8</z>
-            </position>
-            <reference-dist>0.5</reference-dist>
-            <max-dist>2</max-dist>
-        </wind>
-        <!--Wind in cockpit - rear-->
-        <wind>
-            <name>wind rear</name>
-            <mode>looped</mode>
-            <path>Sounds/wind.wav</path>
-            <property>velocities/airspeed-kt</property>
-            <volume>
-                <property>position/altitude-ft</property>
-                <factor>-0.000015</factor>
-                <offset>1.0</offset>
-                <min>0.1</min>
-                <max>1.0</max>
-            </volume>
-            <volume>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-                <min>0.03</min>
-                <max>5</max>
-                <offset>-0.2</offset>
-            </volume>
-            <volume>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
-                <interpolation>
-                    <entry>
-                            <ind>0.0</ind>
-                            <dep>0.25</dep>
-                    </entry>
-                    <entry>
-                            <ind>0.1</ind>
-                            <dep>0.65</dep>
-                    </entry>
-                    <entry>
-                            <ind>1</ind>
-                            <dep>0.75</dep>
-                    </entry>
-                </interpolation><!--
-                <factor>0.95</factor>
-                <min>0.05</min>
-                <max>1</max>
-                <offset>0.05</offset>-->
-            </volume>
-            <pitch>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-                <offset>1.05</offset>
-            </pitch>
-            <position>
-                <x>-2</x>
-                <y>0.0</y>
-                <z>0.9</z>
-            </position>
-            <reference-dist>0.5</reference-dist>
-            <max-dist>2</max-dist>
-        </wind>
-
         <airbrakes>
             <name>airbrakes</name>
             <mode>looped</mode>
@@ -292,6 +139,25 @@
         </airbrakes>
 
         <airbrake-open>
+            <name>airbrake-unlock</name>
+            <mode>once</mode>
+            <path>Aircraft/ASK21/Sounds/airbrake-unlock.wav</path>
+            <condition>
+                <greater-than>
+                    <property>/surface-positions/speedbrake-pos-norm</property>
+                    <value>0.03</value>
+                </greater-than>
+            </condition>
+            <position>
+                <x>-1.2</x>
+                <y>0.0</y>
+                <z>1</z>
+            </position>
+            <reference-dist>3</reference-dist>
+            <max-dist>10</max-dist>
+        </airbrake-open>
+	
+        <airbrake-open>
             <name>airbrake-open</name>
             <mode>once</mode>
             <path>Aircraft/ASK21/Sounds/airbrake-open.wav</path>
@@ -306,14 +172,14 @@
                 <y>0.0</y>
                 <z>1</z>
             </position>
-            <reference-dist>2</reference-dist>
+            <reference-dist>3</reference-dist>
             <max-dist>10</max-dist>
         </airbrake-open>
 
         <airbrake-close>
-            <name>airbrake-close</name>
+            <name>airbrake-lock</name>
             <mode>once</mode>
-            <path>Aircraft/ASK21/Sounds/airbrake-close.wav</path>
+            <path>Aircraft/ASK21/Sounds/airbrake-lock.wav</path>
             <condition>
                 <less-than>
                     <property>/surface-positions/speedbrake-pos-norm</property>
@@ -325,7 +191,7 @@
                 <y>0.0</y>
                 <z>1</z>
             </position>
-            <reference-dist>2</reference-dist>
+            <reference-dist>3</reference-dist>
             <max-dist>10</max-dist>
         </airbrake-close>
 
@@ -584,5 +450,277 @@
             <reference-dist>5</reference-dist>
             <max-dist>30.0</max-dist>
         </belly_hook_cable_release>
+	
+	<canopy>
+		<name>Canopy Front Open Left</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-front-unlock.wav</path>
+		<condition>
+			<greater-than>
+				<property>sim/model/door-positions/canopyF/position-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<position>
+			<x>-3</x>
+			<y>-0.28</y>
+			<z>0.65</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Front Open Right</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-front-unlock.wav</path>
+		<condition>
+			<greater-than>
+				<property>sim/model/door-positions/canopyF/position-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<position>
+			<x>-3</x>
+			<y>0.28</y>
+			<z>0.65</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Front Close Left</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-front-lock.wav</path>
+		<condition>
+			<less-than>
+				<property>sim/model/door-positions/canopyF/position-norm</property>
+				<value>0.15</value>
+			</less-than>
+		</condition>
+		<position>
+			<x>-3</x>
+			<y>-0.28</y>
+			<z>0.65</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Front Close Right</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-front-lock.wav</path>
+		<condition>
+			<less-than>
+				<property>sim/model/door-positions/canopyF/position-norm</property>
+				<value>0.15</value>
+			</less-than>
+		</condition>
+		<position>
+			<x>-3</x>
+			<y>0.28</y>
+			<z>0.65</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Rear Open Left</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-rear-unlock.wav</path>
+		<condition>
+			<greater-than>
+				<property>sim/model/door-positions/canopyB/position-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>-0.3</y>
+			<z>0.77</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Rear Open Right</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-rear-unlock.wav</path>
+		<condition>
+			<greater-than>
+				<property>sim/model/door-positions/canopyB/position-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>0.3</y>
+			<z>0.77</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Rear Close Left</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-rear-lock.wav</path>
+		<condition>
+			<less-than>
+				<property>sim/model/door-positions/canopyB/position-norm</property>
+				<value>0.2</value>
+			</less-than>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>-0.3</y>
+			<z>0.77</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<canopy>
+		<name>Canopy Rear Close Right</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/canopy-rear-lock.wav</path>
+		<condition>
+			<less-than>
+				<property>sim/model/door-positions/canopyB/position-norm</property>
+				<value>0.2</value>
+			</less-than>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>0.3</y>
+			<z>0.77</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</canopy>
+	<stick>
+		<name>Stick Front Maximal Aileron Positions</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/stick-stop-aileron.wav</path>
+		<condition>
+			<or>
+				<equals>
+					<property>/controls/flight/aileron</property>
+					<value>-1</value>
+				</equals>
+				<equals>
+					<property>/controls/flight/aileron</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+		<position>
+			<x>-3.14</x>
+			<y>0</y>
+			<z>0.4</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</stick>
+	<stick>
+		<name>Stick Front Maximal Elevator Positions</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/stick-stop-elevator.wav</path>
+		<condition>
+			<or>
+				<equals>
+					<property>/controls/flight/elevator</property>
+					<value>-1</value>
+				</equals>
+				<equals>
+					<property>/controls/flight/elevator</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+		<position>
+			<x>-3.14</x>
+			<y>0</y>
+			<z>0.4</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</stick>
+	<stick>
+		<name>Stick Rear Maximal Aileron Positions</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/stick-stop-aileron.wav</path>
+		<condition>
+			<or>
+				<equals>
+					<property>/controls/flight/aileron</property>
+					<value>-1</value>
+				</equals>
+				<equals>
+					<property>/controls/flight/aileron</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>0</y>
+			<z>0.4</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</stick>
+	<stick>
+		<name>Stick Rear Maximal Elevator Positions</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/stick-stop-elevator.wav</path>
+		<condition>
+			<or>
+				<equals>
+					<property>/controls/flight/elevator</property>
+					<value>-1</value>
+				</equals>
+				<equals>
+					<property>/controls/flight/elevator</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+		<position>
+			<x>-2</x>
+			<y>0</y>
+			<z>0.4</z>
+		</position>
+		<reference-dist>1</reference-dist>
+		<max-dist>3</max-dist>
+	</stick>
+	<stick>
+		<name>Aileron Right Transit</name>
+		<mode>in-transit</mode>
+		<path>Aircraft/ASK21/Sounds/stick-aileron-transit.wav</path>
+		<property>/controls/flight/aileron</property>
+		<position>
+			<x>-0.9</x>
+			<y>0</y>
+			<z>1.1</z>
+		</position>
+		<reference-dist>3</reference-dist>
+		<max-dist>15</max-dist>
+	</stick>
+	<stick>
+		<name>Aileron Left Transit</name>
+		<mode>once</mode>
+		<path>Aircraft/ASK21/Sounds/stick-aileron-transit-left.wav</path>
+		<condition>
+			<less-than>
+				<property>/controls/flight/aileron</property>
+				<value>0</value>
+			</less-than>
+		</condition>
+		<position>
+			<x>-0.9</x>
+			<y>0</y>
+			<z>1.1</z>
+		</position>
+		<reference-dist>3</reference-dist>
+		<max-dist>15</max-dist>
+	</stick>
     </fx>
 </PropertyList>

@@ -21,6 +21,10 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 			<model type="int">4</model>
 		</rating>
 		<systems>
+			<property-rule n="100">
+				<name>Stall</name>
+				<path>Aircraft/ASK21/Systems/stall.xml</path>
+			</property-rule>
 			<property-rule n="102">
 				<name>YASim Wingflex</name>
 				<path>Systems/yasim_wingflex.xml</path>

@@ -10,7 +10,7 @@
 			<and>
 				<greater-than>
 					<property>/systems/electrical/outputs/flarm</property>
-					<value>12</value>
+					<value>9</value>
 				</greater-than>
 				<equals>
 					<property>/instrumentation/FLARM/sound/new-contact</property>
@@ -32,7 +32,7 @@
 			<and>
 				<greater-than>
 					<property>/systems/electrical/outputs/flarm</property>
-					<value>12</value>
+					<value>9</value>
 				</greater-than>
 				<equals>
 					<property>/instrumentation/FLARM/sound/new-contact</property>
@@ -55,7 +55,7 @@
 			<and>
 				<greater-than>
 					<property>/systems/electrical/outputs/flarm</property>
-					<value>12</value>
+					<value>9</value>
 				</greater-than>
 				<equals>
 					<property>/instrumentation/FLARM/sound/warn</property>
@@ -78,7 +78,7 @@
 			<and>
 				<greater-than>
 					<property>/systems/electrical/outputs/flarm</property>
-					<value>12</value>
+					<value>9</value>
 				</greater-than>
 				<equals>
 					<property>/instrumentation/FLARM/sound/warn</property>
