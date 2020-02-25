@@ -61,7 +61,7 @@ See AUTHORS.txt for credits
 				<float n="12" alias="/engines/engine[0]/mp-osi"/>
 			</generic>
 		</multiplay>
-			<!-- Speedbreake step settings -->
+		<!-- Speedbreake step settings -->
 		<spoilers>
 			<setting>0.00</setting>
 			<setting>0.08</setting>
@@ -225,10 +225,6 @@ See AUTHORS.txt for credits
 				<property>/controls/engines/engine/extend-propeller</property>
 				</binding>
 			</key>
-<<<<<<< HEAD
-=======
-
->>>>>>> f40c84e6112450b48a269282428ccabc9fe6f0e0
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
