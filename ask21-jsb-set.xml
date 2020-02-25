@@ -174,12 +174,6 @@ See AUTHORS.txt for credits
 		</keyboard>
 	</input>
 	<nasal>
-		<ask21>
-			<file>Aircraft/ASK21/Nasal/message.nas</file>
-			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
-			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
-			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
-		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>

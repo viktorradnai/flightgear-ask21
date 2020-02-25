@@ -196,7 +196,8 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 	</input>
 	<nasal>
 		<ask21>
-			<file>Aircraft/ASK21/Nasal/winch.nas</file>
+			<!-- overwrite winch_jsb.nas - position must match with ask21-main.xml -->
+			<file n="0">Aircraft/ASK21/Nasal/winch.nas</file>
 		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>

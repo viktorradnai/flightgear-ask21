@@ -225,33 +225,6 @@ See AUTHORS.txt for credits
 				<property>/controls/engines/engine/extend-propeller</property>
 				</binding>
 			</key>
-		</keyboard>
-	</input>
-	
-	<payload>
-		<weight n="0">
-			<name>Pilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">243</max-lb>
-		</weight>
-		<weight n="1">
-			<name>Copilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">243</max-lb>
-		</weight>
-		<weight n="2">
-			<name>Spin Ballast</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">26.45</max-lb>
-		</weight>
-	</payload>
-        
-	
-	<input>
-		<keyboard>
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
@@ -306,13 +279,29 @@ See AUTHORS.txt for credits
 			</key>
 		</keyboard>
 	</input>
+	
+	<payload>
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Copilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">243</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Spin Ballast</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">26.45</max-lb>
+		</weight>
+	</payload>
+        
 	<nasal>
-		<ask21>
-			<file>Aircraft/ASK21/Nasal/message.nas</file>
-			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
-			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
-			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
-		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>
 		</electrical>

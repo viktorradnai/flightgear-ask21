@@ -714,10 +714,12 @@ See AUTHORS.txt for credits
 			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201.nas</file>
 		</canvas_ar6201>
 		<ask21>
+			<!-- position is important to allow overwriting in model specific configuration -->
+			<file n="0">Aircraft/ASK21/Nasal/winch_jsb.nas</file>
+			<file>Aircraft/ASK21/Nasal/message.nas</file>
 			<file>Aircraft/ASK21/Nasal/limits.nas</file>
-			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
-			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file><!--
-			<file>Aircraft/ASK21/Nasal/AR3201.nas</file>-->
+			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ilec-sc7/ilec-sc7.nas</file>
+			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
 			<file>Aircraft/ASK21/Nasal/GMeter.nas</file>
 			<file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
 			<file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
