@@ -225,6 +225,10 @@ See AUTHORS.txt for credits
 				<property>/controls/engines/engine/extend-propeller</property>
 				</binding>
 			</key>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f40c84e6112450b48a269282428ccabc9fe6f0e0
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
@@ -275,7 +279,6 @@ See AUTHORS.txt for credits
 					<value type="bool">false</value>
 				</binding>
 				</mod-up>
-
 			</key>
 		</keyboard>
 	</input>
@@ -300,7 +303,7 @@ See AUTHORS.txt for credits
 			<max-lb type="double">26.45</max-lb>
 		</weight>
 	</payload>
-        
+	
 	<nasal>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>

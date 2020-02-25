@@ -5,6 +5,5 @@
 * Thanks to Colin Geniet for various fixes.
 * Passenger view based on dual control code by Anders Gidenstam
 
-** See README.sounds (Sounds/README.sounds) and README.liveries (Models/Liveries/README.liveries) for more information.**
-
+**See README.sounds (Sounds/README.sounds) and README.liveries (Models/Liveries/README.liveries) for more information.**  
 **The aircraft is licensed under the GNU General Public License, version 2 or, at your option, any later.**
