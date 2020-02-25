@@ -9,11 +9,42 @@ setprop("/instrumentation/ilec-sc7/lcd-digits-abs", 0);
 setprop("/instrumentation/ilec-sc7/lcd-digits-sgn", 0);
 setprop("/instrumentation/ilec-sc7/te-reading-mps", 0);
 setprop("/instrumentation/variometer/te-reading-mps", 0);
+setprop("/instrumentation/ilec-sc7/sound-pitch", 1);
 
 # Helper function for updating lcd display
 var update_lcd_props = func(value) {
 	setprop("/instrumentation/ilec-sc7/lcd-digits-abs", math.abs(value));
 	setprop("/instrumentation/ilec-sc7/lcd-digits-sgn", (value < 0) ? 0 : 1);
+};
+
+# Vario sound pitch controller
+#
+# var vario_sound = SoundPitchController.new(
+#   input: Object connected to the pitch controller input, e.g. a variometer reading.
+#   max_pitch: (optional) Maximum sound frequency factor, the output will be
+#              in the range [1/max_pitch, max_pitch], default 2.
+#   max_input: Value of input for which max_pitch is reached.
+#	on_update: (optional) function to call whenever a new output is available
+
+var SoundPitchController = {
+    parents: [InstrumentComponent],
+
+    new: func(input, max_input, max_pitch = 2, on_update = nil) {
+        return {
+            parents: [me],
+            input: input,
+            max_pitch: max_pitch,
+            max_input: max_input,
+            on_update: on_update,
+        };
+    },
+
+    update: func {
+        var input = math.clamp(me.input.output, -me.max_input, me.max_input);
+        me.output = math.pow(me.max_pitch, input / me.max_input);
+
+        if (me.on_update != nil) me.on_update(me.output);
+    },
 };
 
 # Instrument setup:
@@ -34,6 +65,11 @@ var sc7_needle = Dampener.new(
 	dampening: 3,
 	on_update: update_prop("/instrumentation/ilec-sc7/te-reading-mps"));
 
+var sc7_sound = SoundPitchController.new(
+    input: sc7_needle,
+    max_input: 5,
+	on_update: update_prop("/instrumentation/ilec-sc7/sound-pitch"));
+
 var extra_needle = Dampener.new(
 	input: probe,
 	dampening: 2.7,
@@ -45,7 +81,7 @@ var averager = Averager.new(
 
 var battery_level = PropertyReader.new(
 	property: "systems/electrical/volts",
-	scale: 1);
+	scale: 0.1);
 
 var temperature = PropertyReader.new(
 	property: "environment/temperature-degc",
@@ -66,10 +102,10 @@ setlistener("instrumentation/ilec-sc7/sensitivity",
 # Wrap everything together into an instrument
 var fast_instruments = UpdateLoop.new(
 	update_period: 0,
-	components: [probe, sc7_needle, extra_needle],
+	components: [probe, sc7_needle, sc7_sound, extra_needle],
 	enable: 1);
 
 var slow_instruments = UpdateLoop.new(
 	update_period: 1,
-	components: [averager, temperature, lcd_controller],
+	components: [battery_level, averager, temperature, lcd_controller],
 	enable: 1);
