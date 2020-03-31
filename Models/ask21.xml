@@ -4,22 +4,137 @@
 	<path>ask21.ac</path>
 	<nasal>
 		<load>
-            var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries", 10);
+			var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries", 10);
+			
+			# Canvas Livery update for multiplayer
+			
+			# Canvas Dynamic Liveries, based on wiki: http://wiki.flightgear.org/Howto:Dynamic_Liveries_via_Canvas
+			# Setup
+			var path="Aircraft/ASK21/Models/";
+			var immat_visible = 1;
 
-            var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
-            var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+			var fuselage_canvas = canvas.new({
+				"name": "Fuselage Livery Canvas",
+				"size": [2048, 1024],
+				"view": [2048, 1024],
+				"mipmapping": 1
+			});
 
-            var canopyF_door = self.getNode("sim/model/door-positions/canopyF/position-norm", 1);
-            var canopyB_door = self.getNode("sim/model/door-positions/canopyB/position-norm", 1);
+			var wings_canvas = canvas.new({
+				"name": "Wings Livery Canvas",
+				"size": [1024, 1024],
+				"view": [1024, 1024],
+				"mipmapping": 1
+			});
 
-            canopyF_door.alias(float_0);
-            canopyB_door.alias(float_1);
-        </load>
+			var raster_group = fuselage_canvas.createGroup();
+			var immat_group = fuselage_canvas.createGroup();
+
+			var raster_w_group = wings_canvas.createGroup();
+			var immat_w_group = wings_canvas.createGroup();
+
+			var fuselage_objects = ["fuselage", "fuselage-mi","engdoorL","engdoorR","gearfairing1","gearfairing1mi", "gearfairing2","gearfairing3", "vstabilizer","elevator","hstabilizer","rudder"];
+			var wing_objects = ["wing.L1","wing.L2","wing.L3","wing.L4","wing.R1","wing.R2","wing.R3","wing.R4","aileronL","aileronR"];
+			foreach(var key; fuselage_objects){
+				fuselage_canvas.addPlacement({"node": key});
+			}
+			foreach(var key; wing_objects){
+				wings_canvas.addPlacement({"node": key});
+			}
+
+			# hash with all images added
+			var layers = {};
+
+			var add_raster_texture = func ( group, size_x, image ) {
+				if(contains(layers, image)) return;
+					#print("Warning: replacing texture (added twice): ", image);
+				layers[image] = group.createChild("image").setFile( path~image ).setSize(size_x,1024);
+			}
+			# texture path
+			foreach(var image; ['blank.png',]) {
+				add_raster_texture( raster_group, 2048, image );
+			}
+			foreach(var image; ['blank-wings.png',]) {
+				add_raster_texture( raster_w_group, 1048, image );
+			}
+
+			canvas.parsesvg(immat_group, path~'immat.svg');
+			canvas.parsesvg(immat_w_group, path~'immat_wings.svg');
+
+			var immat = [ immat_group.getElementById("immat.1"), immat_group.getElementById("immat.2"), immat_w_group.getElementById("immat_w.1") ];
+			var immat_c = [ immat_group.getElementById("immat_c.1"), immat_group.getElementById("immat_c.2"), immat_w_group.getElementById("immat_w_c.1") ];
+
+			var update_immat = func () {
+				print("Called");
+				print("Immat: "~getprop("sim/model/immat"));
+				foreach(var key; immat){
+					key.setColor(getprop("sim/model/immat-r"), getprop("sim/model/immat-g"), getprop("sim/model/immat-b"));
+					key.setFont(getprop("sim/model/immat-font"));
+					key.setText(getprop("sim/model/immat"));
+				}
+				foreach(var key; immat_c){
+					key.setColor(getprop("sim/model/immat-r"), getprop("sim/model/immat-g"), getprop("sim/model/immat-b"));
+					key.setFont(getprop("sim/model/immat-font"));
+					key.setText(getprop("sim/model/immat-competition"));
+				}
+			}
+
+			var update_immat_vis = func () {
+				var v = getprop("sim/model/livery/show-immat");
+				if ( v == 1 and immat_visible == 0){
+					foreach(var key; immat){
+						key.show();
+					}
+					foreach(var key; immat_c){
+						key.show();
+					}
+					update_immat();
+					immat_visible = 1;
+				} else if ( v == 0 and immat_visible == 1 ){
+					foreach(var key; immat){
+						key.hide();
+					}
+					foreach(var key; immat_c){
+						key.hide();
+					}
+					immat_visible = 0;
+				}
+			}
+
+			var update_livery = func () {
+				var livery_string = getprop("sim/model/livery/texture");
+				var livery_wing_string = getprop("sim/model/livery/texture-wing");
+				add_raster_texture( raster_group, 2048, livery_string );
+				add_raster_texture( raster_w_group, 1024, livery_wing_string );
+				foreach(var layer; keys(layers)){
+					if ( layer != livery_string and layer != livery_wing_string ) {
+						#print(layer~" hide");
+						layers[layer].hide();
+					} else {
+						#print(layer~" show");
+						layers[layer].show();
+					}
+				}
+			}
+
+			setlistener("sim/model/immat-trigger", update_immat);
+			setlistener("sim/model/livery/texture-wing", update_livery);
+			setlistener("sim/model/livery/show-immat", update_immat_vis);
+			
+			var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+			var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+			
+			var canopyF_door = self.getNode("sim/model/door-positions/canopyF/position-norm", 1);
+			var canopyB_door = self.getNode("sim/model/door-positions/canopyB/position-norm", 1);
+			
+			canopyF_door.alias(float_0);
+			canopyB_door.alias(float_1);
+		</load>
 		<unload>
-            livery_update.stop();
-            canopyF_door.unalias();
-            canopyB_door.unalias();
-        </unload>
+			livery_update.stop();
+			canopyF_door.unalias();
+			canopyB_door.unalias();
+		</unload>
 	</nasal>
 	<!--WING BENDING-->
 	<animation>
@@ -816,299 +931,299 @@
 				<property>/sim/weight[2]/weight-lb</property>
 				<value>4.4</value>
 			</greater-than>
-	    </condition>
-    </animation>
-    
-    
-    <!--Engine animations for -mi variant-->
-    <!-- Engine doors -->
-  <animation>
-    <type>rotate</type>
-    <object-name>engdoorL</object-name>      
-    <property>sim/multiplay/generic/float[10]</property>
-    <interpolation>
-      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
-      <entry><ind> 0.2 </ind><dep> 95 </dep></entry>
-      <entry><ind> 1.0 </ind><dep> 95 </dep></entry>
-    </interpolation>
-    <axis>
-      <x1-m> -0.40193 </x1-m>
-      <y1-m> -0.18667 </y1-m>
-      <z1-m> 0.98825 </z1-m>
-      <x2-m>  1.31639 </x2-m>
-      <y2-m> -0.15423 </y2-m>
-      <z2-m> 0.85211 </z2-m>
-    </axis>
-  </animation>
- 
-  <animation>
-    <type>rotate</type>
-    <object-name>engdoorR</object-name>      
-    <property>sim/multiplay/generic/float[10]</property>
-    <interpolation>
-      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
-      <entry><ind> 0.2 </ind><dep> -95 </dep></entry>
-      <entry><ind> 1.0 </ind><dep> -95 </dep></entry>
-    </interpolation>
-    <axis>
-      <x1-m>  -0.40193 </x1-m>
-      <y1-m>  0.18667 </y1-m>
-      <z1-m> 0.98769 </z1-m>
-      <x2-m> 1.31639 </x2-m>
-      <y2-m>  0.15423 </y2-m>
-      <z2-m> 0.85184 </z2-m>
-    </axis>
-  </animation>
-     
-      
-      
-  <animation>
-    <name>EngineComplete</name>
-    <object-name>engine</object-name>  
-    <object-name>engine_attach</object-name>      
-    <object-name>propeller</object-name>     
-    <object-name>propeller.na</object-name>    
-    <object-name>spinner1</object-name>         
-    <object-name>spinner2</object-name>      
-    <object-name>spinner3</object-name>     
-    <object-name>propblur</object-name>
-    <object-name>propdisc</object-name>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>EngineComplete</object-name>      
-    <property>sim/multiplay/generic/float[10]</property>
-    <interpolation>
-      <entry><ind> 0 </ind><dep> 95 </dep></entry>
-      <entry><ind> 1 </ind><dep>  0 </dep></entry>
-    </interpolation>
-    <center>
-      <x-m>-0.38807 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.93565 </z-m>
-    </center>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
- 
-  <!-- Propeller animation -->
-  <animation>
-    <name>PropellerComplete</name>
-    <object-name>propeller</object-name>
-    <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>      
-    <object-name>spinner1</object-name>         
-    <object-name>spinner2</object-name>   
-  </animation>
-
-  <!-- Select object based on RPM -->
-  <animation>
-    <type>select</type>
-    <object-name>propdisc</object-name>
-    <condition>
-      <greater-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>1500</value>
-      </greater-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>propblur</object-name>
-    <condition>
-    <and>
-      <greater-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>600.000</value>
-      </greater-than>
-      <less-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>1500.001</value>
-      </less-than>
-    </and>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>propeller</object-name>
-    <object-name>spinner1</object-name>
-    <condition>
-      <less-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>1500</value>
-      </less-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>spin</type>
-    <object-name>PropellerComplete</object-name>
-    <condition>
-      <greater-than>
-        <property>engines/engine[0]/rpm</property>
-        <value> 5 </value>
-      </greater-than>
-      <equals>
-        <property>sim/multiplay/generic/float[10]</property>
-        <value>1</value>
-      </equals>
-    </condition>
-    <property>engines/engine[0]/rpm</property>
-    <factor> 1 </factor>
-    <axis>
-      <x1-m> -0.42391 </x1-m>
-      <y1-m>  0.000 </y1-m>
-      <z1-m>  1.84469 </z1-m>
-      <x2-m> -0.26713 </x2-m>
-      <y2-m>  0.000 </y2-m>
-      <z2-m>  1.83856 </z2-m>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>propeller.na</object-name>   
-    <object-name>spinner3</object-name>    
-    <condition>
-      <less-than>
-        <property>sim/multiplay/generic/float[10]</property>
-        <value>1</value>
-      </less-than>
-    </condition>
-  </animation>
- 
-  <animation>
-    <name>PropAnim</name>
-    <object-name>propeller</object-name>
-    <object-name>spinner2</object-name>
-    <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>PropAnim</object-name>      
-    <condition>
-      <equals>
-        <property>sim/multiplay/generic/float[10]</property>
-        <value>1</value>
-      </equals>
-    </condition>
-  </animation>
-  
-  <!--Select fuselage and engine based on variant-->
-  <animation>
-    <type>select</type>
-    <object-name>EngineComplete</object-name>   
-    <object-name>fuselage-mi</object-name>   
-        <object-name>engdoorL</object-name>
-        <object-name>engdoorR</object-name>  
-        <object-name>gearfairing1mi</object-name>
-        <object-name>wingwheelL</object-name>
-        <object-name>wingwheelR</object-name>
-    <condition>
-      <equals>
-        <property>sim/multiplay/generic/int[14]</property>
-        <value>1</value>
-      </equals>
-    </condition>
-  </animation>
-  <animation>
-    <type>select</type> 
-    <object-name>fuselage</object-name>
-        <object-name>gearfairing1</object-name>     
-    <condition>
-      <not-equals>
-        <property>sim/multiplay/generic/int[14]</property>
-        <value>1</value>
-      </not-equals>
-    </condition>
-  </animation>
-    
-    
-    <!--SHADERS/EFFECTS-->
-    <!--Glass shader-->
-    <effect>
-        <inherits-from>Aircraft/ASK21/Models/Effects/ask21_glass</inherits-from>
-        <object-name>canopy.front</object-name>
-        <object-name>canopy.back</object-name>
-    </effect>
-    <!--Fuselage shader-->
-    <effect>
-        <inherits-from>Aircraft/ASK21/Models/Effects/ask21_model</inherits-from>
-        <object-name>fuselage</object-name>
-        <object-name>fuselage-mi</object-name>
-        <object-name>engdoorL</object-name>
-        <object-name>engdoorR</object-name>
-        <object-name>propeller</object-name>
-        <object-name>propeller.na</object-name>
-        <object-name>spinner1</object-name>
-        <object-name>spinner2</object-name>  
-	<object-name>spinner3</object-name>  
-        <object-name>engine_attach</object-name>
-        <object-name>tail.ac.fairing</object-name>
-        <object-name>canopy.frontframe</object-name>
-        <object-name>canopy.rearframe</object-name>
-        <object-name>gearfairing1</object-name>
-        <object-name>gearfairing1mi</object-name>
-        <object-name>gearfairing2</object-name>
-        <object-name>gearfairing3</object-name>
-        <object-name>wing.L1</object-name>
-        <object-name>wing.L2</object-name>
-        <object-name>wing.L3</object-name>
-        <object-name>wing.L4</object-name>
-        <object-name>wing.R1</object-name>
-        <object-name>wing.R2</object-name>
-        <object-name>wing.R3</object-name>
-        <object-name>wing.R4</object-name>
-        <object-name>aileronL</object-name>
-        <object-name>aileronR</object-name>
-        <object-name>speedbrakeL</object-name>
-        <object-name>speedbrakeR</object-name>
-        <object-name>vstabilizer</object-name>
-        <object-name>elevator</object-name>
-        <object-name>hstabilizer</object-name>
-        <object-name>rudder</object-name>
-    </effect>
-    <!--LIVERY-->
-    <animation>
-        <type>material</type>
-        <object-name>fuselage</object-name>
-        <object-name>fuselage-mi</object-name>
-        <object-name>engdoorL</object-name>
-        <object-name>engdoorR</object-name>
-        <object-name>gearfairing1</object-name>
-        <object-name>gearfairing1mi</object-name>
-        <object-name>gearfairing2</object-name>
-        <object-name>gearfairing3</object-name>
-        <object-name>vstabilizer</object-name>
-        <object-name>elevator</object-name>
-        <object-name>hstabilizer</object-name>
-        <object-name>rudder</object-name>
-        <property-base>sim/model/livery</property-base>
-        <texture-prop>texture</texture-prop>
-        <texture>texture.png</texture>
-    </animation>
-    <animation>
-        <type>material</type>
-        <object-name>wing.L1</object-name>
-        <object-name>wing.L2</object-name>
-        <object-name>wing.L3</object-name>
-        <object-name>wing.L4</object-name>
-        <object-name>wing.R1</object-name>
-        <object-name>wing.R2</object-name>
-        <object-name>wing.R3</object-name>
-        <object-name>wing.R4</object-name>
-        <object-name>aileronL</object-name>
-        <object-name>aileronR</object-name>
-        <property-base>sim/model/livery</property-base>
-        <texture-prop>texture-wing</texture-prop>
-        <texture>texture.png</texture>
-    </animation>
+		</condition>
+	</animation>
+	
+	
+	<!--Engine animations for -mi variant-->
+	<!-- Engine doors -->
+	<animation>
+		<type>rotate</type>
+		<object-name>engdoorL</object-name>      
+		<property>sim/multiplay/generic/float[10]</property>
+		<interpolation>
+			<entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+			<entry><ind> 0.2 </ind><dep> 95 </dep></entry>
+			<entry><ind> 1.0 </ind><dep> 95 </dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m> -0.40193 </x1-m>
+			<y1-m> -0.18667 </y1-m>
+			<z1-m> 0.98825 </z1-m>
+			<x2-m>  1.31639 </x2-m>
+			<y2-m> -0.15423 </y2-m>
+			<z2-m> 0.85211 </z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>engdoorR</object-name>      
+		<property>sim/multiplay/generic/float[10]</property>
+		<interpolation>
+			<entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+			<entry><ind> 0.2 </ind><dep> -95 </dep></entry>
+			<entry><ind> 1.0 </ind><dep> -95 </dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>  -0.40193 </x1-m>
+			<y1-m>  0.18667 </y1-m>
+			<z1-m> 0.98769 </z1-m>
+			<x2-m> 1.31639 </x2-m>
+			<y2-m>  0.15423 </y2-m>
+			<z2-m> 0.85184 </z2-m>
+		</axis>
+	</animation>
+	
+	
+	
+	<animation>
+		<name>EngineComplete</name>
+		<object-name>engine</object-name>  
+		<object-name>engine_attach</object-name>      
+		<object-name>propeller</object-name>     
+		<object-name>propeller.na</object-name>    
+		<object-name>spinner1</object-name>         
+		<object-name>spinner2</object-name>      
+		<object-name>spinner3</object-name>     
+		<object-name>propblur</object-name>
+		<object-name>propdisc</object-name>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>EngineComplete</object-name>      
+		<property>sim/multiplay/generic/float[10]</property>
+		<interpolation>
+			<entry><ind> 0 </ind><dep> 95 </dep></entry>
+			<entry><ind> 1 </ind><dep>  0 </dep></entry>
+		</interpolation>
+		<center>
+			<x-m>-0.38807 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m>  0.93565 </z-m>
+		</center>
+		<axis>
+			<x> 0 </x>
+			<y> 1 </y>
+			<z> 0 </z>
+		</axis>
+	</animation>
+	
+	<!-- Propeller animation -->
+	<animation>
+		<name>PropellerComplete</name>
+		<object-name>propeller</object-name>
+		<object-name>propdisc</object-name>
+		<object-name>propblur</object-name>      
+		<object-name>spinner1</object-name>         
+		<object-name>spinner2</object-name>   
+	</animation>
+	
+	<!-- Select object based on RPM -->
+	<animation>
+		<type>select</type>
+		<object-name>propdisc</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>1500</value>
+			</greater-than>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>propblur</object-name>
+		<condition>
+			<and>
+				<greater-than>
+					<property>engines/engine[0]/rpm</property>
+					<value>600.000</value>
+				</greater-than>
+				<less-than>
+					<property>engines/engine[0]/rpm</property>
+					<value>1500.001</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>propeller</object-name>
+		<object-name>spinner1</object-name>
+		<condition>
+			<less-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>1500</value>
+			</less-than>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>spin</type>
+		<object-name>PropellerComplete</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[0]/rpm</property>
+				<value> 5 </value>
+			</greater-than>
+			<equals>
+				<property>sim/multiplay/generic/float[10]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+		<property>engines/engine[0]/rpm</property>
+		<factor> 1 </factor>
+		<axis>
+			<x1-m> -0.42391 </x1-m>
+			<y1-m>  0.000 </y1-m>
+			<z1-m>  1.84469 </z1-m>
+			<x2-m> -0.26713 </x2-m>
+			<y2-m>  0.000 </y2-m>
+			<z2-m>  1.83856 </z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>propeller.na</object-name>   
+		<object-name>spinner3</object-name>    
+		<condition>
+			<less-than>
+				<property>sim/multiplay/generic/float[10]</property>
+				<value>1</value>
+			</less-than>
+		</condition>
+	</animation>
+	
+	<animation>
+		<name>PropAnim</name>
+		<object-name>propeller</object-name>
+		<object-name>spinner2</object-name>
+		<object-name>propdisc</object-name>
+		<object-name>propblur</object-name>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>PropAnim</object-name>      
+		<condition>
+			<equals>
+				<property>sim/multiplay/generic/float[10]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<!--Select fuselage and engine based on variant-->
+	<animation>
+		<type>select</type>
+		<object-name>EngineComplete</object-name>   
+		<object-name>fuselage-mi</object-name>   
+		<object-name>engdoorL</object-name>
+		<object-name>engdoorR</object-name>  
+		<object-name>gearfairing1mi</object-name>
+		<object-name>wingwheelL</object-name>
+		<object-name>wingwheelR</object-name>
+		<condition>
+			<equals>
+				<property>sim/multiplay/generic/int[14]</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type> 
+		<object-name>fuselage</object-name>
+		<object-name>gearfairing1</object-name>     
+		<condition>
+			<not-equals>
+				<property>sim/multiplay/generic/int[14]</property>
+				<value>1</value>
+			</not-equals>
+		</condition>
+	</animation>
+	
+	
+	<!--SHADERS/EFFECTS-->
+	<!--Glass shader-->
+	<effect>
+		<inherits-from>Aircraft/ASK21/Models/Effects/ask21_glass</inherits-from>
+		<object-name>canopy.front</object-name>
+		<object-name>canopy.back</object-name>
+	</effect>
+	<!--Fuselage shader-->
+	<effect>
+		<inherits-from>Aircraft/ASK21/Models/Effects/ask21_model</inherits-from>
+		<object-name>fuselage</object-name>
+		<object-name>fuselage-mi</object-name>
+		<object-name>engdoorL</object-name>
+		<object-name>engdoorR</object-name>
+		<object-name>propeller</object-name>
+		<object-name>propeller.na</object-name>
+		<object-name>spinner1</object-name>
+		<object-name>spinner2</object-name>  
+		<object-name>spinner3</object-name>  
+		<object-name>engine_attach</object-name>
+		<object-name>tail.ac.fairing</object-name>
+		<object-name>canopy.frontframe</object-name>
+		<object-name>canopy.rearframe</object-name>
+		<object-name>gearfairing1</object-name>
+		<object-name>gearfairing1mi</object-name>
+		<object-name>gearfairing2</object-name>
+		<object-name>gearfairing3</object-name>
+		<object-name>wing.L1</object-name>
+		<object-name>wing.L2</object-name>
+		<object-name>wing.L3</object-name>
+		<object-name>wing.L4</object-name>
+		<object-name>wing.R1</object-name>
+		<object-name>wing.R2</object-name>
+		<object-name>wing.R3</object-name>
+		<object-name>wing.R4</object-name>
+		<object-name>aileronL</object-name>
+		<object-name>aileronR</object-name>
+		<object-name>speedbrakeL</object-name>
+		<object-name>speedbrakeR</object-name>
+		<object-name>vstabilizer</object-name>
+		<object-name>elevator</object-name>
+		<object-name>hstabilizer</object-name>
+		<object-name>rudder</object-name>
+	</effect>
+	<!--LIVERY--><!--
+	<animation>
+		<type>material</type>
+		<object-name>fuselage</object-name>
+		<object-name>fuselage-mi</object-name>
+		<object-name>engdoorL</object-name>
+		<object-name>engdoorR</object-name>
+		<object-name>gearfairing1</object-name>
+		<object-name>gearfairing1mi</object-name>
+		<object-name>gearfairing2</object-name>
+		<object-name>gearfairing3</object-name>
+		<object-name>vstabilizer</object-name>
+		<object-name>elevator</object-name>
+		<object-name>hstabilizer</object-name>
+		<object-name>rudder</object-name>
+		<property-base>sim/model/livery</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>texture.png</texture>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>wing.L1</object-name>
+		<object-name>wing.L2</object-name>
+		<object-name>wing.L3</object-name>
+		<object-name>wing.L4</object-name>
+		<object-name>wing.R1</object-name>
+		<object-name>wing.R2</object-name>
+		<object-name>wing.R3</object-name>
+		<object-name>wing.R4</object-name>
+		<object-name>aileronL</object-name>
+		<object-name>aileronR</object-name>
+		<property-base>sim/model/livery</property-base>
+		<texture-prop>texture-wing</texture-prop>
+		<texture>texture.png</texture>
+	</animation>-->
 </PropertyList>

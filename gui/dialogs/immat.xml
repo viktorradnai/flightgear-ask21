@@ -1,40 +1,136 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
-  <name>Immatriculation</name>
-  <layout>vbox</layout>
-  <modal>false</modal>
-  <draggable>true</draggable>
-
-  <group>
-    <layout>hbox</layout>
-    <text>
-      <label>Immatriculation</label>
-    </text>
-  </group>
-
-  <group>
-    <layout>hbox</layout>
-    <input>
-      <property>/sim/model/immat</property>
-      <type>STRING</type>
-      <width>100</width>
-    </input>
-  </group>
-
-  <group>
-    <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
-    <button>
-      <legend>OK</legend>
-      <equal>true</equal>
-      <default>true</default>
-      <key>Esc</key>
-      <binding><command>dialog-apply</command></binding>
-      <binding><command>dialog-close</command></binding>
-    </button>
-    <empty><stretch>true</stretch></empty>
-  </group>
-
+	
+	<name>immat_dialog</name>
+	<layout>vbox</layout>
+	<modal>false</modal>
+	<draggable>true</draggable>
+	
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Immatriculation</label>
+		</text>
+	</group>
+	
+	<group>
+		<layout>hbox</layout>
+		<group>
+			<layout>vbox</layout>
+			<text>
+				<label>Registration:</label>
+			</text>
+			<input>
+				<property>/sim/model/immat</property>
+				<type>STRING</type>
+				<width>100</width><!--
+				<binding>
+					<command>dialog-apply</command>
+				</binding>-->
+			</input>
+			<text>
+				<label>Competition Callsign:</label>
+			</text>
+			<input>
+				<property>/sim/model/immat-competition</property>
+				<type>STRING</type>
+				<width>100</width><!--
+				<binding>
+					<command>dialog-apply</command>
+				</binding>-->
+			</input>
+			<hrule/>
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>Red:</label>
+				</text>
+				<slider>
+					<name>Red</name>
+					<property>sim/model/immat-r</property>
+					<min>0.0</min>
+					<max>1.0</max>
+					<live>true</live>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+				</slider>
+			</group>
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>Green:</label>
+				</text>
+				<slider>
+					<name>Green</name>
+					<property>sim/model/immat-g</property>
+					<min>0.0</min>
+					<max>1.0</max>
+					<live>true</live>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+				</slider>
+			</group>
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>Blue:</label>
+				</text>
+				<slider>
+					<name>Blue</name>
+					<property>sim/model/immat-b</property>
+					<min>0.0</min>
+					<max>1.0</max>
+					<live>true</live>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+				</slider>
+			</group>
+		</group>
+		<group>
+			<layout>vbox</layout>
+			<text>
+				<label>Choose font:</label>
+			</text>
+			<list>
+				<name>font-select</name>
+				<property>sim/model/immat-font</property>
+				<editable>false</editable>
+				<pref-width>250</pref-width>
+				<pref-height>150</pref-height>
+				<halign>fill</halign>
+				<valign>fill</valign>
+				<value>LiberationFonts/LiberationSans-Bold.ttf</value>
+				<value>LiberationFonts/LiberationSans-Regular.ttf</value>
+				<value>LiberationFonts/LiberationMono-Bold.ttf</value>
+				<value>arial_black.txf</value>
+				<binding>
+					<command>dialog-apply</command>
+					<object-name>font-select</object-name>
+				</binding>
+			</list>
+		</group>
+	</group>
+	
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>true</stretch></empty>
+		<button>
+			<legend>OK</legend>
+			<equal>true</equal>
+			<default>true</default>
+			<key>Esc</key>
+			<binding><command>dialog-apply</command></binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/model/immat-trigger</property>
+			</binding>
+			<binding><command>dialog-close</command></binding>
+		</button>
+		<empty><stretch>true</stretch></empty>
+	</group>
+	
 </PropertyList>
