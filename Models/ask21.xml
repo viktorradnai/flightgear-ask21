@@ -688,7 +688,7 @@
 		<type>rotate</type>
 		<object-name>canopy.frontframe</object-name>
 		<object-name>windowF</object-name>
-		<property>sim/model/door-positions/canopyF/position-norm</property>
+		<property>sim/multiplay/generic/float[0]</property> <!-- sim/model/door-positions/canopyF/position-norm -->
 		<interpolation>
 			<entry>
 				<ind>0.0</ind>
@@ -716,7 +716,7 @@
 		<type>translate</type>
 		<object-name>canopy.frontframe</object-name>
 		<object-name>windowF</object-name>
-		<property>sim/model/door-positions/canopyFJ/position-norm</property>
+		<property>sim/multiplay/generic/float[1]</property> <!-- sim/model/door-positions/canopyFJ/position-norm -->
 		<interpolation>
 			<entry>
 				<ind> 0.0 </ind>
@@ -739,7 +739,7 @@
 		<type>translate</type>
 		<object-name>canopy.frontframe</object-name>
 		<object-name>windowF</object-name>
-		<property>sim/model/door-positions/canopyFJ/position-norm</property>
+		<property>sim/multiplay/generic/float[1]</property> <!-- sim/model/door-positions/canopyFJ/position-norm -->
 		<interpolation>
 			<entry>
 				<ind> 0.0 </ind>
@@ -766,7 +766,7 @@
 		<type>translate</type>
 		<object-name>canopy.frontframe</object-name>
 		<object-name>windowF</object-name>
-		<property>sim/model/door-positions/canopyFJ/position-norm</property>
+		<property>sim/multiplay/generic/float[1]</property> <!-- sim/model/door-positions/canopyFJ/position-norm -->
 		<interpolation>
 			<entry>
 				<ind> 0.0 </ind>
@@ -795,7 +795,7 @@
 		<object-name>windowF</object-name>
 		<condition>
 			<less-than>
-				<property>sim/model/door-positions/canopyFJ/position-norm</property>
+				<property>sim/multiplay/generic/float[1]</property> <!-- sim/model/door-positions/canopyFJ/position-norm -->
 				<value>0.99</value>
 			</less-than>
 		</condition>
@@ -818,7 +818,7 @@
 		<type>rotate</type>
 		<object-name>canopy.rearframe</object-name>
 		<object-name>windowR</object-name>
-		<property>sim/model/door-positions/canopyB/position-norm</property>
+		<property>sim/multiplay/generic/float[2]</property> <!-- sim/model/door-positions/canopyB/position-norm -->
 		<interpolation>
 			<entry>
 				<ind>0.0</ind>
