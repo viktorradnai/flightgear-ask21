@@ -7,23 +7,6 @@
 		<enable>
 			<condition>
 				<equals>
-					<property>/sim/flight-model</property>
-					<value>jsb</value>
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<value>1</value>
-		</input>
-		<output>/fdm/jsbsim/fcs/mixture-cmd-norm</output>
-		<output>/fdm/jsbsim/fcs/mixture-pos-norm</output>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
 					<property>/controls/ask21/throttle-to-airbrake</property>
 					<value>1</value> 
 				</equals>

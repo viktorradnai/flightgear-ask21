@@ -1,4 +1,4 @@
-<system name="ASK21: FCS">
+<system name="ASK21mi: FCS">
 	
 	<channel name="Speed Brake">
 		
@@ -48,7 +48,7 @@
 		
 	
 	</channel>
-	<channel name="Mixture">
+	<channel name="Engine">
 		
 		<fcs_function name="fcs/mixture-cmd-modified">
 			<function>
@@ -58,7 +58,12 @@
 			<output>fcs/mixture-pos-norm[0]</output>
 		</fcs_function>
 		
-		
+		<pure_gain name="fcs/throttle-cmd-modified">
+			<input>/controls/engines/engine[0]/throttle-int</input>
+			<gain>1.0</gain>
+			<output>fcs/throttle-cmd-norm[0]</output>
+			<output>fcs/throttle-pos-norm[0]</output>
+		</pure_gain>
 	
 	</channel>
 	  
