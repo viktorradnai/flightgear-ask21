@@ -27,24 +27,24 @@ var update_lcd_props = func(value) {
 #	on_update: (optional) function to call whenever a new output is available
 
 var SoundPitchController = {
-    parents: [InstrumentComponent],
-
-    new: func(input, max_input, max_pitch = 2, on_update = nil) {
-        return {
-            parents: [me],
-            input: input,
-            max_pitch: max_pitch,
-            max_input: max_input,
-            on_update: on_update,
-        };
-    },
-
-    update: func {
-        var input = math.clamp(me.input.output, -me.max_input, me.max_input);
-        me.output = math.pow(me.max_pitch, input / me.max_input);
-
-        if (me.on_update != nil) me.on_update(me.output);
-    },
+	parents: [InstrumentComponent],
+	
+	new: func(input, max_input, max_pitch = 2, on_update = nil) {
+		return {
+			parents: [me],
+			input: input,
+			max_pitch: max_pitch,
+			max_input: max_input,
+			on_update: on_update,
+		};
+	},
+	
+	update: func {
+		var input = math.clamp(me.input.output, -me.max_input, me.max_input);
+		me.output = math.pow(me.max_pitch, input / me.max_input);
+		
+		if (me.on_update != nil) me.on_update(me.output);
+	},
 };
 
 # Instrument setup:
@@ -66,8 +66,8 @@ var sc7_needle = Dampener.new(
 	on_update: update_prop("/instrumentation/ilec-sc7/te-reading-mps"));
 
 var sc7_sound = SoundPitchController.new(
-    input: sc7_needle,
-    max_input: 5,
+	input: sc7_needle,
+	max_input: 5,
 	on_update: update_prop("/instrumentation/ilec-sc7/sound-pitch"));
 
 var extra_needle = Dampener.new(
@@ -94,10 +94,10 @@ var lcd_controller = InputSwitcher.new(
 
 # Subscribe property listeners for instrument switches
 setlistener("instrumentation/ilec-sc7/mode",
-	func(n) { lcd_controller.select_input(n.getValue()) }, 0, 0);
+	    func(n) { lcd_controller.select_input(n.getValue()) }, 0, 0);
 
 setlistener("instrumentation/ilec-sc7/sensitivity",
-	func(n) { sc7_needle.dampening = n.getValue() }, 0, 0);
+	    func(n) { sc7_needle.dampening = n.getValue() }, 0, 0);
 
 # Wrap everything together into an instrument
 var fast_instruments = UpdateLoop.new(

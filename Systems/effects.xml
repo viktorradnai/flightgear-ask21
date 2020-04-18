@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<filter>
+		<type>gain</type>
+		<gain>0.3048</gain>
+		<input>/position/altitude-agl-ft</input>
+		<reference>6</reference>
+		<output>/position/altitude-agl-m</output>
+	</filter>
+	
+	<filter>
+		<type>gain</type>
+		<gain>33.863886666667</gain>
+		<input>/environment/pressure-sea-level-inhg</input>
+		<output>/environment/pressure-sea-level-hpa</output>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>33.863886666667</gain>
+		<input>/environment/pressure-inhg</input>
+		<output>/environment/pressure-hpa</output>
+	</filter>
+	
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/controls/engines/engine/throttle</property>
+					<entry><ind>0</ind><dep>1</dep></entry>
+					<entry><ind>1</ind><dep> 0</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/controls/flight/speedbrake</output>
+	</filter>
+	
+	<!-- Glass Reflection -->
+	<!-- Calculate in-cockpit emissions: -->
+	<!-- Emission from the AR6201 COMM -->
+	<filter>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<table>
+						<property>/instrumentation/comm[0]/start</property>
+						<entry><ind>0</ind><dep>0.0</dep></entry>
+						<entry><ind>0.1</ind><dep>0.5</dep></entry>
+					</table>
+					<property>/instrumentation/comm[0]/brightness</property>
+				</product>
+			</expression>
+		</input>
+		<output>/sim/model/ar6201-emission</output>
+	</filter>
+	<!-- Emission from the ILEC engine instrument -->
+	<filter>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<table>
+						<property>/systems/electrical/volts</property>
+						<entry><ind>8.99</ind><dep>0.0</dep></entry>
+						<entry><ind>9.0</ind><dep>0.2</dep></entry>
+					</table>
+					<property>/sim/model/variant</property> <!-- only results in non-0 when variant is 1 -> ASK21mi -->
+				</product>
+			</expression>
+		</input>
+		<output>/sim/model/ilec-emission</output>
+	</filter>
+	<filter>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+					<sum>
+						<property>/sim/model/ar6201-emission</property>
+						<property>/sim/model/ilec-emission</property>
+					
+					</sum>
+			</expression>
+			<min>0.0</min>
+			<max>1.0</max>
+		</input>
+		<output>/sim/model/emission-strength</output>
+	</filter>
+	<filter>
+		<update-interval-secs type="double">0.1</update-interval-secs>
+		<type>gain</type>
+		<gain>0.3</gain>
+		<!-- adapted from Cessna 172p -->
+		<input>
+			<expression>
+				<sum>
+					<property>/sim/model/emission-strength</property>
+					<property>/rendering/scene/diffuse/red</property>
+				</sum>
+			</expression>
+			<min>0.01</min>
+			<max>0.9</max>
+		</input>
+		<output>/sim/model/reflection-emission-strength</output>
+	</filter>
+</PropertyList>
