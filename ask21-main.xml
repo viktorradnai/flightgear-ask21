@@ -6,39 +6,130 @@ See AUTHORS.txt for credits
 <PropertyList include="walker-include.xml">
 	<sim>
 		<author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho and Herbert Wagner</author>
-		<systems>
-			<!--0 used for stall system (YASim only)-->
-			<property-rule n="101">
-				<name>shadow-sys</name>
-				<path>Aircraft/ASK21/Systems/effects.xml</path>
-			</property-rule>
-			<!--2 used for YASim/JSBSim wingflex-->
-			<property-rule n="103">
-				<name>Helpers</name>
-				<path>Systems/helpers.xml</path>
-			</property-rule>
-			<property-rule n="104">
-				<name>Instrument correction</name>
-				<path>Systems/instruments.xml</path>
-			</property-rule>
-			<property-rule n="105">
-				<name>Ground Handling</name>
-				<path>Systems/ground_handling.xml</path>
-			</property-rule>
-			<!--6 used for engine system-->
-			<property-rule n="107">
-				<name>Move View according to wingflex</name>
-				<path>Systems/wingflex_view.xml</path>
-			</property-rule>
-			<wingflexer include="Systems/wingflexer-params.xml"/>
-			<property-rule n="108">
-				<name>wing flexer property rule</name>
-				<path>Aircraft/Generic/wingflexer.xml</path>
-			</property-rule>
-			<!--9 used for fuel and payload dialog properties (JSB only)-->
-			<electrical><path></path></electrical>
-		</systems>
 		<aircraft-version>5.0</aircraft-version>
+		<!-- Save some properties when the simulator is shut down -->
+		<aircraft-data>
+			<path>/sim/model/window</path>
+			<path>/sim/model/window-shader</path>
+			<path>/sim/model/pilots-enabled</path>
+			<path>/sim/model/pilots-always-present</path>
+			<path>/sim/model/instruments-light</path>
+			<path>/sim/model/windcompass</path>
+			<path>/sim/weight[0]/weight-lb</path>
+			<path>/sim/weight[1]/weight-lb</path>
+		</aircraft-data>
+		<hitches>
+			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
+			<!-- they need to be in the same value, as they are initialized in the FDM, to get the same values after reset should fix this somehow-->
+			<hook-open type="bool">false</hook-open>
+			<aerotow>
+				<tow>
+					<local-pos-x type="float">0</local-pos-x>
+					<local-pos-y type="float">0</local-pos-y>
+					<local-pos-z type="float">0</local-pos-z>
+					<length type="float">60</length>
+					<elastic-constant type="float">10000</elastic-constant>
+					<weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
+					<dist type="float">1</dist>
+					<connected-to-property-node type="bool"/>
+					<brake-force type="float">100000</brake-force>
+					<connected-to-ai-or-mp-callsign type="string">*</connected-to-ai-or-mp-callsign>
+					<end-force-x type="float">-3.50</end-force-x>
+					<end-force-y type="float">0</end-force-y>
+					<end-force-z type="float">0</end-force-z>
+				</tow>
+				<speed-in-tow-direction type="float">0</speed-in-tow-direction>
+				<open type="bool">true</open>
+				<is-slave type="bool">false</is-slave>
+			</aerotow>
+			<winch>
+				<automatic-release-angle-deg type="float">90.0</automatic-release-angle-deg>
+			</winch>
+		</hitches>
+		<instrumentation>
+			<path>Systems/ask21-instrumentation.xml</path>
+		</instrumentation>
+		<menubar>
+			<default>
+				<menu n="10">
+					<label>ASK21</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Aerotow Settings</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>aerotow_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Drag Robot</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>dragrobot_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Winch Settings</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>winch_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Rope Breakage</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>breakage</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Simulation Options</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>options_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Ground services</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>groundservice_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Electrical</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>electrical_dialog</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Select Livery</label>
+						<binding>
+							<command>nasal</command>
+							<script>aircraft.livery.dialog.open()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Select Immatriculation</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>Immatriculation</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<name>mpcopilot</name>
+						<label>Select MP Copilot</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+								dual_control_tools.copilot_dialog.show(aircraft_dual_control.copilot_type);
+							</script>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
 		<model>
 			<path archive="y">Aircraft/ASK21/Models/ask21.xml</path>
 			<window type="bool">1</window> <!--Enable window visibility by default-->
@@ -96,39 +187,42 @@ See AUTHORS.txt for credits
 				<string n="9" type="string"/>
 			</generic>
 		</multiplay>
-		<!-- Save some properties when the simulator is shut down -->
-		<aircraft-data>
-			<path>/sim/model/window</path>
-			<path>/sim/model/window-shader</path>
-			<path>/sim/model/pilots-enabled</path>
-			<path>/sim/model/pilots-always-present</path>
-			<path>/sim/model/instruments-light</path>
-			<path>/sim/model/windcompass</path>
-			<path>/sim/weight[0]/weight-lb</path>
-			<path>/sim/weight[1]/weight-lb</path>
-		</aircraft-data>
-		<weight n="0">
-			<name type="string">Pilot</name>
-			<weight-lb>140</weight-lb>
-			<max-lb>230</max-lb>
-			<min-lb>100</min-lb>
-		</weight>
-		<weight n="1">
-			<name type="string">Passenger/Instructor</name>
-			<weight-lb>140</weight-lb>
-			<max-lb>230</max-lb>
-			<min-lb>0</min-lb>
-		</weight>
-		<weight n="2">
-			<name type="string">Tail Ballast</name>
-			<weight-lb type="double">0</weight-lb><!--0 for no plates atm, later we can simulate weight from empty holding when installed-->
-			<max-lb>26.456</max-lb> <!--12kg: 12 plates*1kg per plate-->
-			<min-lb>0</min-lb>
-		</weight>
 		<!-- hide the 2D panel -->
 		<panel>
 			<visibility archive="y">false</visibility>
 		</panel>
+		<systems>
+			<!--0 used for stall system (YASim only)-->
+			<property-rule n="101">
+				<name>shadow-sys</name>
+				<path>Aircraft/ASK21/Systems/effects.xml</path>
+			</property-rule>
+			<!--2 used for YASim/JSBSim wingflex-->
+			<property-rule n="103">
+				<name>Helpers</name>
+				<path>Systems/helpers.xml</path>
+			</property-rule>
+			<property-rule n="104">
+				<name>Instrument correction</name>
+				<path>Systems/instruments.xml</path>
+			</property-rule>
+			<property-rule n="105">
+				<name>Ground Handling</name>
+				<path>Systems/ground_handling.xml</path>
+			</property-rule>
+			<!--6 used for engine system-->
+			<property-rule n="107">
+				<name>Move View according to wingflex</name>
+				<path>Systems/wingflex_view.xml</path>
+			</property-rule>
+			<wingflexer include="Systems/wingflexer-params.xml"/>
+			<property-rule n="108">
+				<name>wing flexer property rule</name>
+				<path>Aircraft/Generic/wingflexer.xml</path>
+			</property-rule>
+			<!--9 used for fuel and payload dialog properties (JSB only)-->
+			<electrical><path></path></electrical>
+		</systems>
 		<!-- Views -->
 		<view n="0">
 			<name>Pilot View</name>
@@ -258,115 +352,24 @@ See AUTHORS.txt for credits
 				<target-z-offset-m archive="y" type="double">-1.0496</target-z-offset-m>
 			</config>
 		</view>
-		<menubar>
-			<default>
-				<menu n="10">
-					<label>ASK21</label>
-					<enabled type="bool">true</enabled>
-					<item>
-						<label>Aerotow Settings</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>aerotow_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Drag Robot</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>dragrobot_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Winch Settings</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>winch_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Rope Breakage</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>breakage</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Simulation Options</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>options_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Ground services</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>groundservice_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Electrical</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>electrical_dialog</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<label>Select Livery</label>
-						<binding>
-							<command>nasal</command>
-							<script>aircraft.livery.dialog.open()</script>
-						</binding>
-					</item>
-					<item>
-						<label>Select Immatriculation</label>
-						<binding>
-							<command>dialog-show</command>
-							<dialog-name>Immatriculation</dialog-name>
-						</binding>
-					</item>
-					<item>
-						<name>mpcopilot</name>
-						<label>Select MP Copilot</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-								dual_control_tools.copilot_dialog.show(aircraft_dual_control.copilot_type);
-							</script>
-						</binding>
-					</item>
-				</menu>
-			</default>
-		</menubar>
-		<hitches>
-			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
-			<!-- they need to be in the same value, as they are initialized in the FDM, to get the same values after reset should fix this somehow-->
-			<hook-open type="bool">false</hook-open>
-			<aerotow>
-				<tow>
-					<local-pos-x type="float">0</local-pos-x>
-					<local-pos-y type="float">0</local-pos-y>
-					<local-pos-z type="float">0</local-pos-z>
-					<length type="float">60</length>
-					<elastic-constant type="float">10000</elastic-constant>
-					<weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
-					<dist type="float">1</dist>
-					<connected-to-property-node type="bool"/>
-					<brake-force type="float">100000</brake-force>
-					<connected-to-ai-or-mp-callsign type="string">*</connected-to-ai-or-mp-callsign>
-					<end-force-x type="float">-3.50</end-force-x>
-					<end-force-y type="float">0</end-force-y>
-					<end-force-z type="float">0</end-force-z>
-				</tow>
-				<speed-in-tow-direction type="float">0</speed-in-tow-direction>
-				<open type="bool">true</open>
-				<is-slave type="bool">false</is-slave>
-			</aerotow>
-			<winch>
-				<automatic-release-angle-deg type="float">90.0</automatic-release-angle-deg>
-			</winch>
-		</hitches>
+		<weight n="0">
+			<name type="string">Pilot</name>
+			<weight-lb>140</weight-lb>
+			<max-lb>230</max-lb>
+			<min-lb>100</min-lb>
+		</weight>
+		<weight n="1">
+			<name type="string">Passenger/Instructor</name>
+			<weight-lb>140</weight-lb>
+			<max-lb>230</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+		<weight n="2">
+			<name type="string">Tail Ballast</name>
+			<weight-lb type="double">0</weight-lb><!--0 for no plates atm, later we can simulate weight from empty holding when installed-->
+			<max-lb>26.456</max-lb> <!--12kg: 12 plates*1kg per plate-->
+			<min-lb>0</min-lb>
+		</weight>
 	</sim>
 	<consumables>
 		<fuel>
@@ -399,13 +402,6 @@ See AUTHORS.txt for credits
 			<squelch-lim type="double">8</squelch-lim>
 			<selected-channel type="int">0</selected-channel>
 		</comm>
-		<FLARM>
-			<receive-int type="bool">0</receive-int>
-		</FLARM>
-		<transponder>
-			<knob-mode type="int">0</knob-mode>
-			<!--The ASK21 is not equipped with a transponder-->
-		</transponder>
 	</instrumentation>
 	<controls>
 		<cabin>
@@ -710,9 +706,12 @@ See AUTHORS.txt for credits
 		<doors>
 			<file>Aircraft/ASK21/Nasal/door.nas</file>
 		</doors>
-		<canvas_ar6201>
-			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar6201.nas</file>
-		</canvas_ar6201>
+		<ar6201>
+			<file>Aircraft/Instruments-3d/ar-6201/ar6201.nas</file>
+		</ar6201>
+		<flarm>
+			<file>Aircraft/Instruments-3d/glider/flarm/flarm.nas</file>
+		</flarm>
 		<ask21>
 			<!-- position is important to allow overwriting in model specific configuration -->
 			<file n="0">Aircraft/ASK21/Nasal/winch_jsb.nas</file>
@@ -737,9 +736,6 @@ See AUTHORS.txt for credits
 		<dual_control>
 			<file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
 		</dual_control>
-		<FLARM>
-			<file>Aircraft/ASK21/Nasal/FLARM.nas</file>
-		</FLARM>
 	</nasal><!--
 	<test-value type="double">1.0</test-value>-->
 </PropertyList>

@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <!--from the bocian by AJ MacLeod-->
-<PropertyList include="FLARM/FLARM.xml">
+<PropertyList include="flarm-sound.xml">
 	<fx>
-		<nose-wheel-spin>
-			<name>wheel-spin</name>
+		<wheel-spin>
+			<name>nose wheel spin</name>
 			<mode>looped</mode>
 			<path>Aircraft/ASK21/Sounds/wheelspin-loop.wav</path>
+			<property>/gear/gear[0]/rollspeed-ms</property>
 			<volume>
 				<property>/gear/gear[0]/rollspeed-ms</property>
 				<factor>0.02</factor>
@@ -22,12 +23,13 @@
 			</position>
 			<reference-dist>2</reference-dist>
 			<max-dist>10</max-dist>
-		</nose-wheel-spin>
+		</wheel-spin>
 		
-		<main-wheel-spin>
-			<name>wheel-spin</name>
+		<wheel-spin>
+			<name>main wheel spin</name>
 			<mode>looped</mode>
 			<path>Aircraft/ASK21/Sounds/wheelspin-loop.wav</path>
+			<property>/gear/gear[1]/rollspeed-ms</property>
 			<volume>
 				<property>/gear/gear[1]/rollspeed-ms</property>
 				<factor>0.02</factor>
@@ -44,7 +46,7 @@
 			</position>
 			<reference-dist>2</reference-dist>
 			<max-dist>10</max-dist>
-		</main-wheel-spin>
+		</wheel-spin>
 		
 		<wheel-rumble>
 			<name>wheel-rumble-front</name>

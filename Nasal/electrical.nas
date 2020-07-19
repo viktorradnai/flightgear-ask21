@@ -255,7 +255,6 @@ var electrical_bus_1 = func() {
 		
 		setprop("/systems/electrical/outputs/flarm", bus_volts);
 		if(bus_volts>9){
-			setprop("/instrumentation/FLARM/receive", flarm_receive.getValue()*bus_volts);
 			load += 0.66 / bus_volts; #FLARM
 			load += 0.12 / bus_volts; #FLARM display
 		}

@@ -27,7 +27,7 @@
 	<!--FLARM v3 Display-->
 	<model>
 		<name>flarmv3</name>
-		<path>Instruments/FLARMv3/FLARMv3.xml</path>
+		<path>Aircraft/Instruments-3d/glider/flarm/v3_display/flarm_v3.xml</path>
 		<offsets>
 			<x-m>-3.322</x-m>
 			<y-m>-0.08</y-m>
@@ -38,7 +38,7 @@
 	<!-- COM Radio -->
 	<model>
 		<name>com</name>
-		<path>Aircraft/ASK21/Models/Interior/Panel/Instruments/ar-6201/ar-6201.xml</path>
+		<path>Aircraft/Instruments-3d/ar-6201/ar-6201.xml</path>
 		<offsets>
 			<x-m>-3.313</x-m>
 			<y-m>0.0</y-m>
