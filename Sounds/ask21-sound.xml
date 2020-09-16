@@ -711,7 +711,7 @@
 			<condition>
 				<less-than>
 					<property>/controls/flight/aileron</property>
-					<value>0</value>
+					<value>-0.4</value>
 				</less-than>
 			</condition>
 			<position>

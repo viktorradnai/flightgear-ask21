@@ -1,66 +1,128 @@
-<system name="ASK21: FCS">
-	
-	<channel name="Speed Brake">
+<?xml version="1.0"?>
+
+<flight_control name="FCS: ASK21">
+	<!--	Maximal Deflections (ref. [6] p.30):
 		
-		<fcs_function name="fcs/speedbrake-cmd">
-			<function>
-				<table>
-					<independentVar lookup="row">/controls/engines/engine/throttle</independentVar>
-					<tableData>
-						0	1
-						1	0
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
-		
-		<fcs_function name="fcs/speedbrake-int-norm">
-			<function>
-				<table>
-					<independentVar lookup="row">fcs/speedbrake-cmd</independentVar>
-					<tableData>
-						0	0
-						0.9	1
-						1	1
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
-	
+		Elevator	Measure Dist.	230 mm
+				Up		 90 mm		21.37 deg	0.373 rad
+				Down		 65 mm		15.78 deg	0.275 rad
+		Aileron		Measure Dist.	240 mm
+				Up		110 mm		24.62 deg	0.430 rad
+				Down		 45 mm		10.62 deg	0.185 rad
+		Rudder		Measure Dist.	375 mm
+				Left/Right	180 mm		25.64 deg	0.448 rad
+	-->
+	<channel name="Pitch">
+		<summer name="Pitch Trim Sum">
+			<input>fcs/elevator-cmd-norm</input>
+			<input>fcs/pitch-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Elevator Control">
+			<input>fcs/pitch-trim-sum</input>
+			<range>
+				<min> -0.373 </min>
+				<max>  0.275 </max>
+			</range>
+			<output>fcs/elevator-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="elevator normalization">
+			<input>fcs/elevator-pos-rad</input>
+			<domain>
+				<min> -0.373 </min>
+				<max>  0.373 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/elevator-pos-norm</output>
+		</aerosurface_scale>
 	</channel>
-	<channel name="Wheel Brake">
-		
-		<fcs_function name="fcs/wheelbrake-cmd">
-			<function>
-				<table>
-					<independentVar lookup="row">fcs/speedbrake-cmd</independentVar>
-					<tableData>
-						0	0
-						0.9	0
-						1	1
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
-		
-		<kinematic name="rubbish/brake">
-			<input>fcs/wheelbrake-cmd</input>
-			<traverse>
-				<setting>
-					<position>0</position>
-					<time>0</time>
-				</setting>
-				<setting>
-					<position>1</position>
-					<time>0</time>
-				</setting>
-			</traverse>
-			<output>fcs/left-brake-cmd-norm</output>
-		</kinematic>
-		
-	
+	<channel name="Roll">
+		<summer name="Roll Trim Sum">
+			<input>fcs/aileron-cmd-norm</input>
+			<input>fcs/roll-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Left Aileron Control">
+			<input>fcs/roll-trim-sum</input>
+			<range>
+				<min> -0.430 </min>
+				<max>  0.185 </max>
+			</range>
+			<output>fcs/left-aileron-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="Right Aileron Control">
+			<input>fcs/roll-trim-sum</input>
+			<range>
+				<min> -0.430 </min>
+				<max>  0.185 </max>
+			</range>
+			<output>fcs/right-aileron-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="left aileron normalization">
+			<input>fcs/left-aileron-pos-rad</input>
+			<domain>
+				<min> -0.430 </min>
+				<max>  0.430 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/left-aileron-pos-norm</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="right aileron normalization">
+			<input>fcs/right-aileron-pos-rad</input>
+			<domain>
+				<min> -0.430 </min>
+				<max>  0.430 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/right-aileron-pos-norm</output>
+		</aerosurface_scale>
 	</channel>
-	  
+	<channel name="Yaw">
+		<summer name="Rudder Command Sum">
+			<input>fcs/rudder-cmd-norm</input>
+			<input>fcs/yaw-trim-cmd-norm</input>
+			<clipto>
+				<min> -1 </min>
+				<max>  1 </max>
+			</clipto>
+		</summer>
+		<aerosurface_scale name="Rudder Control">
+			<input>fcs/rudder-command-sum</input>
+			<range>
+				<min> -0.448 </min>
+				<max>  0.448 </max>
+			</range>
+			<output>fcs/rudder-pos-rad</output>
+		</aerosurface_scale>
+		<aerosurface_scale name="rudder normalization">
+			<input>fcs/rudder-pos-rad</input>
+			<domain>
+				<min> -0.448 </min>
+				<max>  0.448 </max>
+			</domain>
+			<range>
+				<min> -1 </min>
+				<max>  1 </max>
+			</range>
+			<output>fcs/rudder-pos-norm</output>
+		</aerosurface_scale>
+	</channel>
+	
 	<channel name="Ground Handling">
 		
 		<fcs_function name="external_reactions/turn/magnitude">
@@ -97,6 +159,5 @@
 			<output>gear/gear-pos-norm</output>
 		</kinematic>
 		
-	
 	</channel>
-</system>
+</flight_control>
