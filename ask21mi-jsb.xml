@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 <fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ASK21" version="2.0" release="ALPHA" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<fileheader>
-		<author> Benedikt Wolf (D-ECHO) using Aeromatic v 0.96 </author>
+		<author> see AUTHORS.md </author>
 		<filecreationdate>2018-03-09</filecreationdate>
-		<version> 09/2020 </version>
+		<version> 03/2021 </version>
 		<description> ASK21 Mi </description>
 	</fileheader>
 	<!--FRAME NOTES:
@@ -212,181 +212,13 @@
 			<contents unit="KG"> 15.0   </contents>
 		</tank>
 	</propulsion>
-	<flight_control name="FCS: ASK21">
-		<channel name="Pitch">
-			<summer name="Pitch Trim Sum">
-				<input>fcs/elevator-cmd-norm</input>
-				<input>fcs/pitch-trim-cmd-norm</input>
-				<clipto>
-					<min> -1 </min>
-					<max>  1 </max>
-				</clipto>
-			</summer>
-			<aerosurface_scale name="Elevator Control">
-				<input>fcs/pitch-trim-sum</input>
-				<range>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</range>
-				<output>fcs/elevator-pos-rad</output>
-			</aerosurface_scale>
-			<aerosurface_scale name="elevator normalization">
-				<input>fcs/elevator-pos-rad</input>
-				<domain>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</domain>
-				<range>
-					<min> -1 </min>
-					<max>  1 </max>
-				</range>
-				<output>fcs/elevator-pos-norm</output>
-			</aerosurface_scale>
-		</channel>
-		<channel name="Roll">
-			<summer name="Roll Trim Sum">
-				<input>fcs/aileron-cmd-norm</input>
-				<input>fcs/roll-trim-cmd-norm</input>
-				<clipto>
-					<min> -1 </min>
-					<max>  1 </max>
-				</clipto>
-			</summer>
-			<aerosurface_scale name="Left Aileron Control">
-				<input>fcs/roll-trim-sum</input>
-				<range>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</range>
-				<output>fcs/left-aileron-pos-rad</output>
-			</aerosurface_scale>
-			<aerosurface_scale name="Right Aileron Control">
-				<input>fcs/roll-trim-sum</input>
-				<range>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</range>
-				<output>fcs/right-aileron-pos-rad</output>
-			</aerosurface_scale>
-			<aerosurface_scale name="left aileron normalization">
-				<input>fcs/left-aileron-pos-rad</input>
-				<domain>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</domain>
-				<range>
-					<min> -1 </min>
-					<max>  1 </max>
-				</range>
-				<output>fcs/left-aileron-pos-norm</output>
-			</aerosurface_scale>
-			<aerosurface_scale name="right aileron normalization">
-				<input>fcs/right-aileron-pos-rad</input>
-				<domain>
-					<min> -0.35 </min>
-					<max>  0.35 </max>
-				</domain>
-				<range>
-					<min> -1 </min>
-					<max>  1 </max>
-				</range>
-				<output>fcs/right-aileron-pos-norm</output>
-			</aerosurface_scale>
-		</channel>
-		<channel name="Yaw">
-			<summer name="Rudder Command Sum">
-				<input>fcs/rudder-cmd-norm</input>
-				<input>fcs/yaw-trim-cmd-norm</input>
-				<clipto>
-					<min> -1 </min>
-					<max>  1 </max>
-				</clipto>
-			</summer>
-			<aerosurface_scale name="Rudder Control">
-				<input>fcs/rudder-command-sum</input>
-				<range>
-					<min> -1 </min>
-					<max>  1 </max>
-				</range>
-				<output>fcs/rudder-pos-rad</output>
-			</aerosurface_scale>
-			<aerosurface_scale name="rudder normalization">
-				<input>fcs/rudder-pos-rad</input>
-				<domain>
-					<min> -1 </min>
-					<max>  1 </max>
-				</domain>
-				<range>
-					<min> -1 </min>
-					<max>  1 </max>
-				</range>
-				<output>fcs/rudder-pos-norm</output>
-			</aerosurface_scale>
-		</channel>
-		<channel name="Flaps">
-			<kinematic name="Flaps Control">
-				<input>fcs/flap-cmd-norm</input>
-				<traverse>
-					<setting>
-						<position>  0 </position>
-						<time>      0 </time>
-					</setting>
-					<setting>
-						<position> 15 </position>
-						<time>      4 </time>
-					</setting>
-					<setting>
-						<position> 30 </position>
-						<time>      3 </time>
-					</setting>
-				</traverse>
-				<output>fcs/flap-pos-deg</output>
-			</kinematic>
-			<aerosurface_scale name="flap normalization">
-				<input>fcs/flap-pos-deg</input>
-				<domain>
-					<min>  0 </min>
-					<max> 30 </max>
-				</domain>
-				<range>
-					<min> 0 </min>
-					<max> 1 </max>
-				</range>
-				<output>fcs/flap-pos-norm</output>
-			</aerosurface_scale>
-		</channel>
-		<channel name="Landing Gear">
-  </channel>
-		<channel name="Speedbrake">
-			<!--
-	  <function name="fcs/speedbrake-int-norm">
-		  <description>Speedbrake only operates through 9/10 of the pulling length, rest is for wheel brake</description>
-		  <table>
-			  <independentVar lookup="row">fcs/speedbrake-cmd-norm</independentVar>
-			  <tableData>
-				  0	0
-				  0.9	1
-				  1	1
-			  </tableData>
-		  </table>
-	  </function>-->
-			<kinematic name="Speedbrake Control">
-				<input>fcs/speedbrake-int-norm</input>
-				<traverse>
-					<setting>
-						<position> 0 </position>
-						<time>     0 </time>
-					</setting>
-					<setting>
-						<position> 1 </position>
-						<time>     0 </time>
-					</setting>
-				</traverse>
-				<output>fcs/speedbrake-pos-norm</output>
-			</kinematic>
-		</channel>
-	</flight_control>
+	
+	<flight_control file="Systems/ask21-fcs.xml"/>
+	
 	<system file="ask21mi-fcs"/>
+	
 	<aerodynamics file="Systems/ask21-aero.xml"/>
+	
 	<external_reactions file="Systems/ask21-external_reactions.xml" />
+	
 </fdm_config>

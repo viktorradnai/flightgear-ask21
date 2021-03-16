@@ -7,7 +7,7 @@ See AUTHORS.txt for credits
 	<sim>
 		<description>Schleicher ASK 21mi Motorglider JSB</description>
 		<long-description>
-		The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
+			The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
 		</long-description>
 		<status>production</status>
 		<rating>
@@ -42,7 +42,7 @@ See AUTHORS.txt for credits
 		<sound>
 			<path>Aircraft/ASK21/Sounds/ask21jsb-mi-sound.xml</path>
 		</sound>
-			
+		
 		<previews>
 			<preview>
 				<type>exterior</type>
@@ -114,7 +114,7 @@ See AUTHORS.txt for credits
 				<model type="string">DR400</model>
 			</dragger>
 		</glider>
-
+		
 	</sim>
 	
 	
@@ -128,11 +128,11 @@ See AUTHORS.txt for credits
 			<mixture-to-airbrake type="bool">0</mixture-to-airbrake>
 			<mixture-to-throttle type="bool">0</mixture-to-throttle>
 		</ask21>
-			<electric>
-				<engine-battery-switch type="bool">0</engine-battery-switch>
-				<engine-battery-switch-pos type="float">0</engine-battery-switch-pos>
-				<generator-fail type="bool">0</generator-fail>
-			</electric>
+		<electric>
+			<engine-battery-switch type="bool">0</engine-battery-switch>
+			<engine-battery-switch-pos type="float">0</engine-battery-switch-pos>
+			<generator-fail type="bool">0</generator-fail>
+		</electric>
 		<engines>
 			<engine n="0">
 				<mixture-int>0</mixture-int>
@@ -221,59 +221,59 @@ See AUTHORS.txt for credits
 				<name>e</name>
 				<desc>Extend/Retract engine</desc>
 				<binding>
-				<command>property-toggle</command>
-				<property>/controls/engines/engine/extend-propeller</property>
+					<command>property-toggle</command>
+					<property>/controls/engines/engine/extend-propeller</property>
 				</binding>
 			</key>
 			<key n="23">
 				<name>Ctrl-w</name>
 				<desc>Place Winch and hook in</desc>
 				<binding>
-				<command>nasal</command>
-				<script>ask21.placeWinch();
-					ask21.startWinch();</script>
+					<command>nasal</command>
+					<script>ask21.placeWinch();
+						ask21.startWinch();</script>
 				</binding>
 			</key>
 			<key n="87">
 				<name>W</name>
 				<desc>Increase winch speed</desc>
 				<binding>
-				<command>nasal</command>
-				<script>ask21.winch_faster()</script>
+					<command>nasal</command>
+					<script>ask21.winch_faster()</script>
 				</binding>
 			</key>
 			<key n="119">
 				<name>w</name>
 				<desc>Decrease winch speed</desc>
 				<binding>
-				<command>nasal</command>
-				<script>ask21.winch_slower()</script>
+					<command>nasal</command>
+					<script>ask21.winch_slower()</script>
 				</binding>
 			</key>
 			<key n="111">
 				<name>o</name>
 				<desc>Open hook</desc>
 				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/hook-open</property>
-				<value type="bool">true</value>
-				</binding>
-				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/aerotow/open</property>
-				<value type="bool">true</value>
-				</binding>
-				<binding>
-				<command>property-assign</command>
-				<property>/sim/hitches/winch/open</property>
-				<value type="bool">true</value>
-				</binding>
-				<mod-up>
-				<binding>
 					<command>property-assign</command>
 					<property>/sim/hitches/hook-open</property>
-					<value type="bool">false</value>
+					<value type="bool">true</value>
 				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">true</value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/winch/open</property>
+					<value type="bool">true</value>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>/sim/hitches/hook-open</property>
+						<value type="bool">false</value>
+					</binding>
 				</mod-up>
 			</key>
 		</keyboard>
@@ -283,7 +283,7 @@ See AUTHORS.txt for credits
 	
 	<nasal>
 		<electrical>
-			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>
+			<file n="1">Aircraft/ASK21/Nasal/electrical-mi.nas</file>
 		</electrical>
 		<ilec>
 			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC.nas</file>

@@ -2,42 +2,96 @@
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 <fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ASK21" version="2.0" release="ALPHA" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<fileheader>
-		<author> Benedikt Wolf (D-ECHO) using Aeromatic v 0.96 </author>
+		<author> see AUTHORS.md </author>
 		<filecreationdate>2018-03-09</filecreationdate>
-		<version> 09/2020 </version>
+		<version> 03/2021 </version>
 		<description> ASK21 </description>
 	</fileheader>
-	<!--FRAME NOTES:
-		x: + = front  - = rear
-		y: + = right  - = left
-		z: + = down   - = up
+	<!--
+	File:     ASK21.xml
+	Inputs:
+	name:          ASK21
+	type:          glider
+	max weight:    1323 lb
+	wing span:     55.777 ft
+	length:        27.39635 ft
+	wing area:     193.23104995 sq-ft
+	gear type:     tricycle
+	castering:     
+	retractable?:  no
+	# engines:     0
+	engine type:   piston
+	engine layout: forward fuselage
+	yaw damper?    no
+	
+	Outputs:
+	wing loading:  6.85 lb/sq-ft
+	payload:       529.2 lbs
+	CL-alpha:      5.5 per radian
+	CL-0:          0.25
+	CL-max:        1.4
+	CD-0:          0.012
+	K:             0.023
+	
 	-->
-	<metrics file="Systems/ask21-metrics.xml"/>
-	<mass_balance>
-		<ixx unit="SLUG*FT2">      1000 </ixx>
-		<iyy unit="SLUG*FT2">       300 </iyy>
-		<izz unit="SLUG*FT2">      2355 </izz>
-		<emptywt unit="KG">       360 </emptywt>	<!--	ref. [4] Technical Data table	-->
-		<location name="CG" unit="M">
-			<x>  -0.845   </x>	<!--	see CoG notes in FDM-references.md	-->
-			<y>   0.00    </y>
-			<z>   0.76674 </z>
+	<!--FRAME NOTES:
+	x: + = front  - = rear
+	y: + = right  - = left
+	z: + = down   - = up
+	-->
+	<metrics>
+		<wingarea unit="FT2">  193.23 </wingarea>
+		<wingspan unit="FT">   55.78 </wingspan>
+		<wing_incidence>          3.00 </wing_incidence>
+		<chord unit="FT">    3.46 </chord>
+		<htailarea unit="FT2">   19.17 </htailarea>
+		<htailarm unit="FT">   13.78 </htailarm>
+		<vtailarea unit="FT2">    5.31 </vtailarea>
+		<vtailarm unit="FT">   13.45 </vtailarm>
+		<location name="AERORP" unit="M">
+			<x> -1.34</x>
+			<y>   0.00 </y>
+			<z>  0.79163 </z>
 		</location>
-		<!--	For x-position, see CoG notes in FDM-references.md	-->
+		<location name="EYEPOINT" unit="M">
+			<x>  -2.6 </x>
+			<y>   0.00 </y>
+			<z>  1 </z>
+		</location>
+		<location name="VRP" unit="M">
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+		</location>
+	</metrics>
+	<mass_balance>
+		<ixx unit="SLUG*FT2">      3336 </ixx> <!-- VSP -->
+		<iyy unit="SLUG*FT2">       860 </iyy> 
+		<izz unit="SLUG*FT2">      4694 </izz> 
+		<ixz unit="SLUG*FT2">      89 </ixz> 
+		<emptywt unit="LBS">       851 </emptywt> 			<!--ASK21 POH Minnesoata -->
+		<location name="CG" unit="M">
+			<x>  -0.856 </x>
+			<!--779mm aft of reference point (leading edge)-->
+			<y>   0.00 </y>
+			<z>  0.419 </z> <!-- auf ref Höhe Rumpfspitze -->
+		</location>
 		<pointmass name="Pilot">
+			<description> weight of the pilot </description>
 			<weight unit="KG">    80 </weight>
 			<location name="POINTMASS" unit="M">
-				<x> -2.85 </x>
-				<y>  0.0  </y>
-				<z>  0.5  </z>
+				<x> -2.8 </x>
+				<y>   0.00 </y>
+				<z>  0.5 </z>
 			</location>
 		</pointmass>
 		<pointmass name="Copilot">
+			<description> weight of the copilot </description>
 			<weight unit="KG">    80 </weight>
 			<location name="POINTMASS" unit="M">
-				<x> -1.715 </x>
-				<y>  0.0   </y>
-				<z>  0.6   </z>
+				<x> -1.8 </x>
+				<y>   0.00 </y>
+				<z>  0.6 </z>
 			</location>
 		</pointmass>
 		<pointmass name="Left Baggage">
@@ -56,13 +110,13 @@
 				<z>  0.6   </z>
 			</location>
 		</pointmass>
-		<!--	approximate from three view drawing	-->
 		<pointmass name="Spin Ballast">
+			<description> weight of the spinballast </description>
 			<weight unit="KG">   0 </weight>
 			<location name="POINTMASS" unit="M">
 				<x> 3.5 </x>
-				<y> 0.0 </y>
-				<z> 0.8 </z>
+				<y>   0.00 </y>
+				<z>  0.8 </z>
 			</location>
 		</pointmass>
 	</mass_balance>
@@ -112,7 +166,7 @@
 			<brake_group>NONE</brake_group>
 			<retractable>0</retractable>
 		</contact>
-		<contact type="STRUCTURE" name="LEFT_WING_SKID">
+		<contact type="BOGEY" name="LEFT_WING_SKID">
 			<location unit="M">
 				<x>  -1.25364 </x>
 				<y>  -8.43947 </y>
@@ -120,10 +174,14 @@
 			</location>
 			<static_friction>  0.600 </static_friction>
 			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.400 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
 		</contact>
-		<contact type="STRUCTURE" name="RIGHT_WING_SKID">
+		<contact type="BOGEY" name="RIGHT_WING_SKID">
 			<location unit="M">
 				<x>  -1.25364 </x>
 				<y>  8.43947 </y>
@@ -131,8 +189,12 @@
 			</location>
 			<static_friction>  0.600 </static_friction>
 			<dynamic_friction> 0.400 </dynamic_friction>
+			<rolling_friction> 0.400 </rolling_friction>
 			<spring_coeff unit="LBS/FT">        396.90 </spring_coeff>
 			<damping_coeff unit="LBS/FT/SEC">   198.45 </damping_coeff>
+			<max_steer unit="DEG">0</max_steer>
+			<brake_group>NONE</brake_group>
+			<retractable>0</retractable>
 		</contact>
 		<contact type="BOGEY" name="LEFT_WING_ASSIST_GEAR">
 			<location unit="M">
@@ -165,9 +227,92 @@
 			<retractable>1</retractable>
 		</contact>
 	</ground_reactions>
-	<propulsion />
-	<flight_control file="Systems/ask21-fcs.xml" />
-	<system file="ask21-brake"/>
+	
+	<propulsion/>
+	
 	<aerodynamics file="Systems/ask21-aero.xml"/>
-	<external_reactions file="Systems/ask21-external_reactions.xml" />
+	<flight_control file="Systems/ask21-fcs.xml" />	
+	<!-- external forces, for ground handling, winch start and aerotowing -->
+	<external_reactions>
+		<force name="turn" frame="BODY">
+			<location unit="M">
+				<x> -0.99095</x>
+				<!--wing tip-->
+				<y>  -8</y>/				
+				<z> 1.3</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="pull" frame="BODY">
+			<location unit="M">
+				<x> -0.99095</x>
+				<!--body-->
+				<y>  0</y>
+				<z> 1.3</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<property>fcs/winch-cmd-norm</property>
+		<force name="winchx" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>				
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 1.0</x>
+				<y> 0.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="winchy" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 0.0</x>
+				<y> 1.0</y>
+				<z> 0.0</z>
+			</direction>
+		</force>
+		<force name="winchz" frame="BODY">
+			<location unit="M">
+				<x> -1.94837</x>
+				<!--approximate winch hook position-->
+				<y>  -0.14464</y>
+				<z> 0.2361</z>
+			</location>
+			<direction>
+				<x> 0.0</x>
+				<y> 0.0</y>
+				<z> 1.0</z>
+			</direction>
+		</force>
+		<force name="aerotow_hitch" frame="BODY" unit="LBS">
+			<location unit="M">
+				<x> -3.42633</x>
+				
+				<!--approximate aerotow hook position-->
+				<y>  0.0</y>
+				<z> 0.2176</z>
+			</location>
+			<direction>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</direction>
+		</force>
+	</external_reactions>
 </fdm_config>

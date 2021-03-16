@@ -51,8 +51,7 @@ See AUTHORS.txt for credits
 	</limits>
 	<nasal>
 		<ask21>
-			<!-- overwrite winch_jsb.nas - position must match with ask21-main.xml -->
-			<file n="0">Aircraft/ASK21/Nasal/winch.nas</file>
+			<file>Aircraft/ASK21/Nasal/winch.nas</file>
 		</ask21>
 		<electrical>
 			<file>Aircraft/ASK21/Nasal/electrical.nas</file>

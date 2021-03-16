@@ -74,28 +74,6 @@ See AUTHORS.txt for credits
 
 	</sim>
 	
-	
-	<payload>
-		<weight n="0">
-			<name>Pilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">243</max-lb>
-		</weight>
-		<weight n="1">
-			<name>Copilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">243</max-lb>
-		</weight>
-		<weight n="2">
-			<name>Spin Ballast</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">26.45</max-lb>
-		</weight>
-	</payload>
-	
 	<input>
 		<keyboard> 
 			<key n="15">
@@ -173,9 +151,12 @@ See AUTHORS.txt for credits
 			</key>
 		</keyboard>
 	</input>
+	
+	<payload include="Systems/ask21-jsb-payload.xml"/>
+	
 	<nasal>
 		<electrical>
-			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
+			<file n="1">Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>
 		<dialogs>
 			<file>gui/dialogs/fuelpayload.nas</file>

@@ -11,6 +11,7 @@ The following is a table of references used for the JSBSim FDM. The ID is used t
 | 7  | ASK21 TM 04 (manual pages)                                     | https://www.alexander-schleicher.de/wp-content/uploads/2015/02/210_TM04_E_HB.pdf      |
 | 8  | ASK21 TM 04A (manual pages)                                    | https://www.alexander-schleicher.de/wp-content/uploads/2015/02/210_TM04A_E_HB.pdf     |
 | 9  | ASK21 TM 04B (manual pages)                                    | https://www.alexander-schleicher.de/wp-content/uploads/2015/02/210_TM04B_E.pdf        |
+| 10 | ASK21 Mi TM 03 (manual pages)                                  | https://www.alexander-schleicher.de/wp-content/uploads/2015/02/219_TM03_D_HB.pdf      |
 
 ## CoG (Center of Gravity) notes: (ref. [3] A.III.10 / B.III.13 )
 * datum is the leading edge at the wing root. This equals about x = -1.635m  on our model

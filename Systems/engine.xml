@@ -4,124 +4,6 @@
 	<filter>
 		<debug>false</debug>
 		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/throttle-to-airbrake</property>
-					<value>1</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<expression>
-				<table>
-					<property>/controls/engines/engine/throttle</property>
-					<entry><ind>0</ind><dep>1</dep></entry>
-					<entry><ind>1</ind><dep>0</dep></entry>
-				</table>
-			</expression>
-		</input>
-		<output>/controls/flight/spoilers</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/throttle-to-airbrake</property>
-					<value>1</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/controls/engines/engine/throttle</property>
-		</input>
-		<output>/controls/ask21/groundhandling-throttle</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/mixture-to-airbrake</property>
-					<value>1</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<expression>
-				<table>
-					<property>/controls/engines/engine/mixture</property>
-					<entry><ind>0</ind><dep>1</dep></entry>
-					<entry><ind>1</ind><dep>0</dep></entry>
-				</table>
-			</expression>
-		</input>
-		<output>/controls/flight/spoilers</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/mixture-to-airbrake</property>
-					<value>1</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/controls/engines/engine/mixture</property>
-		</input>
-		<output>/controls/ask21/groundhandling-throttle</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/throttle-to-airbrake</property>
-					<value>0</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/controls/engines/engine/throttle</property>
-		</input>
-		<output>/controls/engines/engine/throttle-int</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
-		<enable>
-			<condition>
-				<equals>
-					<property>/controls/ask21/mixture-to-throttle</property>
-					<value>1</value> 
-				</equals>
-				<equals>
-					<property>/controls/ask21/throttle-to-airbrake</property>
-					<value>1</value> 
-				</equals>
-			</condition>
-		</enable>
-		<input>
-			<property>/controls/engines/engine/mixture</property>
-		</input>
-		<output>/controls/engines/engine/throttle-int</output>
-		<max-rate-of-change>2.0</max-rate-of-change>
-	</filter>
-	<filter>
-		<debug>false</debug>
-		<type>gain</type>
 		<input>
 			<condition>
 				<equals>
@@ -147,6 +29,22 @@
 		</input>
 		<gain>1</gain>
 		<output>/engines/engine/engine-rpm</output>
+	</filter>
+	
+	<filter>
+		<type>gain</type>
+		<input>
+			<condition>
+				<equals>
+					<property>/engines/engine/prop-pos-norm</property>
+					<value>1.0</value>
+				</equals>
+			</condition>
+			<property>/engines/engine/engine-rpm</property>
+		</input>
+		<input>0.0</input>
+		<gain>1.0</gain>
+		<output>/engines/engine/engine-rpm-checked</output>
 	</filter>
 	
 </PropertyList>
