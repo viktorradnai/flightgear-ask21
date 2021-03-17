@@ -5,20 +5,20 @@
 	<wingarea unit="M2">  17.95  </wingarea>	<!--	ref. [3] 4. Dimensions	-->
 	<wingspan unit="M">   17.0   </wingspan>	<!--	ref. [3] 4. Dimensions	-->
 	<wing_incidence>       2     </wing_incidence>	<!--	ref. [6] I Technische Daten	-->
-	<chord unit="FT">    3.46 </chord> 
-	<htailarea unit="M2">  1.92 </htailarea>	<!--	ref. [6] I Technische Daten	-->
+	<chord unit="FT">      3.46  </chord> 
+	<htailarea unit="M2">  1.92  </htailarea>	<!--	ref. [6] I Technische Daten	-->
 	<htailarm unit="FT">   13.78 </htailarm>
 	<vtailarea unit="M2">  1.357 </vtailarea>	<!--	ref. [6] I Technische Daten	-->
 	<vtailarm unit="FT">   13.45 </vtailarm>
 	<location name="AERORP" unit="M">
-		<x> -1.34</x>
-		<y>   0.00 </y>
+		<x> -1.34    </x>
+		<y>  0.00    </y>
 		<z>  0.79163 </z>
 	</location>
 	<location name="EYEPOINT" unit="M">
-		<x>  -2.6 </x>
-		<y>   0.00 </y>
-		<z>  1 </z>
+		<x> -2.6 </x>
+		<y>  0.0 </y>
+		<z>  1.0 </z>
 	</location>
 	<location name="VRP" unit="M">
 		<x>0</x>

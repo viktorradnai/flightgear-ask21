@@ -27,9 +27,10 @@ var engine_ctrl = {
 	prop_cmd:	props.globals.getNode("/controls/engines/engine/extend-propeller", 1),
 };
 
-outputs.spindle_motor 	= props.globals.initNode("/systems/electrical/outputs/spindle-motor",	0.0, "DOUBLE");
-outputs.starter 	= props.globals.initNode("/systems/electrical/outputs/starter",		0.0, "DOUBLE");
-outputs.ignition 	= props.globals.initNode("/systems/electrical/outputs/ignition",	0.0, "DOUBLE");
+outputs.spindle_motor 	= output_prop.initNode("spindle-motor",	0.0, "DOUBLE");
+outputs.starter 	= output_prop.initNode("starter",	0.0, "DOUBLE");
+outputs.ignition 	= output_prop.initNode("ignition",	0.0, "DOUBLE");
+outputs.ilec		= output_prop.initNode("ilec", 		0.0, "DOUBLE");
 
 circuit_breakers.master_eng = cb_prop.initNode("master-engine", 1, "BOOL");
 
@@ -202,7 +203,7 @@ var engine_bus = func ( dt ) {
 	var alternator_volts = alternator.get_output_volts();
 	
 	var power_source = nil;
-	if( master_sw.getBoolValue() ){
+	if( engine_ctrl.batt_switch.getBoolValue() ){
 		bus_volts = battery_volts;
 		power_source = "battery_eng";
 	}
@@ -221,7 +222,7 @@ var engine_bus = func ( dt ) {
 	}
 	
 	#Ignition
-	if ( engine_ctrl.batt_switch.getBoolValue() and engine_ctrl.magneto.getValue()==3 ) {
+	if ( engine_ctrl.magneto.getValue()==3 ) {
 		outputs.ignition.setDoubleValue( bus_volts );
 		if(bus_volts > 12.5){
 			engine_ctrl.mixture.setValue(1);
@@ -233,8 +234,12 @@ var engine_bus = func ( dt ) {
 		outputs.ignition.setDoubleValue( 0.0 );
 	}
 	
+	# ILEC
+	outputs.ilec.setDoubleValue( bus_volts );
+	load += 0.8 / bus_volts;
+	
 	#Starter
-	if ( engine_ctrl.batt_switch.getBoolValue() and engine_ctrl.starter.getBoolValue() ) {
+	if ( engine_ctrl.starter.getBoolValue() ) {
 		outputs.starter.setDoubleValue( bus_volts );
 		load += bus_volts ;
 	} else {

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
-<fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ASK21" version="2.0" release="ALPHA" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+<fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ASK21-mi" version="2.0" release="ALPHA" xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<fileheader>
 		<author> see AUTHORS.md </author>
 		<filecreationdate>2018-03-09</filecreationdate>
@@ -17,7 +17,7 @@
 		<ixx unit="SLUG*FT2">      1000 </ixx>
 		<iyy unit="SLUG*FT2">       504 </iyy>
 		<izz unit="SLUG*FT2">      2355 </izz>
-		<emptywt unit="KG">       360 </emptywt>	<!--	ref. [4] Technical Data table	-->
+		<emptywt unit="KG">       360 </emptywt>	<!--	ref. [5] Technical Data table	-->
 		<location name="CG" unit="M">
 			<x>  -0.845   </x>	<!--	see CoG notes in FDM-references.md	-->
 			<y>   0.00    </y>
@@ -112,7 +112,7 @@
 			<brake_group>NONE</brake_group>
 			<retractable>0</retractable>
 		</contact>
-		<contact type="BOGEY" name="LEFT_WING_SKID">
+		<contact type="BOGEY" name="LEFT_WING_WHEEL">
 			<location unit="M">
 				<x>  -1.25364 </x>
 				<y>  -8.43947 </y>
@@ -127,7 +127,7 @@
 			<brake_group>NONE</brake_group>
 			<retractable>0</retractable>
 		</contact>
-		<contact type="BOGEY" name="RIGHT_WING_SKID">
+		<contact type="BOGEY" name="RIGHT_WING_WHEEL">
 			<location unit="M">
 				<x>  -1.25364 </x>
 				<y>  8.43947 </y>

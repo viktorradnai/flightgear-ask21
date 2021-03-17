@@ -1,35 +1,33 @@
 <?xml version="1.0"?>
 <PropertyList>
-	<payload>
-		<weight n="0">
-			<name>Pilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">242</max-lb>	<!--	ref. [1] p.13 II.8	-->
-		</weight>
-		<weight n="1">
-			<name>Copilot</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">242</max-lb>	<!--	ref. [1] p.13 II.8	-->
-		</weight>
-		<weight n="2">
-			<name>Left Baggage</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">22</max-lb>	<!--	ref. [1] p.16 / ref.[2] 2.6 Mass (Weight)	-->
-		</weight>
-		<weight n="3">
-			<name>Right Baggage</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">22</max-lb>	<!--	ref. [1] p.16 / ref.[2] 2.6 Mass (Weight)	-->
-		</weight>
-		<weight n="4">
-			<name>Spin Ballast</name>
-			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]" />
-			<min-lb type="double">0</min-lb>
-			<max-lb type="double">26.4</max-lb>	<!--	ref. [8] p.10c II.8 max. 12 * 2.2 lbs = 26.4 lbs	-->
-		</weight>
-	</payload>
+	<weight n="0">
+		<name>Pilot</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+		<min-lb type="double">0</min-lb>
+		<max-lb type="double">242</max-lb>	<!--	ref. [1] p.13 II.8	-->
+	</weight>
+	<weight n="1">
+		<name>Copilot</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+		<min-lb type="double">0</min-lb>
+		<max-lb type="double">242</max-lb>	<!--	ref. [1] p.13 II.8	-->
+	</weight>
+	<weight n="2">
+		<name>Left Baggage</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+		<min-lb type="double">0</min-lb>
+		<max-lb type="double">22</max-lb>	<!--	ref. [1] p.16 / ref.[2] 2.6 Mass (Weight)	-->
+	</weight>
+	<weight n="3">
+		<name>Right Baggage</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]" />
+		<min-lb type="double">0</min-lb>
+		<max-lb type="double">22</max-lb>	<!--	ref. [1] p.16 / ref.[2] 2.6 Mass (Weight)	-->
+	</weight>
+	<weight n="4">
+		<name>Spin Ballast</name>
+		<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]" />
+		<min-lb type="double">0</min-lb>
+		<max-lb type="double">26.4</max-lb>	<!--	ref. [8] p.10c II.8 max. 12 * 2.2 lbs = 26.4 lbs	-->
+	</weight>
 </PropertyList>

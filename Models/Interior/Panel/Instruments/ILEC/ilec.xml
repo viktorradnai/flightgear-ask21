@@ -3,22 +3,13 @@
 <PropertyList>
 	
 	<path>ilec.ac</path>
-	<!--
-	<animation>
-	<type>material</type>
-	<object-name>face</object-name>
-	<object-name>Needle</object-name>
-	<object-name>decimals-digit</object-name>
-	<object-name>units-digit</object-name>
-	<object-name>sign-digit</object-name>
-	<object-name>dot-digit</object-name>
-	<emission>
-	<red>1</red>
-	<green>0</green>
-	<blue>0</blue>
-	<factor-prop>sim/model/instruments-light</factor-prop>
-	</emission>
-	</animation>-->
+	
+	<params>
+		<powered type="string">instrumentation/ilec/powered</powered>
+		<selftest type="string">instrumentation/ilec/selftest-active</selftest>
+		<rpm-flash type="string">instrumentation/ilec/rpm-flashing/state</rpm-flash>
+		<mode type="string">instrumentation/ilec/mode</mode>
+	</params>
 	
 	<animation>
 		<type>pick</type>
@@ -85,57 +76,96 @@
 	<animation>
 		<type>material</type>
 		<condition>
-			<greater-than>
-				<property>/engines/engine/engine-rpm</property>
-				<value>3000</value>
-			</greater-than>
-			<less-than-equals>
-				<property>/engines/engine/engine-rpm</property>
-				<value>7000</value>
-			</less-than-equals>
+			<or>
+				<and>
+					<greater-than>
+						<property>/engines/engine/engine-rpm</property>
+						<value>3000</value>
+					</greater-than>
+					<less-than-equals>
+						<property>/engines/engine/engine-rpm</property>
+						<value>7000</value>
+					</less-than-equals>
+				</and>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>rpm.green</object-name>
 		<emission>
 			<red>0</red>
 			<green>1</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<animation>
 		<type>material</type>
 		<condition>
-			<greater-than>
-				<property>/engines/engine/engine-rpm</property>
-				<value>7000</value>
-			</greater-than>
-			<less-than-equals>
-				<property>/engines/engine/engine-rpm</property>
-				<value>7700</value>
-			</less-than-equals>
+			<or>
+				<and>
+					<greater-than>
+						<property>/engines/engine/engine-rpm</property>
+						<value>7000</value>
+					</greater-than>
+					<less-than>
+						<property>/engines/engine/engine-rpm</property>
+						<value>7800</value>
+					</less-than>
+				</and>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>rpm.yellow</object-name>
 		<emission>
 			<red>1</red>
 			<green>1</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<animation>
 		<type>material</type>
 		<condition>
-			<greater-than>
-				<property>/engines/engine/engine-rpm</property>
-				<value>7800</value>
-			</greater-than>
+			<or>
+				<greater-than-equals>
+					<property>/engines/engine/engine-rpm</property>
+					<value>7800</value>
+				</greater-than-equals>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>rpm.red</object-name>
 		<emission>
 			<red>1</red>
 			<green>0</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<condition>
+			<property alias="/params/selftest"/>
+		</condition>
+		<object-name>oilwarn</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>0</blue>
+			<factor-prop alias="/params/powered"/>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<condition>
+			<property alias="/params/selftest"/>
+		</condition>
+		<object-name>fuelpresswarn</object-name>
+		<emission>
+			<red>1</red>
+			<green>0</green>
+			<blue>0</blue>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	
@@ -144,85 +174,101 @@
 	<animation>
 		<type>material</type>
 		<condition>
-			<equals>
-				<property>/controls/engines/engine/magnetos</property>
-				<value>0</value>
-			</equals>
-			<property>/controls/engines/engine/starter</property>
+			<or>
+				<and>
+					<equals>
+						<property>/controls/engines/engine/magnetos</property>
+						<value>0</value>
+					</equals>
+					<property>/controls/engines/engine/starter</property>
+				</and>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>ignitionoff</object-name>
 		<emission>
 			<red>1</red>
 			<green>0</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<!--Propeller not fully extended-->
 	<animation>
 		<type>material</type>
 		<condition>
-			<greater-than>
-				<property>sim/multiplay/generic/float[10]</property>
-				<value>0</value>
-			</greater-than>
-			<less-than>
-				<property>sim/multiplay/generic/float[10]</property>
-				<value>1</value>
-			</less-than>
+			<or>
+				<and>
+					<greater-than>
+						<property>sim/multiplay/generic/float[10]</property>
+						<value>0</value>
+					</greater-than>
+					<less-than>
+						<property>sim/multiplay/generic/float[10]</property>
+						<value>1</value>
+					</less-than>
+				</and>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>propnfe</object-name>
 		<emission>
 			<red>1</red>
 			<green>0</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<!--ECU fail-->
 	<animation>
 		<type>material</type>
 		<condition>
-			<greater-than>
-				<property>engines/engine/ecu-fail</property>
-				<value>0</value>
-			</greater-than>
+			<or>
+				<greater-than>
+					<property>engines/engine/ecu-fail</property>
+					<value>0</value>
+				</greater-than>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>ecu</object-name>
 		<emission>
 			<red>1</red>
 			<green>0</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<!--Generator warning-->
 	<animation>
 		<type>material</type>
 		<condition>
-			<and>
-				<equals>
-					<property>sim/multiplay/generic/float[10]</property>
-					<value>1</value>
-				</equals>
-				<or>
-					<less-than>
-						<property>engines/engine/engine-rpm</property>
-						<value>2000</value>
-					</less-than>
-					<less-than>
-						<property>systems/electrical/engine-volts</property>
-						<value>12.8</value>
-					</less-than>
-				</or>
-			</and>			
+			<or>
+				<and>
+					<equals>
+						<property>sim/multiplay/generic/float[10]</property>
+						<value>1</value>
+					</equals>
+					<or>
+						<less-than>
+							<property>engines/engine/engine-rpm</property>
+							<value>2000</value>
+						</less-than>
+						<less-than>
+							<property>systems/electrical/engine-volts</property>
+							<value>12.8</value>
+						</less-than>
+					</or>
+				</and>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>genwarn</object-name>
 		<emission>
 			<red>1</red>
 			<green>0</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	
@@ -231,34 +277,40 @@
 	<animation>
 		<type>material</type>
 		<condition>
-			<equals>
-				<property>sim/multiplay/generic/float[10]</property>
-				<value>1</value>
-			</equals>
+			<or>
+				<equals>
+					<property>sim/multiplay/generic/float[10]</property>
+					<value>1</value>
+				</equals>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>propfe</object-name>
 		<emission>
 			<red>0</red>
 			<green>1</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	<!--Propeller not fully retracted-->
 	<animation>
 		<type>material</type>
 		<condition>
-			<equals>
-				<property>sim/multiplay/generic/float[10]</property>
-				<value>0</value>
-			</equals>
+			<or>
+				<equals>
+					<property>sim/multiplay/generic/float[10]</property>
+					<value>0</value>
+				</equals>
+				<property alias="/params/selftest"/>
+			</or>
 		</condition>
 		<object-name>propfr</object-name>
 		<emission>
 			<red>0</red>
 			<green>1</green>
 			<blue>0</blue>
-			<factor-prop>/controls/electric/battery-switch</factor-prop>
+			<factor-prop alias="/params/powered"/>
 		</emission>
 	</animation>
 	
@@ -371,6 +423,127 @@
 			<y>1</y>
 			<z>0</z>
 		</axis>
+	</animation>
+	
+	<!--	Animate Display	-->
+	<animation>
+		<type>select</type>
+		<object-name>ind.0</object-name>
+		<object-name>ind.1</object-name>
+		<object-name>ind.2</object-name>
+		<object-name>ind.3</object-name>
+		<object-name>ind.4</object-name>
+		<object-name>ind.5</object-name>
+		<object-name>ind.6</object-name>
+		<object-name>ind.7</object-name>
+		<condition>
+			<property alias="/params/powered"/>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ind.0</object-name>
+		<object-name>ind.1</object-name>
+		<object-name>ind.2</object-name>
+		<object-name>ind.3</object-name>
+		<condition>
+			<or>
+				<not>
+					<property alias="/params/rpm-flash"/>
+				</not>
+				<greater-than-equals>
+					<property>engines/engine[0]/rpm-checked</property>
+					<value>0</value>
+				</greater-than-equals>
+			</or>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ind.4</object-name>
+		<object-name>ind.5</object-name>
+		<condition>
+			<or>
+				<greater-than>
+					<property alias="/params/mode"/>
+					<value>0</value>
+				</greater-than>
+				<property alias="/params/selftest"/>
+			</or>
+		</condition>
+	</animation>
+		
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.0</object-name>
+		<property>instrumentation/ilec/digit[0]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.1</object-name>
+		<property>instrumentation/ilec/digit[1]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.2</object-name>
+		<property>instrumentation/ilec/digit[2]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.3</object-name>
+		<property>instrumentation/ilec/digit[3]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.4</object-name>
+		<property>instrumentation/ilec/digit[4]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.5</object-name>
+		<property>instrumentation/ilec/digit[5]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.6</object-name>
+		<property>instrumentation/ilec/digit[6]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ind.7</object-name>
+		<property>instrumentation/ilec/digit[7]</property>
+		<axis>
+			<y>1</y>
+		</axis>
+		<factor>0.1</factor>
 	</animation>
 	
 </PropertyList>

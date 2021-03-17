@@ -201,7 +201,7 @@
 		<variometer-up>
 			<name>variometer-up</name>
 			<mode>looped</mode>
-			<path>Aircraft/ASK21/Sounds/vario.wav</path>
+			<path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/vario.wav</path>
 			<condition>
 				<and>
 					<greater-than>
@@ -239,7 +239,7 @@
 		<variometer-down>
 			<name>variometer-down</name>
 			<mode>looped</mode>
-			<path>Aircraft/ASK21/Sounds/vario2.wav</path>
+			<path>Aircraft/Instruments-3d/glider/vario/ilec-sc7/vario2.wav</path>
 			<condition>
 				<and>
 					<greater-than>

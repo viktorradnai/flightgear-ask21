@@ -1,83 +1,83 @@
 <?xml version="1.0"?>
 
 <external_reactions>
-		<force name="turn" frame="BODY">
-			<location unit="M">
-				<x> -0.99095</x>
-				<!--wing tip-->
-				<y>  -8</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 1.0</x>
-				<y> 0.0</y>
-				<z> 0.0</z>
-			</direction>
-		</force>
-		<force name="pull" frame="BODY">
-			<location unit="M">
-				<x> -0.99095</x>
-				<!--body-->
-				<y>  0</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 1.0</x>
-				<y> 0.0</y>
-				<z> 0.0</z>
-			</direction>
-		</force>
-		<property>fcs/winch-cmd-norm</property>
-		<force name="winchx" frame="BODY">
-			<location unit="M">
-				<x> -1.94837</x>
-				<!--approximate winch hook position-->
-				<y>  -0.14464</y>
-				<z> 0.2361</z>
-			</location>
-			<direction>
-				<x> 1.0</x>
-				<y> 0.0</y>
-				<z> 0.0</z>
-			</direction>
-		</force>
-		<force name="winchy" frame="BODY">
-			<location unit="M">
-				<x> -1.94837</x>
-				<!--approximate winch hook position-->
-				<y>  -0.14464</y>
-				<z> 0.2361</z>
-			</location>
-			<direction>
-				<x> 0.0</x>
-				<y> 1.0</y>
-				<z> 0.0</z>
-			</direction>
-		</force>
-		<force name="winchz" frame="BODY">
-			<location unit="M">
-				<x> -1.94837</x>
-				<!--approximate winch hook position-->
-				<y>  -0.14464</y>
-				<z> 0.2361</z>
-			</location>
-			<direction>
-				<x> 0.0</x>
-				<y> 0.0</y>
-				<z> 1.0</z>
-			</direction>
-		</force>
-		<force name="aerotow_hitch" frame="BODY" unit="LBS">
-			<location unit="M">
-				<x> -3.42633</x>
-				<!--approximate aerotow hook position-->
-				<y>  0.0</y>
-				<z> 0.2176</z>
-			</location>
-			<direction>
-				<x>0.0</x>
-				<y>0.0</y>
-				<z>0.0</z>
-			</direction>
-		</force>
-	</external_reactions>
+	<force name="turn" frame="BODY">
+		<location unit="M">
+			<x> -0.99095</x>
+			<!--wing tip-->
+			<y>  -8</y>
+			<z> 1.3</z>
+		</location>
+		<direction>
+			<x> 1.0</x>
+			<y> 0.0</y>
+			<z> 0.0</z>
+		</direction>
+	</force>
+	<force name="pull" frame="BODY">
+		<location unit="M">
+			<x> -0.99095</x>
+			<!--body-->
+			<y>  0</y>
+			<z> 1.3</z>
+		</location>
+		<direction>
+			<x> 1.0</x>
+			<y> 0.0</y>
+			<z> 0.0</z>
+		</direction>
+	</force>
+	<property>fcs/winch-cmd-norm</property>
+	<force name="winchx" frame="BODY">
+		<location unit="M">
+			<x> -1.94837</x>
+			<!--approximate winch hook position-->
+			<y>  -0.14464</y>
+			<z> 0.2361</z>
+		</location>
+		<direction>
+			<x> 1.0</x>
+			<y> 0.0</y>
+			<z> 0.0</z>
+		</direction>
+	</force>
+	<force name="winchy" frame="BODY">
+		<location unit="M">
+			<x> -1.94837</x>
+			<!--approximate winch hook position-->
+			<y>  -0.14464</y>
+			<z> 0.2361</z>
+		</location>
+		<direction>
+			<x> 0.0</x>
+			<y> 1.0</y>
+			<z> 0.0</z>
+		</direction>
+	</force>
+	<force name="winchz" frame="BODY">
+		<location unit="M">
+			<x> -1.94837</x>
+			<!--approximate winch hook position-->
+			<y>  -0.14464</y>
+			<z> 0.2361</z>
+		</location>
+		<direction>
+			<x> 0.0</x>
+			<y> 0.0</y>
+			<z> 1.0</z>
+		</direction>
+	</force>
+	<force name="aerotow_hitch" frame="BODY" unit="LBS">
+		<location unit="M">
+			<x> -3.42633</x>
+			<!--approximate aerotow hook position-->
+			<y>  0.0</y>
+			<z> 0.2176</z>
+		</location>
+		<direction>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</direction>
+	</force>
+</external_reactions>
