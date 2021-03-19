@@ -11,6 +11,7 @@ var ammeter_ave = [ 0.0, 0.0 ];
 
 # Initialize properties
 var generator_fail = props.globals.getNode( "/controls/electric/generator-fail", 1);
+var engine_running = props.globals.getNode( "/engines/engine[0]/running", 1 );
 
 var engine_bus_p = {
 	amps:	electrical.initNode("engine-amps",  0.0, "DOUBLE"),
@@ -20,7 +21,7 @@ var engine_bus_p = {
 
 var engine_ctrl = {
 	batt_switch:	props.globals.getNode("/controls/electric/engine-battery-switch", 1),
-	starter:	props.globals.getNode("/controls/engines/engine[0]/starter", 1),
+	starter:	props.globals.getNode("/controls/engines/engine[0]/starter-cmd", 1),
 	magneto:	props.globals.getNode("/controls/engines/engine[0]/magnetos", 1),
 	mixture:	props.globals.getNode("/controls/engines/engine[0]/mixture-int", 1),
 	prop_pos:	props.globals.getNode("/engines/engine/prop-pos-norm", 1),
@@ -33,6 +34,14 @@ outputs.ignition 	= output_prop.initNode("ignition",	0.0, "DOUBLE");
 outputs.ilec		= output_prop.initNode("ilec", 		0.0, "DOUBLE");
 
 circuit_breakers.master_eng = cb_prop.initNode("master-engine", 1, "BOOL");
+
+controls.startEngine = func( i ){
+	if(  !engine_running.getBoolValue() ){
+		engine_ctrl.starter.setBoolValue( i );
+	} else {
+		engine_ctrl.starter.setBoolValue( 0 );
+	}
+}
 
 ##
 # Alternator model class.
@@ -96,8 +105,8 @@ var alternator = AlternatorClass.new();
 ####	Battery Packs	####
 ############################
 var batteries = {
-	main:	BatteryClass.new( 12.0, 0.325, 7.2, 25, 0),
-	eng:	BatteryClass.new( 12.0, 0.325, 24, 25, 0),
+	main:	BatteryClass.new( "main", 12.0, 0.325, 7.2, 25, 0),
+	eng:	BatteryClass.new( "eng", 12.0, 0.325, 24, 25, 0),
 };
 
 var reset_battery = func {
@@ -212,39 +221,51 @@ var engine_bus = func ( dt ) {
 		power_source = "alternator";
 	}
 	
-	
-	#Prop in/out
-	if ( ( engine_ctrl.prop_cmd.getValue() == 1 and engine_ctrl.prop_pos.getValue() != 1 ) or ( engine_ctrl.prop_cmd.getValue() == 0 and engine_ctrl.prop_pos.getValue() != 0 ) )  {
-		outputs.spindle_motor.setDoubleValue( bus_volts );
-		load += bus_volts / 25;
+	if( bus_volts >= 9 ) {
+		
+		#Prop in/out
+		if ( ( engine_ctrl.prop_cmd.getValue() == 1 and engine_ctrl.prop_pos.getValue() != 1 ) or ( engine_ctrl.prop_cmd.getValue() == 0 and engine_ctrl.prop_pos.getValue() != 0 ) )  {
+			outputs.spindle_motor.setDoubleValue( bus_volts );
+			load += 6 / bus_volts;
+		} else {
+			outputs.spindle_motor.setDoubleValue( 0.0 );
+		}
+		
+		#Ignition
+		if ( engine_ctrl.magneto.getValue()==3 ) {
+			outputs.ignition.setDoubleValue( bus_volts );
+			#if(bus_volts > 12.5){
+			#	engine_ctrl.mixture.setValue(1);
+			#}else{
+			#	engine_ctrl.mixture.setValue(0);
+			#}		
+			load += 72 / bus_volts;
+		} else {
+			outputs.ignition.setDoubleValue( 0.0 );
+		}
+		
+		# ILEC
+		outputs.ilec.setDoubleValue( bus_volts );
+		load += 0.8 / bus_volts;
+		
+		#Starter
+		if ( engine_ctrl.starter.getBoolValue() and engine_ctrl.prop_pos.getDoubleValue() == 1 ) {
+			outputs.starter.setDoubleValue( bus_volts );
+			load += 144 / bus_volts ;
+		} else {
+			outputs.starter.setDoubleValue( 0.0 );
+		}
+		
 	} else {
+		
 		outputs.spindle_motor.setDoubleValue( 0.0 );
-	}
-	
-	#Ignition
-	if ( engine_ctrl.magneto.getValue()==3 ) {
-		outputs.ignition.setDoubleValue( bus_volts );
-		if(bus_volts > 12.5){
-			engine_ctrl.mixture.setValue(1);
-		}else{
-			engine_ctrl.mixture.setValue(0);
-		}		
-		load += bus_volts / 2;
-	} else {
 		outputs.ignition.setDoubleValue( 0.0 );
-	}
-	
-	# ILEC
-	outputs.ilec.setDoubleValue( bus_volts );
-	load += 0.8 / bus_volts;
-	
-	#Starter
-	if ( engine_ctrl.starter.getBoolValue() ) {
-		outputs.starter.setDoubleValue( bus_volts );
-		load += bus_volts ;
-	} else {
+		outputs.ilec.setDoubleValue( 0.0 );
 		outputs.starter.setDoubleValue( 0.0 );
+		
 	}
+	
+	
 	
 	if( load > 55 ){
 		circuit_breakers.master_eng.setBoolValue( 0 );

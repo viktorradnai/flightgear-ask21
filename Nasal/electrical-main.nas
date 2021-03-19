@@ -52,14 +52,19 @@ var freeze_replay	=	props.globals.getNode("/sim/freeze/replay-state");
 
 var BatteryClass = {
 	# Constructor
-	new: func( ideal_volts, ideal_amps, amp_hours, charge_amps, n ){
-		var charge_prop	= batt_prop.getNode( "charge["~n~"]" );
+	new: func( name, ideal_volts, ideal_amps, amp_hours, charge_amps, n ){
+		var charge_prop = nil;
+		if( name == "" ){
+			charge_prop = batt_prop.getNode( "charge["~n~"]", 1 );
+		} else {
+			charge_prop = batt_prop.getNode( "charge-"~ name ~"["~n~"]", 1 );
+		}
 		var charge	= nil;
-		if( getprop("/systems/electrical/battery/charge["~n~"]") != nil ){			# If the battery charge has been set from a previous FG instance
+		if( charge_prop.getValue() != nil ){			# If the battery charge has been set from a previous FG instance
 			charge = charge_prop.getDoubleValue();
 		} else {
 			charge = 1.0;
-			charge_prop = batt_prop.initNode("charge["~n~"]", 1.0, "DOUBLE");
+			charge_prop.setDoubleValue( charge );
 		}
 		var obj = {
 			parents: [BatteryClass],

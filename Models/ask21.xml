@@ -6,19 +6,37 @@
 		<load>
 			var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries", 10);
 			
-			var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
-			var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+			var rplayer = cmdarg();
 			
-			var canopyF_door = self.getNode("sim/model/door-positions/canopyF/position-norm", 1);
-			var canopyB_door = self.getNode("sim/model/door-positions/canopyB/position-norm", 1);
+			rplayer.getNode("sim/model/variant").alias( rplayer.getNode("sim/multiplay/generic/int[14]") );
+			var variant = rplayer.getNode("sim/model/variant").getIntValue();
 			
-			canopyF_door.alias(float_0);
-			canopyB_door.alias(float_1);
+			#	Doors
+			rplayer.getNode("sim/model/door-positions/canopyF/position-norm" ).alias( rplayer.getNode( "sim/multiplay/generic/float[0]") );
+			rplayer.getNode("sim/model/door-positions/canopyFJ/position-norm").alias( rplayer.getNode( "sim/multiplay/generic/float[1]") );
+			rplayer.getNode("sim/model/door-positions/canopyB/position-norm" ).alias( rplayer.getNode( "sim/multiplay/generic/float[2]") );
+			rplayer.getNode("sim/model/door-positions/frontwin/position-norm").alias( rplayer.getNode( "sim/multiplay/generic/float[3]") );
+			rplayer.getNode("sim/model/door-positions/rearwin/position-norm" ).alias( rplayer.getNode( "sim/multiplay/generic/float[4]") );
+			
+			if( variant == 0 ){
+				var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries/glider", 5);
+			} else {
+				var livery_update = aircraft.livery_update.new("Aircraft/ASK21/Models/Liveries/mi", 5);
+			}
 		</load>
 		<unload>
 			livery_update.stop();
 			canopyF_door.unalias();
 			canopyB_door.unalias();
+			
+			rplayer.getNode("sim/model/variant").unalias();
+			
+			#	Doors
+			rplayer.getNode("sim/model/door-positions/canopyF/position-norm" ).unalias();
+			rplayer.getNode("sim/model/door-positions/canopyFJ/position-norm").unalias();
+			rplayer.getNode("sim/model/door-positions/canopyB/position-norm" ).unalias();
+			rplayer.getNode("sim/model/door-positions/frontwin/position-norm").unalias();
+			rplayer.getNode("sim/model/door-positions/rearwin/position-norm" ).unalias();
 		</unload>
 	</nasal>
 	<!--WING BENDING-->
@@ -392,7 +410,7 @@
 		<type>rotate</type>
 		<object-name>elevator</object-name>
 		<property>surface-positions/elevator-pos-norm</property>
-		<factor>6</factor>
+		<factor>21.37</factor>
 		<center>
 			<x-m>3.788</x-m>
 			<y-m>0.0</y-m>

@@ -220,8 +220,11 @@ See AUTHORS.txt for credits
 				<name>wing flexer property rule</name>
 				<path>Aircraft/Generic/wingflexer.xml</path>
 			</property-rule>
-			<!--9 used for fuel and payload dialog properties (JSB only)-->
-			<electrical><path></path></electrical>
+			<!--	109 used for fuel and payload dialog properties (JSB only)	-->
+			<!--	110 used for yasim engine property rules	-->
+			<electrical>
+				<path/>
+			</electrical>
 		</systems>
 		<!-- Views -->
 		<view n="0">
@@ -527,7 +530,7 @@ See AUTHORS.txt for credits
 				<desc>Increase winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.faster()</script>
+					<script>winch.faster()</script>
 				</binding>
 				<!-- <binding>
 				<command>nasal</command>
@@ -546,7 +549,7 @@ See AUTHORS.txt for credits
 				<desc>Decrease winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.slower()</script>
+					<script>winch.slower()</script>
 				</binding>
 				<!--
 				<binding>
@@ -566,7 +569,7 @@ See AUTHORS.txt for credits
 				<desc>Stop winch launch</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.stop()</script>
+					<script>winch.stop()</script>
 				</binding>
 				<!--
 				<binding>
@@ -623,8 +626,8 @@ See AUTHORS.txt for credits
 					</binding>
 				</mod-up>
 			</key>
-			<key n="83">
-				<name>S</name>
+			<key n="78">
+				<name>N</name>
 				<desc>Vario volume up</desc>
 				<binding>
 					<command>property-adjust</command>
@@ -633,8 +636,8 @@ See AUTHORS.txt for credits
 					<max>1</max>
 				</binding>
 			</key>
-			<key n="115">
-				<name>s</name>
+			<key n="110">
+				<name>n</name>
 				<desc>Vario volume down</desc>
 				<binding>
 					<command>property-adjust</command>

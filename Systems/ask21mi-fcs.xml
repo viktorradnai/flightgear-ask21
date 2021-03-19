@@ -23,6 +23,20 @@
 	<property value="1">/controls/engines/engine[0]/propeller-brake</property>
 	
 	<channel name="Engine">
+		<switch>
+			<default value="0"/>
+			<test value="1">
+				/systems/electrical/outputs/starter gt 9
+			</test>
+			<output>propulsion/starter_cmd</output>
+		</switch>
+		<switch>
+			<default value="0"/>
+			<test value="3">
+				/controls/engines/engine[0]/ignition eq 1
+			</test>
+			<output>/controls/engines/engine[0]/magnetos</output>
+		</switch>
 		<fcs_function name="fcs/propeller-brake">
 			<function>
 				<table>

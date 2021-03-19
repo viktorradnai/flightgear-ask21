@@ -18,7 +18,7 @@ var ammeter_ave = 0.0;
 ##				amp hours: 6.5
 ##				charge amps: 25
 
-var	battery = BatteryClass.new( 12.0, 0.325, 6.5, 25, 0);
+var	battery = BatteryClass.new( "", 12.0, 0.325, 6.5, 25, 0);
 
 var reset_battery = func {
 	battery.reset_to_full_charge();

@@ -13,7 +13,9 @@ with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" i
 The K21, how it is also called sometimes, was first built in 1978. This version, the "Mi" is equipped with a 41kW-engine for independent takeoff and safe home return without thermals.
 		</long-description>
 		<status>production</status>
-		<!--        <variant-of>ask21</variant-of>-->
+		<flight-model archive="y">yasim</flight-model>
+		<aero archive="y">ask21mi</aero>
+		<variant-of>ask21mi-jsb</variant-of>
 		<rating>
 			<FDM type="int">4</FDM>
 			<systems type="int">4</systems>
@@ -34,10 +36,11 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 				<!--only included in the -mi, supports toggle between throttle to throttle and throttle to airbrake-->
 				<path>Systems/engine.xml</path>
 			</property-rule>
+			<property-rule n="110">
+				<name>Engine Yasim</name>
+				<path>Systems/engine-yasim.xml</path>
+			</property-rule>
 		</systems>
-		<flight-model archive="y">yasim</flight-model>
-		<aero archive="y">ask21mi</aero>
-		<variant-of>ask21mi-jsb</variant-of>
 		<startup>
 			<splash-texture>Aircraft/ASK21/ask21-splash.png</splash-texture>
 		</startup>
@@ -102,7 +105,7 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 		</electric>
 		<engines>
 			<engine n="0">
-				<mixture-int>0</mixture-int>
+				<mixture-int type="float">1.0</mixture-int>
 				<boost type="double">0</boost>
 				<magnetos>0</magnetos>
 				<extend-propeller type="bool">0</extend-propeller>
@@ -120,34 +123,6 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 	</engines>
 	<input>
 		<keyboard>
-			<key n="115">
-				<name>s</name>
-				<desc>Starter</desc>
-				<binding>
-					<condition>
-						<equals>
-							<property>sim/multiplay/generic/float[10]</property>
-							<value>1</value>
-						</equals>
-						<property>controls/electric/engine-battery-switch</property>
-					</condition>
-					<command>property-toggle</command>
-					<property>/controls/engines/engine/starter</property>
-				</binding>
-				<mod-up>
-					<binding>
-						<condition>
-							<equals>
-								<property>sim/multiplay/generic/float[10]</property>
-								<value>1</value>
-							</equals>
-							<property>controls/electric/engine-battery-switch</property>
-						</condition>
-						<command>property-toggle</command>
-						<property>/controls/engines/engine/starter</property>
-					</binding>
-				</mod-up>
-			</key>
 			<key n="5">
 				<name>Ctrl-e</name>
 				<desc>Engine Electric Master Switch</desc>
@@ -195,14 +170,14 @@ The K21, how it is also called sometimes, was first built in 1978. This version,
 		</keyboard>
 	</input>
 	<nasal>
-		<ask21>
-			<file>Aircraft/ASK21/Nasal/winch.nas</file>
-		</ask21>
 		<electrical>
-			<file>Aircraft/ASK21/Nasal/electrical-mi.nas</file>
+			<file n="1">Aircraft/ASK21/Nasal/electrical-mi.nas</file>
 		</electrical>
 		<ilec>
 			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ILEC/ILEC.nas</file>
 		</ilec>
+		<winch>
+			<file>Aircraft/ASK21/Nasal/winch.nas</file>
+		</winch>
 	</nasal>
 </PropertyList>

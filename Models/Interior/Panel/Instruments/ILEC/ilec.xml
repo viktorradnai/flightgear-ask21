@@ -17,19 +17,28 @@
 		<action>
 			<button>0</button>
 			<binding>
-				<command>property-cycle</command>
-				<property>/controls/engines/engine/magnetos</property>
+				<command>property-toggle</command>
+				<property>controls/engines/engine/ignition</property>
 				<value>3</value>
 				<value>0</value>
 			</binding>
 		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>str</tooltip-id>
+				<label>Ignition: %s</label>
+				<mapping>on-off</mapping>
+				<property>controls/engines/engine/ignition</property>
+			</binding>
+		</hovered>
 	</animation>
 	
 	<animation>
 		<type>rotate</type>
 		<object-name>ignitionswitch</object-name>
-		<property>/controls/engines/engine/magnetos</property>
-		<factor>-20</factor>
+		<property>controls/engines/engine/ignition</property>
+		<factor>-60</factor>
 		<center>
 			<x-m>0.00147</x-m>
 			<y-m>0.027</y-m>

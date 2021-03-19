@@ -153,34 +153,6 @@ See AUTHORS.txt for credits
 	</engines>
 	<input>
 		<keyboard>
-			<key n="115">
-				<name>s</name>
-				<desc>Starter</desc>
-				<binding>
-					<condition>
-						<equals>
-							<property>sim/multiplay/generic/float[10]</property>
-							<value>1</value>
-						</equals>
-						<property>controls/electric/engine-battery-switch</property>
-					</condition>
-					<command>property-toggle</command>
-					<property>/controls/engines/engine/starter</property>
-				</binding>
-				<mod-up>
-					<binding>
-						<condition>
-							<equals>
-								<property>sim/multiplay/generic/float[10]</property>
-								<value>1</value>
-							</equals>
-							<property>controls/electric/engine-battery-switch</property>
-						</condition>
-						<command>property-toggle</command>
-						<property>/controls/engines/engine/starter</property>
-					</binding>
-				</mod-up>
-			</key>
 			<key n="5">
 				<name>Ctrl-e</name>
 				<desc>Engine Electric Master Switch</desc>
@@ -230,8 +202,8 @@ See AUTHORS.txt for credits
 				<desc>Place Winch and hook in</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.placeWinch();
-						ask21.startWinch();</script>
+					<script>winch.placeWinch();
+						winch.startWinch();</script>
 				</binding>
 			</key>
 			<key n="87">
@@ -239,7 +211,7 @@ See AUTHORS.txt for credits
 				<desc>Increase winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.winch_faster()</script>
+					<script>winch.winch_faster()</script>
 				</binding>
 			</key>
 			<key n="119">
@@ -247,7 +219,7 @@ See AUTHORS.txt for credits
 				<desc>Decrease winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.winch_slower()</script>
+					<script>winch.winch_slower()</script>
 				</binding>
 			</key>
 			<key n="111">
@@ -294,5 +266,8 @@ See AUTHORS.txt for credits
 		<dragrobot>
 			<file>Aircraft/ASK21/Nasal/dragrobot.nas</file>
 		</dragrobot>
+		<winch>
+			<file>Aircraft/ASK21/Nasal/winch_jsb.nas</file>
+		</winch>
 	</nasal>
 </PropertyList>
