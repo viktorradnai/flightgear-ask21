@@ -215,13 +215,13 @@ See AUTHORS.txt for credits
 				<name>Move View according to wingflex</name>
 				<path>Systems/wingflex_view.xml</path>
 			</property-rule>
-			<wingflexer include="Systems/wingflexer-params.xml"/>
-			<property-rule n="108">
-				<name>wing flexer property rule</name>
-				<path>Aircraft/Generic/wingflexer.xml</path>
-			</property-rule>
 			<!--	109 used for fuel and payload dialog properties (JSB only)	-->
 			<!--	110 used for yasim engine property rules	-->
+			<wingflexer include="Systems/wingflexer-params.xml"/>
+			<autopilot n="100">
+				<name>wing flexer property rule</name>
+				<path>Aircraft/Generic/wingflexer.xml</path>
+			</autopilot>
 			<electrical>
 				<path/>
 			</electrical>
