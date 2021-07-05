@@ -1,3 +1,4 @@
 .*.sw?
 Thumbs.db
 .directory
+.svn

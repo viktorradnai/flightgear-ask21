@@ -1,53 +1,6 @@
+<?xml version="1.0"?>
+
 <system name="ASK21mi: FCS">
-	
-	<channel name="Speed Brake">
-		
-		<fcs_function name="fcs/speedbrake-int-norm">
-			<function>
-				<table>
-					<independentVar lookup="row">/controls/flight/spoilers</independentVar>
-					<tableData>
-						0	0
-						0.9	1
-						1	1
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
-	
-	</channel>
-	<channel name="Wheel Brake">
-		
-		<fcs_function name="fcs/wheelbrake-cmd">
-			<function>
-				<table>
-					<independentVar lookup="row">/controls/flight/spoilers</independentVar>
-					<tableData>
-						0	0
-						0.9	0
-						1	1
-					</tableData>
-				</table>
-			</function>
-		</fcs_function>
-		
-		<kinematic name="rubbish/brake">
-			<input>fcs/wheelbrake-cmd</input>
-			<traverse>
-				<setting>
-					<position>0</position>
-					<time>0</time>
-				</setting>
-				<setting>
-					<position>1</position>
-					<time>0</time>
-				</setting>
-			</traverse>
-			<output>fcs/left-brake-cmd-norm</output>
-		</kinematic>
-		
-	
-	</channel>
 	<channel name="Engine">
 		
 		<fcs_function name="fcs/mixture-cmd-modified">
@@ -66,47 +19,24 @@
 		</pure_gain>
 	
 	</channel>
-	  
-	<channel name="Ground Handling">
-		
-		<fcs_function name="external_reactions/turn/magnitude">
-			<function>
-				<product>
-					<property>/systems/groundhandling/rudder</property>
-					<value>200</value>
-				</product>
-			</function>
-		</fcs_function>
-		
-		<fcs_function name="external_reactions/pull/magnitude">
-			<function>
-				<product>
-					<property>/systems/groundhandling/throttle</property>
-					<value>200</value>
-				</product>
-			</function>
-		</fcs_function>
-		
-		
-		<kinematic name="rubbish/gear-pos-norm">
-			<input>/systems/groundhandling/wingholder</input>
-			<traverse>
-				<setting>
-					<position>0</position>
-					<time>0</time>
-				</setting>
-				<setting>
-					<position>1</position>
-					<time>0</time>
-				</setting>
-			</traverse>
-			<output>gear/gear-pos-norm</output>
-		</kinematic>
-	</channel>
 	
 	<property value="1">/controls/engines/engine[0]/propeller-brake</property>
 	
 	<channel name="Engine">
+		<switch>
+			<default value="0"/>
+			<test value="1">
+				/systems/electrical/outputs/starter gt 9
+			</test>
+			<output>propulsion/starter_cmd</output>
+		</switch>
+		<switch>
+			<default value="0"/>
+			<test value="3">
+				/controls/engines/engine[0]/ignition eq 1
+			</test>
+			<output>/controls/engines/engine[0]/magnetos</output>
+		</switch>
 		<fcs_function name="fcs/propeller-brake">
 			<function>
 				<table>

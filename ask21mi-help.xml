@@ -64,6 +64,14 @@
         <name>{</name>
         <desc>Ignition Switch OFF</desc>
     </key>
+    <key>
+        <name>N</name>
+        <desc>Increase variometer volume</desc>
+    </key>
+    <key>
+        <name>n</name>
+        <desc>Decrease variometer volume</desc>
+    </key>
     
     <text>
     === General Help ===

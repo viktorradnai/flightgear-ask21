@@ -10,183 +10,183 @@ cruise speed="52" alt="5000" glide-angle="4.7"
 wing: stall aoa="23" width="8" peak="1.5"
 
 YASim solution results:
-       Iterations: 4241
- Drag Coefficient: 2.49345
-       Lift Ratio: 2896.94
-       Cruise AoA: 1.2866
-   Tail Incidence: -2.74599
+Iterations: 4241
+Drag Coefficient: 2.49345
+Lift Ratio: 2896.94
+Cruise AoA: 1.2866
+Tail Incidence: -2.74599
 Approach Elevator: 0.0859411
-            CG: 1.060, -0.000, 0.765
-            
-       63 km/h = 34.0 kts    Stall speed
-      140 km/h = 75.6 kts    Reisespeed 1.6 m/s                                                aktuelle Werte
-                                                                                               = besser geht es nicht!
-           km/h = 25.0 kts              m/s 0.98  1.05
-           km/h = 30.0 kts              m/s 0.88  1.05 1.12                                        3.00 
-           63 km/h = 34.0 kts         1.80 m/s 0.80  0.94 0.96 0.84 aoa 23>21        aoa 21>22.7   1.58
-        66 km/h = 35.6 kts         1.00 m/s 0.79  0.91 0.93 0.82               0.80                1.06
-        70 km/h = 37.8 kts         0.80 m/s 0.82  0.90 0.90 0.80               0.78                0.96
-        82 km/h = 44.2 kts         0.75 m/s 0.82  0.86 0.86 0.80               0.76                0.95
-       140 km/h = 75.6 kts         1.60 m/s 1.89  1.64 1.50 1.62               1.46                1.68
-       180 km/h = 97.2 kts         2.90 m/s 3.63  3.04 2.70 3.01               2.70                2.89
+CG: 1.060, -0.000, 0.765
+
+63 km/h = 34.0 kts    Stall speed
+140 km/h = 75.6 kts    Reisespeed 1.6 m/s                                                aktuelle Werte
+= besser geht es nicht!
+km/h = 25.0 kts              m/s 0.98  1.05
+km/h = 30.0 kts              m/s 0.88  1.05 1.12                                        3.00 
+63 km/h = 34.0 kts         1.80 m/s 0.80  0.94 0.96 0.84 aoa 23>21        aoa 21>22.7   1.58
+66 km/h = 35.6 kts         1.00 m/s 0.79  0.91 0.93 0.82               0.80                1.06
+70 km/h = 37.8 kts         0.80 m/s 0.82  0.90 0.90 0.80               0.78                0.96
+82 km/h = 44.2 kts         0.75 m/s 0.82  0.86 0.86 0.80               0.76                0.95
+140 km/h = 75.6 kts         1.60 m/s 1.89  1.64 1.50 1.62               1.46                1.68
+180 km/h = 97.2 kts         2.90 m/s 3.63  3.04 2.70 3.01               2.70                2.89
 -->            
 
 
 
 <airplane mass="720" version="YASIM_VERSION_CURRENT">
-<!--<airplane mass="720">-->
-    <!-- Approach configuration -->
-    <approach speed="38" aoa="2.7" glide-angle="3.6">
-      <control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
-      <control-setting axis="/controls/engines/engine[0]/mixture-int"  value="1"/>
-    </approach>
-      <!-- Cruise configuration -->
-    <cruise speed="75.6" alt="5000" glide-angle="3.9">
-         
-	<control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
-	<control-setting axis="/controls/engines/engine[0]/mixture-int" value="1"/>
-    </cruise>
+	<!--<airplane mass="720">-->
+	<!-- Approach configuration -->
+	<approach speed="38" aoa="2.7" glide-angle="3.6">
+		<control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
+		<control-setting axis="/controls/engines/engine[0]/mixture-int"  value="1"/>
+	</approach>
+	<!-- Cruise configuration -->
+	<cruise speed="75.6" alt="5000" glide-angle="3.9">
+		
+		<control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
+		<control-setting axis="/controls/engines/engine[0]/mixture-int" value="1"/>
+	</cruise>
 	<!-- pilot's eyepoint -->
 	<cockpit x="2.5396" y="0" z="0.94214"/>
-    <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
-    <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
-        <stall aoa="22.7" width="8" peak="1.5"/>
-        <flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
-        <flap1 start="0.0" end="0.4" lift="0.15" drag="1.70"/>
-        <spoiler start="0.34" end="0.44" lift="-4.0" drag="70"/>
-        
-        <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
-        <control-input axis="/controls/flight/stallflap" control="FLAP1"/>
-        <control-input  control="SPOILER" axis="/controls/flight/spoilers"/>
-        
-        <control-output control="FLAP0" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
-        <control-output control="FLAP0" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
-        <control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
-        
-        <control-speed control="FLAP0" transition-time="0.5"/>
-        <control-speed control="FLAP1" transition-time="0.05"/>        
-        <control-speed control="SPOILER" transition-time="0.8"/>
-    </wing>
-    <hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" length="2" chord="0.861" sweep="0">
-        <stall aoa="27" width="10" peak="1.5"/>
-        <flap0 start="0.0" end="0.89" lift="1.3" drag="1.25"/>
-        <control-input axis="/controls/flight/elevator" control="FLAP0"/>
-        <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
-        <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm" min="-4" max="4"/>
-    </hstab>
-    <vstab x="-3.5" y="0" z="0.76475" taper="0.75" effectiveness="2.5" length="1.2" chord="1.2" sweep="9">
-        <stall aoa="25" width="14" peak="1.2"/>
-        <flap0 start="0" end="0.88" lift="1.5" drag="1.3"/>
-        <control-input axis="/controls/flight/rudder" square="true" control="FLAP0" invert="true"/>
-        <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
-        <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="4" max="-4"/>
-    </vstab>
-    
-      <!-- Engines   source            : http://www.alexander-schleicher.de/en/flugzeuge/ask-21-mi/
-                                     https://en.wikipedia.org/wiki/Austro_Engine_AE50R
-
-                 name              : IAE 50R-AA
-                 type              : Rotary engine
-                 power cruise      :   56 hp
-                 power maximum     : 1600 hp at 3300 rpm at 25000 ft ( 7620 m )
-                 weight            : 28 kg ( 61.7 lb )
-                 compression       : 9:1
-                 Displacement      : 294 cc (17.9 cu in)
-  -->
-  <propeller x="0.293" y="0.0" z="0.584" 
-             mass="61.7" 
-             moment="2.25"
-             radius="0.775"
-             cruise-speed="140"
-             cruise-rpm="2500"
-             cruise-alt="5000" 
-             cruise-power="50"
-             takeoff-power="56" 
-             takeoff-rpm="2700"
-	     manual-pitch="1">
-             <actionpt x="-0.388" y="0.0" z="0.716"/>
-	     <control-input control="PROPPITCH" axis="/engines/engine/prop-pos-norm" src0="0" src1="1" dst0="0" dst1="0.55"/><!--Simulate change of drag due to propeller extended/retracted-->
-             <piston-engine eng-rpm="2700" 
-                            eng-power="56"
-                            displacement="294" 
-                            compression="9.1">
-                            <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle-int" />
-                            <control-input control="STARTER" axis="/controls/engines/engine[0]/starter" />
-                            <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos" />
-                            <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture-int" />
-             </piston-engine>
-  </propeller>
-    
-    
-    <!-- nose wheel -->
-    <gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.8" sfric="1.2">
-      
-      <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="-0.75" dst1="0.75" square="true"/>
-      <control-output control="STEER" prop="/gear/gear[0]/steering-norm"/>
-      
-      </gear>
-    <!-- main wheel-->
-    <!--As on the ASK13, brake is tied to airbrake, not anymore!-->
-    <gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.8" sfric="1.2">
-        <control-input axis="/controls/flight/spoilers" control="BRAKE" src0="0.9" src1="1" dst0="0" dst1="1"/>
-    </gear>
-    <!-- Tail wheel -->
-    <gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="1.2"/>
-    <!--right wing wheel-->
-    <gear x="1.25252" y="-8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
-    <!--lef wing wheel-->
-    <gear x="1.25252" y="8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
-    <!-- pilots -->
-    <!-- Front -->
-    <weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>
-    <!--Rear-->
-    <weight x="1.72727" y="0.0" z="0.75498" mass-prop="/sim/weight[1]/weight-lb"/>
-    <!--Tail ballast to enable spin with two pilots-->
-    <weight x="-3.5" y="0.0" z="0.8" mass-prop="/sim/weight[2]/weight-lb"/>
-    <!--Distribute mass towards nose (cockpit weight etc.) and towards the wingtips to increase roll and yaw inertia -->
-    
-    <tank x="0.5" y="0" z="0.6" capacity="40.20"/>
-    
-    <ballast x="2" y="-10" z=".5" mass="175"/>
-    <ballast x="2" y="10" z=".5" mass="175"/>
-    <!--FOR EASY GROUND HANDLING-->
-    <!--Assiting gears for ground movement-->
-    <gear x="0.99095" y="3" z="0.05" compression=".1"
-        spring="0.8" damp="1.2" sfric="0.8" dfric="0.7" skid="true">
-    <control-input axis="/controls/gear/assist" control="EXTEND"/>
-    <control-output control="EXTEND" prop="/gear/gear[6]/position-norm"/>
-    </gear>
-    <gear x="0.99095" y="-3" z="0.05" compression=".1"
-        spring="0.8" damp="1.2" sfric="0.8" dfric="0.7" skid="true">
-    <control-input axis="/controls/gear/assist" control="EXTEND"/>
-    <control-output control="EXTEND" prop="/gear/gear[7]/position-norm"/>
-    </gear>
-    <!--Pushing/pulling the aircraft around:-->
-    <!--TURN, this is done by tearing the wings around-->
-    <thruster x="0.99095"  y="8" z="1.3" vx="1" vy="-1" vz="0" thrust="100">
-    <control-input axis="/controls/flight/rudder2" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1"/>
-    </thruster>
-    <thruster x="0.99095"  y="-8" z="1.3" vx="-1" vy="1" vz="0" thrust="100">
-    <control-input axis="/controls/flight/rudder2" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1"/>
-    </thruster>
-    <!--Push/pull forward-->
-    <thruster x="0.99095" y="0" z="0.05" vx="1" vy="0" vz="0" thrust="200">
-    <control-input axis="/controls/throttle-2" control="THROTTLE"/>
-    </thruster>
-    <!--Push/pull backward-->
-    <thruster x="0.99095" y="0" z="0.05" vx="-1" vy="0" vz="0" thrust="200">
-        <control-input axis="/controls/throttle-reverse" control="THROTTLE"/>
-    </thruster>
-    <!-- hitch -->
-    <hitch name="winch" x="1.62299" y="0.09" z="0.2048">
-        <tow length="51" weight-per-meter="0.1" elastic-constant="40000" break-force="10000"/>
-        <!-- 4.5mm steel wire-->
-        <winch max-tow-length="1000" min-tow-length="1" initial-tow-length="1000" max-winch-speed="40" power="150" max-force="6000"/>
-        <control-input axis="/controls/winch/place" control="PLACEWINCH"/>
-    </hitch>
-    <hitch name="aerotow" x="3.53" y="0" z="0.23" force-is-calculated-by-other="0">
-        <tow length="60" weight-per-meter="0.035" elastic-constant="9000" break-force="10000" mp-auto-connect-period="0.0"/>
-        <winch max-tow-length="1000" min-tow-length="60" initial-tow-length="60"/>
-        <control-input axis="/controls/aerotow/find-aircraft" control="FINDAITOW"/>
-    </hitch>
+	<fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
+	<wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
+		<stall aoa="22.7" width="8" peak="1.5"/>
+		<flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
+		<flap1 start="0.0" end="0.4" lift="0.15" drag="1.70"/>
+		<spoiler start="0.34" end="0.44" lift="-4.0" drag="70"/>
+		
+		<control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
+		<control-input axis="/controls/flight/stallflap" control="FLAP1"/>
+		<control-input  control="SPOILER" axis="/controls/flight/spoilers"/>
+		
+		<control-output control="FLAP0" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
+		<control-output control="FLAP0" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
+		<control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
+		
+		<control-speed control="FLAP0" transition-time="0.5"/>
+		<control-speed control="FLAP1" transition-time="0.05"/>        
+		<control-speed control="SPOILER" transition-time="0.8"/>
+	</wing>
+	<hstab x="-3.67143" y="0.0" z="2.02347" taper="0.4" length="2" chord="0.861" sweep="0">
+		<stall aoa="27" width="10" peak="1.5"/>
+		<flap0 start="0.0" end="0.89" lift="1.3" drag="1.25"/>
+		<control-input axis="/controls/flight/elevator" control="FLAP0"/>
+		<control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+		<control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm" min="-4" max="4"/>
+	</hstab>
+	<vstab x="-3.5" y="0" z="0.76475" taper="0.75" effectiveness="2.5" length="1.2" chord="1.2" sweep="9">
+		<stall aoa="25" width="14" peak="1.2"/>
+		<flap0 start="0" end="0.88" lift="1.5" drag="1.3"/>
+		<control-input axis="/controls/flight/rudder" square="true" control="FLAP0" invert="true"/>
+		<control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+		<control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="4" max="-4"/>
+	</vstab>
+	
+	<!-- Engines   source            : http://www.alexander-schleicher.de/en/flugzeuge/ask-21-mi/
+	https://en.wikipedia.org/wiki/Austro_Engine_AE50R
+	
+	name              : IAE 50R-AA
+	type              : Rotary engine
+	power cruise      :   56 hp
+	power maximum     : 1600 hp at 3300 rpm at 25000 ft ( 7620 m )
+	weight            : 28 kg ( 61.7 lb )
+	compression       : 9:1
+	Displacement      : 294 cc (17.9 cu in)
+	-->
+	<propeller x="0.293" y="0.0" z="0.584" 
+	    mass="61.7" 
+	    moment="2.25"
+	    radius="0.775"
+	    cruise-speed="140"
+	    cruise-rpm="2500"
+	    cruise-alt="5000" 
+	    cruise-power="50"
+	    takeoff-power="56" 
+	    takeoff-rpm="2700"
+	    manual-pitch="1">
+		<actionpt x="-0.388" y="0.0" z="0.716"/>
+		<control-input control="PROPPITCH" axis="/engines/engine/prop-pos-norm" src0="0" src1="1" dst0="0" dst1="0.55"/><!--Simulate change of drag due to propeller extended/retracted-->
+		<piston-engine eng-rpm="2700" 
+		 eng-power="56"
+		 displacement="294" 
+		 compression="9.1">
+			<control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle-int" />
+			<control-input control="STARTER" axis="/controls/engines/engine[0]/starter-yasim" />
+			<control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos" />
+			<control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture-int" />
+		</piston-engine>
+	</propeller>
+	
+	
+	<!-- nose wheel -->
+	<gear x="3.25256" y="0" z="0.09253" compression="0.01" spring="0.5" damp="0.05" dfric="0.8" sfric="1.2">
+		
+		<control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="-0.75" dst1="0.75" square="true"/>
+		<control-output control="STEER" prop="/gear/gear[0]/steering-norm"/>
+		
+	</gear>
+	<!-- main wheel-->
+	<!--As on the ASK13, brake is tied to airbrake, not anymore!-->
+	<gear x="0.99095" y="0" z="0.02933" compression="0.05" spring="0.5" damp="1" dfric="0.8" sfric="1.2">
+		<control-input axis="/controls/flight/spoilers" control="BRAKE" src0="0.9" src1="1" dst0="0" dst1="1"/>
+	</gear>
+	<!-- Tail wheel -->
+	<gear x="-3.60517" y="0" z="0.51004" compression="0.05" damp="0.05" spring="1" dfric="0.8" sfric="1.2"/>
+	<!--right wing wheel-->
+	<gear x="1.25252" y="-8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
+	<!--lef wing wheel-->
+	<gear x="1.25252" y="8.44562" z="1.2" skid="0" compression="0.10" spring="0.8" dfric="0.8" sfric="1.2"/>
+	<!-- pilots -->
+	<!-- Front -->
+	<weight x="2.50952" y="0.0" z="0.64991" mass-prop="/sim/weight[0]/weight-lb"/>
+	<!--Rear-->
+	<weight x="1.72727" y="0.0" z="0.75498" mass-prop="/sim/weight[1]/weight-lb"/>
+	<!--Tail ballast to enable spin with two pilots-->
+	<weight x="-3.5" y="0.0" z="0.8" mass-prop="/sim/weight[2]/weight-lb"/>
+	<!--Distribute mass towards nose (cockpit weight etc.) and towards the wingtips to increase roll and yaw inertia -->
+	
+	<tank x="0.5" y="0" z="0.6" capacity="40.20"/>
+	
+	<ballast x="2" y="-10" z=".5" mass="175"/>
+	<ballast x="2" y="10" z=".5" mass="175"/>
+	<!--FOR EASY GROUND HANDLING-->
+	<!--Assiting gears for ground movement-->
+	<gear x="0.99095" y="3" z="0.05" compression=".1"
+       spring="0.8" damp="1.2" sfric="0.8" dfric="0.7" skid="true">
+		<control-input axis="/controls/gear/assist" control="EXTEND"/>
+		<control-output control="EXTEND" prop="/gear/gear[6]/position-norm"/>
+	</gear>
+	<gear x="0.99095" y="-3" z="0.05" compression=".1"
+       spring="0.8" damp="1.2" sfric="0.8" dfric="0.7" skid="true">
+		<control-input axis="/controls/gear/assist" control="EXTEND"/>
+		<control-output control="EXTEND" prop="/gear/gear[7]/position-norm"/>
+	</gear>
+	<!--Pushing/pulling the aircraft around:-->
+	<!--TURN, this is done by tearing the wings around-->
+	<thruster x="0.99095"  y="8" z="1.3" vx="1" vy="-1" vz="0" thrust="100">
+		<control-input axis="/controls/flight/rudder2" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1"/>
+	</thruster>
+	<thruster x="0.99095"  y="-8" z="1.3" vx="-1" vy="1" vz="0" thrust="100">
+		<control-input axis="/controls/flight/rudder2" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1"/>
+	</thruster>
+	<!--Push/pull forward-->
+	<thruster x="0.99095" y="0" z="0.05" vx="1" vy="0" vz="0" thrust="200">
+		<control-input axis="/controls/throttle-2" control="THROTTLE"/>
+	</thruster>
+	<!--Push/pull backward-->
+	<thruster x="0.99095" y="0" z="0.05" vx="-1" vy="0" vz="0" thrust="200">
+		<control-input axis="/controls/throttle-reverse" control="THROTTLE"/>
+	</thruster>
+	<!-- hitch -->
+	<hitch name="winch" x="1.62299" y="0.09" z="0.2048">
+		<tow length="51" weight-per-meter="0.1" elastic-constant="40000" break-force="10000"/>
+		<!-- 4.5mm steel wire-->
+		<winch max-tow-length="1000" min-tow-length="1" initial-tow-length="1000" max-winch-speed="40" power="150" max-force="6000"/>
+		<control-input axis="/controls/winch/place" control="PLACEWINCH"/>
+	</hitch>
+	<hitch name="aerotow" x="3.53" y="0" z="0.23" force-is-calculated-by-other="0">
+		<tow length="60" weight-per-meter="0.035" elastic-constant="9000" break-force="10000" mp-auto-connect-period="0.0"/>
+		<winch max-tow-length="1000" min-tow-length="60" initial-tow-length="60"/>
+		<control-input axis="/controls/aerotow/find-aircraft" control="FINDAITOW"/>
+	</hitch>
 </airplane>

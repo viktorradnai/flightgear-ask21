@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				<name type="string">G-CJWD (London Gliding Club)</name>
+				<texture>Liveries/glider/G-CJWD.png</texture>
+				<texture-wing>Liveries/glider/G-CJWD-wings.png</texture-wing>
+				<instruments>
+					<asi>2</asi>
+					<alt>1</alt>
+					<vsi>1</vsi>
+				</instruments>
+				<show-immat type="bool">false</show-immat>
+			</livery>
+		</model>
+	</sim>
+</PropertyList>

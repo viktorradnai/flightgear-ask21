@@ -111,4 +111,58 @@
 		</input>
 		<output>/sim/model/reflection-emission-strength</output>
 	</filter>
+	
+	<!--	Rain Effects	-->
+	<filter>
+		<name>airspeed-clamped-sqrt</name>
+		<input>
+			<expression>
+				<sqrt>
+					<quotient>
+						<min>
+							<property>/velocities/airspeed-kt</property>
+							<value>40</value>
+						</min>
+						<value>40</value>
+					</quotient>
+				</sqrt>
+			</expression>
+		</input>
+		<output>/sim/model/glass-effects/airspeed-clamped-sqrt</output>
+	</filter>
+	<filter>
+		<name>Splash Vector X</name>
+		<input>
+			<expression>
+				<difference>
+					<value>-0.1</value>
+					<product>
+						<value>2.0</value>
+						<property>/fdm/jsbsim/glass-effects/airspeed-clamped-sqrt</property>
+					</product>
+				</difference>
+			</expression>
+		</input>
+		<output>/environment/aircraft-effects/splash-vector-x</output>
+	</filter>
+	<filter>
+		<name>Splash Vector Y</name>
+		<input>0.0</input>
+		<output>/environment/aircraft-effects/splash-vector-y</output>
+	</filter>
+	<filter>
+		<name>Splash Vector Z</name>
+		<input>
+			<expression>
+				<difference>
+					<value>1.0</value>
+					<product>
+						<value>1.35</value>
+						<property>/fdm/jsbsim/glass-effects/airspeed-clamped-sqrt</property>
+					</product>
+				</difference>
+			</expression>
+		</input>
+		<output>/environment/aircraft-effects/splash-vector-z</output>
+	</filter>
 </PropertyList>

@@ -5,7 +5,7 @@ See AUTHORS.txt for credits
 -->
 <PropertyList include="walker-include.xml">
 	<sim>
-		<author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho and Herbert Wagner</author>
+		<author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf, Gilberto Agostinho, Knüppelrührer and Herbert Wagner</author>
 		<aircraft-version>5.0</aircraft-version>
 		<!-- Save some properties when the simulator is shut down -->
 		<aircraft-data>
@@ -192,9 +192,9 @@ See AUTHORS.txt for credits
 			<visibility archive="y">false</visibility>
 		</panel>
 		<systems>
-			<!--0 used for stall system (YASim only)-->
+			<!-- n="100" used for stall system (YASim only)-->
 			<property-rule n="101">
-				<name>shadow-sys</name>
+				<name>effects</name>
 				<path>Aircraft/ASK21/Systems/effects.xml</path>
 			</property-rule>
 			<!--2 used for YASim/JSBSim wingflex-->
@@ -215,13 +215,16 @@ See AUTHORS.txt for credits
 				<name>Move View according to wingflex</name>
 				<path>Systems/wingflex_view.xml</path>
 			</property-rule>
+			<!--	109 used for fuel and payload dialog properties (JSB only)	-->
+			<!--	110 used for yasim engine property rules	-->
 			<wingflexer include="Systems/wingflexer-params.xml"/>
-			<property-rule n="108">
+			<autopilot n="100">
 				<name>wing flexer property rule</name>
 				<path>Aircraft/Generic/wingflexer.xml</path>
-			</property-rule>
-			<!--9 used for fuel and payload dialog properties (JSB only)-->
-			<electrical><path></path></electrical>
+			</autopilot>
+			<electrical>
+				<path/>
+			</electrical>
 		</systems>
 		<!-- Views -->
 		<view n="0">
@@ -402,6 +405,10 @@ See AUTHORS.txt for credits
 			<squelch-lim type="double">8</squelch-lim>
 			<selected-channel type="int">0</selected-channel>
 		</comm>
+		<transponder>
+			<knob-mode type="int">0</knob-mode>
+			<!--The ASK21 is not equipped with a transponder-->
+		</transponder>
 	</instrumentation>
 	<controls>
 		<cabin>
@@ -523,7 +530,7 @@ See AUTHORS.txt for credits
 				<desc>Increase winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.faster()</script>
+					<script>winch.faster()</script>
 				</binding>
 				<!-- <binding>
 				<command>nasal</command>
@@ -542,7 +549,7 @@ See AUTHORS.txt for credits
 				<desc>Decrease winch speed</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.slower()</script>
+					<script>winch.slower()</script>
 				</binding>
 				<!--
 				<binding>
@@ -562,7 +569,7 @@ See AUTHORS.txt for credits
 				<desc>Stop winch launch</desc>
 				<binding>
 					<command>nasal</command>
-					<script>ask21.stop()</script>
+					<script>winch.stop()</script>
 				</binding>
 				<!--
 				<binding>
@@ -619,8 +626,8 @@ See AUTHORS.txt for credits
 					</binding>
 				</mod-up>
 			</key>
-			<key n="83">
-				<name>S</name>
+			<key n="78">
+				<name>N</name>
 				<desc>Vario volume up</desc>
 				<binding>
 					<command>property-adjust</command>
@@ -629,8 +636,8 @@ See AUTHORS.txt for credits
 					<max>1</max>
 				</binding>
 			</key>
-			<key n="115">
-				<name>s</name>
+			<key n="110">
+				<name>n</name>
 				<desc>Vario volume down</desc>
 				<binding>
 					<command>property-adjust</command>
@@ -699,10 +706,6 @@ See AUTHORS.txt for credits
 		<global>
 			<file>Aircraft/ASK21/Nasal/global.canvas.nas</file>
 		</global>
-		<updateloop>
-			<file>Aircraft/Generic/updateloop.nas</file>
-			<!--necessary for electrical system nasal-->
-		</updateloop>
 		<doors>
 			<file>Aircraft/ASK21/Nasal/door.nas</file>
 		</doors>
@@ -712,21 +715,23 @@ See AUTHORS.txt for credits
 		<flarm>
 			<file>Aircraft/Instruments-3d/glider/flarm/flarm.nas</file>
 		</flarm>
+		<ilec-sc7>
+			<file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
+		</ilec-sc7>
 		<ask21>
-			<!-- position is important to allow overwriting in model specific configuration -->
-			<file n="0">Aircraft/ASK21/Nasal/winch_jsb.nas</file>
 			<file>Aircraft/ASK21/Nasal/message.nas</file>
 			<file>Aircraft/ASK21/Nasal/limits.nas</file>
-			<file>Aircraft/ASK21/Models/Interior/Panel/Instruments/ilec-sc7/ilec-sc7.nas</file>
 			<file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
 			<file>Aircraft/ASK21/Nasal/GMeter.nas</file>
 			<file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
 			<file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
 			<file>Aircraft/ASK21/Nasal/liveries.nas</file>
-			<file>Aircraft/ASK21/Nasal/rain.nas</file>
 			<file>Aircraft/ASK21/Nasal/immat.nas</file>
 			<file>Aircraft/ASK21/Nasal/listeners.nas</file>
 		</ask21>
+		<electrical>
+			<file n="0">Aircraft/ASK21/Nasal/electrical-main.nas</file>
+		</electrical>
 		<dual_control_tools>
 			<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
 		</dual_control_tools>
@@ -736,6 +741,5 @@ See AUTHORS.txt for credits
 		<dual_control>
 			<file>Aircraft/Generic/DualControl/pilot-dual-control.nas</file>
 		</dual_control>
-	</nasal><!--
-	<test-value type="double">1.0</test-value>-->
+	</nasal>
 </PropertyList>

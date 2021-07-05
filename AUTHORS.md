@@ -4,6 +4,7 @@
 * Thanks to Herbert Wagner for various fixes and improvements, including a wind compass, MP fixes and a more realistic stall simulation!
 * Thanks to Colin Geniet for various fixes.
 * Passenger view based on dual control code by Anders Gidenstam
+* Knüppelrührer overhauled the JSBSim FDM in 2020/2021 using advanced techniques to closely match reality and continues to work on it, additionally supplied a video that was used to extract many of the sounds we use from.
 
 **See README.sounds (Sounds/README.sounds) and README.liveries (Models/Liveries/README.liveries) for more information.**  
 **The aircraft is licensed under the GNU General Public License, version 2 or, at your option, any later.**

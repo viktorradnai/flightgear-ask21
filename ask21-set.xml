@@ -50,12 +50,11 @@ See AUTHORS.txt for credits
 		<mtow-lbs>1554</mtow-lbs>
 	</limits>
 	<nasal>
-		<ask21>
-			<!-- overwrite winch_jsb.nas - position must match with ask21-main.xml -->
-			<file n="0">Aircraft/ASK21/Nasal/winch.nas</file>
-		</ask21>
 		<electrical>
-			<file>Aircraft/ASK21/Nasal/electrical.nas</file>
+			<file n="1">Aircraft/ASK21/Nasal/electrical.nas</file>
 		</electrical>
+		<winch>
+			<file>Aircraft/ASK21/Nasal/winch.nas</file>
+		</winch>
 	</nasal>
 </PropertyList>

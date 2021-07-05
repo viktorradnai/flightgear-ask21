@@ -37,11 +37,11 @@
         <desc>Turn Coordinator Switch</desc>
     </key>
     <key>
-        <name>S</name>
+        <name>N</name>
         <desc>Increase variometer volume</desc>
     </key>
     <key>
-        <name>s</name>
+        <name>n</name>
         <desc>Decrease variometer volume</desc>
     </key>
     <text>

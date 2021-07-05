@@ -315,7 +315,7 @@ var placeWinch = func {
   
   if ( getprop("sim/glider/winch/flags/placed") == 1 ) {
 	removeWinch();
-	msg("atc","Removed old winch");
+	ask21.msg("atc","Removed old winch");
   }
   
     if ( getprop("gear/gear/wow") ) { 
@@ -441,10 +441,10 @@ var placeWinch = func {
       winchrope_flg.getNode("exist", 1).setIntValue(1);
       
      # finally send message
-      msg("atc","Winch placed in front of you");
+      ask21.msg("atc","Winch placed in front of you");
     }
     else { 
-      msg("atc","winch in air useless, no winch placed"); 
+      ask21.msg("atc","winch in air useless, no winch placed"); 
     }
   
 } # End Function placeWinch
@@ -498,10 +498,10 @@ var startWinch = func {
     #if ( getprop("sim/glider/winch/flags/used") == 0 ) {     # check for unused winch
       setprop("fdm/jsbsim/fcs/winch-cmd-norm",1);           # closes the hook
       var ac_type=getprop("/sim/glider/ac-designator");
-      msg("atc",ac_type~" at the rope, ready for departure"); # simulate message to winch
+      ask21.msg("atc",ac_type~" at the rope, ready for departure"); # simulate message to winch
       setprop("controls/gear/assist-1",1);                    # level the plane
-      msg("atc","Glider levelled."); 
-      msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); # simulate message re-reading from winch
+      ask21.msg("atc","Glider levelled."); 
+      ask21.msg("ai-plane",ac_type~" at the rope. Winch running, runway and airspace clear, pulling the rope."); # simulate message re-reading from winch
       var wp = geo.Coord.new().set_latlon( 
           (getprop("sim/glider/winch/work/wp-lat-deg")),
           (getprop("sim/glider/winch/work/wp-lon-deg")),
@@ -515,11 +515,11 @@ var startWinch = func {
       setprop("sim/glider/winch/flags/pull",1);              # winch is pulling
     #}
     #else {
-    #  msg("atc","Sorry, only one time hooking");
+    #  ask21.msg("atc","Sorry, only one time hooking");
     #}
   }
   else {                                                    # failure: no winch placed
-    msg("atc","no winch");
+    ask21.msg("atc","no winch");
   }
 
 } # End Function startWinch
@@ -545,11 +545,11 @@ var releaseWinch = func {
     setprop("fdm/jsbsim/external_reactions/winchz/magnitude", 0);  # to zero
     setprop("sim/glider/winch/flags/hooked",0);
     keep=0;
-    msg("atc","Hook opened, tow released");
+    ask21.msg("atc","Hook opened, tow released");
     print("Hook opened, tow released");
   }
   else {                                                        # winch not working
-    msg("atc","not hooked to a winch");
+    ask21.msg("atc","not hooked to a winch");
   }
   
 } # End Function releaseWinch
@@ -581,11 +581,11 @@ var removeWinch = func {
     props.globals.getNode(modelsNode).remove();
     props.globals.getNode("ai/models/winchrope").remove();
     props.globals.getNode("sim/glider/winchrope/work").remove();
-    msg("atc","winch rope removed");
+    ask21.msg("atc","winch rope removed");
     setprop("/sim/glider/winchrope/flags/exist", 0);
   }
   else {                                                     # do nothing
-    msg("atc","winch rope does not exist");
+    ask21.msg("atc","winch rope does not exist");
   }
   
   
@@ -606,12 +606,12 @@ var removeWinch = func {
     props.globals.getNode(modelsNode).remove();
     props.globals.getNode("ai/models/winch").remove();
     props.globals.getNode("sim/glider/winch/work").remove();
-    msg("atc","winch rope removed");
+    ask21.msg("atc","winch rope removed");
     setprop("/sim/glider/winch/flags/pull", 0);
     setprop("/sim/glider/winch/flags/placed", 0);
   }
   else {                                                     # do nothing
-    msg("atc","winch does not exist");
+    ask21.msg("atc","winch does not exist");
   }
 
 } # End Function removeWinch
